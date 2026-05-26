@@ -58,13 +58,32 @@ export class TravelInsightRepository {
   }
 
   async findById(id: string) {
-    return await this.prisma.travelInsight.findUnique({
+    const data = await this.prisma.travelInsight.findUnique({
       where: { id },
       include: {
         category: true,
         relatedServices: true,
       },
     });
+
+    const relatedInsights = await this.prisma.travelInsight.findMany({
+      where: {
+        categoryId: data?.categoryId,
+        id: { not: id },
+        isPublished: true,
+      },
+      select: {
+        id: true,
+        title: true,
+        slug: true,
+        description: true,
+        author: true,
+        createdAt: true,
+        timeReadMin: true,
+      },
+    });
+
+    return { ...data, relatedInsights };
   }
 
   async update(id: string, data: Prisma.TravelInsightUpdateInput) {

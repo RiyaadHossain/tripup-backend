@@ -7,9 +7,7 @@ import { UpdateTravelInsightCategoryDto } from '../dto/update-travel-insight-cat
 
 @Injectable()
 export class TravelInsightCategoriesService {
-  constructor(
-    private readonly repository: TravelInsightCategoriesRepository,
-  ) {}
+  constructor(private readonly repository: TravelInsightCategoriesRepository) {}
 
   async create(dto: CreateTravelInsightCategoryDto) {
     return await this.repository.create(dto);

@@ -35,7 +35,7 @@ export class TravelInsightService {
   }
 
   async findAll(query: QueryTravelInsightsDto) {
-    const { page, limit, search, isPublished } = query;
+    const { page, limit, search, isPublished, categoryId } = query;
 
     const skip = (page - 1) * limit;
 
@@ -74,6 +74,10 @@ export class TravelInsightService {
           },
         },
       ];
+    }
+
+    if (categoryId) {
+      where.categoryId = categoryId;
     }
 
     if (isPublished !== undefined) {

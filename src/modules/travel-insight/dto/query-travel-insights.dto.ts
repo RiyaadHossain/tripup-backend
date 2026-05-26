@@ -27,4 +27,8 @@ export class QueryTravelInsightsDto {
   @IsOptional()
   @IsBooleanString()
   isPublished?: string;
+
+  @IsOptional()
+  @IsString()
+  categoryId?: string;
 }
