@@ -60,6 +60,7 @@ model TravelInsight {
   id              String    @id @default(uuid())
 
   title           String
+  slug            String   @unique
   description     String
   timeReadMin     Int
   author          String

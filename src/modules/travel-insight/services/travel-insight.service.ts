@@ -50,6 +50,12 @@ export class TravelInsightService {
           },
         },
         {
+          slug: {
+            contains: search,
+            mode: 'insensitive',
+          },
+        },
+        {
           description: {
             contains: search,
             mode: 'insensitive',
@@ -82,21 +88,31 @@ export class TravelInsightService {
         orderBy: {
           createdAt: 'desc',
         },
-        select: {
-          id: true,
-          title: true,
-          description: true,
-          timeReadMin: true,
-          author: true,
-          createdAt: true,
+        include: {
+          category: true,
         },
       }),
 
       this.repository.count(where),
     ]);
 
+    const formattedData = data.map((item: any) => ({
+      id: item.id,
+      title: item.title,
+      slug: item.slug,
+      description: item.description,
+      timeReadMin: item.timeReadMin,
+      author: item.author,
+      createdAt: item.createdAt,
+      isPublished: item.isPublished,
+      isFeatured: item.isFeatured,
+      category: item.category
+        ? { id: item.category.id, name: item.category.name }
+        : null,
+    }));
+
     return {
-      data,
+      data: formattedData,
       meta: {
         total,
         page,

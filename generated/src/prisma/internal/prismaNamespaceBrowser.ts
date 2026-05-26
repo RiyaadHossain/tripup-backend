@@ -114,6 +114,7 @@ export type TestimonialScalarFieldEnum = (typeof TestimonialScalarFieldEnum)[key
 export const TravelInsightScalarFieldEnum = {
   id: 'id',
   title: 'title',
+  slug: 'slug',
   description: 'description',
   timeReadMin: 'timeReadMin',
   author: 'author',

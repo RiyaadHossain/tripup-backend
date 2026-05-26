@@ -29,6 +29,10 @@ export class CreateTravelInsightDto {
   title!: string;
 
   @IsString()
+  @MaxLength(200)
+  slug!: string;
+
+  @IsString()
   description!: string;
 
   @Type(() => Number)
