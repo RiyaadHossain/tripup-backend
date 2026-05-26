@@ -51,7 +51,11 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-  TeamMember: 'TeamMember'
+  TeamMember: 'TeamMember',
+  Testimonial: 'Testimonial',
+  TravelInsight: 'TravelInsight',
+  Service: 'Service',
+  TravelInsightCategory: 'TravelInsightCategory'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -90,12 +94,78 @@ export const TeamMemberScalarFieldEnum = {
 export type TeamMemberScalarFieldEnum = (typeof TeamMemberScalarFieldEnum)[keyof typeof TeamMemberScalarFieldEnum]
 
 
+export const TestimonialScalarFieldEnum = {
+  id: 'id',
+  testimony: 'testimony',
+  userName: 'userName',
+  userImg: 'userImg',
+  designation: 'designation',
+  company: 'company',
+  isFeatured: 'isFeatured',
+  isPublished: 'isPublished',
+  displayOrder: 'displayOrder',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type TestimonialScalarFieldEnum = (typeof TestimonialScalarFieldEnum)[keyof typeof TestimonialScalarFieldEnum]
+
+
+export const TravelInsightScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  timeReadMin: 'timeReadMin',
+  author: 'author',
+  coverImgUrl: 'coverImgUrl',
+  content: 'content',
+  insights: 'insights',
+  takeAway: 'takeAway',
+  seo: 'seo',
+  tags: 'tags',
+  isFeatured: 'isFeatured',
+  isPublished: 'isPublished',
+  categoryId: 'categoryId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type TravelInsightScalarFieldEnum = (typeof TravelInsightScalarFieldEnum)[keyof typeof TravelInsightScalarFieldEnum]
+
+
+export const ServiceScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ServiceScalarFieldEnum = (typeof ServiceScalarFieldEnum)[keyof typeof ServiceScalarFieldEnum]
+
+
+export const TravelInsightCategoryScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type TravelInsightCategoryScalarFieldEnum = (typeof TravelInsightCategoryScalarFieldEnum)[keyof typeof TravelInsightCategoryScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
 } as const
 
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+export const JsonNullValueInput = {
+  JsonNull: JsonNull
+} as const
+
+export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
 
 
 export const QueryMode = {
@@ -112,4 +182,13 @@ export const NullsOrder = {
 } as const
 
 export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+export const JsonNullValueFilter = {
+  DbNull: DbNull,
+  JsonNull: JsonNull,
+  AnyNull: AnyNull
+} as const
+
+export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
 

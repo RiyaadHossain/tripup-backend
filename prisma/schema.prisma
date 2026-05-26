@@ -15,7 +15,7 @@ model TeamMember {
   designation String
   bio         String?
 
-  profileImg String? 
+  profileImg String?
 
   linkedin String?
   github   String?
@@ -33,4 +33,75 @@ model TeamMember {
 
   @@index([name])
   @@index([isPublished])
+}
+
+model Testimonial {
+  id          String  @id @default(uuid())
+
+  testimony   String
+  userName    String
+  userImg     String?
+  designation String
+  company     String
+
+  isFeatured  Boolean @default(false)
+  isPublished Boolean @default(true)
+
+  displayOrder Int @default(autoincrement())
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userName])
+  @@index([isPublished])
+}
+
+model TravelInsight {
+  id              String    @id @default(uuid())
+
+  title           String
+  description     String
+  timeReadMin     Int
+  author          String
+  coverImgUrl     String
+  content         String
+  insights        String[]
+  takeAway        String[]
+  seo             Json
+  tags            String[]
+
+  isFeatured      Boolean   @default(false)
+  isPublished     Boolean   @default(true)
+
+  categoryId      String?
+  category        TravelInsightCategory? @relation(fields: [categoryId], references: [id])
+  relatedServices Service[]
+
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  @@index([title])
+  @@index([categoryId])
+  @@index([isFeatured])
+  @@index([isPublished])
+}
+
+model Service {
+  id             String          @id @default(uuid())
+  name           String
+
+  travelInsights TravelInsight[]
+
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+}
+
+model TravelInsightCategory {
+  id             String          @id @default(uuid())
+  name           String
+
+  travelInsights TravelInsight[]
+
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
 }

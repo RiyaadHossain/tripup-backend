@@ -1,0 +1,4 @@
+-- This migration became obsolete after the TravelInsight table creation was
+-- moved to a later timestamped migration. It remains as a no-op so existing
+-- migration history stays intact and shadow databases can still be created
+-- from scratch without failing on missing relations.

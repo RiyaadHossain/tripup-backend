@@ -44,3 +44,23 @@ export { Prisma }
  * 
  */
 export type TeamMember = Prisma.TeamMemberModel
+/**
+ * Model Testimonial
+ * 
+ */
+export type Testimonial = Prisma.TestimonialModel
+/**
+ * Model TravelInsight
+ * 
+ */
+export type TravelInsight = Prisma.TravelInsightModel
+/**
+ * Model Service
+ * 
+ */
+export type Service = Prisma.ServiceModel
+/**
+ * Model TravelInsightCategory
+ * 
+ */
+export type TravelInsightCategory = Prisma.TravelInsightCategoryModel
