@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-
-import { TeamMembersRepository } from '../repositories/team-members.repository';
+import { Prisma } from 'generated/src/prisma/client';
+import { PrismaService } from 'src/database/prisma/prisma.service';
 
 import { CreateTeamMemberDto } from '../dto/create-team-member.dto';
 import { UpdateTeamMemberDto } from '../dto/update-team-member.dto';
@@ -8,14 +8,16 @@ import { QueryTeamMembersDto } from '../dto/query-team-members.dto';
 
 @Injectable()
 export class TeamMembersService {
-  constructor(private readonly repository: TeamMembersRepository) {}
+  constructor(private readonly prisma: PrismaService) {}
 
   async create(dto: CreateTeamMemberDto) {
     const { profileImg, ...rest } = dto;
 
-    return this.repository.create({
-      ...rest,
-      profileImg,
+    return this.prisma.teamMember.create({
+      data: {
+        ...rest,
+        profileImg,
+      },
     });
   }
 
@@ -24,7 +26,7 @@ export class TeamMembersService {
 
     const skip = (page - 1) * limit;
 
-    const where: any = {};
+    const where: Prisma.TeamMemberWhereInput = {};
 
     if (search) {
       where.OR = [
@@ -48,7 +50,7 @@ export class TeamMembersService {
     }
 
     const [data, total] = await Promise.all([
-      this.repository.findMany({
+      this.prisma.teamMember.findMany({
         where,
         skip,
         take: limit,
@@ -57,7 +59,7 @@ export class TeamMembersService {
         },
       }),
 
-      this.repository.count(where),
+      this.prisma.teamMember.count({ where }),
     ]);
 
     return {
@@ -72,7 +74,9 @@ export class TeamMembersService {
   }
 
   async update(id: string, dto: UpdateTeamMemberDto) {
-    const existing = await this.repository.findById(id);
+    const existing = await this.prisma.teamMember.findUnique({
+      where: { id },
+    });
 
     if (!existing) {
       throw new NotFoundException('Team member not found');
@@ -80,23 +84,36 @@ export class TeamMembersService {
 
     const { profileImg, ...rest } = dto;
 
-    return this.repository.update(id, {
-      ...rest,
-      profileImg,
+    return this.prisma.teamMember.update({
+      where: { id },
+      data: {
+        ...rest,
+        profileImg,
+      },
     });
   }
 
   async remove(id: string) {
-    const existing = await this.repository.findById(id);
+    const existing = await this.prisma.teamMember.findUnique({
+      where: { id },
+    });
 
     if (!existing) {
       throw new NotFoundException('Team member not found');
     }
 
-    return this.repository.delete(id);
+    return this.prisma.teamMember.delete({
+      where: { id },
+    });
   }
 
   async removeMany(ids: string[]) {
-    return this.repository.deleteMany(ids);
+    return this.prisma.teamMember.deleteMany({
+      where: {
+        id: {
+          in: ids,
+        },
+      },
+    });
   }
 }

@@ -30,6 +30,11 @@ export class AdminTravelInsightController {
     return this.service.findAll(query);
   }
 
+  @Get(':id')
+  async findOne(@Param('id') id: string) {
+    return this.service.findOnePublic(id);
+  }
+
   @Patch(':id')
   async update(@Param('id') id: string, @Body() dto: UpdateTravelInsightDto) {
     return this.service.update(id, dto);
