@@ -93,9 +93,9 @@ export class TravelServicesService {
     };
   }
 
-  async findOnePublic(slug: string) {
+  async findOnePublic(id: string) {
     const service = await this.prisma.travelService.findUnique({
-      where: { slug },
+      where: { id },
       include: {
         serviceCategory: true,
       },
