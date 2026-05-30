@@ -30,6 +30,11 @@ export class AdminTravelServicesController {
     return this.service.findAll(query);
   }
 
+  @Get(':id')
+  async findOne(@Param('id') id: string) {
+    return await this.service.findOnePublic(id);
+  }
+
   @Get('listing')
   async findListing() {
     return await this.service.findListing();
