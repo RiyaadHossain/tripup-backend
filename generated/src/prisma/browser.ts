@@ -33,12 +33,17 @@ export type Testimonial = Prisma.TestimonialModel
  */
 export type TravelInsight = Prisma.TravelInsightModel
 /**
- * Model Service
- * 
- */
-export type Service = Prisma.ServiceModel
-/**
  * Model TravelInsightCategory
  * 
  */
 export type TravelInsightCategory = Prisma.TravelInsightCategoryModel
+/**
+ * Model TravelService
+ * 
+ */
+export type TravelService = Prisma.TravelServiceModel
+/**
+ * Model ServiceCategory
+ * 
+ */
+export type ServiceCategory = Prisma.ServiceCategoryModel

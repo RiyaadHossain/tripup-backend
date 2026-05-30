@@ -5,6 +5,7 @@ import { UploadsModule } from './modules/uploads/uploads.module';
 import { TestimonialsModule } from './modules/testimonials/testimonials.module';
 import { ConfigModule } from '@nestjs/config';
 import { TravelInsightModule } from './modules/travel-insight/travel-insight.module';
+import { TravelServiceModule } from './modules/travel-service/travel-service.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { TravelInsightModule } from './modules/travel-insight/travel-insight.mod
     UploadsModule,
     TestimonialsModule,
     TravelInsightModule,
+    TravelServiceModule,
   ],
   controllers: [],
   providers: [],

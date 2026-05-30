@@ -9,7 +9,7 @@ datasource db {
 }
 
 model TeamMember {
-  id          String  @id @default(uuid())
+  id String @id @default(uuid())
 
   name        String
   designation String
@@ -36,7 +36,7 @@ model TeamMember {
 }
 
 model Testimonial {
-  id          String  @id @default(uuid())
+  id String @id @default(uuid())
 
   testimony   String
   userName    String
@@ -57,29 +57,29 @@ model Testimonial {
 }
 
 model TravelInsight {
-  id              String    @id @default(uuid())
+  id String @id @default(uuid())
 
-  title           String
-  slug            String   @unique
-  description     String
-  timeReadMin     Int
-  author          String
-  coverImgUrl     String
-  content         String
-  insights        String[]
-  takeAway        String[]
-  seo             Json
-  tags            String[]
+  title       String
+  slug        String   @unique
+  description String
+  timeReadMin Int
+  author      String
+  coverImgUrl String
+  content     String
+  insights    String[]
+  takeAway    String[]
+  seo         Json
+  tags        String[]
 
-  isFeatured      Boolean   @default(false)
-  isPublished     Boolean   @default(true)
+  isFeatured  Boolean @default(false)
+  isPublished Boolean @default(true)
 
   categoryId      String?
   category        TravelInsightCategory? @relation(fields: [categoryId], references: [id])
-  relatedServices Service[]
+  relatedServices TravelService[]
 
-  createdAt       DateTime  @default(now())
-  updatedAt       DateTime  @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@index([title])
   @@index([categoryId])
@@ -87,22 +87,59 @@ model TravelInsight {
   @@index([isPublished])
 }
 
-model Service {
-  id             String          @id @default(uuid())
-  name           String
+model TravelInsightCategory {
+  id   String @id @default(uuid())
+  name String
 
   travelInsights TravelInsight[]
 
-  createdAt      DateTime        @default(now())
-  updatedAt      DateTime        @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
-model TravelInsightCategory {
-  id             String          @id @default(uuid())
-  name           String
+model TravelService {
+  id String @id @default(uuid())
 
-  travelInsights TravelInsight[]
+  slug         String  @unique
+  title        String
+  description  String
+  navLinsDesc  String  @default("")
+  icon         String?
+  category     String?
+  comingSoon   Boolean @default(false)
+  displayOrder Int     @default(autoincrement())
+  isPublished  Boolean @default(true)
 
-  createdAt      DateTime        @default(now())
-  updatedAt      DateTime        @updatedAt
+  hero         Json
+  problem      Json
+  capabilities Json
+  process      Json
+  deliverables Json
+  outcomes     Json
+  audience     Json
+  whyUs        Json
+  faq          Json
+  cta          Json
+
+  serviceCategoryId String?
+  serviceCategory   ServiceCategory? @relation(fields: [serviceCategoryId], references: [id])
+  travelInsights    TravelInsight[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([title])
+  @@index([slug])
+  @@index([serviceCategoryId])
+  @@index([isPublished])
+}
+
+model ServiceCategory {
+  id   String @id @default(uuid())
+  name String @unique
+
+  travelServices TravelService[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

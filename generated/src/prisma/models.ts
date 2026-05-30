@@ -11,6 +11,7 @@
 export type * from './models/TeamMember.js'
 export type * from './models/Testimonial.js'
 export type * from './models/TravelInsight.js'
-export type * from './models/Service.js'
 export type * from './models/TravelInsightCategory.js'
+export type * from './models/TravelService.js'
+export type * from './models/ServiceCategory.js'
 export type * from './commonInputTypes.js'

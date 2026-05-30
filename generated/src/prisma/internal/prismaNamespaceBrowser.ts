@@ -54,8 +54,9 @@ export const ModelName = {
   TeamMember: 'TeamMember',
   Testimonial: 'Testimonial',
   TravelInsight: 'TravelInsight',
-  Service: 'Service',
-  TravelInsightCategory: 'TravelInsightCategory'
+  TravelInsightCategory: 'TravelInsightCategory',
+  TravelService: 'TravelService',
+  ServiceCategory: 'ServiceCategory'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -134,16 +135,6 @@ export const TravelInsightScalarFieldEnum = {
 export type TravelInsightScalarFieldEnum = (typeof TravelInsightScalarFieldEnum)[keyof typeof TravelInsightScalarFieldEnum]
 
 
-export const ServiceScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type ServiceScalarFieldEnum = (typeof ServiceScalarFieldEnum)[keyof typeof ServiceScalarFieldEnum]
-
-
 export const TravelInsightCategoryScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -152,6 +143,45 @@ export const TravelInsightCategoryScalarFieldEnum = {
 } as const
 
 export type TravelInsightCategoryScalarFieldEnum = (typeof TravelInsightCategoryScalarFieldEnum)[keyof typeof TravelInsightCategoryScalarFieldEnum]
+
+
+export const TravelServiceScalarFieldEnum = {
+  id: 'id',
+  slug: 'slug',
+  title: 'title',
+  description: 'description',
+  navLinsDesc: 'navLinsDesc',
+  icon: 'icon',
+  category: 'category',
+  comingSoon: 'comingSoon',
+  displayOrder: 'displayOrder',
+  isPublished: 'isPublished',
+  hero: 'hero',
+  problem: 'problem',
+  capabilities: 'capabilities',
+  process: 'process',
+  deliverables: 'deliverables',
+  outcomes: 'outcomes',
+  audience: 'audience',
+  whyUs: 'whyUs',
+  faq: 'faq',
+  cta: 'cta',
+  serviceCategoryId: 'serviceCategoryId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type TravelServiceScalarFieldEnum = (typeof TravelServiceScalarFieldEnum)[keyof typeof TravelServiceScalarFieldEnum]
+
+
+export const ServiceCategoryScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ServiceCategoryScalarFieldEnum = (typeof ServiceCategoryScalarFieldEnum)[keyof typeof ServiceCategoryScalarFieldEnum]
 
 
 export const SortOrder = {

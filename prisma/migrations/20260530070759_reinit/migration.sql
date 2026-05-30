@@ -59,16 +59,6 @@ CREATE TABLE "TravelInsight" (
 );
 
 -- CreateTable
-CREATE TABLE "Service" (
-    "id" TEXT NOT NULL,
-    "name" TEXT NOT NULL,
-    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" TIMESTAMP(3) NOT NULL,
-
-    CONSTRAINT "Service_pkey" PRIMARY KEY ("id")
-);
-
--- CreateTable
 CREATE TABLE "TravelInsightCategory" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
@@ -79,11 +69,50 @@ CREATE TABLE "TravelInsightCategory" (
 );
 
 -- CreateTable
-CREATE TABLE "_ServiceToTravelInsight" (
+CREATE TABLE "TravelService" (
+    "id" TEXT NOT NULL,
+    "slug" TEXT NOT NULL,
+    "title" TEXT NOT NULL,
+    "description" TEXT NOT NULL,
+    "navLinsDesc" TEXT NOT NULL DEFAULT '',
+    "icon" TEXT,
+    "category" TEXT,
+    "comingSoon" BOOLEAN NOT NULL DEFAULT false,
+    "displayOrder" SERIAL NOT NULL,
+    "isPublished" BOOLEAN NOT NULL DEFAULT true,
+    "hero" JSONB NOT NULL,
+    "problem" JSONB NOT NULL,
+    "capabilities" JSONB NOT NULL,
+    "process" JSONB NOT NULL,
+    "deliverables" JSONB NOT NULL,
+    "outcomes" JSONB NOT NULL,
+    "audience" JSONB NOT NULL,
+    "whyUs" JSONB NOT NULL,
+    "faq" JSONB NOT NULL,
+    "cta" JSONB NOT NULL,
+    "serviceCategoryId" TEXT,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "TravelService_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "ServiceCategory" (
+    "id" TEXT NOT NULL,
+    "name" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "ServiceCategory_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "_TravelInsightToTravelService" (
     "A" TEXT NOT NULL,
     "B" TEXT NOT NULL,
 
-    CONSTRAINT "_ServiceToTravelInsight_AB_pkey" PRIMARY KEY ("A","B")
+    CONSTRAINT "_TravelInsightToTravelService_AB_pkey" PRIMARY KEY ("A","B")
 );
 
 -- CreateIndex
@@ -114,13 +143,34 @@ CREATE INDEX "TravelInsight_isFeatured_idx" ON "TravelInsight"("isFeatured");
 CREATE INDEX "TravelInsight_isPublished_idx" ON "TravelInsight"("isPublished");
 
 -- CreateIndex
-CREATE INDEX "_ServiceToTravelInsight_B_index" ON "_ServiceToTravelInsight"("B");
+CREATE UNIQUE INDEX "TravelService_slug_key" ON "TravelService"("slug");
+
+-- CreateIndex
+CREATE INDEX "TravelService_title_idx" ON "TravelService"("title");
+
+-- CreateIndex
+CREATE INDEX "TravelService_slug_idx" ON "TravelService"("slug");
+
+-- CreateIndex
+CREATE INDEX "TravelService_serviceCategoryId_idx" ON "TravelService"("serviceCategoryId");
+
+-- CreateIndex
+CREATE INDEX "TravelService_isPublished_idx" ON "TravelService"("isPublished");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "ServiceCategory_name_key" ON "ServiceCategory"("name");
+
+-- CreateIndex
+CREATE INDEX "_TravelInsightToTravelService_B_index" ON "_TravelInsightToTravelService"("B");
 
 -- AddForeignKey
 ALTER TABLE "TravelInsight" ADD CONSTRAINT "TravelInsight_categoryId_fkey" FOREIGN KEY ("categoryId") REFERENCES "TravelInsightCategory"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "_ServiceToTravelInsight" ADD CONSTRAINT "_ServiceToTravelInsight_A_fkey" FOREIGN KEY ("A") REFERENCES "Service"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "TravelService" ADD CONSTRAINT "TravelService_serviceCategoryId_fkey" FOREIGN KEY ("serviceCategoryId") REFERENCES "ServiceCategory"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "_ServiceToTravelInsight" ADD CONSTRAINT "_ServiceToTravelInsight_B_fkey" FOREIGN KEY ("B") REFERENCES "TravelInsight"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "_TravelInsightToTravelService" ADD CONSTRAINT "_TravelInsightToTravelService_A_fkey" FOREIGN KEY ("A") REFERENCES "TravelInsight"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "_TravelInsightToTravelService" ADD CONSTRAINT "_TravelInsightToTravelService_B_fkey" FOREIGN KEY ("B") REFERENCES "TravelService"("id") ON DELETE CASCADE ON UPDATE CASCADE;

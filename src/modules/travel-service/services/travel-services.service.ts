@@ -1,0 +1,233 @@
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { Prisma } from 'generated/src/prisma/client';
+import { PrismaService } from 'src/database/prisma/prisma.service';
+
+import { CreateTravelServiceDto } from '../dto/create-travel-service.dto';
+import { QueryTravelServicesDto } from '../dto/query-travel-services.dto';
+import { UpdateTravelServiceDto } from '../dto/update-travel-service.dto';
+
+@Injectable()
+export class TravelServicesService {
+  constructor(private readonly prisma: PrismaService) {}
+
+  async create(dto: CreateTravelServiceDto) {
+    const { serviceCategory, ...rest } = dto;
+
+    return await this.prisma.travelService.create({
+      data: {
+        ...this.toCreateData(rest),
+        serviceCategory: serviceCategory
+          ? {
+              connect: { id: serviceCategory },
+            }
+          : undefined,
+      },
+      include: {
+        serviceCategory: true,
+      },
+    });
+  }
+
+  async findAll(query: QueryTravelServicesDto) {
+    const { page, limit, search, isPublished, serviceCategory } = query;
+
+    const skip = (page - 1) * limit;
+
+    const where: Prisma.TravelServiceWhereInput = {};
+
+    if (search) {
+      where.OR = [
+        {
+          title: {
+            contains: search,
+            mode: 'insensitive',
+          },
+        },
+        {
+          slug: {
+            contains: search,
+            mode: 'insensitive',
+          },
+        },
+        {
+          description: {
+            contains: search,
+            mode: 'insensitive',
+          },
+        },
+      ];
+    }
+
+    if (serviceCategory) {
+      where.serviceCategoryId = serviceCategory;
+    }
+
+    if (isPublished !== undefined) {
+      where.isPublished = isPublished === 'true';
+    }
+
+    const [data, total] = await Promise.all([
+      this.prisma.travelService.findMany({
+        where,
+        skip,
+        take: limit,
+        orderBy: {
+          displayOrder: 'asc',
+        },
+        include: {
+          serviceCategory: true,
+        },
+      }),
+
+      this.prisma.travelService.count({ where }),
+    ]);
+
+    return {
+      data,
+      meta: {
+        total,
+        page,
+        limit,
+        totalPages: Math.ceil(total / limit),
+      },
+    };
+  }
+
+  async findOnePublic(slug: string) {
+    const service = await this.prisma.travelService.findUnique({
+      where: { slug },
+      include: {
+        serviceCategory: true,
+      },
+    });
+
+    if (!service || !service.isPublished) {
+      throw new NotFoundException('Travel service not found');
+    }
+
+    return service;
+  }
+
+  async findListing() {
+    const services = await this.prisma.travelService.findMany({
+      orderBy: {
+        title: 'asc',
+      },
+      select: {
+        id: true,
+        title: true,
+      },
+    });
+
+    return services.map((service) => ({
+      label: service.title,
+      value: service.id,
+    }));
+  }
+
+  async update(id: string, dto: UpdateTravelServiceDto) {
+    const existing = await this.prisma.travelService.findUnique({
+      where: { id },
+    });
+
+    if (!existing) {
+      throw new NotFoundException('Travel service not found');
+    }
+
+    const { serviceCategory, ...rest } = dto;
+
+    return this.prisma.travelService.update({
+      where: { id },
+      data: {
+        ...this.toUpdateData(rest),
+        serviceCategory:
+          serviceCategory !== undefined
+            ? serviceCategory
+              ? {
+                  connect: { id: serviceCategory },
+                }
+              : {
+                  disconnect: true,
+                }
+            : undefined,
+      },
+      include: {
+        serviceCategory: true,
+      },
+    });
+  }
+
+  async remove(id: string) {
+    const existing = await this.prisma.travelService.findUnique({
+      where: { id },
+    });
+
+    if (!existing) {
+      throw new NotFoundException('Travel service not found');
+    }
+
+    return await this.prisma.travelService.delete({
+      where: { id },
+    });
+  }
+
+  async removeMany(ids: string[]) {
+    return await this.prisma.travelService.deleteMany({
+      where: {
+        id: {
+          in: ids,
+        },
+      },
+    });
+  }
+
+  private toCreateData(
+    data: Omit<CreateTravelServiceDto, 'serviceCategory'>,
+  ): Prisma.TravelServiceCreateInput {
+    return {
+      ...data,
+      hero: { ...data.hero } as Prisma.InputJsonValue,
+      problem: { ...data.problem } as Prisma.InputJsonValue,
+      capabilities: { ...data.capabilities } as Prisma.InputJsonValue,
+      process: { ...data.process } as Prisma.InputJsonValue,
+      deliverables: { ...data.deliverables } as Prisma.InputJsonValue,
+      outcomes: { ...data.outcomes } as Prisma.InputJsonValue,
+      audience: { ...data.audience } as Prisma.InputJsonValue,
+      whyUs: { ...data.whyUs } as Prisma.InputJsonValue,
+      faq: { ...data.faq } as Prisma.InputJsonValue,
+      cta: { ...data.cta } as Prisma.InputJsonValue,
+    };
+  }
+
+  private toUpdateData(
+    data: Omit<UpdateTravelServiceDto, 'serviceCategory'>,
+  ): Prisma.TravelServiceUpdateInput {
+    return {
+      ...data,
+      hero: data.hero ? ({ ...data.hero } as Prisma.InputJsonValue) : undefined,
+      problem: data.problem
+        ? ({ ...data.problem } as Prisma.InputJsonValue)
+        : undefined,
+      capabilities: data.capabilities
+        ? ({ ...data.capabilities } as Prisma.InputJsonValue)
+        : undefined,
+      process: data.process
+        ? ({ ...data.process } as Prisma.InputJsonValue)
+        : undefined,
+      deliverables: data.deliverables
+        ? ({ ...data.deliverables } as Prisma.InputJsonValue)
+        : undefined,
+      outcomes: data.outcomes
+        ? ({ ...data.outcomes } as Prisma.InputJsonValue)
+        : undefined,
+      audience: data.audience
+        ? ({ ...data.audience } as Prisma.InputJsonValue)
+        : undefined,
+      whyUs: data.whyUs
+        ? ({ ...data.whyUs } as Prisma.InputJsonValue)
+        : undefined,
+      faq: data.faq ? ({ ...data.faq } as Prisma.InputJsonValue) : undefined,
+      cta: data.cta ? ({ ...data.cta } as Prisma.InputJsonValue) : undefined,
+    };
+  }
+}
