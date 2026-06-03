@@ -8,6 +8,11 @@ import { QueryTravelServicesDto } from '../dto/query-travel-services.dto';
 export class PublicTravelServicesController {
   constructor(private readonly service: TravelServicesService) {}
 
+  @Get('nav-items')
+  async findNavItems() {
+    return this.service.findNavItems();
+  }
+
   @Get()
   async findAll(@Query() query: QueryTravelServicesDto) {
     return this.service.findAll({

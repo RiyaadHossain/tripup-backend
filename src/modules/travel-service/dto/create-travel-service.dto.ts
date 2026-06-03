@@ -41,6 +41,10 @@ export class CreateTravelServiceDto {
   category?: string;
 
   @IsOptional()
+  @IsString()
+  serviceCategoryId?: string;
+
+  @IsOptional()
   @IsBoolean()
   comingSoon?: boolean;
 

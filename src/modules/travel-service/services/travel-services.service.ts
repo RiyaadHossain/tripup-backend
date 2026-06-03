@@ -108,6 +108,33 @@ export class TravelServicesService {
     return service;
   }
 
+  async findNavItems() {
+    const services = await this.prisma.travelService.findMany({
+      where: { isPublished: true },
+      orderBy: { displayOrder: 'asc' },
+      select: {
+        title: true,
+        navLinsDesc: true,
+        description: true,
+        icon: true,
+        category: true,
+        slug: true,
+        displayOrder: true,
+        comingSoon: true,
+      },
+    });
+
+    return services.map((service) => ({
+      title: service.title,
+      description: service.navLinsDesc || service.description,
+      icon: service.icon,
+      category: service.category,
+      slug: `/services/${service.slug}`,
+      displayOrder: service.displayOrder,
+      ...(service.comingSoon ? { comingSoon: true } : {}),
+    }));
+  }
+
   async findListing() {
     const services = await this.prisma.travelService.findMany({
       orderBy: {
