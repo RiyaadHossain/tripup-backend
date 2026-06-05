@@ -56,7 +56,9 @@ export const ModelName = {
   TravelInsight: 'TravelInsight',
   TravelInsightCategory: 'TravelInsightCategory',
   TravelService: 'TravelService',
-  ServiceCategory: 'ServiceCategory'
+  ServiceCategory: 'ServiceCategory',
+  CaseStudy: 'CaseStudy',
+  CaseStudyCategory: 'CaseStudyCategory'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -182,6 +184,45 @@ export const ServiceCategoryScalarFieldEnum = {
 } as const
 
 export type ServiceCategoryScalarFieldEnum = (typeof ServiceCategoryScalarFieldEnum)[keyof typeof ServiceCategoryScalarFieldEnum]
+
+
+export const CaseStudyScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  excerpt: 'excerpt',
+  date: 'date',
+  readingTime: 'readingTime',
+  ctaLabel: 'ctaLabel',
+  isFeatured: 'isFeatured',
+  isPublished: 'isPublished',
+  slug: 'slug',
+  industryTag: 'industryTag',
+  coverImage: 'coverImage',
+  metrics: 'metrics',
+  snapshot: 'snapshot',
+  challenge: 'challenge',
+  approachSteps: 'approachSteps',
+  deliverables: 'deliverables',
+  transformation: 'transformation',
+  results: 'results',
+  keyTakeaways: 'keyTakeaways',
+  testimonial: 'testimonial',
+  categoryId: 'categoryId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CaseStudyScalarFieldEnum = (typeof CaseStudyScalarFieldEnum)[keyof typeof CaseStudyScalarFieldEnum]
+
+
+export const CaseStudyCategoryScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CaseStudyCategoryScalarFieldEnum = (typeof CaseStudyCategoryScalarFieldEnum)[keyof typeof CaseStudyCategoryScalarFieldEnum]
 
 
 export const SortOrder = {

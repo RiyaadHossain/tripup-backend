@@ -6,6 +6,7 @@ import { TestimonialsModule } from './modules/testimonials/testimonials.module';
 import { ConfigModule } from '@nestjs/config';
 import { TravelInsightModule } from './modules/travel-insight/travel-insight.module';
 import { TravelServiceModule } from './modules/travel-service/travel-service.module';
+import { CaseStudiesModule } from './modules/case-studies/case-studies.module';
 
 @Module({
   imports: [
@@ -18,8 +19,10 @@ import { TravelServiceModule } from './modules/travel-service/travel-service.mod
     TestimonialsModule,
     TravelInsightModule,
     TravelServiceModule,
+    CaseStudiesModule,
   ],
   controllers: [],
   providers: [],
 })
 export class AppModule {}
+

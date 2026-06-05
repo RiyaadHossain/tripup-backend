@@ -47,3 +47,13 @@ export type TravelService = Prisma.TravelServiceModel
  * 
  */
 export type ServiceCategory = Prisma.ServiceCategoryModel
+/**
+ * Model CaseStudy
+ * 
+ */
+export type CaseStudy = Prisma.CaseStudyModel
+/**
+ * Model CaseStudyCategory
+ * 
+ */
+export type CaseStudyCategory = Prisma.CaseStudyCategoryModel

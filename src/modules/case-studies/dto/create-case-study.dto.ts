@@ -1,0 +1,171 @@
+import { Type } from 'class-transformer';
+import {
+  IsArray,
+  IsBoolean,
+  IsObject,
+  IsOptional,
+  IsString,
+  IsUUID,
+  MaxLength,
+  ValidateNested,
+} from 'class-validator';
+
+class MetricDto {
+  @IsString()
+  value!: string;
+
+  @IsString()
+  label!: string;
+}
+
+class SnapshotDto {
+  @IsString()
+  clientType!: string;
+
+  @IsString()
+  serviceScope!: string;
+
+  @IsString()
+  timeline!: string;
+
+  @IsString()
+  primaryGoal!: string;
+
+  @IsString()
+  platform!: string;
+}
+
+class ChallengeDto {
+  @IsString()
+  intro!: string;
+
+  @IsArray()
+  @IsString({ each: true })
+  points!: string[];
+}
+
+class ApproachStepDto {
+  @IsString()
+  number!: string;
+
+  @IsString()
+  title!: string;
+
+  @IsString()
+  desc!: string;
+}
+
+class TransformationDto {
+  @IsArray()
+  @IsString({ each: true })
+  before!: string[];
+
+  @IsArray()
+  @IsString({ each: true })
+  after!: string[];
+}
+
+class ResultDto {
+  @IsString()
+  value!: string;
+
+  @IsString()
+  label!: string;
+}
+
+class TestimonialDto {
+  @IsString()
+  quote!: string;
+
+  @IsString()
+  name!: string;
+
+  @IsString()
+  role!: string;
+
+  @IsString()
+  brand!: string;
+}
+
+export class CreateCaseStudyDto {
+  @IsString()
+  @MaxLength(200)
+  title!: string;
+
+  @IsString()
+  @MaxLength(200)
+  slug!: string;
+
+  @IsString()
+  excerpt!: string;
+
+  @IsString()
+  date!: string;
+
+  @IsString()
+  readingTime!: string;
+
+  @IsString()
+  ctaLabel!: string;
+
+  @IsString()
+  industryTag!: string;
+
+  @IsString()
+  coverImage!: string;
+
+  @IsArray()
+  @ValidateNested({ each: true })
+  @Type(() => MetricDto)
+  metrics!: MetricDto[];
+
+  @IsObject()
+  @ValidateNested()
+  @Type(() => SnapshotDto)
+  snapshot!: SnapshotDto;
+
+  @IsObject()
+  @ValidateNested()
+  @Type(() => ChallengeDto)
+  challenge!: ChallengeDto;
+
+  @IsArray()
+  @ValidateNested({ each: true })
+  @Type(() => ApproachStepDto)
+  approachSteps!: ApproachStepDto[];
+
+  @IsArray()
+  @IsString({ each: true })
+  deliverables!: string[];
+
+  @IsObject()
+  @ValidateNested()
+  @Type(() => TransformationDto)
+  transformation!: TransformationDto;
+
+  @IsArray()
+  @ValidateNested({ each: true })
+  @Type(() => ResultDto)
+  results!: ResultDto[];
+
+  @IsArray()
+  @IsString({ each: true })
+  keyTakeaways!: string[];
+
+  @IsObject()
+  @ValidateNested()
+  @Type(() => TestimonialDto)
+  testimonial!: TestimonialDto;
+
+  @IsOptional()
+  @IsUUID('4')
+  category?: string;
+
+  @IsOptional()
+  @IsBoolean()
+  isFeatured?: boolean;
+
+  @IsOptional()
+  @IsBoolean()
+  isPublished?: boolean;
+}

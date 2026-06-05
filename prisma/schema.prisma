@@ -143,3 +143,49 @@ model ServiceCategory {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+model CaseStudy {
+  id          String   @id @default(uuid())
+  title       String
+  excerpt     String
+  date        String
+  readingTime String
+  ctaLabel    String
+  isFeatured  Boolean  @default(false)
+  isPublished Boolean  @default(true)
+  slug        String   @unique
+  industryTag String
+  coverImage  String
+
+  metrics         Json
+  snapshot        Json
+  challenge       Json
+  approachSteps   Json
+  deliverables    String[]
+  transformation  Json
+  results         Json
+  keyTakeaways    String[]
+  testimonial     Json
+
+  categoryId      String?
+  category        CaseStudyCategory? @relation(fields: [categoryId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([title])
+  @@index([categoryId])
+  @@index([isFeatured])
+  @@index([isPublished])
+}
+
+model CaseStudyCategory {
+  id          String      @id @default(uuid())
+  name        String
+
+  caseStudies CaseStudy[]
+
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+}
+
