@@ -46,7 +46,7 @@ async function seedPlaybooks(categoryIds: Map<string, string>, typeIds: Map<stri
     const categoryId = playbook.category ? categoryIds.get(playbook.category) : undefined;
     const typeId = playbook.type ? typeIds.get(playbook.type) : undefined;
 
-    const { category, type, ...rest } = playbook;
+    const { category, type, featured, ...rest } = playbook as any;
 
     await prisma.playbook.upsert({
       where: {
@@ -54,6 +54,7 @@ async function seedPlaybooks(categoryIds: Map<string, string>, typeIds: Map<stri
       },
       update: {
         ...rest,
+        isFeatured: featured,
         frameworkSteps: rest.frameworkSteps as Prisma.InputJsonValue,
         samplePreviews: rest.samplePreviews as Prisma.InputJsonValue,
         relatedServices: rest.relatedServices as Prisma.InputJsonValue,
@@ -62,6 +63,7 @@ async function seedPlaybooks(categoryIds: Map<string, string>, typeIds: Map<stri
       },
       create: {
         ...rest,
+        isFeatured: featured,
         frameworkSteps: rest.frameworkSteps as Prisma.InputJsonValue,
         samplePreviews: rest.samplePreviews as Prisma.InputJsonValue,
         relatedServices: rest.relatedServices as Prisma.InputJsonValue,
