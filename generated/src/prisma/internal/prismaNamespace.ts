@@ -391,7 +391,10 @@ export const ModelName = {
   TravelService: 'TravelService',
   ServiceCategory: 'ServiceCategory',
   CaseStudy: 'CaseStudy',
-  CaseStudyCategory: 'CaseStudyCategory'
+  CaseStudyCategory: 'CaseStudyCategory',
+  Playbook: 'Playbook',
+  PlaybookType: 'PlaybookType',
+  PlaybookCategory: 'PlaybookCategory'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -407,7 +410,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "teamMember" | "testimonial" | "travelInsight" | "travelInsightCategory" | "travelService" | "serviceCategory" | "caseStudy" | "caseStudyCategory"
+    modelProps: "teamMember" | "testimonial" | "travelInsight" | "travelInsightCategory" | "travelService" | "serviceCategory" | "caseStudy" | "caseStudyCategory" | "playbook" | "playbookType" | "playbookCategory"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1003,6 +1006,228 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Playbook: {
+      payload: Prisma.$PlaybookPayload<ExtArgs>
+      fields: Prisma.PlaybookFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.PlaybookFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlaybookPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.PlaybookFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlaybookPayload>
+        }
+        findFirst: {
+          args: Prisma.PlaybookFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlaybookPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.PlaybookFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlaybookPayload>
+        }
+        findMany: {
+          args: Prisma.PlaybookFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlaybookPayload>[]
+        }
+        create: {
+          args: Prisma.PlaybookCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlaybookPayload>
+        }
+        createMany: {
+          args: Prisma.PlaybookCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.PlaybookCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlaybookPayload>[]
+        }
+        delete: {
+          args: Prisma.PlaybookDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlaybookPayload>
+        }
+        update: {
+          args: Prisma.PlaybookUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlaybookPayload>
+        }
+        deleteMany: {
+          args: Prisma.PlaybookDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.PlaybookUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.PlaybookUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlaybookPayload>[]
+        }
+        upsert: {
+          args: Prisma.PlaybookUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlaybookPayload>
+        }
+        aggregate: {
+          args: Prisma.PlaybookAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePlaybook>
+        }
+        groupBy: {
+          args: Prisma.PlaybookGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PlaybookGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.PlaybookCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PlaybookCountAggregateOutputType> | number
+        }
+      }
+    }
+    PlaybookType: {
+      payload: Prisma.$PlaybookTypePayload<ExtArgs>
+      fields: Prisma.PlaybookTypeFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.PlaybookTypeFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlaybookTypePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.PlaybookTypeFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlaybookTypePayload>
+        }
+        findFirst: {
+          args: Prisma.PlaybookTypeFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlaybookTypePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.PlaybookTypeFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlaybookTypePayload>
+        }
+        findMany: {
+          args: Prisma.PlaybookTypeFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlaybookTypePayload>[]
+        }
+        create: {
+          args: Prisma.PlaybookTypeCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlaybookTypePayload>
+        }
+        createMany: {
+          args: Prisma.PlaybookTypeCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.PlaybookTypeCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlaybookTypePayload>[]
+        }
+        delete: {
+          args: Prisma.PlaybookTypeDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlaybookTypePayload>
+        }
+        update: {
+          args: Prisma.PlaybookTypeUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlaybookTypePayload>
+        }
+        deleteMany: {
+          args: Prisma.PlaybookTypeDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.PlaybookTypeUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.PlaybookTypeUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlaybookTypePayload>[]
+        }
+        upsert: {
+          args: Prisma.PlaybookTypeUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlaybookTypePayload>
+        }
+        aggregate: {
+          args: Prisma.PlaybookTypeAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePlaybookType>
+        }
+        groupBy: {
+          args: Prisma.PlaybookTypeGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PlaybookTypeGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.PlaybookTypeCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PlaybookTypeCountAggregateOutputType> | number
+        }
+      }
+    }
+    PlaybookCategory: {
+      payload: Prisma.$PlaybookCategoryPayload<ExtArgs>
+      fields: Prisma.PlaybookCategoryFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.PlaybookCategoryFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlaybookCategoryPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.PlaybookCategoryFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlaybookCategoryPayload>
+        }
+        findFirst: {
+          args: Prisma.PlaybookCategoryFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlaybookCategoryPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.PlaybookCategoryFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlaybookCategoryPayload>
+        }
+        findMany: {
+          args: Prisma.PlaybookCategoryFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlaybookCategoryPayload>[]
+        }
+        create: {
+          args: Prisma.PlaybookCategoryCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlaybookCategoryPayload>
+        }
+        createMany: {
+          args: Prisma.PlaybookCategoryCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.PlaybookCategoryCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlaybookCategoryPayload>[]
+        }
+        delete: {
+          args: Prisma.PlaybookCategoryDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlaybookCategoryPayload>
+        }
+        update: {
+          args: Prisma.PlaybookCategoryUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlaybookCategoryPayload>
+        }
+        deleteMany: {
+          args: Prisma.PlaybookCategoryDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.PlaybookCategoryUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.PlaybookCategoryUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlaybookCategoryPayload>[]
+        }
+        upsert: {
+          args: Prisma.PlaybookCategoryUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlaybookCategoryPayload>
+        }
+        aggregate: {
+          args: Prisma.PlaybookCategoryAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePlaybookCategory>
+        }
+        groupBy: {
+          args: Prisma.PlaybookCategoryGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PlaybookCategoryGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.PlaybookCategoryCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PlaybookCategoryCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -1188,6 +1413,52 @@ export const CaseStudyCategoryScalarFieldEnum = {
 } as const
 
 export type CaseStudyCategoryScalarFieldEnum = (typeof CaseStudyCategoryScalarFieldEnum)[keyof typeof CaseStudyCategoryScalarFieldEnum]
+
+
+export const PlaybookScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  excerpt: 'excerpt',
+  date: 'date',
+  readingTime: 'readingTime',
+  bestFor: 'bestFor',
+  ctaLabel: 'ctaLabel',
+  isFeatured: 'isFeatured',
+  isPublished: 'isPublished',
+  slug: 'slug',
+  keyTakeaways: 'keyTakeaways',
+  whoIsItFor: 'whoIsItFor',
+  outcomes: 'outcomes',
+  frameworkSteps: 'frameworkSteps',
+  samplePreviews: 'samplePreviews',
+  relatedServices: 'relatedServices',
+  typeId: 'typeId',
+  categoryId: 'categoryId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PlaybookScalarFieldEnum = (typeof PlaybookScalarFieldEnum)[keyof typeof PlaybookScalarFieldEnum]
+
+
+export const PlaybookTypeScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PlaybookTypeScalarFieldEnum = (typeof PlaybookTypeScalarFieldEnum)[keyof typeof PlaybookTypeScalarFieldEnum]
+
+
+export const PlaybookCategoryScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PlaybookCategoryScalarFieldEnum = (typeof PlaybookCategoryScalarFieldEnum)[keyof typeof PlaybookCategoryScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -1430,6 +1701,9 @@ export type GlobalOmitConfig = {
   serviceCategory?: Prisma.ServiceCategoryOmit
   caseStudy?: Prisma.CaseStudyOmit
   caseStudyCategory?: Prisma.CaseStudyCategoryOmit
+  playbook?: Prisma.PlaybookOmit
+  playbookType?: Prisma.PlaybookTypeOmit
+  playbookCategory?: Prisma.PlaybookCategoryOmit
 }
 
 /* Types for Logging */

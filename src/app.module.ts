@@ -7,6 +7,7 @@ import { ConfigModule } from '@nestjs/config';
 import { TravelInsightModule } from './modules/travel-insight/travel-insight.module';
 import { TravelServiceModule } from './modules/travel-service/travel-service.module';
 import { CaseStudiesModule } from './modules/case-studies/case-studies.module';
+import { GuidesPlaybooksModule } from './modules/guides-playbooks/guides-playbooks.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { CaseStudiesModule } from './modules/case-studies/case-studies.module';
     TravelInsightModule,
     TravelServiceModule,
     CaseStudiesModule,
+    GuidesPlaybooksModule,
   ],
   controllers: [],
   providers: [],

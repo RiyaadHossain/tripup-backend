@@ -57,3 +57,18 @@ export type CaseStudy = Prisma.CaseStudyModel
  * 
  */
 export type CaseStudyCategory = Prisma.CaseStudyCategoryModel
+/**
+ * Model Playbook
+ * 
+ */
+export type Playbook = Prisma.PlaybookModel
+/**
+ * Model PlaybookType
+ * 
+ */
+export type PlaybookType = Prisma.PlaybookTypeModel
+/**
+ * Model PlaybookCategory
+ * 
+ */
+export type PlaybookCategory = Prisma.PlaybookCategoryModel

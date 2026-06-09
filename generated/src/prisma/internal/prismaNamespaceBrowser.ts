@@ -58,7 +58,10 @@ export const ModelName = {
   TravelService: 'TravelService',
   ServiceCategory: 'ServiceCategory',
   CaseStudy: 'CaseStudy',
-  CaseStudyCategory: 'CaseStudyCategory'
+  CaseStudyCategory: 'CaseStudyCategory',
+  Playbook: 'Playbook',
+  PlaybookType: 'PlaybookType',
+  PlaybookCategory: 'PlaybookCategory'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -223,6 +226,52 @@ export const CaseStudyCategoryScalarFieldEnum = {
 } as const
 
 export type CaseStudyCategoryScalarFieldEnum = (typeof CaseStudyCategoryScalarFieldEnum)[keyof typeof CaseStudyCategoryScalarFieldEnum]
+
+
+export const PlaybookScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  excerpt: 'excerpt',
+  date: 'date',
+  readingTime: 'readingTime',
+  bestFor: 'bestFor',
+  ctaLabel: 'ctaLabel',
+  isFeatured: 'isFeatured',
+  isPublished: 'isPublished',
+  slug: 'slug',
+  keyTakeaways: 'keyTakeaways',
+  whoIsItFor: 'whoIsItFor',
+  outcomes: 'outcomes',
+  frameworkSteps: 'frameworkSteps',
+  samplePreviews: 'samplePreviews',
+  relatedServices: 'relatedServices',
+  typeId: 'typeId',
+  categoryId: 'categoryId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PlaybookScalarFieldEnum = (typeof PlaybookScalarFieldEnum)[keyof typeof PlaybookScalarFieldEnum]
+
+
+export const PlaybookTypeScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PlaybookTypeScalarFieldEnum = (typeof PlaybookTypeScalarFieldEnum)[keyof typeof PlaybookTypeScalarFieldEnum]
+
+
+export const PlaybookCategoryScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PlaybookCategoryScalarFieldEnum = (typeof PlaybookCategoryScalarFieldEnum)[keyof typeof PlaybookCategoryScalarFieldEnum]
 
 
 export const SortOrder = {

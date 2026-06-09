@@ -189,3 +189,55 @@ model CaseStudyCategory {
   updatedAt   DateTime    @updatedAt
 }
 
+model Playbook {
+  id           String   @id @default(uuid())
+  title        String
+  excerpt      String
+  date         String
+  readingTime  String
+  bestFor      String
+  ctaLabel     String
+  isFeatured   Boolean  @default(false)
+  isPublished  Boolean  @default(true)
+  slug         String   @unique
+  
+  keyTakeaways String[]
+  whoIsItFor   String[]
+  outcomes     String[]
+  
+  frameworkSteps  Json
+  samplePreviews  Json
+  relatedServices Json
+
+  typeId       String?
+  type         PlaybookType? @relation(fields: [typeId], references: [id])
+  categoryId   String?
+  category     PlaybookCategory? @relation(fields: [categoryId], references: [id])
+
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([title])
+  @@index([typeId])
+  @@index([categoryId])
+  @@index([isFeatured])
+  @@index([isPublished])
+}
+
+model PlaybookType {
+  id        String   @id @default(uuid())
+  name      String   @unique
+  playbooks Playbook[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model PlaybookCategory {
+  id        String   @id @default(uuid())
+  name      String   @unique
+  playbooks Playbook[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+
