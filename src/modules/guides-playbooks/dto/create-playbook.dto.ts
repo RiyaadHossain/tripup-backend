@@ -57,6 +57,9 @@ export class CreatePlaybookDto {
   readingTime!: string;
 
   @IsString()
+  author!: string;
+
+  @IsString()
   bestFor!: string;
 
   @IsString()

@@ -52,6 +52,12 @@ export class PlaybookService {
           },
         },
         {
+          author: {
+            contains: search,
+            mode: 'insensitive',
+          },
+        },
+        {
           slug: {
             contains: search,
             mode: 'insensitive',
@@ -106,6 +112,7 @@ export class PlaybookService {
       title: item.title,
       slug: item.slug,
       excerpt: item.excerpt,
+      author: item.author,
       date: item.date,
       readingTime: item.readingTime,
       bestFor: item.bestFor,

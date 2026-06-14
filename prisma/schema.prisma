@@ -195,6 +195,7 @@ model Playbook {
   excerpt      String
   date         String
   readingTime  String
+  author       String   @default("")
   bestFor      String
   ctaLabel     String
   isFeatured   Boolean  @default(false)

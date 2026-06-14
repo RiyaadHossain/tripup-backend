@@ -1421,6 +1421,7 @@ export const PlaybookScalarFieldEnum = {
   excerpt: 'excerpt',
   date: 'date',
   readingTime: 'readingTime',
+  author: 'author',
   bestFor: 'bestFor',
   ctaLabel: 'ctaLabel',
   isFeatured: 'isFeatured',

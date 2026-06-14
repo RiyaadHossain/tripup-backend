@@ -30,6 +30,7 @@ export type PlaybookMinAggregateOutputType = {
   excerpt: string | null
   date: string | null
   readingTime: string | null
+  author: string | null
   bestFor: string | null
   ctaLabel: string | null
   isFeatured: boolean | null
@@ -47,6 +48,7 @@ export type PlaybookMaxAggregateOutputType = {
   excerpt: string | null
   date: string | null
   readingTime: string | null
+  author: string | null
   bestFor: string | null
   ctaLabel: string | null
   isFeatured: boolean | null
@@ -64,6 +66,7 @@ export type PlaybookCountAggregateOutputType = {
   excerpt: number
   date: number
   readingTime: number
+  author: number
   bestFor: number
   ctaLabel: number
   isFeatured: number
@@ -89,6 +92,7 @@ export type PlaybookMinAggregateInputType = {
   excerpt?: true
   date?: true
   readingTime?: true
+  author?: true
   bestFor?: true
   ctaLabel?: true
   isFeatured?: true
@@ -106,6 +110,7 @@ export type PlaybookMaxAggregateInputType = {
   excerpt?: true
   date?: true
   readingTime?: true
+  author?: true
   bestFor?: true
   ctaLabel?: true
   isFeatured?: true
@@ -123,6 +128,7 @@ export type PlaybookCountAggregateInputType = {
   excerpt?: true
   date?: true
   readingTime?: true
+  author?: true
   bestFor?: true
   ctaLabel?: true
   isFeatured?: true
@@ -219,6 +225,7 @@ export type PlaybookGroupByOutputType = {
   excerpt: string
   date: string
   readingTime: string
+  author: string
   bestFor: string
   ctaLabel: string
   isFeatured: boolean
@@ -263,6 +270,7 @@ export type PlaybookWhereInput = {
   excerpt?: Prisma.StringFilter<"Playbook"> | string
   date?: Prisma.StringFilter<"Playbook"> | string
   readingTime?: Prisma.StringFilter<"Playbook"> | string
+  author?: Prisma.StringFilter<"Playbook"> | string
   bestFor?: Prisma.StringFilter<"Playbook"> | string
   ctaLabel?: Prisma.StringFilter<"Playbook"> | string
   isFeatured?: Prisma.BoolFilter<"Playbook"> | boolean
@@ -288,6 +296,7 @@ export type PlaybookOrderByWithRelationInput = {
   excerpt?: Prisma.SortOrder
   date?: Prisma.SortOrder
   readingTime?: Prisma.SortOrder
+  author?: Prisma.SortOrder
   bestFor?: Prisma.SortOrder
   ctaLabel?: Prisma.SortOrder
   isFeatured?: Prisma.SortOrder
@@ -317,6 +326,7 @@ export type PlaybookWhereUniqueInput = Prisma.AtLeast<{
   excerpt?: Prisma.StringFilter<"Playbook"> | string
   date?: Prisma.StringFilter<"Playbook"> | string
   readingTime?: Prisma.StringFilter<"Playbook"> | string
+  author?: Prisma.StringFilter<"Playbook"> | string
   bestFor?: Prisma.StringFilter<"Playbook"> | string
   ctaLabel?: Prisma.StringFilter<"Playbook"> | string
   isFeatured?: Prisma.BoolFilter<"Playbook"> | boolean
@@ -341,6 +351,7 @@ export type PlaybookOrderByWithAggregationInput = {
   excerpt?: Prisma.SortOrder
   date?: Prisma.SortOrder
   readingTime?: Prisma.SortOrder
+  author?: Prisma.SortOrder
   bestFor?: Prisma.SortOrder
   ctaLabel?: Prisma.SortOrder
   isFeatured?: Prisma.SortOrder
@@ -370,6 +381,7 @@ export type PlaybookScalarWhereWithAggregatesInput = {
   excerpt?: Prisma.StringWithAggregatesFilter<"Playbook"> | string
   date?: Prisma.StringWithAggregatesFilter<"Playbook"> | string
   readingTime?: Prisma.StringWithAggregatesFilter<"Playbook"> | string
+  author?: Prisma.StringWithAggregatesFilter<"Playbook"> | string
   bestFor?: Prisma.StringWithAggregatesFilter<"Playbook"> | string
   ctaLabel?: Prisma.StringWithAggregatesFilter<"Playbook"> | string
   isFeatured?: Prisma.BoolWithAggregatesFilter<"Playbook"> | boolean
@@ -393,6 +405,7 @@ export type PlaybookCreateInput = {
   excerpt: string
   date: string
   readingTime: string
+  author: string
   bestFor: string
   ctaLabel: string
   isFeatured?: boolean
@@ -416,6 +429,7 @@ export type PlaybookUncheckedCreateInput = {
   excerpt: string
   date: string
   readingTime: string
+  author: string
   bestFor: string
   ctaLabel: string
   isFeatured?: boolean
@@ -439,6 +453,7 @@ export type PlaybookUpdateInput = {
   excerpt?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.StringFieldUpdateOperationsInput | string
   readingTime?: Prisma.StringFieldUpdateOperationsInput | string
+  author?: Prisma.StringFieldUpdateOperationsInput | string
   bestFor?: Prisma.StringFieldUpdateOperationsInput | string
   ctaLabel?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -462,6 +477,7 @@ export type PlaybookUncheckedUpdateInput = {
   excerpt?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.StringFieldUpdateOperationsInput | string
   readingTime?: Prisma.StringFieldUpdateOperationsInput | string
+  author?: Prisma.StringFieldUpdateOperationsInput | string
   bestFor?: Prisma.StringFieldUpdateOperationsInput | string
   ctaLabel?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -485,6 +501,7 @@ export type PlaybookCreateManyInput = {
   excerpt: string
   date: string
   readingTime: string
+  author: string
   bestFor: string
   ctaLabel: string
   isFeatured?: boolean
@@ -508,6 +525,7 @@ export type PlaybookUpdateManyMutationInput = {
   excerpt?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.StringFieldUpdateOperationsInput | string
   readingTime?: Prisma.StringFieldUpdateOperationsInput | string
+  author?: Prisma.StringFieldUpdateOperationsInput | string
   bestFor?: Prisma.StringFieldUpdateOperationsInput | string
   ctaLabel?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -529,6 +547,7 @@ export type PlaybookUncheckedUpdateManyInput = {
   excerpt?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.StringFieldUpdateOperationsInput | string
   readingTime?: Prisma.StringFieldUpdateOperationsInput | string
+  author?: Prisma.StringFieldUpdateOperationsInput | string
   bestFor?: Prisma.StringFieldUpdateOperationsInput | string
   ctaLabel?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -552,6 +571,7 @@ export type PlaybookCountOrderByAggregateInput = {
   excerpt?: Prisma.SortOrder
   date?: Prisma.SortOrder
   readingTime?: Prisma.SortOrder
+  author?: Prisma.SortOrder
   bestFor?: Prisma.SortOrder
   ctaLabel?: Prisma.SortOrder
   isFeatured?: Prisma.SortOrder
@@ -575,6 +595,7 @@ export type PlaybookMaxOrderByAggregateInput = {
   excerpt?: Prisma.SortOrder
   date?: Prisma.SortOrder
   readingTime?: Prisma.SortOrder
+  author?: Prisma.SortOrder
   bestFor?: Prisma.SortOrder
   ctaLabel?: Prisma.SortOrder
   isFeatured?: Prisma.SortOrder
@@ -592,6 +613,7 @@ export type PlaybookMinOrderByAggregateInput = {
   excerpt?: Prisma.SortOrder
   date?: Prisma.SortOrder
   readingTime?: Prisma.SortOrder
+  author?: Prisma.SortOrder
   bestFor?: Prisma.SortOrder
   ctaLabel?: Prisma.SortOrder
   isFeatured?: Prisma.SortOrder
@@ -730,6 +752,7 @@ export type PlaybookCreateWithoutTypeInput = {
   excerpt: string
   date: string
   readingTime: string
+  author: string
   bestFor: string
   ctaLabel: string
   isFeatured?: boolean
@@ -752,6 +775,7 @@ export type PlaybookUncheckedCreateWithoutTypeInput = {
   excerpt: string
   date: string
   readingTime: string
+  author: string
   bestFor: string
   ctaLabel: string
   isFeatured?: boolean
@@ -803,6 +827,7 @@ export type PlaybookScalarWhereInput = {
   excerpt?: Prisma.StringFilter<"Playbook"> | string
   date?: Prisma.StringFilter<"Playbook"> | string
   readingTime?: Prisma.StringFilter<"Playbook"> | string
+  author?: Prisma.StringFilter<"Playbook"> | string
   bestFor?: Prisma.StringFilter<"Playbook"> | string
   ctaLabel?: Prisma.StringFilter<"Playbook"> | string
   isFeatured?: Prisma.BoolFilter<"Playbook"> | boolean
@@ -826,6 +851,7 @@ export type PlaybookCreateWithoutCategoryInput = {
   excerpt: string
   date: string
   readingTime: string
+  author: string
   bestFor: string
   ctaLabel: string
   isFeatured?: boolean
@@ -848,6 +874,7 @@ export type PlaybookUncheckedCreateWithoutCategoryInput = {
   excerpt: string
   date: string
   readingTime: string
+  author: string
   bestFor: string
   ctaLabel: string
   isFeatured?: boolean
@@ -896,6 +923,7 @@ export type PlaybookCreateManyTypeInput = {
   excerpt: string
   date: string
   readingTime: string
+  author: string
   bestFor: string
   ctaLabel: string
   isFeatured?: boolean
@@ -918,6 +946,7 @@ export type PlaybookUpdateWithoutTypeInput = {
   excerpt?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.StringFieldUpdateOperationsInput | string
   readingTime?: Prisma.StringFieldUpdateOperationsInput | string
+  author?: Prisma.StringFieldUpdateOperationsInput | string
   bestFor?: Prisma.StringFieldUpdateOperationsInput | string
   ctaLabel?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -940,6 +969,7 @@ export type PlaybookUncheckedUpdateWithoutTypeInput = {
   excerpt?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.StringFieldUpdateOperationsInput | string
   readingTime?: Prisma.StringFieldUpdateOperationsInput | string
+  author?: Prisma.StringFieldUpdateOperationsInput | string
   bestFor?: Prisma.StringFieldUpdateOperationsInput | string
   ctaLabel?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -962,6 +992,7 @@ export type PlaybookUncheckedUpdateManyWithoutTypeInput = {
   excerpt?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.StringFieldUpdateOperationsInput | string
   readingTime?: Prisma.StringFieldUpdateOperationsInput | string
+  author?: Prisma.StringFieldUpdateOperationsInput | string
   bestFor?: Prisma.StringFieldUpdateOperationsInput | string
   ctaLabel?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -984,6 +1015,7 @@ export type PlaybookCreateManyCategoryInput = {
   excerpt: string
   date: string
   readingTime: string
+  author: string
   bestFor: string
   ctaLabel: string
   isFeatured?: boolean
@@ -1006,6 +1038,7 @@ export type PlaybookUpdateWithoutCategoryInput = {
   excerpt?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.StringFieldUpdateOperationsInput | string
   readingTime?: Prisma.StringFieldUpdateOperationsInput | string
+  author?: Prisma.StringFieldUpdateOperationsInput | string
   bestFor?: Prisma.StringFieldUpdateOperationsInput | string
   ctaLabel?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -1028,6 +1061,7 @@ export type PlaybookUncheckedUpdateWithoutCategoryInput = {
   excerpt?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.StringFieldUpdateOperationsInput | string
   readingTime?: Prisma.StringFieldUpdateOperationsInput | string
+  author?: Prisma.StringFieldUpdateOperationsInput | string
   bestFor?: Prisma.StringFieldUpdateOperationsInput | string
   ctaLabel?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -1050,6 +1084,7 @@ export type PlaybookUncheckedUpdateManyWithoutCategoryInput = {
   excerpt?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.StringFieldUpdateOperationsInput | string
   readingTime?: Prisma.StringFieldUpdateOperationsInput | string
+  author?: Prisma.StringFieldUpdateOperationsInput | string
   bestFor?: Prisma.StringFieldUpdateOperationsInput | string
   ctaLabel?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -1074,6 +1109,7 @@ export type PlaybookSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   excerpt?: boolean
   date?: boolean
   readingTime?: boolean
+  author?: boolean
   bestFor?: boolean
   ctaLabel?: boolean
   isFeatured?: boolean
@@ -1099,6 +1135,7 @@ export type PlaybookSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
   excerpt?: boolean
   date?: boolean
   readingTime?: boolean
+  author?: boolean
   bestFor?: boolean
   ctaLabel?: boolean
   isFeatured?: boolean
@@ -1124,6 +1161,7 @@ export type PlaybookSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
   excerpt?: boolean
   date?: boolean
   readingTime?: boolean
+  author?: boolean
   bestFor?: boolean
   ctaLabel?: boolean
   isFeatured?: boolean
@@ -1149,6 +1187,7 @@ export type PlaybookSelectScalar = {
   excerpt?: boolean
   date?: boolean
   readingTime?: boolean
+  author?: boolean
   bestFor?: boolean
   ctaLabel?: boolean
   isFeatured?: boolean
@@ -1166,7 +1205,7 @@ export type PlaybookSelectScalar = {
   updatedAt?: boolean
 }
 
-export type PlaybookOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "excerpt" | "date" | "readingTime" | "bestFor" | "ctaLabel" | "isFeatured" | "isPublished" | "slug" | "keyTakeaways" | "whoIsItFor" | "outcomes" | "frameworkSteps" | "samplePreviews" | "relatedServices" | "typeId" | "categoryId" | "createdAt" | "updatedAt", ExtArgs["result"]["playbook"]>
+export type PlaybookOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "excerpt" | "date" | "readingTime" | "author" | "bestFor" | "ctaLabel" | "isFeatured" | "isPublished" | "slug" | "keyTakeaways" | "whoIsItFor" | "outcomes" | "frameworkSteps" | "samplePreviews" | "relatedServices" | "typeId" | "categoryId" | "createdAt" | "updatedAt", ExtArgs["result"]["playbook"]>
 export type PlaybookInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   type?: boolean | Prisma.Playbook$typeArgs<ExtArgs>
   category?: boolean | Prisma.Playbook$categoryArgs<ExtArgs>
@@ -1192,6 +1231,7 @@ export type $PlaybookPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     excerpt: string
     date: string
     readingTime: string
+    author: string
     bestFor: string
     ctaLabel: string
     isFeatured: boolean
@@ -1637,6 +1677,7 @@ export interface PlaybookFieldRefs {
   readonly excerpt: Prisma.FieldRef<"Playbook", 'String'>
   readonly date: Prisma.FieldRef<"Playbook", 'String'>
   readonly readingTime: Prisma.FieldRef<"Playbook", 'String'>
+  readonly author: Prisma.FieldRef<"Playbook", 'String'>
   readonly bestFor: Prisma.FieldRef<"Playbook", 'String'>
   readonly ctaLabel: Prisma.FieldRef<"Playbook", 'String'>
   readonly isFeatured: Prisma.FieldRef<"Playbook", 'Boolean'>
