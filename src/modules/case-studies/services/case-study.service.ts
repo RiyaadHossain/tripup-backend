@@ -134,6 +134,16 @@ export class CaseStudyService {
     return caseStudy;
   }
 
+  async findBySlugPublic(slug: string) {
+    const caseStudy = await this.repository.findBySlug(slug);
+
+    if (!caseStudy || !caseStudy.isPublished) {
+      throw new NotFoundException('Case study not found');
+    }
+
+    return caseStudy;
+  }
+
   async update(id: string, dto: UpdateCaseStudyDto) {
     const existing = await this.repository.findById(id);
 

@@ -108,6 +108,21 @@ export class TravelServicesService {
     return service;
   }
 
+  async findBySlugPublic(slug: string) {
+    const service = await this.prisma.travelService.findFirst({
+      where: { slug },
+      include: {
+        serviceCategory: true,
+      },
+    });
+
+    if (!service || !service.isPublished) {
+      throw new NotFoundException('Travel service not found');
+    }
+
+    return service;
+  }
+
   async findNavItems() {
     const services = await this.prisma.travelService.findMany({
       where: { isPublished: true },

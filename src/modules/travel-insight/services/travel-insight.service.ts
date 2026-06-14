@@ -136,6 +136,16 @@ export class TravelInsightService {
     return insight;
   }
 
+  async findBySlugPublic(slug: string) {
+    const insight = await this.repository.findBySlug(slug);
+
+    if (!insight || !insight.isPublished) {
+      throw new NotFoundException('Travel insight not found');
+    }
+
+    return insight;
+  }
+
   async update(id: string, dto: UpdateTravelInsightDto) {
     const existing = await this.repository.findById(id);
 

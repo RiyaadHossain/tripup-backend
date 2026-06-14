@@ -84,6 +84,37 @@ export class CaseStudyRepository {
     return { ...data, relatedCaseStudies };
   }
 
+  async findBySlug(slug: string) {
+    const data = await this.prisma.caseStudy.findFirst({
+      where: { slug },
+      include: {
+        category: true,
+      },
+    });
+
+    if (!data) return null;
+
+    const relatedCaseStudies = await this.prisma.caseStudy.findMany({
+      where: {
+        categoryId: data.categoryId,
+        id: { not: data.id },
+        isPublished: true,
+      },
+      select: {
+        id: true,
+        title: true,
+        slug: true,
+        excerpt: true,
+        coverImage: true,
+        date: true,
+        readingTime: true,
+        createdAt: true,
+      },
+    });
+
+    return { ...data, relatedCaseStudies };
+  }
+
   async update(id: string, data: Prisma.CaseStudyUpdateInput) {
     return await this.prisma.caseStudy.update({
       where: { id },

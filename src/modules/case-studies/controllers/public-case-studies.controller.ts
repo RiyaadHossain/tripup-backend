@@ -14,6 +14,11 @@ export class PublicCaseStudiesController {
     });
   }
 
+  @Get('slug/:slug')
+  async findBySlug(@Param('slug') slug: string) {
+    return this.service.findBySlugPublic(slug);
+  }
+
   @Get(':id')
   async findOne(@Param('id') id: string) {
     return this.service.findOnePublic(id);

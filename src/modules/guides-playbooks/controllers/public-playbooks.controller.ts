@@ -14,6 +14,11 @@ export class PublicPlaybooksController {
     });
   }
 
+  @Get('slug/:slug')
+  async findBySlug(@Param('slug') slug: string) {
+    return this.service.findOnePublic(slug);
+  }
+
   @Get(':id')
   async findOne(@Param('id') id: string) {
     return this.service.findOnePublic(id);
