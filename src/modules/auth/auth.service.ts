@@ -1,14 +1,20 @@
 import {
   ConflictException,
   Injectable,
+  NotFoundException,
   UnauthorizedException,
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
+import * as crypto from 'crypto';
 import { PrismaService } from 'src/database/prisma/prisma.service';
+import { MailService } from 'src/modules/mail/mail.service';
 import { perm } from 'src/common/constants/permissions.constant';
 import { LoginDto } from './dto/login.dto';
 import { RegisterDto } from './dto/register.dto';
+import { UpdatePasswordDto } from './dto/update-password.dto';
+import { ForgotPasswordDto } from './dto/forgot-password.dto';
+import { ResetPasswordDto } from './dto/reset-password.dto';
 import { JwtPayload } from './interfaces/jwt-payload.interface';
 
 @Injectable()
@@ -16,6 +22,7 @@ export class AuthService {
   constructor(
     private readonly prisma: PrismaService,
     private readonly jwtService: JwtService,
+    private readonly mailService: MailService,
   ) {}
 
   // ---------------------------------------------------------------------------
@@ -74,6 +81,12 @@ export class AuthService {
       throw new UnauthorizedException('Invalid credentials');
     }
 
+    // Update lastLoginAt asynchronously
+    this.prisma.user.update({
+      where: { id: user.id },
+      data: { lastLoginAt: new Date() },
+    }).catch(err => console.error('Failed to update lastLoginAt:', err));
+
     // Build the flat permission string list that gets embedded in the JWT.
     // Format: module.action_lowercase  (e.g. "services.read")
     const permissions: string[] = user.role
@@ -87,6 +100,7 @@ export class AuthService {
       email: user.email,
       role: user.role?.name ?? null,
       permissions,
+      needPasswordChange: user.needPasswordChange,
     };
 
     const accessToken = this.jwtService.sign(payload);
@@ -99,8 +113,89 @@ export class AuthService {
         email: user.email,
         role: user.role?.name ?? null,
         permissions,
+        needPasswordChange: user.needPasswordChange,
       },
     };
+  }
+
+  // ---------------------------------------------------------------------------
+  // Password Management
+  // ---------------------------------------------------------------------------
+
+  async updatePassword(userId: string, dto: UpdatePasswordDto) {
+    const user = await this.prisma.user.findUnique({ where: { id: userId } });
+    if (!user) throw new NotFoundException('User not found');
+
+    const isValid = await bcrypt.compare(dto.currentPassword, user.passwordHash);
+    if (!isValid) {
+      throw new UnauthorizedException('Invalid current password');
+    }
+
+    const passwordHash = await bcrypt.hash(dto.newPassword, 12);
+
+    await this.prisma.user.update({
+      where: { id: userId },
+      data: {
+        passwordHash,
+        needPasswordChange: false, // Reset the flag
+      },
+    });
+
+    return { message: 'Password updated successfully' };
+  }
+
+  async forgotPassword(dto: ForgotPasswordDto) {
+    const user = await this.prisma.user.findUnique({ where: { email: dto.email } });
+    
+    // Always return success to prevent email enumeration
+    if (!user) {
+      return { message: 'If that email is registered, a reset link has been sent.' };
+    }
+
+    const resetToken = crypto.randomBytes(32).toString('hex');
+    const hashedToken = crypto.createHash('sha256').update(resetToken).digest('hex');
+    const expires = new Date(Date.now() + 1000 * 60 * 60); // 1 hour
+
+    await this.prisma.user.update({
+      where: { id: user.id },
+      data: {
+        resetPasswordToken: hashedToken,
+        resetPasswordExpires: expires,
+      },
+    });
+
+    await this.mailService.sendPasswordResetEmail(user.email, resetToken);
+
+    return { message: 'If that email is registered, a reset link has been sent.' };
+  }
+
+  async resetPassword(dto: ResetPasswordDto) {
+    const hashedToken = crypto.createHash('sha256').update(dto.token).digest('hex');
+
+    const user = await this.prisma.user.findFirst({
+      where: {
+        resetPasswordToken: hashedToken,
+        resetPasswordExpires: { gt: new Date() },
+      },
+    });
+
+    if (!user) {
+      throw new UnauthorizedException('Invalid or expired password reset token');
+    }
+
+    const passwordHash = await bcrypt.hash(dto.newPassword, 12);
+
+    await this.prisma.user.update({
+      where: { id: user.id },
+      data: {
+        passwordHash,
+        resetPasswordToken: null,
+        resetPasswordExpires: null,
+        needPasswordChange: false,
+      },
+    });
+
+    return { message: 'Password has been successfully reset' };
   }
 
   // ---------------------------------------------------------------------------

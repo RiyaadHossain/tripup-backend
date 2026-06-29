@@ -15,4 +15,8 @@ export interface JwtPayload {
    * Stored in the token to avoid DB lookups on every request.
    */
   permissions: string[];
+
+  /** True if the user needs to change their password (e.g., admin created account). */
+  needPasswordChange: boolean;
 }
+

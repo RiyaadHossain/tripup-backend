@@ -29,6 +29,16 @@ model User {
   email        String  @unique
   passwordHash String
 
+  needPasswordChange Boolean @default(false)
+  lastLoginAt        DateTime?
+
+  addedById    String?
+  addedBy      User?   @relation("UserCreator", fields: [addedById], references: [id])
+  createdUsers User[]  @relation("UserCreator")
+
+  resetPasswordToken   String?
+  resetPasswordExpires DateTime?
+
   roleId String?
   role   Role?   @relation(fields: [roleId], references: [id])
 

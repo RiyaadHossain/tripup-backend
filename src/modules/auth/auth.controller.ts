@@ -1,7 +1,10 @@
-import { Body, Controller, Get, Post, Request, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Patch, Post, Request, UseGuards } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { LoginDto } from './dto/login.dto';
 import { RegisterDto } from './dto/register.dto';
+import { UpdatePasswordDto } from './dto/update-password.dto';
+import { ForgotPasswordDto } from './dto/forgot-password.dto';
+import { ResetPasswordDto } from './dto/reset-password.dto';
 import { JwtAuthGuard } from './guards/jwt-auth.guard';
 import { JwtPayload } from './interfaces/jwt-payload.interface';
 
@@ -23,12 +26,6 @@ export class AuthController {
    * POST /auth/login
    * Authenticates the user and returns a signed JWT containing the user's
    * role and the full list of permission strings.
-   *
-   * Response:
-   * {
-   *   accessToken: string,
-   *   user: { id, name, email, role, permissions[] }
-   * }
    */
   @Post('login')
   login(@Body() dto: LoginDto) {
@@ -36,12 +33,36 @@ export class AuthController {
   }
 
   /**
+   * PATCH /auth/update-password
+   * Allows a logged-in user to change their password and resets needPasswordChange.
+   */
+  @UseGuards(JwtAuthGuard)
+  @Patch('update-password')
+  updatePassword(@Request() req: { user: JwtPayload }, @Body() dto: UpdatePasswordDto) {
+    return this.authService.updatePassword(req.user.sub, dto);
+  }
+
+  /**
+   * POST /auth/forgot-password
+   * Sends a password reset email if the account exists.
+   */
+  @Post('forgot-password')
+  forgotPassword(@Body() dto: ForgotPasswordDto) {
+    return this.authService.forgotPassword(dto);
+  }
+
+  /**
+   * POST /auth/reset-password
+   * Resets the password using a valid token from the email.
+   */
+  @Post('reset-password')
+  resetPassword(@Body() dto: ResetPasswordDto) {
+    return this.authService.resetPassword(dto);
+  }
+
+  /**
    * GET /auth/me/permissions
    * Returns the current user's role and flat permissions list.
-   * Intended for the frontend to drive can('module.action') checks.
-   *
-   * Example response:
-   * { role: "Content Manager", permissions: ["services.read", "media.update"] }
    */
   @UseGuards(JwtAuthGuard)
   @Get('me/permissions')

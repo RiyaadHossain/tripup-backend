@@ -4,6 +4,9 @@ import { ConfigModule } from '@nestjs/config';
 // Database
 import { DatabaseModule } from './database/database.module';
 
+// Mail
+import { MailModule } from './modules/mail/mail.module';
+
 // Auth & RBAC
 import { AuthModule } from './modules/auth/auth.module';
 import { UsersModule } from './modules/users/users.module';
@@ -23,6 +26,7 @@ import { UploadsModule } from './modules/uploads/uploads.module';
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
     DatabaseModule,
+    MailModule,
 
     // Auth & RBAC — register before feature modules so guards can be injected
     AuthModule,
