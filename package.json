@@ -9,12 +9,14 @@
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "seed:travel-services": "npm run build && node dist/prisma/seed-travel-services.js",
+    "seed:permissions": "npm run build && node dist/prisma/seed-permissions.js",
     "start": "nest start",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/src/main.js",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix"
   },
+
   "dependencies": {
     "@nestjs/common": "^11.0.1",
     "@nestjs/config": "^4.0.4",

@@ -9,7 +9,11 @@
 * 🟢 You can import this file directly.
 */
 
+export const PermissionAction = {
+  READ: 'READ',
+  CREATE: 'CREATE',
+  UPDATE: 'UPDATE',
+  DELETE: 'DELETE'
+} as const
 
-
-// This file is empty because there are no enums in the schema.
-export {}
+export type PermissionAction = (typeof PermissionAction)[keyof typeof PermissionAction]

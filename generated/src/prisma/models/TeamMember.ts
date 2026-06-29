@@ -547,14 +547,6 @@ export type TeamMemberSumOrderByAggregateInput = {
   displayOrder?: Prisma.SortOrder
 }
 
-export type StringFieldUpdateOperationsInput = {
-  set?: string
-}
-
-export type NullableStringFieldUpdateOperationsInput = {
-  set?: string | null
-}
-
 export type BoolFieldUpdateOperationsInput = {
   set?: boolean
 }
@@ -565,10 +557,6 @@ export type IntFieldUpdateOperationsInput = {
   decrement?: number
   multiply?: number
   divide?: number
-}
-
-export type DateTimeFieldUpdateOperationsInput = {
-  set?: Date | string
 }
 
 

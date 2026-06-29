@@ -18,6 +18,29 @@ export { Prisma }
 export * as $Enums from './enums.js'
 export * from './enums.js';
 /**
+ * Model User
+ * 
+ */
+export type User = Prisma.UserModel
+/**
+ * Model Role
+ * 
+ */
+export type Role = Prisma.RoleModel
+/**
+ * Model Permission
+ * A single module+action permission pair (e.g. services.READ).
+ * The [module, action] combination is enforced unique so there are
+ * no duplicate permissions.
+ */
+export type Permission = Prisma.PermissionModel
+/**
+ * Model RolePermission
+ * Join table between Role and Permission.
+ * Uses a composite primary key so each (role, permission) pair is unique.
+ */
+export type RolePermission = Prisma.RolePermissionModel
+/**
  * Model TeamMember
  * 
  */

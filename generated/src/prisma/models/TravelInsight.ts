@@ -246,7 +246,7 @@ export type TravelInsightGroupByOutputType = {
   content: string
   insights: string[]
   takeAway: string[]
-  seo: runtime.JsonValue
+  seo: runtime.JsonValue | null
   tags: string[]
   isFeatured: boolean
   isPublished: boolean
@@ -289,7 +289,7 @@ export type TravelInsightWhereInput = {
   content?: Prisma.StringFilter<"TravelInsight"> | string
   insights?: Prisma.StringNullableListFilter<"TravelInsight">
   takeAway?: Prisma.StringNullableListFilter<"TravelInsight">
-  seo?: Prisma.JsonFilter<"TravelInsight">
+  seo?: Prisma.JsonNullableFilter<"TravelInsight">
   tags?: Prisma.StringNullableListFilter<"TravelInsight">
   isFeatured?: Prisma.BoolFilter<"TravelInsight"> | boolean
   isPublished?: Prisma.BoolFilter<"TravelInsight"> | boolean
@@ -311,7 +311,7 @@ export type TravelInsightOrderByWithRelationInput = {
   content?: Prisma.SortOrder
   insights?: Prisma.SortOrder
   takeAway?: Prisma.SortOrder
-  seo?: Prisma.SortOrder
+  seo?: Prisma.SortOrderInput | Prisma.SortOrder
   tags?: Prisma.SortOrder
   isFeatured?: Prisma.SortOrder
   isPublished?: Prisma.SortOrder
@@ -336,7 +336,7 @@ export type TravelInsightWhereUniqueInput = Prisma.AtLeast<{
   content?: Prisma.StringFilter<"TravelInsight"> | string
   insights?: Prisma.StringNullableListFilter<"TravelInsight">
   takeAway?: Prisma.StringNullableListFilter<"TravelInsight">
-  seo?: Prisma.JsonFilter<"TravelInsight">
+  seo?: Prisma.JsonNullableFilter<"TravelInsight">
   tags?: Prisma.StringNullableListFilter<"TravelInsight">
   isFeatured?: Prisma.BoolFilter<"TravelInsight"> | boolean
   isPublished?: Prisma.BoolFilter<"TravelInsight"> | boolean
@@ -358,7 +358,7 @@ export type TravelInsightOrderByWithAggregationInput = {
   content?: Prisma.SortOrder
   insights?: Prisma.SortOrder
   takeAway?: Prisma.SortOrder
-  seo?: Prisma.SortOrder
+  seo?: Prisma.SortOrderInput | Prisma.SortOrder
   tags?: Prisma.SortOrder
   isFeatured?: Prisma.SortOrder
   isPublished?: Prisma.SortOrder
@@ -386,7 +386,7 @@ export type TravelInsightScalarWhereWithAggregatesInput = {
   content?: Prisma.StringWithAggregatesFilter<"TravelInsight"> | string
   insights?: Prisma.StringNullableListFilter<"TravelInsight">
   takeAway?: Prisma.StringNullableListFilter<"TravelInsight">
-  seo?: Prisma.JsonWithAggregatesFilter<"TravelInsight">
+  seo?: Prisma.JsonNullableWithAggregatesFilter<"TravelInsight">
   tags?: Prisma.StringNullableListFilter<"TravelInsight">
   isFeatured?: Prisma.BoolWithAggregatesFilter<"TravelInsight"> | boolean
   isPublished?: Prisma.BoolWithAggregatesFilter<"TravelInsight"> | boolean
@@ -406,7 +406,7 @@ export type TravelInsightCreateInput = {
   content: string
   insights?: Prisma.TravelInsightCreateinsightsInput | string[]
   takeAway?: Prisma.TravelInsightCreatetakeAwayInput | string[]
-  seo: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  seo?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   tags?: Prisma.TravelInsightCreatetagsInput | string[]
   isFeatured?: boolean
   isPublished?: boolean
@@ -427,7 +427,7 @@ export type TravelInsightUncheckedCreateInput = {
   content: string
   insights?: Prisma.TravelInsightCreateinsightsInput | string[]
   takeAway?: Prisma.TravelInsightCreatetakeAwayInput | string[]
-  seo: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  seo?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   tags?: Prisma.TravelInsightCreatetagsInput | string[]
   isFeatured?: boolean
   isPublished?: boolean
@@ -448,7 +448,7 @@ export type TravelInsightUpdateInput = {
   content?: Prisma.StringFieldUpdateOperationsInput | string
   insights?: Prisma.TravelInsightUpdateinsightsInput | string[]
   takeAway?: Prisma.TravelInsightUpdatetakeAwayInput | string[]
-  seo?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  seo?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   tags?: Prisma.TravelInsightUpdatetagsInput | string[]
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -469,7 +469,7 @@ export type TravelInsightUncheckedUpdateInput = {
   content?: Prisma.StringFieldUpdateOperationsInput | string
   insights?: Prisma.TravelInsightUpdateinsightsInput | string[]
   takeAway?: Prisma.TravelInsightUpdatetakeAwayInput | string[]
-  seo?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  seo?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   tags?: Prisma.TravelInsightUpdatetagsInput | string[]
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -490,7 +490,7 @@ export type TravelInsightCreateManyInput = {
   content: string
   insights?: Prisma.TravelInsightCreateinsightsInput | string[]
   takeAway?: Prisma.TravelInsightCreatetakeAwayInput | string[]
-  seo: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  seo?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   tags?: Prisma.TravelInsightCreatetagsInput | string[]
   isFeatured?: boolean
   isPublished?: boolean
@@ -510,7 +510,7 @@ export type TravelInsightUpdateManyMutationInput = {
   content?: Prisma.StringFieldUpdateOperationsInput | string
   insights?: Prisma.TravelInsightUpdateinsightsInput | string[]
   takeAway?: Prisma.TravelInsightUpdatetakeAwayInput | string[]
-  seo?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  seo?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   tags?: Prisma.TravelInsightUpdatetagsInput | string[]
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -529,7 +529,7 @@ export type TravelInsightUncheckedUpdateManyInput = {
   content?: Prisma.StringFieldUpdateOperationsInput | string
   insights?: Prisma.TravelInsightUpdateinsightsInput | string[]
   takeAway?: Prisma.TravelInsightUpdatetakeAwayInput | string[]
-  seo?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  seo?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   tags?: Prisma.TravelInsightUpdatetagsInput | string[]
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -734,7 +734,7 @@ export type TravelInsightCreateWithoutCategoryInput = {
   content: string
   insights?: Prisma.TravelInsightCreateinsightsInput | string[]
   takeAway?: Prisma.TravelInsightCreatetakeAwayInput | string[]
-  seo: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  seo?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   tags?: Prisma.TravelInsightCreatetagsInput | string[]
   isFeatured?: boolean
   isPublished?: boolean
@@ -754,7 +754,7 @@ export type TravelInsightUncheckedCreateWithoutCategoryInput = {
   content: string
   insights?: Prisma.TravelInsightCreateinsightsInput | string[]
   takeAway?: Prisma.TravelInsightCreatetakeAwayInput | string[]
-  seo: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  seo?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   tags?: Prisma.TravelInsightCreatetagsInput | string[]
   isFeatured?: boolean
   isPublished?: boolean
@@ -803,7 +803,7 @@ export type TravelInsightScalarWhereInput = {
   content?: Prisma.StringFilter<"TravelInsight"> | string
   insights?: Prisma.StringNullableListFilter<"TravelInsight">
   takeAway?: Prisma.StringNullableListFilter<"TravelInsight">
-  seo?: Prisma.JsonFilter<"TravelInsight">
+  seo?: Prisma.JsonNullableFilter<"TravelInsight">
   tags?: Prisma.StringNullableListFilter<"TravelInsight">
   isFeatured?: Prisma.BoolFilter<"TravelInsight"> | boolean
   isPublished?: Prisma.BoolFilter<"TravelInsight"> | boolean
@@ -823,7 +823,7 @@ export type TravelInsightCreateWithoutRelatedServicesInput = {
   content: string
   insights?: Prisma.TravelInsightCreateinsightsInput | string[]
   takeAway?: Prisma.TravelInsightCreatetakeAwayInput | string[]
-  seo: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  seo?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   tags?: Prisma.TravelInsightCreatetagsInput | string[]
   isFeatured?: boolean
   isPublished?: boolean
@@ -843,7 +843,7 @@ export type TravelInsightUncheckedCreateWithoutRelatedServicesInput = {
   content: string
   insights?: Prisma.TravelInsightCreateinsightsInput | string[]
   takeAway?: Prisma.TravelInsightCreatetakeAwayInput | string[]
-  seo: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  seo?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   tags?: Prisma.TravelInsightCreatetagsInput | string[]
   isFeatured?: boolean
   isPublished?: boolean
@@ -884,7 +884,7 @@ export type TravelInsightCreateManyCategoryInput = {
   content: string
   insights?: Prisma.TravelInsightCreateinsightsInput | string[]
   takeAway?: Prisma.TravelInsightCreatetakeAwayInput | string[]
-  seo: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  seo?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   tags?: Prisma.TravelInsightCreatetagsInput | string[]
   isFeatured?: boolean
   isPublished?: boolean
@@ -903,7 +903,7 @@ export type TravelInsightUpdateWithoutCategoryInput = {
   content?: Prisma.StringFieldUpdateOperationsInput | string
   insights?: Prisma.TravelInsightUpdateinsightsInput | string[]
   takeAway?: Prisma.TravelInsightUpdatetakeAwayInput | string[]
-  seo?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  seo?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   tags?: Prisma.TravelInsightUpdatetagsInput | string[]
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -923,7 +923,7 @@ export type TravelInsightUncheckedUpdateWithoutCategoryInput = {
   content?: Prisma.StringFieldUpdateOperationsInput | string
   insights?: Prisma.TravelInsightUpdateinsightsInput | string[]
   takeAway?: Prisma.TravelInsightUpdatetakeAwayInput | string[]
-  seo?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  seo?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   tags?: Prisma.TravelInsightUpdatetagsInput | string[]
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -943,7 +943,7 @@ export type TravelInsightUncheckedUpdateManyWithoutCategoryInput = {
   content?: Prisma.StringFieldUpdateOperationsInput | string
   insights?: Prisma.TravelInsightUpdateinsightsInput | string[]
   takeAway?: Prisma.TravelInsightUpdatetakeAwayInput | string[]
-  seo?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  seo?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   tags?: Prisma.TravelInsightUpdatetagsInput | string[]
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -962,7 +962,7 @@ export type TravelInsightUpdateWithoutRelatedServicesInput = {
   content?: Prisma.StringFieldUpdateOperationsInput | string
   insights?: Prisma.TravelInsightUpdateinsightsInput | string[]
   takeAway?: Prisma.TravelInsightUpdatetakeAwayInput | string[]
-  seo?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  seo?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   tags?: Prisma.TravelInsightUpdatetagsInput | string[]
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -982,7 +982,7 @@ export type TravelInsightUncheckedUpdateWithoutRelatedServicesInput = {
   content?: Prisma.StringFieldUpdateOperationsInput | string
   insights?: Prisma.TravelInsightUpdateinsightsInput | string[]
   takeAway?: Prisma.TravelInsightUpdatetakeAwayInput | string[]
-  seo?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  seo?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   tags?: Prisma.TravelInsightUpdatetagsInput | string[]
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -1002,7 +1002,7 @@ export type TravelInsightUncheckedUpdateManyWithoutRelatedServicesInput = {
   content?: Prisma.StringFieldUpdateOperationsInput | string
   insights?: Prisma.TravelInsightUpdateinsightsInput | string[]
   takeAway?: Prisma.TravelInsightUpdatetakeAwayInput | string[]
-  seo?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  seo?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   tags?: Prisma.TravelInsightUpdatetagsInput | string[]
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -1157,7 +1157,7 @@ export type $TravelInsightPayload<ExtArgs extends runtime.Types.Extensions.Inter
     content: string
     insights: string[]
     takeAway: string[]
-    seo: runtime.JsonValue
+    seo: runtime.JsonValue | null
     tags: string[]
     isFeatured: boolean
     isPublished: boolean

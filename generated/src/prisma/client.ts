@@ -29,8 +29,8 @@ export * from "./enums.js"
  * const prisma = new PrismaClient({
  *   adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL })
  * })
- * // Fetch zero or more TeamMembers
- * const teamMembers = await prisma.teamMember.findMany()
+ * // Fetch zero or more Users
+ * const users = await prisma.user.findMany()
  * ```
  * 
  * Read more in our [docs](https://pris.ly/d/client).
@@ -39,6 +39,29 @@ export const PrismaClient = $Class.getPrismaClientClass()
 export type PrismaClient<LogOpts extends Prisma.LogLevel = never, OmitOpts extends Prisma.PrismaClientOptions["omit"] = Prisma.PrismaClientOptions["omit"], ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = $Class.PrismaClient<LogOpts, OmitOpts, ExtArgs>
 export { Prisma }
 
+/**
+ * Model User
+ * 
+ */
+export type User = Prisma.UserModel
+/**
+ * Model Role
+ * 
+ */
+export type Role = Prisma.RoleModel
+/**
+ * Model Permission
+ * A single module+action permission pair (e.g. services.READ).
+ * The [module, action] combination is enforced unique so there are
+ * no duplicate permissions.
+ */
+export type Permission = Prisma.PermissionModel
+/**
+ * Model RolePermission
+ * Join table between Role and Permission.
+ * Uses a composite primary key so each (role, permission) pair is unique.
+ */
+export type RolePermission = Prisma.RolePermissionModel
 /**
  * Model TeamMember
  * 

@@ -405,7 +405,7 @@ export type PlaybookCreateInput = {
   excerpt: string
   date: string
   readingTime: string
-  author: string
+  author?: string
   bestFor: string
   ctaLabel: string
   isFeatured?: boolean
@@ -429,7 +429,7 @@ export type PlaybookUncheckedCreateInput = {
   excerpt: string
   date: string
   readingTime: string
-  author: string
+  author?: string
   bestFor: string
   ctaLabel: string
   isFeatured?: boolean
@@ -501,7 +501,7 @@ export type PlaybookCreateManyInput = {
   excerpt: string
   date: string
   readingTime: string
-  author: string
+  author?: string
   bestFor: string
   ctaLabel: string
   isFeatured?: boolean
@@ -752,7 +752,7 @@ export type PlaybookCreateWithoutTypeInput = {
   excerpt: string
   date: string
   readingTime: string
-  author: string
+  author?: string
   bestFor: string
   ctaLabel: string
   isFeatured?: boolean
@@ -775,7 +775,7 @@ export type PlaybookUncheckedCreateWithoutTypeInput = {
   excerpt: string
   date: string
   readingTime: string
-  author: string
+  author?: string
   bestFor: string
   ctaLabel: string
   isFeatured?: boolean
@@ -851,7 +851,7 @@ export type PlaybookCreateWithoutCategoryInput = {
   excerpt: string
   date: string
   readingTime: string
-  author: string
+  author?: string
   bestFor: string
   ctaLabel: string
   isFeatured?: boolean
@@ -874,7 +874,7 @@ export type PlaybookUncheckedCreateWithoutCategoryInput = {
   excerpt: string
   date: string
   readingTime: string
-  author: string
+  author?: string
   bestFor: string
   ctaLabel: string
   isFeatured?: boolean
@@ -923,7 +923,7 @@ export type PlaybookCreateManyTypeInput = {
   excerpt: string
   date: string
   readingTime: string
-  author: string
+  author?: string
   bestFor: string
   ctaLabel: string
   isFeatured?: boolean
@@ -1015,7 +1015,7 @@ export type PlaybookCreateManyCategoryInput = {
   excerpt: string
   date: string
   readingTime: string
-  author: string
+  author?: string
   bestFor: string
   ctaLabel: string
   isFeatured?: boolean

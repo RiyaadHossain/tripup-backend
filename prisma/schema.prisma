@@ -8,6 +8,77 @@ datasource db {
   provider = "postgresql"
 }
 
+// ---------------------------------------------------------------------------
+// Enums
+// ---------------------------------------------------------------------------
+
+enum PermissionAction {
+  READ
+  CREATE
+  UPDATE
+  DELETE
+}
+
+// ---------------------------------------------------------------------------
+// Auth & RBAC Models
+// ---------------------------------------------------------------------------
+
+model User {
+  id           String  @id @default(uuid())
+  name         String
+  email        String  @unique
+  passwordHash String
+
+  roleId String?
+  role   Role?   @relation(fields: [roleId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([email])
+  @@index([roleId])
+}
+
+model Role {
+  id          String  @id @default(uuid())
+  name        String  @unique
+  description String?
+
+  users       User[]
+  permissions RolePermission[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+/// A single module+action permission pair (e.g. services.READ).
+/// The [module, action] combination is enforced unique so there are
+/// no duplicate permissions.
+model Permission {
+  id     String           @id @default(uuid())
+  module String
+  action PermissionAction
+
+  roles RolePermission[]
+
+  createdAt DateTime @default(now())
+
+  @@unique([module, action])
+  @@index([module])
+}
+
+/// Join table between Role and Permission.
+/// Uses a composite primary key so each (role, permission) pair is unique.
+model RolePermission {
+  roleId       String
+  permissionId String
+
+  role       Role       @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  permission Permission @relation(fields: [permissionId], references: [id], onDelete: Cascade)
+
+  @@id([roleId, permissionId])
+}
+
 model TeamMember {
   id String @id @default(uuid())
 
@@ -68,7 +139,7 @@ model TravelInsight {
   content     String
   insights    String[]
   takeAway    String[]
-  seo         Json
+  seo         Json?
   tags        String[]
 
   isFeatured  Boolean @default(false)
