@@ -9,11 +9,11 @@ export class MailService {
   constructor() {
     // Basic setup, in a real app these come from ConfigService
     this.transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST || 'smtp.ethereal.email',
-      port: Number(process.env.SMTP_PORT) || 587,
+      host: process.env.MAIL_HOST,
+      port: Number(process.env.MAIL_PORT),
       auth: {
-        user: process.env.SMTP_USER || 'ethereal_user',
-        pass: process.env.SMTP_PASS || 'ethereal_pass',
+        user: process.env.MAIL_USER,
+        pass: process.env.MAIL_PASS,
       },
     });
   }
@@ -28,7 +28,7 @@ export class MailService {
     const creatorText = addedByName ? `added by ${addedByName}` : 'added by an administrator';
     const roleText = roleName ? ` with the role of ${roleName}` : '';
     
-    let text = `Hello ${name},\n\nYou have been ${creatorText}${roleText} to the TripUp platform.\n`;
+    let text = `Hello ${name},\n\nYou have been ${creatorText} ${roleText} to the TripUp platform.\n`;
     
     if (temporaryPassword) {
       text += `Your temporary password is: ${temporaryPassword}\n`;
@@ -37,7 +37,7 @@ export class MailService {
 
     try {
       await this.transporter.sendMail({
-        from: '"TripUp Admin" <no-reply@tripup.com>',
+        from: process.env.MAIL_FROM,
         to,
         subject: 'Welcome to TripUp!',
         text,
@@ -50,7 +50,7 @@ export class MailService {
 
   async sendPasswordResetEmail(to: string, resetToken: string) {
     // In a real app, this would be a link to the frontend
-    const resetLink = `${process.env.FRONTEND_URL || 'http://localhost:3000'}/reset-password?token=${resetToken}`;
+    const resetLink = `${process.env.FRONTEND_URL}/profile/reset-password?token=${resetToken}`;
     
     const text = `Hello,\n\nYou requested a password reset.\nClick here to reset it: ${resetLink}\nIf you didn't request this, ignore this email.`;
 
