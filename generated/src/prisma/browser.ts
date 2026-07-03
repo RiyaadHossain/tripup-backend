@@ -95,3 +95,8 @@ export type PlaybookType = Prisma.PlaybookTypeModel
  * 
  */
 export type PlaybookCategory = Prisma.PlaybookCategoryModel
+/**
+ * Model Lead
+ * 
+ */
+export type Lead = Prisma.LeadModel

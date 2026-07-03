@@ -48,6 +48,7 @@ model User {
   addedPlaybooks               Playbook[]              @relation("AddedPlaybook")
   addedPlaybookTypes           PlaybookType[]          @relation("AddedPlaybookType")
   addedPlaybookCategories      PlaybookCategory[]      @relation("AddedPlaybookCategory")
+  addedLeads                   Lead[]                  @relation("AddedLead")
 
   resetPasswordToken   String?
   resetPasswordExpires DateTime?
@@ -371,4 +372,41 @@ model PlaybookCategory {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+enum LeadStatus {
+  NEW
+  OLD
+  EMAIL_SENT
+  DM
+  COLD_CALL
+  RESPOND
+  IGNORED
+  CONVERT
+}
+
+model Lead {
+  id            String     @id @default(uuid())
+  businessName  String
+  email         String?
+  phone         String?
+  location      String?
+  status        LeadStatus @default(NEW)
+  niche         String?
+  facebookLink  String?
+  linkedInLink  String?
+  instagramLink String?
+  twitterLink   String?
+  website       String?
+  contactPerson String?
+  notes         String?
+
+  addedById String?
+  addedBy   User?   @relation("AddedLead", fields: [addedById], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([businessName])
+  @@index([status])
 }

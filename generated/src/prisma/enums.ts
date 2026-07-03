@@ -17,3 +17,17 @@ export const PermissionAction = {
 } as const
 
 export type PermissionAction = (typeof PermissionAction)[keyof typeof PermissionAction]
+
+
+export const LeadStatus = {
+  NEW: 'NEW',
+  OLD: 'OLD',
+  EMAIL_SENT: 'EMAIL_SENT',
+  DM: 'DM',
+  COLD_CALL: 'COLD_CALL',
+  RESPOND: 'RESPOND',
+  IGNORED: 'IGNORED',
+  CONVERT: 'CONVERT'
+} as const
+
+export type LeadStatus = (typeof LeadStatus)[keyof typeof LeadStatus]

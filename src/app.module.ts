@@ -21,6 +21,7 @@ import { TravelServiceModule } from './modules/travel-service/travel-service.mod
 import { CaseStudiesModule } from './modules/case-studies/case-studies.module';
 import { GuidesPlaybooksModule } from './modules/guides-playbooks/guides-playbooks.module';
 import { UploadsModule } from './modules/uploads/uploads.module';
+import { LeadModule } from './modules/lead/lead.module';
 
 @Module({
   imports: [
@@ -42,6 +43,7 @@ import { UploadsModule } from './modules/uploads/uploads.module';
     CaseStudiesModule,
     GuidesPlaybooksModule,
     UploadsModule,
+    LeadModule,
   ],
   controllers: [],
   providers: [],

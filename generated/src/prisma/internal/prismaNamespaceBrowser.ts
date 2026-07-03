@@ -65,7 +65,8 @@ export const ModelName = {
   CaseStudyCategory: 'CaseStudyCategory',
   Playbook: 'Playbook',
   PlaybookType: 'PlaybookType',
-  PlaybookCategory: 'PlaybookCategory'
+  PlaybookCategory: 'PlaybookCategory',
+  Lead: 'Lead'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -336,6 +337,29 @@ export const PlaybookCategoryScalarFieldEnum = {
 } as const
 
 export type PlaybookCategoryScalarFieldEnum = (typeof PlaybookCategoryScalarFieldEnum)[keyof typeof PlaybookCategoryScalarFieldEnum]
+
+
+export const LeadScalarFieldEnum = {
+  id: 'id',
+  businessName: 'businessName',
+  email: 'email',
+  phone: 'phone',
+  location: 'location',
+  status: 'status',
+  niche: 'niche',
+  facebookLink: 'facebookLink',
+  linkedInLink: 'linkedInLink',
+  instagramLink: 'instagramLink',
+  twitterLink: 'twitterLink',
+  website: 'website',
+  contactPerson: 'contactPerson',
+  notes: 'notes',
+  addedById: 'addedById',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type LeadScalarFieldEnum = (typeof LeadScalarFieldEnum)[keyof typeof LeadScalarFieldEnum]
 
 
 export const SortOrder = {
