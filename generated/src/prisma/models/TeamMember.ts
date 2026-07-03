@@ -47,6 +47,7 @@ export type TeamMemberMinAggregateOutputType = {
   isFeatured: boolean | null
   isPublished: boolean | null
   displayOrder: number | null
+  addedById: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -64,6 +65,7 @@ export type TeamMemberMaxAggregateOutputType = {
   isFeatured: boolean | null
   isPublished: boolean | null
   displayOrder: number | null
+  addedById: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -81,6 +83,7 @@ export type TeamMemberCountAggregateOutputType = {
   isFeatured: number
   isPublished: number
   displayOrder: number
+  addedById: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -108,6 +111,7 @@ export type TeamMemberMinAggregateInputType = {
   isFeatured?: true
   isPublished?: true
   displayOrder?: true
+  addedById?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -125,6 +129,7 @@ export type TeamMemberMaxAggregateInputType = {
   isFeatured?: true
   isPublished?: true
   displayOrder?: true
+  addedById?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -142,6 +147,7 @@ export type TeamMemberCountAggregateInputType = {
   isFeatured?: true
   isPublished?: true
   displayOrder?: true
+  addedById?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -246,6 +252,7 @@ export type TeamMemberGroupByOutputType = {
   isFeatured: boolean
   isPublished: boolean
   displayOrder: number
+  addedById: string | null
   createdAt: Date
   updatedAt: Date
   _count: TeamMemberCountAggregateOutputType | null
@@ -286,8 +293,10 @@ export type TeamMemberWhereInput = {
   isFeatured?: Prisma.BoolFilter<"TeamMember"> | boolean
   isPublished?: Prisma.BoolFilter<"TeamMember"> | boolean
   displayOrder?: Prisma.IntFilter<"TeamMember"> | number
+  addedById?: Prisma.StringNullableFilter<"TeamMember"> | string | null
   createdAt?: Prisma.DateTimeFilter<"TeamMember"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"TeamMember"> | Date | string
+  addedBy?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
 }
 
 export type TeamMemberOrderByWithRelationInput = {
@@ -303,8 +312,10 @@ export type TeamMemberOrderByWithRelationInput = {
   isFeatured?: Prisma.SortOrder
   isPublished?: Prisma.SortOrder
   displayOrder?: Prisma.SortOrder
+  addedById?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  addedBy?: Prisma.UserOrderByWithRelationInput
 }
 
 export type TeamMemberWhereUniqueInput = Prisma.AtLeast<{
@@ -323,8 +334,10 @@ export type TeamMemberWhereUniqueInput = Prisma.AtLeast<{
   isFeatured?: Prisma.BoolFilter<"TeamMember"> | boolean
   isPublished?: Prisma.BoolFilter<"TeamMember"> | boolean
   displayOrder?: Prisma.IntFilter<"TeamMember"> | number
+  addedById?: Prisma.StringNullableFilter<"TeamMember"> | string | null
   createdAt?: Prisma.DateTimeFilter<"TeamMember"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"TeamMember"> | Date | string
+  addedBy?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
 }, "id">
 
 export type TeamMemberOrderByWithAggregationInput = {
@@ -340,6 +353,7 @@ export type TeamMemberOrderByWithAggregationInput = {
   isFeatured?: Prisma.SortOrder
   isPublished?: Prisma.SortOrder
   displayOrder?: Prisma.SortOrder
+  addedById?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.TeamMemberCountOrderByAggregateInput
@@ -365,6 +379,7 @@ export type TeamMemberScalarWhereWithAggregatesInput = {
   isFeatured?: Prisma.BoolWithAggregatesFilter<"TeamMember"> | boolean
   isPublished?: Prisma.BoolWithAggregatesFilter<"TeamMember"> | boolean
   displayOrder?: Prisma.IntWithAggregatesFilter<"TeamMember"> | number
+  addedById?: Prisma.StringNullableWithAggregatesFilter<"TeamMember"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"TeamMember"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"TeamMember"> | Date | string
 }
@@ -384,6 +399,7 @@ export type TeamMemberCreateInput = {
   displayOrder?: number
   createdAt?: Date | string
   updatedAt?: Date | string
+  addedBy?: Prisma.UserCreateNestedOneWithoutAddedTeamMembersInput
 }
 
 export type TeamMemberUncheckedCreateInput = {
@@ -399,6 +415,7 @@ export type TeamMemberUncheckedCreateInput = {
   isFeatured?: boolean
   isPublished?: boolean
   displayOrder?: number
+  addedById?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -418,6 +435,7 @@ export type TeamMemberUpdateInput = {
   displayOrder?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  addedBy?: Prisma.UserUpdateOneWithoutAddedTeamMembersNestedInput
 }
 
 export type TeamMemberUncheckedUpdateInput = {
@@ -433,6 +451,7 @@ export type TeamMemberUncheckedUpdateInput = {
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   displayOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  addedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -450,6 +469,7 @@ export type TeamMemberCreateManyInput = {
   isFeatured?: boolean
   isPublished?: boolean
   displayOrder?: number
+  addedById?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -484,8 +504,19 @@ export type TeamMemberUncheckedUpdateManyInput = {
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   displayOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  addedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type TeamMemberListRelationFilter = {
+  every?: Prisma.TeamMemberWhereInput
+  some?: Prisma.TeamMemberWhereInput
+  none?: Prisma.TeamMemberWhereInput
+}
+
+export type TeamMemberOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
 }
 
 export type TeamMemberCountOrderByAggregateInput = {
@@ -501,6 +532,7 @@ export type TeamMemberCountOrderByAggregateInput = {
   isFeatured?: Prisma.SortOrder
   isPublished?: Prisma.SortOrder
   displayOrder?: Prisma.SortOrder
+  addedById?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -522,6 +554,7 @@ export type TeamMemberMaxOrderByAggregateInput = {
   isFeatured?: Prisma.SortOrder
   isPublished?: Prisma.SortOrder
   displayOrder?: Prisma.SortOrder
+  addedById?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -539,6 +572,7 @@ export type TeamMemberMinOrderByAggregateInput = {
   isFeatured?: Prisma.SortOrder
   isPublished?: Prisma.SortOrder
   displayOrder?: Prisma.SortOrder
+  addedById?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -547,12 +581,203 @@ export type TeamMemberSumOrderByAggregateInput = {
   displayOrder?: Prisma.SortOrder
 }
 
+export type TeamMemberCreateNestedManyWithoutAddedByInput = {
+  create?: Prisma.XOR<Prisma.TeamMemberCreateWithoutAddedByInput, Prisma.TeamMemberUncheckedCreateWithoutAddedByInput> | Prisma.TeamMemberCreateWithoutAddedByInput[] | Prisma.TeamMemberUncheckedCreateWithoutAddedByInput[]
+  connectOrCreate?: Prisma.TeamMemberCreateOrConnectWithoutAddedByInput | Prisma.TeamMemberCreateOrConnectWithoutAddedByInput[]
+  createMany?: Prisma.TeamMemberCreateManyAddedByInputEnvelope
+  connect?: Prisma.TeamMemberWhereUniqueInput | Prisma.TeamMemberWhereUniqueInput[]
+}
+
+export type TeamMemberUncheckedCreateNestedManyWithoutAddedByInput = {
+  create?: Prisma.XOR<Prisma.TeamMemberCreateWithoutAddedByInput, Prisma.TeamMemberUncheckedCreateWithoutAddedByInput> | Prisma.TeamMemberCreateWithoutAddedByInput[] | Prisma.TeamMemberUncheckedCreateWithoutAddedByInput[]
+  connectOrCreate?: Prisma.TeamMemberCreateOrConnectWithoutAddedByInput | Prisma.TeamMemberCreateOrConnectWithoutAddedByInput[]
+  createMany?: Prisma.TeamMemberCreateManyAddedByInputEnvelope
+  connect?: Prisma.TeamMemberWhereUniqueInput | Prisma.TeamMemberWhereUniqueInput[]
+}
+
+export type TeamMemberUpdateManyWithoutAddedByNestedInput = {
+  create?: Prisma.XOR<Prisma.TeamMemberCreateWithoutAddedByInput, Prisma.TeamMemberUncheckedCreateWithoutAddedByInput> | Prisma.TeamMemberCreateWithoutAddedByInput[] | Prisma.TeamMemberUncheckedCreateWithoutAddedByInput[]
+  connectOrCreate?: Prisma.TeamMemberCreateOrConnectWithoutAddedByInput | Prisma.TeamMemberCreateOrConnectWithoutAddedByInput[]
+  upsert?: Prisma.TeamMemberUpsertWithWhereUniqueWithoutAddedByInput | Prisma.TeamMemberUpsertWithWhereUniqueWithoutAddedByInput[]
+  createMany?: Prisma.TeamMemberCreateManyAddedByInputEnvelope
+  set?: Prisma.TeamMemberWhereUniqueInput | Prisma.TeamMemberWhereUniqueInput[]
+  disconnect?: Prisma.TeamMemberWhereUniqueInput | Prisma.TeamMemberWhereUniqueInput[]
+  delete?: Prisma.TeamMemberWhereUniqueInput | Prisma.TeamMemberWhereUniqueInput[]
+  connect?: Prisma.TeamMemberWhereUniqueInput | Prisma.TeamMemberWhereUniqueInput[]
+  update?: Prisma.TeamMemberUpdateWithWhereUniqueWithoutAddedByInput | Prisma.TeamMemberUpdateWithWhereUniqueWithoutAddedByInput[]
+  updateMany?: Prisma.TeamMemberUpdateManyWithWhereWithoutAddedByInput | Prisma.TeamMemberUpdateManyWithWhereWithoutAddedByInput[]
+  deleteMany?: Prisma.TeamMemberScalarWhereInput | Prisma.TeamMemberScalarWhereInput[]
+}
+
+export type TeamMemberUncheckedUpdateManyWithoutAddedByNestedInput = {
+  create?: Prisma.XOR<Prisma.TeamMemberCreateWithoutAddedByInput, Prisma.TeamMemberUncheckedCreateWithoutAddedByInput> | Prisma.TeamMemberCreateWithoutAddedByInput[] | Prisma.TeamMemberUncheckedCreateWithoutAddedByInput[]
+  connectOrCreate?: Prisma.TeamMemberCreateOrConnectWithoutAddedByInput | Prisma.TeamMemberCreateOrConnectWithoutAddedByInput[]
+  upsert?: Prisma.TeamMemberUpsertWithWhereUniqueWithoutAddedByInput | Prisma.TeamMemberUpsertWithWhereUniqueWithoutAddedByInput[]
+  createMany?: Prisma.TeamMemberCreateManyAddedByInputEnvelope
+  set?: Prisma.TeamMemberWhereUniqueInput | Prisma.TeamMemberWhereUniqueInput[]
+  disconnect?: Prisma.TeamMemberWhereUniqueInput | Prisma.TeamMemberWhereUniqueInput[]
+  delete?: Prisma.TeamMemberWhereUniqueInput | Prisma.TeamMemberWhereUniqueInput[]
+  connect?: Prisma.TeamMemberWhereUniqueInput | Prisma.TeamMemberWhereUniqueInput[]
+  update?: Prisma.TeamMemberUpdateWithWhereUniqueWithoutAddedByInput | Prisma.TeamMemberUpdateWithWhereUniqueWithoutAddedByInput[]
+  updateMany?: Prisma.TeamMemberUpdateManyWithWhereWithoutAddedByInput | Prisma.TeamMemberUpdateManyWithWhereWithoutAddedByInput[]
+  deleteMany?: Prisma.TeamMemberScalarWhereInput | Prisma.TeamMemberScalarWhereInput[]
+}
+
 export type IntFieldUpdateOperationsInput = {
   set?: number
   increment?: number
   decrement?: number
   multiply?: number
   divide?: number
+}
+
+export type TeamMemberCreateWithoutAddedByInput = {
+  id?: string
+  name: string
+  designation: string
+  bio?: string | null
+  profileImg?: string | null
+  linkedin?: string | null
+  github?: string | null
+  facebook?: string | null
+  email?: string | null
+  isFeatured?: boolean
+  isPublished?: boolean
+  displayOrder?: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type TeamMemberUncheckedCreateWithoutAddedByInput = {
+  id?: string
+  name: string
+  designation: string
+  bio?: string | null
+  profileImg?: string | null
+  linkedin?: string | null
+  github?: string | null
+  facebook?: string | null
+  email?: string | null
+  isFeatured?: boolean
+  isPublished?: boolean
+  displayOrder?: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type TeamMemberCreateOrConnectWithoutAddedByInput = {
+  where: Prisma.TeamMemberWhereUniqueInput
+  create: Prisma.XOR<Prisma.TeamMemberCreateWithoutAddedByInput, Prisma.TeamMemberUncheckedCreateWithoutAddedByInput>
+}
+
+export type TeamMemberCreateManyAddedByInputEnvelope = {
+  data: Prisma.TeamMemberCreateManyAddedByInput | Prisma.TeamMemberCreateManyAddedByInput[]
+  skipDuplicates?: boolean
+}
+
+export type TeamMemberUpsertWithWhereUniqueWithoutAddedByInput = {
+  where: Prisma.TeamMemberWhereUniqueInput
+  update: Prisma.XOR<Prisma.TeamMemberUpdateWithoutAddedByInput, Prisma.TeamMemberUncheckedUpdateWithoutAddedByInput>
+  create: Prisma.XOR<Prisma.TeamMemberCreateWithoutAddedByInput, Prisma.TeamMemberUncheckedCreateWithoutAddedByInput>
+}
+
+export type TeamMemberUpdateWithWhereUniqueWithoutAddedByInput = {
+  where: Prisma.TeamMemberWhereUniqueInput
+  data: Prisma.XOR<Prisma.TeamMemberUpdateWithoutAddedByInput, Prisma.TeamMemberUncheckedUpdateWithoutAddedByInput>
+}
+
+export type TeamMemberUpdateManyWithWhereWithoutAddedByInput = {
+  where: Prisma.TeamMemberScalarWhereInput
+  data: Prisma.XOR<Prisma.TeamMemberUpdateManyMutationInput, Prisma.TeamMemberUncheckedUpdateManyWithoutAddedByInput>
+}
+
+export type TeamMemberScalarWhereInput = {
+  AND?: Prisma.TeamMemberScalarWhereInput | Prisma.TeamMemberScalarWhereInput[]
+  OR?: Prisma.TeamMemberScalarWhereInput[]
+  NOT?: Prisma.TeamMemberScalarWhereInput | Prisma.TeamMemberScalarWhereInput[]
+  id?: Prisma.StringFilter<"TeamMember"> | string
+  name?: Prisma.StringFilter<"TeamMember"> | string
+  designation?: Prisma.StringFilter<"TeamMember"> | string
+  bio?: Prisma.StringNullableFilter<"TeamMember"> | string | null
+  profileImg?: Prisma.StringNullableFilter<"TeamMember"> | string | null
+  linkedin?: Prisma.StringNullableFilter<"TeamMember"> | string | null
+  github?: Prisma.StringNullableFilter<"TeamMember"> | string | null
+  facebook?: Prisma.StringNullableFilter<"TeamMember"> | string | null
+  email?: Prisma.StringNullableFilter<"TeamMember"> | string | null
+  isFeatured?: Prisma.BoolFilter<"TeamMember"> | boolean
+  isPublished?: Prisma.BoolFilter<"TeamMember"> | boolean
+  displayOrder?: Prisma.IntFilter<"TeamMember"> | number
+  addedById?: Prisma.StringNullableFilter<"TeamMember"> | string | null
+  createdAt?: Prisma.DateTimeFilter<"TeamMember"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"TeamMember"> | Date | string
+}
+
+export type TeamMemberCreateManyAddedByInput = {
+  id?: string
+  name: string
+  designation: string
+  bio?: string | null
+  profileImg?: string | null
+  linkedin?: string | null
+  github?: string | null
+  facebook?: string | null
+  email?: string | null
+  isFeatured?: boolean
+  isPublished?: boolean
+  displayOrder?: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type TeamMemberUpdateWithoutAddedByInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  designation?: Prisma.StringFieldUpdateOperationsInput | string
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profileImg?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  github?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  displayOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type TeamMemberUncheckedUpdateWithoutAddedByInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  designation?: Prisma.StringFieldUpdateOperationsInput | string
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profileImg?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  github?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  displayOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type TeamMemberUncheckedUpdateManyWithoutAddedByInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  designation?: Prisma.StringFieldUpdateOperationsInput | string
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profileImg?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  github?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  displayOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -570,8 +795,10 @@ export type TeamMemberSelect<ExtArgs extends runtime.Types.Extensions.InternalAr
   isFeatured?: boolean
   isPublished?: boolean
   displayOrder?: boolean
+  addedById?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  addedBy?: boolean | Prisma.TeamMember$addedByArgs<ExtArgs>
 }, ExtArgs["result"]["teamMember"]>
 
 export type TeamMemberSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -587,8 +814,10 @@ export type TeamMemberSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ex
   isFeatured?: boolean
   isPublished?: boolean
   displayOrder?: boolean
+  addedById?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  addedBy?: boolean | Prisma.TeamMember$addedByArgs<ExtArgs>
 }, ExtArgs["result"]["teamMember"]>
 
 export type TeamMemberSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -604,8 +833,10 @@ export type TeamMemberSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ex
   isFeatured?: boolean
   isPublished?: boolean
   displayOrder?: boolean
+  addedById?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  addedBy?: boolean | Prisma.TeamMember$addedByArgs<ExtArgs>
 }, ExtArgs["result"]["teamMember"]>
 
 export type TeamMemberSelectScalar = {
@@ -621,15 +852,27 @@ export type TeamMemberSelectScalar = {
   isFeatured?: boolean
   isPublished?: boolean
   displayOrder?: boolean
+  addedById?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type TeamMemberOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "designation" | "bio" | "profileImg" | "linkedin" | "github" | "facebook" | "email" | "isFeatured" | "isPublished" | "displayOrder" | "createdAt" | "updatedAt", ExtArgs["result"]["teamMember"]>
+export type TeamMemberOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "designation" | "bio" | "profileImg" | "linkedin" | "github" | "facebook" | "email" | "isFeatured" | "isPublished" | "displayOrder" | "addedById" | "createdAt" | "updatedAt", ExtArgs["result"]["teamMember"]>
+export type TeamMemberInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  addedBy?: boolean | Prisma.TeamMember$addedByArgs<ExtArgs>
+}
+export type TeamMemberIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  addedBy?: boolean | Prisma.TeamMember$addedByArgs<ExtArgs>
+}
+export type TeamMemberIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  addedBy?: boolean | Prisma.TeamMember$addedByArgs<ExtArgs>
+}
 
 export type $TeamMemberPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "TeamMember"
-  objects: {}
+  objects: {
+    addedBy: Prisma.$UserPayload<ExtArgs> | null
+  }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     name: string
@@ -643,6 +886,7 @@ export type $TeamMemberPayload<ExtArgs extends runtime.Types.Extensions.Internal
     isFeatured: boolean
     isPublished: boolean
     displayOrder: number
+    addedById: string | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["teamMember"]>
@@ -1039,6 +1283,7 @@ readonly fields: TeamMemberFieldRefs;
  */
 export interface Prisma__TeamMemberClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  addedBy<T extends Prisma.TeamMember$addedByArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.TeamMember$addedByArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1080,6 +1325,7 @@ export interface TeamMemberFieldRefs {
   readonly isFeatured: Prisma.FieldRef<"TeamMember", 'Boolean'>
   readonly isPublished: Prisma.FieldRef<"TeamMember", 'Boolean'>
   readonly displayOrder: Prisma.FieldRef<"TeamMember", 'Int'>
+  readonly addedById: Prisma.FieldRef<"TeamMember", 'String'>
   readonly createdAt: Prisma.FieldRef<"TeamMember", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"TeamMember", 'DateTime'>
 }
@@ -1099,6 +1345,10 @@ export type TeamMemberFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.In
    */
   omit?: Prisma.TeamMemberOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TeamMemberInclude<ExtArgs> | null
+  /**
    * Filter, which TeamMember to fetch.
    */
   where: Prisma.TeamMemberWhereUniqueInput
@@ -1117,6 +1367,10 @@ export type TeamMemberFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extens
    */
   omit?: Prisma.TeamMemberOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TeamMemberInclude<ExtArgs> | null
+  /**
    * Filter, which TeamMember to fetch.
    */
   where: Prisma.TeamMemberWhereUniqueInput
@@ -1134,6 +1388,10 @@ export type TeamMemberFindFirstArgs<ExtArgs extends runtime.Types.Extensions.Int
    * Omit specific fields from the TeamMember
    */
   omit?: Prisma.TeamMemberOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TeamMemberInclude<ExtArgs> | null
   /**
    * Filter, which TeamMember to fetch.
    */
@@ -1183,6 +1441,10 @@ export type TeamMemberFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensi
    */
   omit?: Prisma.TeamMemberOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TeamMemberInclude<ExtArgs> | null
+  /**
    * Filter, which TeamMember to fetch.
    */
   where?: Prisma.TeamMemberWhereInput
@@ -1230,6 +1492,10 @@ export type TeamMemberFindManyArgs<ExtArgs extends runtime.Types.Extensions.Inte
    * Omit specific fields from the TeamMember
    */
   omit?: Prisma.TeamMemberOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TeamMemberInclude<ExtArgs> | null
   /**
    * Filter, which TeamMembers to fetch.
    */
@@ -1279,6 +1545,10 @@ export type TeamMemberCreateArgs<ExtArgs extends runtime.Types.Extensions.Intern
    */
   omit?: Prisma.TeamMemberOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TeamMemberInclude<ExtArgs> | null
+  /**
    * The data needed to create a TeamMember.
    */
   data: Prisma.XOR<Prisma.TeamMemberCreateInput, Prisma.TeamMemberUncheckedCreateInput>
@@ -1312,6 +1582,10 @@ export type TeamMemberCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Exte
    */
   data: Prisma.TeamMemberCreateManyInput | Prisma.TeamMemberCreateManyInput[]
   skipDuplicates?: boolean
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TeamMemberIncludeCreateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -1326,6 +1600,10 @@ export type TeamMemberUpdateArgs<ExtArgs extends runtime.Types.Extensions.Intern
    * Omit specific fields from the TeamMember
    */
   omit?: Prisma.TeamMemberOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TeamMemberInclude<ExtArgs> | null
   /**
    * The data needed to update a TeamMember.
    */
@@ -1378,6 +1656,10 @@ export type TeamMemberUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Exte
    * Limit how many TeamMembers to update.
    */
   limit?: number
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TeamMemberIncludeUpdateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -1392,6 +1674,10 @@ export type TeamMemberUpsertArgs<ExtArgs extends runtime.Types.Extensions.Intern
    * Omit specific fields from the TeamMember
    */
   omit?: Prisma.TeamMemberOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TeamMemberInclude<ExtArgs> | null
   /**
    * The filter to search for the TeamMember to update in case it exists.
    */
@@ -1419,6 +1705,10 @@ export type TeamMemberDeleteArgs<ExtArgs extends runtime.Types.Extensions.Intern
    */
   omit?: Prisma.TeamMemberOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TeamMemberInclude<ExtArgs> | null
+  /**
    * Filter which TeamMember to delete.
    */
   where: Prisma.TeamMemberWhereUniqueInput
@@ -1439,6 +1729,25 @@ export type TeamMemberDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.In
 }
 
 /**
+ * TeamMember.addedBy
+ */
+export type TeamMember$addedByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the User
+   */
+  select?: Prisma.UserSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the User
+   */
+  omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  where?: Prisma.UserWhereInput
+}
+
+/**
  * TeamMember without action
  */
 export type TeamMemberDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1450,4 +1759,8 @@ export type TeamMemberDefaultArgs<ExtArgs extends runtime.Types.Extensions.Inter
    * Omit specific fields from the TeamMember
    */
   omit?: Prisma.TeamMemberOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TeamMemberInclude<ExtArgs> | null
 }

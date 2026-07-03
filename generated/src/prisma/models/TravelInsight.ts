@@ -46,6 +46,7 @@ export type TravelInsightMinAggregateOutputType = {
   isFeatured: boolean | null
   isPublished: boolean | null
   categoryId: string | null
+  addedById: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -62,6 +63,7 @@ export type TravelInsightMaxAggregateOutputType = {
   isFeatured: boolean | null
   isPublished: boolean | null
   categoryId: string | null
+  addedById: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -82,6 +84,7 @@ export type TravelInsightCountAggregateOutputType = {
   isFeatured: number
   isPublished: number
   categoryId: number
+  addedById: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -108,6 +111,7 @@ export type TravelInsightMinAggregateInputType = {
   isFeatured?: true
   isPublished?: true
   categoryId?: true
+  addedById?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -124,6 +128,7 @@ export type TravelInsightMaxAggregateInputType = {
   isFeatured?: true
   isPublished?: true
   categoryId?: true
+  addedById?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -144,6 +149,7 @@ export type TravelInsightCountAggregateInputType = {
   isFeatured?: true
   isPublished?: true
   categoryId?: true
+  addedById?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -251,6 +257,7 @@ export type TravelInsightGroupByOutputType = {
   isFeatured: boolean
   isPublished: boolean
   categoryId: string | null
+  addedById: string | null
   createdAt: Date
   updatedAt: Date
   _count: TravelInsightCountAggregateOutputType | null
@@ -294,10 +301,12 @@ export type TravelInsightWhereInput = {
   isFeatured?: Prisma.BoolFilter<"TravelInsight"> | boolean
   isPublished?: Prisma.BoolFilter<"TravelInsight"> | boolean
   categoryId?: Prisma.StringNullableFilter<"TravelInsight"> | string | null
+  addedById?: Prisma.StringNullableFilter<"TravelInsight"> | string | null
   createdAt?: Prisma.DateTimeFilter<"TravelInsight"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"TravelInsight"> | Date | string
   category?: Prisma.XOR<Prisma.TravelInsightCategoryNullableScalarRelationFilter, Prisma.TravelInsightCategoryWhereInput> | null
   relatedServices?: Prisma.TravelServiceListRelationFilter
+  addedBy?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
 }
 
 export type TravelInsightOrderByWithRelationInput = {
@@ -316,10 +325,12 @@ export type TravelInsightOrderByWithRelationInput = {
   isFeatured?: Prisma.SortOrder
   isPublished?: Prisma.SortOrder
   categoryId?: Prisma.SortOrderInput | Prisma.SortOrder
+  addedById?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   category?: Prisma.TravelInsightCategoryOrderByWithRelationInput
   relatedServices?: Prisma.TravelServiceOrderByRelationAggregateInput
+  addedBy?: Prisma.UserOrderByWithRelationInput
 }
 
 export type TravelInsightWhereUniqueInput = Prisma.AtLeast<{
@@ -341,10 +352,12 @@ export type TravelInsightWhereUniqueInput = Prisma.AtLeast<{
   isFeatured?: Prisma.BoolFilter<"TravelInsight"> | boolean
   isPublished?: Prisma.BoolFilter<"TravelInsight"> | boolean
   categoryId?: Prisma.StringNullableFilter<"TravelInsight"> | string | null
+  addedById?: Prisma.StringNullableFilter<"TravelInsight"> | string | null
   createdAt?: Prisma.DateTimeFilter<"TravelInsight"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"TravelInsight"> | Date | string
   category?: Prisma.XOR<Prisma.TravelInsightCategoryNullableScalarRelationFilter, Prisma.TravelInsightCategoryWhereInput> | null
   relatedServices?: Prisma.TravelServiceListRelationFilter
+  addedBy?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
 }, "id" | "slug">
 
 export type TravelInsightOrderByWithAggregationInput = {
@@ -363,6 +376,7 @@ export type TravelInsightOrderByWithAggregationInput = {
   isFeatured?: Prisma.SortOrder
   isPublished?: Prisma.SortOrder
   categoryId?: Prisma.SortOrderInput | Prisma.SortOrder
+  addedById?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.TravelInsightCountOrderByAggregateInput
@@ -391,6 +405,7 @@ export type TravelInsightScalarWhereWithAggregatesInput = {
   isFeatured?: Prisma.BoolWithAggregatesFilter<"TravelInsight"> | boolean
   isPublished?: Prisma.BoolWithAggregatesFilter<"TravelInsight"> | boolean
   categoryId?: Prisma.StringNullableWithAggregatesFilter<"TravelInsight"> | string | null
+  addedById?: Prisma.StringNullableWithAggregatesFilter<"TravelInsight"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"TravelInsight"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"TravelInsight"> | Date | string
 }
@@ -414,6 +429,7 @@ export type TravelInsightCreateInput = {
   updatedAt?: Date | string
   category?: Prisma.TravelInsightCategoryCreateNestedOneWithoutTravelInsightsInput
   relatedServices?: Prisma.TravelServiceCreateNestedManyWithoutTravelInsightsInput
+  addedBy?: Prisma.UserCreateNestedOneWithoutAddedTravelInsightsInput
 }
 
 export type TravelInsightUncheckedCreateInput = {
@@ -432,6 +448,7 @@ export type TravelInsightUncheckedCreateInput = {
   isFeatured?: boolean
   isPublished?: boolean
   categoryId?: string | null
+  addedById?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   relatedServices?: Prisma.TravelServiceUncheckedCreateNestedManyWithoutTravelInsightsInput
@@ -456,6 +473,7 @@ export type TravelInsightUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   category?: Prisma.TravelInsightCategoryUpdateOneWithoutTravelInsightsNestedInput
   relatedServices?: Prisma.TravelServiceUpdateManyWithoutTravelInsightsNestedInput
+  addedBy?: Prisma.UserUpdateOneWithoutAddedTravelInsightsNestedInput
 }
 
 export type TravelInsightUncheckedUpdateInput = {
@@ -474,6 +492,7 @@ export type TravelInsightUncheckedUpdateInput = {
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   categoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  addedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   relatedServices?: Prisma.TravelServiceUncheckedUpdateManyWithoutTravelInsightsNestedInput
@@ -495,6 +514,7 @@ export type TravelInsightCreateManyInput = {
   isFeatured?: boolean
   isPublished?: boolean
   categoryId?: string | null
+  addedById?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -534,8 +554,19 @@ export type TravelInsightUncheckedUpdateManyInput = {
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   categoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  addedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type TravelInsightListRelationFilter = {
+  every?: Prisma.TravelInsightWhereInput
+  some?: Prisma.TravelInsightWhereInput
+  none?: Prisma.TravelInsightWhereInput
+}
+
+export type TravelInsightOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
 }
 
 export type StringNullableListFilter<$PrismaModel = never> = {
@@ -562,6 +593,7 @@ export type TravelInsightCountOrderByAggregateInput = {
   isFeatured?: Prisma.SortOrder
   isPublished?: Prisma.SortOrder
   categoryId?: Prisma.SortOrder
+  addedById?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -582,6 +614,7 @@ export type TravelInsightMaxOrderByAggregateInput = {
   isFeatured?: Prisma.SortOrder
   isPublished?: Prisma.SortOrder
   categoryId?: Prisma.SortOrder
+  addedById?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -598,6 +631,7 @@ export type TravelInsightMinOrderByAggregateInput = {
   isFeatured?: Prisma.SortOrder
   isPublished?: Prisma.SortOrder
   categoryId?: Prisma.SortOrder
+  addedById?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -606,14 +640,46 @@ export type TravelInsightSumOrderByAggregateInput = {
   timeReadMin?: Prisma.SortOrder
 }
 
-export type TravelInsightListRelationFilter = {
-  every?: Prisma.TravelInsightWhereInput
-  some?: Prisma.TravelInsightWhereInput
-  none?: Prisma.TravelInsightWhereInput
+export type TravelInsightCreateNestedManyWithoutAddedByInput = {
+  create?: Prisma.XOR<Prisma.TravelInsightCreateWithoutAddedByInput, Prisma.TravelInsightUncheckedCreateWithoutAddedByInput> | Prisma.TravelInsightCreateWithoutAddedByInput[] | Prisma.TravelInsightUncheckedCreateWithoutAddedByInput[]
+  connectOrCreate?: Prisma.TravelInsightCreateOrConnectWithoutAddedByInput | Prisma.TravelInsightCreateOrConnectWithoutAddedByInput[]
+  createMany?: Prisma.TravelInsightCreateManyAddedByInputEnvelope
+  connect?: Prisma.TravelInsightWhereUniqueInput | Prisma.TravelInsightWhereUniqueInput[]
 }
 
-export type TravelInsightOrderByRelationAggregateInput = {
-  _count?: Prisma.SortOrder
+export type TravelInsightUncheckedCreateNestedManyWithoutAddedByInput = {
+  create?: Prisma.XOR<Prisma.TravelInsightCreateWithoutAddedByInput, Prisma.TravelInsightUncheckedCreateWithoutAddedByInput> | Prisma.TravelInsightCreateWithoutAddedByInput[] | Prisma.TravelInsightUncheckedCreateWithoutAddedByInput[]
+  connectOrCreate?: Prisma.TravelInsightCreateOrConnectWithoutAddedByInput | Prisma.TravelInsightCreateOrConnectWithoutAddedByInput[]
+  createMany?: Prisma.TravelInsightCreateManyAddedByInputEnvelope
+  connect?: Prisma.TravelInsightWhereUniqueInput | Prisma.TravelInsightWhereUniqueInput[]
+}
+
+export type TravelInsightUpdateManyWithoutAddedByNestedInput = {
+  create?: Prisma.XOR<Prisma.TravelInsightCreateWithoutAddedByInput, Prisma.TravelInsightUncheckedCreateWithoutAddedByInput> | Prisma.TravelInsightCreateWithoutAddedByInput[] | Prisma.TravelInsightUncheckedCreateWithoutAddedByInput[]
+  connectOrCreate?: Prisma.TravelInsightCreateOrConnectWithoutAddedByInput | Prisma.TravelInsightCreateOrConnectWithoutAddedByInput[]
+  upsert?: Prisma.TravelInsightUpsertWithWhereUniqueWithoutAddedByInput | Prisma.TravelInsightUpsertWithWhereUniqueWithoutAddedByInput[]
+  createMany?: Prisma.TravelInsightCreateManyAddedByInputEnvelope
+  set?: Prisma.TravelInsightWhereUniqueInput | Prisma.TravelInsightWhereUniqueInput[]
+  disconnect?: Prisma.TravelInsightWhereUniqueInput | Prisma.TravelInsightWhereUniqueInput[]
+  delete?: Prisma.TravelInsightWhereUniqueInput | Prisma.TravelInsightWhereUniqueInput[]
+  connect?: Prisma.TravelInsightWhereUniqueInput | Prisma.TravelInsightWhereUniqueInput[]
+  update?: Prisma.TravelInsightUpdateWithWhereUniqueWithoutAddedByInput | Prisma.TravelInsightUpdateWithWhereUniqueWithoutAddedByInput[]
+  updateMany?: Prisma.TravelInsightUpdateManyWithWhereWithoutAddedByInput | Prisma.TravelInsightUpdateManyWithWhereWithoutAddedByInput[]
+  deleteMany?: Prisma.TravelInsightScalarWhereInput | Prisma.TravelInsightScalarWhereInput[]
+}
+
+export type TravelInsightUncheckedUpdateManyWithoutAddedByNestedInput = {
+  create?: Prisma.XOR<Prisma.TravelInsightCreateWithoutAddedByInput, Prisma.TravelInsightUncheckedCreateWithoutAddedByInput> | Prisma.TravelInsightCreateWithoutAddedByInput[] | Prisma.TravelInsightUncheckedCreateWithoutAddedByInput[]
+  connectOrCreate?: Prisma.TravelInsightCreateOrConnectWithoutAddedByInput | Prisma.TravelInsightCreateOrConnectWithoutAddedByInput[]
+  upsert?: Prisma.TravelInsightUpsertWithWhereUniqueWithoutAddedByInput | Prisma.TravelInsightUpsertWithWhereUniqueWithoutAddedByInput[]
+  createMany?: Prisma.TravelInsightCreateManyAddedByInputEnvelope
+  set?: Prisma.TravelInsightWhereUniqueInput | Prisma.TravelInsightWhereUniqueInput[]
+  disconnect?: Prisma.TravelInsightWhereUniqueInput | Prisma.TravelInsightWhereUniqueInput[]
+  delete?: Prisma.TravelInsightWhereUniqueInput | Prisma.TravelInsightWhereUniqueInput[]
+  connect?: Prisma.TravelInsightWhereUniqueInput | Prisma.TravelInsightWhereUniqueInput[]
+  update?: Prisma.TravelInsightUpdateWithWhereUniqueWithoutAddedByInput | Prisma.TravelInsightUpdateWithWhereUniqueWithoutAddedByInput[]
+  updateMany?: Prisma.TravelInsightUpdateManyWithWhereWithoutAddedByInput | Prisma.TravelInsightUpdateManyWithWhereWithoutAddedByInput[]
+  deleteMany?: Prisma.TravelInsightScalarWhereInput | Prisma.TravelInsightScalarWhereInput[]
 }
 
 export type TravelInsightCreateinsightsInput = {
@@ -723,6 +789,98 @@ export type TravelInsightUncheckedUpdateManyWithoutRelatedServicesNestedInput = 
   deleteMany?: Prisma.TravelInsightScalarWhereInput | Prisma.TravelInsightScalarWhereInput[]
 }
 
+export type TravelInsightCreateWithoutAddedByInput = {
+  id?: string
+  title: string
+  slug: string
+  description: string
+  timeReadMin: number
+  author: string
+  coverImgUrl: string
+  content: string
+  insights?: Prisma.TravelInsightCreateinsightsInput | string[]
+  takeAway?: Prisma.TravelInsightCreatetakeAwayInput | string[]
+  seo?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  tags?: Prisma.TravelInsightCreatetagsInput | string[]
+  isFeatured?: boolean
+  isPublished?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  category?: Prisma.TravelInsightCategoryCreateNestedOneWithoutTravelInsightsInput
+  relatedServices?: Prisma.TravelServiceCreateNestedManyWithoutTravelInsightsInput
+}
+
+export type TravelInsightUncheckedCreateWithoutAddedByInput = {
+  id?: string
+  title: string
+  slug: string
+  description: string
+  timeReadMin: number
+  author: string
+  coverImgUrl: string
+  content: string
+  insights?: Prisma.TravelInsightCreateinsightsInput | string[]
+  takeAway?: Prisma.TravelInsightCreatetakeAwayInput | string[]
+  seo?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  tags?: Prisma.TravelInsightCreatetagsInput | string[]
+  isFeatured?: boolean
+  isPublished?: boolean
+  categoryId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  relatedServices?: Prisma.TravelServiceUncheckedCreateNestedManyWithoutTravelInsightsInput
+}
+
+export type TravelInsightCreateOrConnectWithoutAddedByInput = {
+  where: Prisma.TravelInsightWhereUniqueInput
+  create: Prisma.XOR<Prisma.TravelInsightCreateWithoutAddedByInput, Prisma.TravelInsightUncheckedCreateWithoutAddedByInput>
+}
+
+export type TravelInsightCreateManyAddedByInputEnvelope = {
+  data: Prisma.TravelInsightCreateManyAddedByInput | Prisma.TravelInsightCreateManyAddedByInput[]
+  skipDuplicates?: boolean
+}
+
+export type TravelInsightUpsertWithWhereUniqueWithoutAddedByInput = {
+  where: Prisma.TravelInsightWhereUniqueInput
+  update: Prisma.XOR<Prisma.TravelInsightUpdateWithoutAddedByInput, Prisma.TravelInsightUncheckedUpdateWithoutAddedByInput>
+  create: Prisma.XOR<Prisma.TravelInsightCreateWithoutAddedByInput, Prisma.TravelInsightUncheckedCreateWithoutAddedByInput>
+}
+
+export type TravelInsightUpdateWithWhereUniqueWithoutAddedByInput = {
+  where: Prisma.TravelInsightWhereUniqueInput
+  data: Prisma.XOR<Prisma.TravelInsightUpdateWithoutAddedByInput, Prisma.TravelInsightUncheckedUpdateWithoutAddedByInput>
+}
+
+export type TravelInsightUpdateManyWithWhereWithoutAddedByInput = {
+  where: Prisma.TravelInsightScalarWhereInput
+  data: Prisma.XOR<Prisma.TravelInsightUpdateManyMutationInput, Prisma.TravelInsightUncheckedUpdateManyWithoutAddedByInput>
+}
+
+export type TravelInsightScalarWhereInput = {
+  AND?: Prisma.TravelInsightScalarWhereInput | Prisma.TravelInsightScalarWhereInput[]
+  OR?: Prisma.TravelInsightScalarWhereInput[]
+  NOT?: Prisma.TravelInsightScalarWhereInput | Prisma.TravelInsightScalarWhereInput[]
+  id?: Prisma.StringFilter<"TravelInsight"> | string
+  title?: Prisma.StringFilter<"TravelInsight"> | string
+  slug?: Prisma.StringFilter<"TravelInsight"> | string
+  description?: Prisma.StringFilter<"TravelInsight"> | string
+  timeReadMin?: Prisma.IntFilter<"TravelInsight"> | number
+  author?: Prisma.StringFilter<"TravelInsight"> | string
+  coverImgUrl?: Prisma.StringFilter<"TravelInsight"> | string
+  content?: Prisma.StringFilter<"TravelInsight"> | string
+  insights?: Prisma.StringNullableListFilter<"TravelInsight">
+  takeAway?: Prisma.StringNullableListFilter<"TravelInsight">
+  seo?: Prisma.JsonNullableFilter<"TravelInsight">
+  tags?: Prisma.StringNullableListFilter<"TravelInsight">
+  isFeatured?: Prisma.BoolFilter<"TravelInsight"> | boolean
+  isPublished?: Prisma.BoolFilter<"TravelInsight"> | boolean
+  categoryId?: Prisma.StringNullableFilter<"TravelInsight"> | string | null
+  addedById?: Prisma.StringNullableFilter<"TravelInsight"> | string | null
+  createdAt?: Prisma.DateTimeFilter<"TravelInsight"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"TravelInsight"> | Date | string
+}
+
 export type TravelInsightCreateWithoutCategoryInput = {
   id?: string
   title: string
@@ -741,6 +899,7 @@ export type TravelInsightCreateWithoutCategoryInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   relatedServices?: Prisma.TravelServiceCreateNestedManyWithoutTravelInsightsInput
+  addedBy?: Prisma.UserCreateNestedOneWithoutAddedTravelInsightsInput
 }
 
 export type TravelInsightUncheckedCreateWithoutCategoryInput = {
@@ -758,6 +917,7 @@ export type TravelInsightUncheckedCreateWithoutCategoryInput = {
   tags?: Prisma.TravelInsightCreatetagsInput | string[]
   isFeatured?: boolean
   isPublished?: boolean
+  addedById?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   relatedServices?: Prisma.TravelServiceUncheckedCreateNestedManyWithoutTravelInsightsInput
@@ -789,29 +949,6 @@ export type TravelInsightUpdateManyWithWhereWithoutCategoryInput = {
   data: Prisma.XOR<Prisma.TravelInsightUpdateManyMutationInput, Prisma.TravelInsightUncheckedUpdateManyWithoutCategoryInput>
 }
 
-export type TravelInsightScalarWhereInput = {
-  AND?: Prisma.TravelInsightScalarWhereInput | Prisma.TravelInsightScalarWhereInput[]
-  OR?: Prisma.TravelInsightScalarWhereInput[]
-  NOT?: Prisma.TravelInsightScalarWhereInput | Prisma.TravelInsightScalarWhereInput[]
-  id?: Prisma.StringFilter<"TravelInsight"> | string
-  title?: Prisma.StringFilter<"TravelInsight"> | string
-  slug?: Prisma.StringFilter<"TravelInsight"> | string
-  description?: Prisma.StringFilter<"TravelInsight"> | string
-  timeReadMin?: Prisma.IntFilter<"TravelInsight"> | number
-  author?: Prisma.StringFilter<"TravelInsight"> | string
-  coverImgUrl?: Prisma.StringFilter<"TravelInsight"> | string
-  content?: Prisma.StringFilter<"TravelInsight"> | string
-  insights?: Prisma.StringNullableListFilter<"TravelInsight">
-  takeAway?: Prisma.StringNullableListFilter<"TravelInsight">
-  seo?: Prisma.JsonNullableFilter<"TravelInsight">
-  tags?: Prisma.StringNullableListFilter<"TravelInsight">
-  isFeatured?: Prisma.BoolFilter<"TravelInsight"> | boolean
-  isPublished?: Prisma.BoolFilter<"TravelInsight"> | boolean
-  categoryId?: Prisma.StringNullableFilter<"TravelInsight"> | string | null
-  createdAt?: Prisma.DateTimeFilter<"TravelInsight"> | Date | string
-  updatedAt?: Prisma.DateTimeFilter<"TravelInsight"> | Date | string
-}
-
 export type TravelInsightCreateWithoutRelatedServicesInput = {
   id?: string
   title: string
@@ -830,6 +967,7 @@ export type TravelInsightCreateWithoutRelatedServicesInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   category?: Prisma.TravelInsightCategoryCreateNestedOneWithoutTravelInsightsInput
+  addedBy?: Prisma.UserCreateNestedOneWithoutAddedTravelInsightsInput
 }
 
 export type TravelInsightUncheckedCreateWithoutRelatedServicesInput = {
@@ -848,6 +986,7 @@ export type TravelInsightUncheckedCreateWithoutRelatedServicesInput = {
   isFeatured?: boolean
   isPublished?: boolean
   categoryId?: string | null
+  addedById?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -873,6 +1012,88 @@ export type TravelInsightUpdateManyWithWhereWithoutRelatedServicesInput = {
   data: Prisma.XOR<Prisma.TravelInsightUpdateManyMutationInput, Prisma.TravelInsightUncheckedUpdateManyWithoutRelatedServicesInput>
 }
 
+export type TravelInsightCreateManyAddedByInput = {
+  id?: string
+  title: string
+  slug: string
+  description: string
+  timeReadMin: number
+  author: string
+  coverImgUrl: string
+  content: string
+  insights?: Prisma.TravelInsightCreateinsightsInput | string[]
+  takeAway?: Prisma.TravelInsightCreatetakeAwayInput | string[]
+  seo?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  tags?: Prisma.TravelInsightCreatetagsInput | string[]
+  isFeatured?: boolean
+  isPublished?: boolean
+  categoryId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type TravelInsightUpdateWithoutAddedByInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  timeReadMin?: Prisma.IntFieldUpdateOperationsInput | number
+  author?: Prisma.StringFieldUpdateOperationsInput | string
+  coverImgUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  content?: Prisma.StringFieldUpdateOperationsInput | string
+  insights?: Prisma.TravelInsightUpdateinsightsInput | string[]
+  takeAway?: Prisma.TravelInsightUpdatetakeAwayInput | string[]
+  seo?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  tags?: Prisma.TravelInsightUpdatetagsInput | string[]
+  isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  category?: Prisma.TravelInsightCategoryUpdateOneWithoutTravelInsightsNestedInput
+  relatedServices?: Prisma.TravelServiceUpdateManyWithoutTravelInsightsNestedInput
+}
+
+export type TravelInsightUncheckedUpdateWithoutAddedByInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  timeReadMin?: Prisma.IntFieldUpdateOperationsInput | number
+  author?: Prisma.StringFieldUpdateOperationsInput | string
+  coverImgUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  content?: Prisma.StringFieldUpdateOperationsInput | string
+  insights?: Prisma.TravelInsightUpdateinsightsInput | string[]
+  takeAway?: Prisma.TravelInsightUpdatetakeAwayInput | string[]
+  seo?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  tags?: Prisma.TravelInsightUpdatetagsInput | string[]
+  isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  categoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  relatedServices?: Prisma.TravelServiceUncheckedUpdateManyWithoutTravelInsightsNestedInput
+}
+
+export type TravelInsightUncheckedUpdateManyWithoutAddedByInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  timeReadMin?: Prisma.IntFieldUpdateOperationsInput | number
+  author?: Prisma.StringFieldUpdateOperationsInput | string
+  coverImgUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  content?: Prisma.StringFieldUpdateOperationsInput | string
+  insights?: Prisma.TravelInsightUpdateinsightsInput | string[]
+  takeAway?: Prisma.TravelInsightUpdatetakeAwayInput | string[]
+  seo?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  tags?: Prisma.TravelInsightUpdatetagsInput | string[]
+  isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  categoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
 export type TravelInsightCreateManyCategoryInput = {
   id?: string
   title: string
@@ -888,6 +1109,7 @@ export type TravelInsightCreateManyCategoryInput = {
   tags?: Prisma.TravelInsightCreatetagsInput | string[]
   isFeatured?: boolean
   isPublished?: boolean
+  addedById?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -910,6 +1132,7 @@ export type TravelInsightUpdateWithoutCategoryInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   relatedServices?: Prisma.TravelServiceUpdateManyWithoutTravelInsightsNestedInput
+  addedBy?: Prisma.UserUpdateOneWithoutAddedTravelInsightsNestedInput
 }
 
 export type TravelInsightUncheckedUpdateWithoutCategoryInput = {
@@ -927,6 +1150,7 @@ export type TravelInsightUncheckedUpdateWithoutCategoryInput = {
   tags?: Prisma.TravelInsightUpdatetagsInput | string[]
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  addedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   relatedServices?: Prisma.TravelServiceUncheckedUpdateManyWithoutTravelInsightsNestedInput
@@ -947,6 +1171,7 @@ export type TravelInsightUncheckedUpdateManyWithoutCategoryInput = {
   tags?: Prisma.TravelInsightUpdatetagsInput | string[]
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  addedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -969,6 +1194,7 @@ export type TravelInsightUpdateWithoutRelatedServicesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   category?: Prisma.TravelInsightCategoryUpdateOneWithoutTravelInsightsNestedInput
+  addedBy?: Prisma.UserUpdateOneWithoutAddedTravelInsightsNestedInput
 }
 
 export type TravelInsightUncheckedUpdateWithoutRelatedServicesInput = {
@@ -987,6 +1213,7 @@ export type TravelInsightUncheckedUpdateWithoutRelatedServicesInput = {
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   categoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  addedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -1007,6 +1234,7 @@ export type TravelInsightUncheckedUpdateManyWithoutRelatedServicesInput = {
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   categoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  addedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -1058,10 +1286,12 @@ export type TravelInsightSelect<ExtArgs extends runtime.Types.Extensions.Interna
   isFeatured?: boolean
   isPublished?: boolean
   categoryId?: boolean
+  addedById?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   category?: boolean | Prisma.TravelInsight$categoryArgs<ExtArgs>
   relatedServices?: boolean | Prisma.TravelInsight$relatedServicesArgs<ExtArgs>
+  addedBy?: boolean | Prisma.TravelInsight$addedByArgs<ExtArgs>
   _count?: boolean | Prisma.TravelInsightCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["travelInsight"]>
 
@@ -1081,9 +1311,11 @@ export type TravelInsightSelectCreateManyAndReturn<ExtArgs extends runtime.Types
   isFeatured?: boolean
   isPublished?: boolean
   categoryId?: boolean
+  addedById?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   category?: boolean | Prisma.TravelInsight$categoryArgs<ExtArgs>
+  addedBy?: boolean | Prisma.TravelInsight$addedByArgs<ExtArgs>
 }, ExtArgs["result"]["travelInsight"]>
 
 export type TravelInsightSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1102,9 +1334,11 @@ export type TravelInsightSelectUpdateManyAndReturn<ExtArgs extends runtime.Types
   isFeatured?: boolean
   isPublished?: boolean
   categoryId?: boolean
+  addedById?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   category?: boolean | Prisma.TravelInsight$categoryArgs<ExtArgs>
+  addedBy?: boolean | Prisma.TravelInsight$addedByArgs<ExtArgs>
 }, ExtArgs["result"]["travelInsight"]>
 
 export type TravelInsightSelectScalar = {
@@ -1123,21 +1357,25 @@ export type TravelInsightSelectScalar = {
   isFeatured?: boolean
   isPublished?: boolean
   categoryId?: boolean
+  addedById?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type TravelInsightOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "slug" | "description" | "timeReadMin" | "author" | "coverImgUrl" | "content" | "insights" | "takeAway" | "seo" | "tags" | "isFeatured" | "isPublished" | "categoryId" | "createdAt" | "updatedAt", ExtArgs["result"]["travelInsight"]>
+export type TravelInsightOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "slug" | "description" | "timeReadMin" | "author" | "coverImgUrl" | "content" | "insights" | "takeAway" | "seo" | "tags" | "isFeatured" | "isPublished" | "categoryId" | "addedById" | "createdAt" | "updatedAt", ExtArgs["result"]["travelInsight"]>
 export type TravelInsightInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   category?: boolean | Prisma.TravelInsight$categoryArgs<ExtArgs>
   relatedServices?: boolean | Prisma.TravelInsight$relatedServicesArgs<ExtArgs>
+  addedBy?: boolean | Prisma.TravelInsight$addedByArgs<ExtArgs>
   _count?: boolean | Prisma.TravelInsightCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type TravelInsightIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   category?: boolean | Prisma.TravelInsight$categoryArgs<ExtArgs>
+  addedBy?: boolean | Prisma.TravelInsight$addedByArgs<ExtArgs>
 }
 export type TravelInsightIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   category?: boolean | Prisma.TravelInsight$categoryArgs<ExtArgs>
+  addedBy?: boolean | Prisma.TravelInsight$addedByArgs<ExtArgs>
 }
 
 export type $TravelInsightPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1145,6 +1383,7 @@ export type $TravelInsightPayload<ExtArgs extends runtime.Types.Extensions.Inter
   objects: {
     category: Prisma.$TravelInsightCategoryPayload<ExtArgs> | null
     relatedServices: Prisma.$TravelServicePayload<ExtArgs>[]
+    addedBy: Prisma.$UserPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1162,6 +1401,7 @@ export type $TravelInsightPayload<ExtArgs extends runtime.Types.Extensions.Inter
     isFeatured: boolean
     isPublished: boolean
     categoryId: string | null
+    addedById: string | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["travelInsight"]>
@@ -1560,6 +1800,7 @@ export interface Prisma__TravelInsightClient<T, Null = never, ExtArgs extends ru
   readonly [Symbol.toStringTag]: "PrismaPromise"
   category<T extends Prisma.TravelInsight$categoryArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.TravelInsight$categoryArgs<ExtArgs>>): Prisma.Prisma__TravelInsightCategoryClient<runtime.Types.Result.GetResult<Prisma.$TravelInsightCategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   relatedServices<T extends Prisma.TravelInsight$relatedServicesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.TravelInsight$relatedServicesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TravelServicePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  addedBy<T extends Prisma.TravelInsight$addedByArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.TravelInsight$addedByArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1604,6 +1845,7 @@ export interface TravelInsightFieldRefs {
   readonly isFeatured: Prisma.FieldRef<"TravelInsight", 'Boolean'>
   readonly isPublished: Prisma.FieldRef<"TravelInsight", 'Boolean'>
   readonly categoryId: Prisma.FieldRef<"TravelInsight", 'String'>
+  readonly addedById: Prisma.FieldRef<"TravelInsight", 'String'>
   readonly createdAt: Prisma.FieldRef<"TravelInsight", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"TravelInsight", 'DateTime'>
 }
@@ -2047,6 +2289,25 @@ export type TravelInsight$relatedServicesArgs<ExtArgs extends runtime.Types.Exte
   take?: number
   skip?: number
   distinct?: Prisma.TravelServiceScalarFieldEnum | Prisma.TravelServiceScalarFieldEnum[]
+}
+
+/**
+ * TravelInsight.addedBy
+ */
+export type TravelInsight$addedByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the User
+   */
+  select?: Prisma.UserSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the User
+   */
+  omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  where?: Prisma.UserWhereInput
 }
 
 /**

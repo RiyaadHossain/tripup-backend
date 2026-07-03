@@ -8,7 +8,7 @@ import { UpdateServiceCategoryDto } from '../dto/update-service-category.dto';
 export class ServiceCategoriesService {
   constructor(private readonly prisma: PrismaService) {}
 
-  async create(dto: CreateServiceCategoryDto) {
+  async create(dto: CreateServiceCategoryDto, userId: string) {
     return await this.prisma.serviceCategory.create({
       data: dto,
     });

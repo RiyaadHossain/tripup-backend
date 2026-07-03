@@ -10,11 +10,10 @@ import { UpdateTravelServiceDto } from '../dto/update-travel-service.dto';
 export class TravelServicesService {
   constructor(private readonly prisma: PrismaService) {}
 
-  async create(dto: CreateTravelServiceDto) {
+  async create(dto: CreateTravelServiceDto, userId: string) {
     const { serviceCategory, ...rest } = dto;
 
-    return await this.prisma.travelService.create({
-      data: {
+    return await this.prisma.travelService.create({ data: { addedBy: userId ? { connect: { id: userId } } : undefined,
         ...this.toCreateData(rest),
         serviceCategory: serviceCategory
           ? {

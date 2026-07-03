@@ -7,6 +7,7 @@ import {
   Patch,
   Post,
 } from '@nestjs/common';
+import { CurrentUser } from 'src/common/decorators/current-user.decorator';
 import { TravelInsightCategoriesService } from '../services/travel-insight-categories.service';
 import { CreateTravelInsightCategoryDto } from '../dto/create-travel-insight-category.dto';
 import { UpdateTravelInsightCategoryDto } from '../dto/update-travel-insight-category.dto';
@@ -16,8 +17,8 @@ export class AdminTravelInsightCategoriesController {
   constructor(private readonly service: TravelInsightCategoriesService) {}
 
   @Post()
-  async create(@Body() dto: CreateTravelInsightCategoryDto) {
-    return this.service.create(dto);
+  async create(@Body() dto: CreateTravelInsightCategoryDto, @CurrentUser('sub') userId: string) {
+    return this.service.create(dto, userId);
   }
 
   @Get()

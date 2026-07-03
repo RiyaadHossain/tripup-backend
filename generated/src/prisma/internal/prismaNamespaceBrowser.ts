@@ -106,6 +106,7 @@ export const RoleScalarFieldEnum = {
   id: 'id',
   name: 'name',
   description: 'description',
+  addedById: 'addedById',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -144,6 +145,7 @@ export const TeamMemberScalarFieldEnum = {
   isFeatured: 'isFeatured',
   isPublished: 'isPublished',
   displayOrder: 'displayOrder',
+  addedById: 'addedById',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -161,6 +163,7 @@ export const TestimonialScalarFieldEnum = {
   isFeatured: 'isFeatured',
   isPublished: 'isPublished',
   displayOrder: 'displayOrder',
+  addedById: 'addedById',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -184,6 +187,7 @@ export const TravelInsightScalarFieldEnum = {
   isFeatured: 'isFeatured',
   isPublished: 'isPublished',
   categoryId: 'categoryId',
+  addedById: 'addedById',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -194,6 +198,7 @@ export type TravelInsightScalarFieldEnum = (typeof TravelInsightScalarFieldEnum)
 export const TravelInsightCategoryScalarFieldEnum = {
   id: 'id',
   name: 'name',
+  addedById: 'addedById',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -223,6 +228,7 @@ export const TravelServiceScalarFieldEnum = {
   faq: 'faq',
   cta: 'cta',
   serviceCategoryId: 'serviceCategoryId',
+  addedById: 'addedById',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -233,6 +239,7 @@ export type TravelServiceScalarFieldEnum = (typeof TravelServiceScalarFieldEnum)
 export const ServiceCategoryScalarFieldEnum = {
   id: 'id',
   name: 'name',
+  addedById: 'addedById',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -262,6 +269,7 @@ export const CaseStudyScalarFieldEnum = {
   keyTakeaways: 'keyTakeaways',
   testimonial: 'testimonial',
   categoryId: 'categoryId',
+  addedById: 'addedById',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -272,6 +280,7 @@ export type CaseStudyScalarFieldEnum = (typeof CaseStudyScalarFieldEnum)[keyof t
 export const CaseStudyCategoryScalarFieldEnum = {
   id: 'id',
   name: 'name',
+  addedById: 'addedById',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -299,6 +308,7 @@ export const PlaybookScalarFieldEnum = {
   relatedServices: 'relatedServices',
   typeId: 'typeId',
   categoryId: 'categoryId',
+  addedById: 'addedById',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -309,6 +319,7 @@ export type PlaybookScalarFieldEnum = (typeof PlaybookScalarFieldEnum)[keyof typ
 export const PlaybookTypeScalarFieldEnum = {
   id: 'id',
   name: 'name',
+  addedById: 'addedById',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -319,6 +330,7 @@ export type PlaybookTypeScalarFieldEnum = (typeof PlaybookTypeScalarFieldEnum)[k
 export const PlaybookCategoryScalarFieldEnum = {
   id: 'id',
   name: 'name',
+  addedById: 'addedById',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const

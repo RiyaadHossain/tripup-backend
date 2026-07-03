@@ -10,11 +10,10 @@ import { QueryTeamMembersDto } from '../dto/query-team-members.dto';
 export class TeamMembersService {
   constructor(private readonly prisma: PrismaService) {}
 
-  async create(dto: CreateTeamMemberDto) {
+  async create(dto: CreateTeamMemberDto, userId: string) {
     const { profileImg, ...rest } = dto;
 
-    return this.prisma.teamMember.create({
-      data: {
+    return this.prisma.teamMember.create({ data: { addedBy: userId ? { connect: { id: userId } } : undefined,
         ...rest,
         profileImg,
       },

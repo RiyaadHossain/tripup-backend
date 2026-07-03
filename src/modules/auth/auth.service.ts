@@ -13,6 +13,7 @@ import { perm } from 'src/common/constants/permissions.constant';
 import { LoginDto } from './dto/login.dto';
 import { RegisterDto } from './dto/register.dto';
 import { UpdatePasswordDto } from './dto/update-password.dto';
+import { UpdateUserInfoDto } from './dto/update-user-info.dto';
 import { ForgotPasswordDto } from './dto/forgot-password.dto';
 import { ResetPasswordDto } from './dto/reset-password.dto';
 import { JwtPayload } from './interfaces/jwt-payload.interface';
@@ -122,6 +123,62 @@ export class AuthService {
   // Password Management
   // ---------------------------------------------------------------------------
 
+  async getMe(userId: string) {
+    const user = await this.prisma.user.findUnique({
+      where: { id: userId },
+      include: {
+        role: {
+          include: {
+            permissions: {
+              include: { permission: true },
+            },
+          },
+        },
+      },
+    });
+
+    if (!user) throw new NotFoundException('User not found');
+
+    return this.toUserInfo(user);
+  }
+
+  async updateMe(userId: string, dto: UpdateUserInfoDto) {
+    const currentUser = await this.prisma.user.findUnique({
+      where: { id: userId },
+    });
+
+    if (!currentUser) throw new NotFoundException('User not found');
+
+    if (dto.email) {
+      const existing = await this.prisma.user.findUnique({
+        where: { email: dto.email },
+      });
+
+      if (existing && existing.id !== userId) {
+        throw new ConflictException('A user with this email already exists');
+      }
+    }
+
+    const user = await this.prisma.user.update({
+      where: { id: userId },
+      data: {
+        name: dto.name,
+        email: dto.email,
+      },
+      include: {
+        role: {
+          include: {
+            permissions: {
+              include: { permission: true },
+            },
+          },
+        },
+      },
+    });
+
+    return this.toUserInfo(user);
+  }
+
   async updatePassword(userId: string, dto: UpdatePasswordDto) {
     const user = await this.prisma.user.findUnique({ where: { id: userId } });
     if (!user) throw new NotFoundException('User not found');
@@ -211,6 +268,44 @@ export class AuthService {
     return {
       role: user.role,
       permissions: user.permissions,
+    };
+  }
+
+  private toUserInfo(user: {
+    id: string;
+    name: string;
+    email: string;
+    needPasswordChange: boolean;
+    lastLoginAt: Date | null;
+    createdAt: Date;
+    updatedAt: Date;
+    role: {
+      id: string;
+      name: string;
+      permissions: {
+        permission: {
+          module: string;
+          action: string;
+        };
+      }[];
+    } | null;
+  }) {
+    const permissions = user.role
+      ? user.role.permissions.map(({ permission }) =>
+          perm(permission.module, permission.action),
+        )
+      : [];
+
+    return {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      role: user.role ? { id: user.role.id, name: user.role.name } : null,
+      permissions,
+      needPasswordChange: user.needPasswordChange,
+      lastLoginAt: user.lastLoginAt,
+      createdAt: user.createdAt,
+      updatedAt: user.updatedAt,
     };
   }
 }

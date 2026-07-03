@@ -8,6 +8,7 @@ import {
   Post,
   Query,
 } from '@nestjs/common';
+import { CurrentUser } from 'src/common/decorators/current-user.decorator';
 
 import { TravelInsightService } from '../services/travel-insight.service';
 
@@ -21,8 +22,8 @@ export class AdminTravelInsightController {
   constructor(private readonly service: TravelInsightService) {}
 
   @Post()
-  async create(@Body() dto: CreateTravelInsightDto) {
-    return this.service.create(dto);
+  async create(@Body() dto: CreateTravelInsightDto, @CurrentUser('sub') userId: string) {
+    return this.service.create(dto, userId);
   }
 
   @Get()

@@ -8,6 +8,7 @@ import {
   Post,
   Query,
 } from '@nestjs/common';
+import { CurrentUser } from 'src/common/decorators/current-user.decorator';
 
 import { TestimonialsService } from '../services/testimonials.service';
 
@@ -21,8 +22,8 @@ export class AdminTestimonialsController {
   constructor(private readonly service: TestimonialsService) {}
 
   @Post()
-  async create(@Body() dto: CreateTestimonialDto) {
-    return this.service.create(dto);
+  async create(@Body() dto: CreateTestimonialDto, @CurrentUser('sub') userId: string) {
+    return this.service.create(dto, userId);
   }
 
   @Get()

@@ -240,6 +240,18 @@ export type UserWhereInput = {
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   addedBy?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
   createdUsers?: Prisma.UserListRelationFilter
+  addedRoles?: Prisma.RoleListRelationFilter
+  addedTeamMembers?: Prisma.TeamMemberListRelationFilter
+  addedTestimonials?: Prisma.TestimonialListRelationFilter
+  addedTravelInsights?: Prisma.TravelInsightListRelationFilter
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryListRelationFilter
+  addedTravelServices?: Prisma.TravelServiceListRelationFilter
+  addedServiceCategories?: Prisma.ServiceCategoryListRelationFilter
+  addedCaseStudies?: Prisma.CaseStudyListRelationFilter
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryListRelationFilter
+  addedPlaybooks?: Prisma.PlaybookListRelationFilter
+  addedPlaybookTypes?: Prisma.PlaybookTypeListRelationFilter
+  addedPlaybookCategories?: Prisma.PlaybookCategoryListRelationFilter
   role?: Prisma.XOR<Prisma.RoleNullableScalarRelationFilter, Prisma.RoleWhereInput> | null
 }
 
@@ -258,6 +270,18 @@ export type UserOrderByWithRelationInput = {
   updatedAt?: Prisma.SortOrder
   addedBy?: Prisma.UserOrderByWithRelationInput
   createdUsers?: Prisma.UserOrderByRelationAggregateInput
+  addedRoles?: Prisma.RoleOrderByRelationAggregateInput
+  addedTeamMembers?: Prisma.TeamMemberOrderByRelationAggregateInput
+  addedTestimonials?: Prisma.TestimonialOrderByRelationAggregateInput
+  addedTravelInsights?: Prisma.TravelInsightOrderByRelationAggregateInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryOrderByRelationAggregateInput
+  addedTravelServices?: Prisma.TravelServiceOrderByRelationAggregateInput
+  addedServiceCategories?: Prisma.ServiceCategoryOrderByRelationAggregateInput
+  addedCaseStudies?: Prisma.CaseStudyOrderByRelationAggregateInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryOrderByRelationAggregateInput
+  addedPlaybooks?: Prisma.PlaybookOrderByRelationAggregateInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeOrderByRelationAggregateInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryOrderByRelationAggregateInput
   role?: Prisma.RoleOrderByWithRelationInput
 }
 
@@ -279,6 +303,18 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   addedBy?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
   createdUsers?: Prisma.UserListRelationFilter
+  addedRoles?: Prisma.RoleListRelationFilter
+  addedTeamMembers?: Prisma.TeamMemberListRelationFilter
+  addedTestimonials?: Prisma.TestimonialListRelationFilter
+  addedTravelInsights?: Prisma.TravelInsightListRelationFilter
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryListRelationFilter
+  addedTravelServices?: Prisma.TravelServiceListRelationFilter
+  addedServiceCategories?: Prisma.ServiceCategoryListRelationFilter
+  addedCaseStudies?: Prisma.CaseStudyListRelationFilter
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryListRelationFilter
+  addedPlaybooks?: Prisma.PlaybookListRelationFilter
+  addedPlaybookTypes?: Prisma.PlaybookTypeListRelationFilter
+  addedPlaybookCategories?: Prisma.PlaybookCategoryListRelationFilter
   role?: Prisma.XOR<Prisma.RoleNullableScalarRelationFilter, Prisma.RoleWhereInput> | null
 }, "id" | "email">
 
@@ -331,6 +367,18 @@ export type UserCreateInput = {
   updatedAt?: Date | string
   addedBy?: Prisma.UserCreateNestedOneWithoutCreatedUsersInput
   createdUsers?: Prisma.UserCreateNestedManyWithoutAddedByInput
+  addedRoles?: Prisma.RoleCreateNestedManyWithoutAddedByInput
+  addedTeamMembers?: Prisma.TeamMemberCreateNestedManyWithoutAddedByInput
+  addedTestimonials?: Prisma.TestimonialCreateNestedManyWithoutAddedByInput
+  addedTravelInsights?: Prisma.TravelInsightCreateNestedManyWithoutAddedByInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryCreateNestedManyWithoutAddedByInput
+  addedTravelServices?: Prisma.TravelServiceCreateNestedManyWithoutAddedByInput
+  addedServiceCategories?: Prisma.ServiceCategoryCreateNestedManyWithoutAddedByInput
+  addedCaseStudies?: Prisma.CaseStudyCreateNestedManyWithoutAddedByInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryCreateNestedManyWithoutAddedByInput
+  addedPlaybooks?: Prisma.PlaybookCreateNestedManyWithoutAddedByInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeCreateNestedManyWithoutAddedByInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryCreateNestedManyWithoutAddedByInput
   role?: Prisma.RoleCreateNestedOneWithoutUsersInput
 }
 
@@ -348,6 +396,18 @@ export type UserUncheckedCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutAddedByInput
+  addedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutAddedByInput
+  addedTeamMembers?: Prisma.TeamMemberUncheckedCreateNestedManyWithoutAddedByInput
+  addedTestimonials?: Prisma.TestimonialUncheckedCreateNestedManyWithoutAddedByInput
+  addedTravelInsights?: Prisma.TravelInsightUncheckedCreateNestedManyWithoutAddedByInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryUncheckedCreateNestedManyWithoutAddedByInput
+  addedTravelServices?: Prisma.TravelServiceUncheckedCreateNestedManyWithoutAddedByInput
+  addedServiceCategories?: Prisma.ServiceCategoryUncheckedCreateNestedManyWithoutAddedByInput
+  addedCaseStudies?: Prisma.CaseStudyUncheckedCreateNestedManyWithoutAddedByInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryUncheckedCreateNestedManyWithoutAddedByInput
+  addedPlaybooks?: Prisma.PlaybookUncheckedCreateNestedManyWithoutAddedByInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeUncheckedCreateNestedManyWithoutAddedByInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedCreateNestedManyWithoutAddedByInput
 }
 
 export type UserUpdateInput = {
@@ -363,6 +423,18 @@ export type UserUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   addedBy?: Prisma.UserUpdateOneWithoutCreatedUsersNestedInput
   createdUsers?: Prisma.UserUpdateManyWithoutAddedByNestedInput
+  addedRoles?: Prisma.RoleUpdateManyWithoutAddedByNestedInput
+  addedTeamMembers?: Prisma.TeamMemberUpdateManyWithoutAddedByNestedInput
+  addedTestimonials?: Prisma.TestimonialUpdateManyWithoutAddedByNestedInput
+  addedTravelInsights?: Prisma.TravelInsightUpdateManyWithoutAddedByNestedInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryUpdateManyWithoutAddedByNestedInput
+  addedTravelServices?: Prisma.TravelServiceUpdateManyWithoutAddedByNestedInput
+  addedServiceCategories?: Prisma.ServiceCategoryUpdateManyWithoutAddedByNestedInput
+  addedCaseStudies?: Prisma.CaseStudyUpdateManyWithoutAddedByNestedInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryUpdateManyWithoutAddedByNestedInput
+  addedPlaybooks?: Prisma.PlaybookUpdateManyWithoutAddedByNestedInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeUpdateManyWithoutAddedByNestedInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryUpdateManyWithoutAddedByNestedInput
   role?: Prisma.RoleUpdateOneWithoutUsersNestedInput
 }
 
@@ -380,6 +452,18 @@ export type UserUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdUsers?: Prisma.UserUncheckedUpdateManyWithoutAddedByNestedInput
+  addedRoles?: Prisma.RoleUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTeamMembers?: Prisma.TeamMemberUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTestimonials?: Prisma.TestimonialUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTravelInsights?: Prisma.TravelInsightUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTravelServices?: Prisma.TravelServiceUncheckedUpdateManyWithoutAddedByNestedInput
+  addedServiceCategories?: Prisma.ServiceCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+  addedCaseStudies?: Prisma.CaseStudyUncheckedUpdateManyWithoutAddedByNestedInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+  addedPlaybooks?: Prisma.PlaybookUncheckedUpdateManyWithoutAddedByNestedInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeUncheckedUpdateManyWithoutAddedByNestedInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedUpdateManyWithoutAddedByNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -570,6 +654,12 @@ export type UserCreateNestedManyWithoutRoleInput = {
   connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
 }
 
+export type UserCreateNestedOneWithoutAddedRolesInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAddedRolesInput, Prisma.UserUncheckedCreateWithoutAddedRolesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAddedRolesInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
 export type UserUncheckedCreateNestedManyWithoutRoleInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutRoleInput, Prisma.UserUncheckedCreateWithoutRoleInput> | Prisma.UserCreateWithoutRoleInput[] | Prisma.UserUncheckedCreateWithoutRoleInput[]
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutRoleInput | Prisma.UserCreateOrConnectWithoutRoleInput[]
@@ -591,6 +681,16 @@ export type UserUpdateManyWithoutRoleNestedInput = {
   deleteMany?: Prisma.UserScalarWhereInput | Prisma.UserScalarWhereInput[]
 }
 
+export type UserUpdateOneWithoutAddedRolesNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAddedRolesInput, Prisma.UserUncheckedCreateWithoutAddedRolesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAddedRolesInput
+  upsert?: Prisma.UserUpsertWithoutAddedRolesInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutAddedRolesInput, Prisma.UserUpdateWithoutAddedRolesInput>, Prisma.UserUncheckedUpdateWithoutAddedRolesInput>
+}
+
 export type UserUncheckedUpdateManyWithoutRoleNestedInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutRoleInput, Prisma.UserUncheckedCreateWithoutRoleInput> | Prisma.UserCreateWithoutRoleInput[] | Prisma.UserUncheckedCreateWithoutRoleInput[]
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutRoleInput | Prisma.UserCreateOrConnectWithoutRoleInput[]
@@ -605,6 +705,182 @@ export type UserUncheckedUpdateManyWithoutRoleNestedInput = {
   deleteMany?: Prisma.UserScalarWhereInput | Prisma.UserScalarWhereInput[]
 }
 
+export type UserCreateNestedOneWithoutAddedTeamMembersInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAddedTeamMembersInput, Prisma.UserUncheckedCreateWithoutAddedTeamMembersInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAddedTeamMembersInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneWithoutAddedTeamMembersNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAddedTeamMembersInput, Prisma.UserUncheckedCreateWithoutAddedTeamMembersInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAddedTeamMembersInput
+  upsert?: Prisma.UserUpsertWithoutAddedTeamMembersInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutAddedTeamMembersInput, Prisma.UserUpdateWithoutAddedTeamMembersInput>, Prisma.UserUncheckedUpdateWithoutAddedTeamMembersInput>
+}
+
+export type UserCreateNestedOneWithoutAddedTestimonialsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAddedTestimonialsInput, Prisma.UserUncheckedCreateWithoutAddedTestimonialsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAddedTestimonialsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneWithoutAddedTestimonialsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAddedTestimonialsInput, Prisma.UserUncheckedCreateWithoutAddedTestimonialsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAddedTestimonialsInput
+  upsert?: Prisma.UserUpsertWithoutAddedTestimonialsInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutAddedTestimonialsInput, Prisma.UserUpdateWithoutAddedTestimonialsInput>, Prisma.UserUncheckedUpdateWithoutAddedTestimonialsInput>
+}
+
+export type UserCreateNestedOneWithoutAddedTravelInsightsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAddedTravelInsightsInput, Prisma.UserUncheckedCreateWithoutAddedTravelInsightsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAddedTravelInsightsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneWithoutAddedTravelInsightsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAddedTravelInsightsInput, Prisma.UserUncheckedCreateWithoutAddedTravelInsightsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAddedTravelInsightsInput
+  upsert?: Prisma.UserUpsertWithoutAddedTravelInsightsInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutAddedTravelInsightsInput, Prisma.UserUpdateWithoutAddedTravelInsightsInput>, Prisma.UserUncheckedUpdateWithoutAddedTravelInsightsInput>
+}
+
+export type UserCreateNestedOneWithoutAddedTravelInsightCategoriesInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAddedTravelInsightCategoriesInput, Prisma.UserUncheckedCreateWithoutAddedTravelInsightCategoriesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAddedTravelInsightCategoriesInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneWithoutAddedTravelInsightCategoriesNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAddedTravelInsightCategoriesInput, Prisma.UserUncheckedCreateWithoutAddedTravelInsightCategoriesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAddedTravelInsightCategoriesInput
+  upsert?: Prisma.UserUpsertWithoutAddedTravelInsightCategoriesInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutAddedTravelInsightCategoriesInput, Prisma.UserUpdateWithoutAddedTravelInsightCategoriesInput>, Prisma.UserUncheckedUpdateWithoutAddedTravelInsightCategoriesInput>
+}
+
+export type UserCreateNestedOneWithoutAddedTravelServicesInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAddedTravelServicesInput, Prisma.UserUncheckedCreateWithoutAddedTravelServicesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAddedTravelServicesInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneWithoutAddedTravelServicesNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAddedTravelServicesInput, Prisma.UserUncheckedCreateWithoutAddedTravelServicesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAddedTravelServicesInput
+  upsert?: Prisma.UserUpsertWithoutAddedTravelServicesInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutAddedTravelServicesInput, Prisma.UserUpdateWithoutAddedTravelServicesInput>, Prisma.UserUncheckedUpdateWithoutAddedTravelServicesInput>
+}
+
+export type UserCreateNestedOneWithoutAddedServiceCategoriesInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAddedServiceCategoriesInput, Prisma.UserUncheckedCreateWithoutAddedServiceCategoriesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAddedServiceCategoriesInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneWithoutAddedServiceCategoriesNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAddedServiceCategoriesInput, Prisma.UserUncheckedCreateWithoutAddedServiceCategoriesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAddedServiceCategoriesInput
+  upsert?: Prisma.UserUpsertWithoutAddedServiceCategoriesInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutAddedServiceCategoriesInput, Prisma.UserUpdateWithoutAddedServiceCategoriesInput>, Prisma.UserUncheckedUpdateWithoutAddedServiceCategoriesInput>
+}
+
+export type UserCreateNestedOneWithoutAddedCaseStudiesInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAddedCaseStudiesInput, Prisma.UserUncheckedCreateWithoutAddedCaseStudiesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAddedCaseStudiesInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneWithoutAddedCaseStudiesNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAddedCaseStudiesInput, Prisma.UserUncheckedCreateWithoutAddedCaseStudiesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAddedCaseStudiesInput
+  upsert?: Prisma.UserUpsertWithoutAddedCaseStudiesInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutAddedCaseStudiesInput, Prisma.UserUpdateWithoutAddedCaseStudiesInput>, Prisma.UserUncheckedUpdateWithoutAddedCaseStudiesInput>
+}
+
+export type UserCreateNestedOneWithoutAddedCaseStudyCategoriesInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAddedCaseStudyCategoriesInput, Prisma.UserUncheckedCreateWithoutAddedCaseStudyCategoriesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAddedCaseStudyCategoriesInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneWithoutAddedCaseStudyCategoriesNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAddedCaseStudyCategoriesInput, Prisma.UserUncheckedCreateWithoutAddedCaseStudyCategoriesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAddedCaseStudyCategoriesInput
+  upsert?: Prisma.UserUpsertWithoutAddedCaseStudyCategoriesInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutAddedCaseStudyCategoriesInput, Prisma.UserUpdateWithoutAddedCaseStudyCategoriesInput>, Prisma.UserUncheckedUpdateWithoutAddedCaseStudyCategoriesInput>
+}
+
+export type UserCreateNestedOneWithoutAddedPlaybooksInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAddedPlaybooksInput, Prisma.UserUncheckedCreateWithoutAddedPlaybooksInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAddedPlaybooksInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneWithoutAddedPlaybooksNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAddedPlaybooksInput, Prisma.UserUncheckedCreateWithoutAddedPlaybooksInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAddedPlaybooksInput
+  upsert?: Prisma.UserUpsertWithoutAddedPlaybooksInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutAddedPlaybooksInput, Prisma.UserUpdateWithoutAddedPlaybooksInput>, Prisma.UserUncheckedUpdateWithoutAddedPlaybooksInput>
+}
+
+export type UserCreateNestedOneWithoutAddedPlaybookTypesInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAddedPlaybookTypesInput, Prisma.UserUncheckedCreateWithoutAddedPlaybookTypesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAddedPlaybookTypesInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneWithoutAddedPlaybookTypesNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAddedPlaybookTypesInput, Prisma.UserUncheckedCreateWithoutAddedPlaybookTypesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAddedPlaybookTypesInput
+  upsert?: Prisma.UserUpsertWithoutAddedPlaybookTypesInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutAddedPlaybookTypesInput, Prisma.UserUpdateWithoutAddedPlaybookTypesInput>, Prisma.UserUncheckedUpdateWithoutAddedPlaybookTypesInput>
+}
+
+export type UserCreateNestedOneWithoutAddedPlaybookCategoriesInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAddedPlaybookCategoriesInput, Prisma.UserUncheckedCreateWithoutAddedPlaybookCategoriesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAddedPlaybookCategoriesInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneWithoutAddedPlaybookCategoriesNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAddedPlaybookCategoriesInput, Prisma.UserUncheckedCreateWithoutAddedPlaybookCategoriesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAddedPlaybookCategoriesInput
+  upsert?: Prisma.UserUpsertWithoutAddedPlaybookCategoriesInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutAddedPlaybookCategoriesInput, Prisma.UserUpdateWithoutAddedPlaybookCategoriesInput>, Prisma.UserUncheckedUpdateWithoutAddedPlaybookCategoriesInput>
+}
+
 export type UserCreateWithoutCreatedUsersInput = {
   id?: string
   name: string
@@ -617,6 +893,18 @@ export type UserCreateWithoutCreatedUsersInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   addedBy?: Prisma.UserCreateNestedOneWithoutCreatedUsersInput
+  addedRoles?: Prisma.RoleCreateNestedManyWithoutAddedByInput
+  addedTeamMembers?: Prisma.TeamMemberCreateNestedManyWithoutAddedByInput
+  addedTestimonials?: Prisma.TestimonialCreateNestedManyWithoutAddedByInput
+  addedTravelInsights?: Prisma.TravelInsightCreateNestedManyWithoutAddedByInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryCreateNestedManyWithoutAddedByInput
+  addedTravelServices?: Prisma.TravelServiceCreateNestedManyWithoutAddedByInput
+  addedServiceCategories?: Prisma.ServiceCategoryCreateNestedManyWithoutAddedByInput
+  addedCaseStudies?: Prisma.CaseStudyCreateNestedManyWithoutAddedByInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryCreateNestedManyWithoutAddedByInput
+  addedPlaybooks?: Prisma.PlaybookCreateNestedManyWithoutAddedByInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeCreateNestedManyWithoutAddedByInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryCreateNestedManyWithoutAddedByInput
   role?: Prisma.RoleCreateNestedOneWithoutUsersInput
 }
 
@@ -633,6 +921,18 @@ export type UserUncheckedCreateWithoutCreatedUsersInput = {
   roleId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  addedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutAddedByInput
+  addedTeamMembers?: Prisma.TeamMemberUncheckedCreateNestedManyWithoutAddedByInput
+  addedTestimonials?: Prisma.TestimonialUncheckedCreateNestedManyWithoutAddedByInput
+  addedTravelInsights?: Prisma.TravelInsightUncheckedCreateNestedManyWithoutAddedByInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryUncheckedCreateNestedManyWithoutAddedByInput
+  addedTravelServices?: Prisma.TravelServiceUncheckedCreateNestedManyWithoutAddedByInput
+  addedServiceCategories?: Prisma.ServiceCategoryUncheckedCreateNestedManyWithoutAddedByInput
+  addedCaseStudies?: Prisma.CaseStudyUncheckedCreateNestedManyWithoutAddedByInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryUncheckedCreateNestedManyWithoutAddedByInput
+  addedPlaybooks?: Prisma.PlaybookUncheckedCreateNestedManyWithoutAddedByInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeUncheckedCreateNestedManyWithoutAddedByInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedCreateNestedManyWithoutAddedByInput
 }
 
 export type UserCreateOrConnectWithoutCreatedUsersInput = {
@@ -652,6 +952,18 @@ export type UserCreateWithoutAddedByInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   createdUsers?: Prisma.UserCreateNestedManyWithoutAddedByInput
+  addedRoles?: Prisma.RoleCreateNestedManyWithoutAddedByInput
+  addedTeamMembers?: Prisma.TeamMemberCreateNestedManyWithoutAddedByInput
+  addedTestimonials?: Prisma.TestimonialCreateNestedManyWithoutAddedByInput
+  addedTravelInsights?: Prisma.TravelInsightCreateNestedManyWithoutAddedByInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryCreateNestedManyWithoutAddedByInput
+  addedTravelServices?: Prisma.TravelServiceCreateNestedManyWithoutAddedByInput
+  addedServiceCategories?: Prisma.ServiceCategoryCreateNestedManyWithoutAddedByInput
+  addedCaseStudies?: Prisma.CaseStudyCreateNestedManyWithoutAddedByInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryCreateNestedManyWithoutAddedByInput
+  addedPlaybooks?: Prisma.PlaybookCreateNestedManyWithoutAddedByInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeCreateNestedManyWithoutAddedByInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryCreateNestedManyWithoutAddedByInput
   role?: Prisma.RoleCreateNestedOneWithoutUsersInput
 }
 
@@ -668,6 +980,18 @@ export type UserUncheckedCreateWithoutAddedByInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutAddedByInput
+  addedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutAddedByInput
+  addedTeamMembers?: Prisma.TeamMemberUncheckedCreateNestedManyWithoutAddedByInput
+  addedTestimonials?: Prisma.TestimonialUncheckedCreateNestedManyWithoutAddedByInput
+  addedTravelInsights?: Prisma.TravelInsightUncheckedCreateNestedManyWithoutAddedByInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryUncheckedCreateNestedManyWithoutAddedByInput
+  addedTravelServices?: Prisma.TravelServiceUncheckedCreateNestedManyWithoutAddedByInput
+  addedServiceCategories?: Prisma.ServiceCategoryUncheckedCreateNestedManyWithoutAddedByInput
+  addedCaseStudies?: Prisma.CaseStudyUncheckedCreateNestedManyWithoutAddedByInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryUncheckedCreateNestedManyWithoutAddedByInput
+  addedPlaybooks?: Prisma.PlaybookUncheckedCreateNestedManyWithoutAddedByInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeUncheckedCreateNestedManyWithoutAddedByInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedCreateNestedManyWithoutAddedByInput
 }
 
 export type UserCreateOrConnectWithoutAddedByInput = {
@@ -703,6 +1027,18 @@ export type UserUpdateWithoutCreatedUsersInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   addedBy?: Prisma.UserUpdateOneWithoutCreatedUsersNestedInput
+  addedRoles?: Prisma.RoleUpdateManyWithoutAddedByNestedInput
+  addedTeamMembers?: Prisma.TeamMemberUpdateManyWithoutAddedByNestedInput
+  addedTestimonials?: Prisma.TestimonialUpdateManyWithoutAddedByNestedInput
+  addedTravelInsights?: Prisma.TravelInsightUpdateManyWithoutAddedByNestedInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryUpdateManyWithoutAddedByNestedInput
+  addedTravelServices?: Prisma.TravelServiceUpdateManyWithoutAddedByNestedInput
+  addedServiceCategories?: Prisma.ServiceCategoryUpdateManyWithoutAddedByNestedInput
+  addedCaseStudies?: Prisma.CaseStudyUpdateManyWithoutAddedByNestedInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryUpdateManyWithoutAddedByNestedInput
+  addedPlaybooks?: Prisma.PlaybookUpdateManyWithoutAddedByNestedInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeUpdateManyWithoutAddedByNestedInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryUpdateManyWithoutAddedByNestedInput
   role?: Prisma.RoleUpdateOneWithoutUsersNestedInput
 }
 
@@ -719,6 +1055,18 @@ export type UserUncheckedUpdateWithoutCreatedUsersInput = {
   roleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  addedRoles?: Prisma.RoleUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTeamMembers?: Prisma.TeamMemberUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTestimonials?: Prisma.TestimonialUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTravelInsights?: Prisma.TravelInsightUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTravelServices?: Prisma.TravelServiceUncheckedUpdateManyWithoutAddedByNestedInput
+  addedServiceCategories?: Prisma.ServiceCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+  addedCaseStudies?: Prisma.CaseStudyUncheckedUpdateManyWithoutAddedByNestedInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+  addedPlaybooks?: Prisma.PlaybookUncheckedUpdateManyWithoutAddedByNestedInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeUncheckedUpdateManyWithoutAddedByNestedInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedUpdateManyWithoutAddedByNestedInput
 }
 
 export type UserUpsertWithWhereUniqueWithoutAddedByInput = {
@@ -768,6 +1116,18 @@ export type UserCreateWithoutRoleInput = {
   updatedAt?: Date | string
   addedBy?: Prisma.UserCreateNestedOneWithoutCreatedUsersInput
   createdUsers?: Prisma.UserCreateNestedManyWithoutAddedByInput
+  addedRoles?: Prisma.RoleCreateNestedManyWithoutAddedByInput
+  addedTeamMembers?: Prisma.TeamMemberCreateNestedManyWithoutAddedByInput
+  addedTestimonials?: Prisma.TestimonialCreateNestedManyWithoutAddedByInput
+  addedTravelInsights?: Prisma.TravelInsightCreateNestedManyWithoutAddedByInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryCreateNestedManyWithoutAddedByInput
+  addedTravelServices?: Prisma.TravelServiceCreateNestedManyWithoutAddedByInput
+  addedServiceCategories?: Prisma.ServiceCategoryCreateNestedManyWithoutAddedByInput
+  addedCaseStudies?: Prisma.CaseStudyCreateNestedManyWithoutAddedByInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryCreateNestedManyWithoutAddedByInput
+  addedPlaybooks?: Prisma.PlaybookCreateNestedManyWithoutAddedByInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeCreateNestedManyWithoutAddedByInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryCreateNestedManyWithoutAddedByInput
 }
 
 export type UserUncheckedCreateWithoutRoleInput = {
@@ -783,6 +1143,18 @@ export type UserUncheckedCreateWithoutRoleInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutAddedByInput
+  addedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutAddedByInput
+  addedTeamMembers?: Prisma.TeamMemberUncheckedCreateNestedManyWithoutAddedByInput
+  addedTestimonials?: Prisma.TestimonialUncheckedCreateNestedManyWithoutAddedByInput
+  addedTravelInsights?: Prisma.TravelInsightUncheckedCreateNestedManyWithoutAddedByInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryUncheckedCreateNestedManyWithoutAddedByInput
+  addedTravelServices?: Prisma.TravelServiceUncheckedCreateNestedManyWithoutAddedByInput
+  addedServiceCategories?: Prisma.ServiceCategoryUncheckedCreateNestedManyWithoutAddedByInput
+  addedCaseStudies?: Prisma.CaseStudyUncheckedCreateNestedManyWithoutAddedByInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryUncheckedCreateNestedManyWithoutAddedByInput
+  addedPlaybooks?: Prisma.PlaybookUncheckedCreateNestedManyWithoutAddedByInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeUncheckedCreateNestedManyWithoutAddedByInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedCreateNestedManyWithoutAddedByInput
 }
 
 export type UserCreateOrConnectWithoutRoleInput = {
@@ -793,6 +1165,65 @@ export type UserCreateOrConnectWithoutRoleInput = {
 export type UserCreateManyRoleInputEnvelope = {
   data: Prisma.UserCreateManyRoleInput | Prisma.UserCreateManyRoleInput[]
   skipDuplicates?: boolean
+}
+
+export type UserCreateWithoutAddedRolesInput = {
+  id?: string
+  name: string
+  email: string
+  passwordHash: string
+  needPasswordChange?: boolean
+  lastLoginAt?: Date | string | null
+  resetPasswordToken?: string | null
+  resetPasswordExpires?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  addedBy?: Prisma.UserCreateNestedOneWithoutCreatedUsersInput
+  createdUsers?: Prisma.UserCreateNestedManyWithoutAddedByInput
+  addedTeamMembers?: Prisma.TeamMemberCreateNestedManyWithoutAddedByInput
+  addedTestimonials?: Prisma.TestimonialCreateNestedManyWithoutAddedByInput
+  addedTravelInsights?: Prisma.TravelInsightCreateNestedManyWithoutAddedByInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryCreateNestedManyWithoutAddedByInput
+  addedTravelServices?: Prisma.TravelServiceCreateNestedManyWithoutAddedByInput
+  addedServiceCategories?: Prisma.ServiceCategoryCreateNestedManyWithoutAddedByInput
+  addedCaseStudies?: Prisma.CaseStudyCreateNestedManyWithoutAddedByInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryCreateNestedManyWithoutAddedByInput
+  addedPlaybooks?: Prisma.PlaybookCreateNestedManyWithoutAddedByInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeCreateNestedManyWithoutAddedByInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryCreateNestedManyWithoutAddedByInput
+  role?: Prisma.RoleCreateNestedOneWithoutUsersInput
+}
+
+export type UserUncheckedCreateWithoutAddedRolesInput = {
+  id?: string
+  name: string
+  email: string
+  passwordHash: string
+  needPasswordChange?: boolean
+  lastLoginAt?: Date | string | null
+  addedById?: string | null
+  resetPasswordToken?: string | null
+  resetPasswordExpires?: Date | string | null
+  roleId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutAddedByInput
+  addedTeamMembers?: Prisma.TeamMemberUncheckedCreateNestedManyWithoutAddedByInput
+  addedTestimonials?: Prisma.TestimonialUncheckedCreateNestedManyWithoutAddedByInput
+  addedTravelInsights?: Prisma.TravelInsightUncheckedCreateNestedManyWithoutAddedByInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryUncheckedCreateNestedManyWithoutAddedByInput
+  addedTravelServices?: Prisma.TravelServiceUncheckedCreateNestedManyWithoutAddedByInput
+  addedServiceCategories?: Prisma.ServiceCategoryUncheckedCreateNestedManyWithoutAddedByInput
+  addedCaseStudies?: Prisma.CaseStudyUncheckedCreateNestedManyWithoutAddedByInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryUncheckedCreateNestedManyWithoutAddedByInput
+  addedPlaybooks?: Prisma.PlaybookUncheckedCreateNestedManyWithoutAddedByInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeUncheckedCreateNestedManyWithoutAddedByInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedCreateNestedManyWithoutAddedByInput
+}
+
+export type UserCreateOrConnectWithoutAddedRolesInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutAddedRolesInput, Prisma.UserUncheckedCreateWithoutAddedRolesInput>
 }
 
 export type UserUpsertWithWhereUniqueWithoutRoleInput = {
@@ -809,6 +1240,1435 @@ export type UserUpdateWithWhereUniqueWithoutRoleInput = {
 export type UserUpdateManyWithWhereWithoutRoleInput = {
   where: Prisma.UserScalarWhereInput
   data: Prisma.XOR<Prisma.UserUpdateManyMutationInput, Prisma.UserUncheckedUpdateManyWithoutRoleInput>
+}
+
+export type UserUpsertWithoutAddedRolesInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutAddedRolesInput, Prisma.UserUncheckedUpdateWithoutAddedRolesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutAddedRolesInput, Prisma.UserUncheckedCreateWithoutAddedRolesInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutAddedRolesInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutAddedRolesInput, Prisma.UserUncheckedUpdateWithoutAddedRolesInput>
+}
+
+export type UserUpdateWithoutAddedRolesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  needPasswordChange?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetPasswordToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  addedBy?: Prisma.UserUpdateOneWithoutCreatedUsersNestedInput
+  createdUsers?: Prisma.UserUpdateManyWithoutAddedByNestedInput
+  addedTeamMembers?: Prisma.TeamMemberUpdateManyWithoutAddedByNestedInput
+  addedTestimonials?: Prisma.TestimonialUpdateManyWithoutAddedByNestedInput
+  addedTravelInsights?: Prisma.TravelInsightUpdateManyWithoutAddedByNestedInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryUpdateManyWithoutAddedByNestedInput
+  addedTravelServices?: Prisma.TravelServiceUpdateManyWithoutAddedByNestedInput
+  addedServiceCategories?: Prisma.ServiceCategoryUpdateManyWithoutAddedByNestedInput
+  addedCaseStudies?: Prisma.CaseStudyUpdateManyWithoutAddedByNestedInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryUpdateManyWithoutAddedByNestedInput
+  addedPlaybooks?: Prisma.PlaybookUpdateManyWithoutAddedByNestedInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeUpdateManyWithoutAddedByNestedInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryUpdateManyWithoutAddedByNestedInput
+  role?: Prisma.RoleUpdateOneWithoutUsersNestedInput
+}
+
+export type UserUncheckedUpdateWithoutAddedRolesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  needPasswordChange?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  addedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  roleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdUsers?: Prisma.UserUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTeamMembers?: Prisma.TeamMemberUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTestimonials?: Prisma.TestimonialUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTravelInsights?: Prisma.TravelInsightUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTravelServices?: Prisma.TravelServiceUncheckedUpdateManyWithoutAddedByNestedInput
+  addedServiceCategories?: Prisma.ServiceCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+  addedCaseStudies?: Prisma.CaseStudyUncheckedUpdateManyWithoutAddedByNestedInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+  addedPlaybooks?: Prisma.PlaybookUncheckedUpdateManyWithoutAddedByNestedInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeUncheckedUpdateManyWithoutAddedByNestedInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+}
+
+export type UserCreateWithoutAddedTeamMembersInput = {
+  id?: string
+  name: string
+  email: string
+  passwordHash: string
+  needPasswordChange?: boolean
+  lastLoginAt?: Date | string | null
+  resetPasswordToken?: string | null
+  resetPasswordExpires?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  addedBy?: Prisma.UserCreateNestedOneWithoutCreatedUsersInput
+  createdUsers?: Prisma.UserCreateNestedManyWithoutAddedByInput
+  addedRoles?: Prisma.RoleCreateNestedManyWithoutAddedByInput
+  addedTestimonials?: Prisma.TestimonialCreateNestedManyWithoutAddedByInput
+  addedTravelInsights?: Prisma.TravelInsightCreateNestedManyWithoutAddedByInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryCreateNestedManyWithoutAddedByInput
+  addedTravelServices?: Prisma.TravelServiceCreateNestedManyWithoutAddedByInput
+  addedServiceCategories?: Prisma.ServiceCategoryCreateNestedManyWithoutAddedByInput
+  addedCaseStudies?: Prisma.CaseStudyCreateNestedManyWithoutAddedByInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryCreateNestedManyWithoutAddedByInput
+  addedPlaybooks?: Prisma.PlaybookCreateNestedManyWithoutAddedByInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeCreateNestedManyWithoutAddedByInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryCreateNestedManyWithoutAddedByInput
+  role?: Prisma.RoleCreateNestedOneWithoutUsersInput
+}
+
+export type UserUncheckedCreateWithoutAddedTeamMembersInput = {
+  id?: string
+  name: string
+  email: string
+  passwordHash: string
+  needPasswordChange?: boolean
+  lastLoginAt?: Date | string | null
+  addedById?: string | null
+  resetPasswordToken?: string | null
+  resetPasswordExpires?: Date | string | null
+  roleId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutAddedByInput
+  addedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutAddedByInput
+  addedTestimonials?: Prisma.TestimonialUncheckedCreateNestedManyWithoutAddedByInput
+  addedTravelInsights?: Prisma.TravelInsightUncheckedCreateNestedManyWithoutAddedByInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryUncheckedCreateNestedManyWithoutAddedByInput
+  addedTravelServices?: Prisma.TravelServiceUncheckedCreateNestedManyWithoutAddedByInput
+  addedServiceCategories?: Prisma.ServiceCategoryUncheckedCreateNestedManyWithoutAddedByInput
+  addedCaseStudies?: Prisma.CaseStudyUncheckedCreateNestedManyWithoutAddedByInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryUncheckedCreateNestedManyWithoutAddedByInput
+  addedPlaybooks?: Prisma.PlaybookUncheckedCreateNestedManyWithoutAddedByInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeUncheckedCreateNestedManyWithoutAddedByInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedCreateNestedManyWithoutAddedByInput
+}
+
+export type UserCreateOrConnectWithoutAddedTeamMembersInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutAddedTeamMembersInput, Prisma.UserUncheckedCreateWithoutAddedTeamMembersInput>
+}
+
+export type UserUpsertWithoutAddedTeamMembersInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutAddedTeamMembersInput, Prisma.UserUncheckedUpdateWithoutAddedTeamMembersInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutAddedTeamMembersInput, Prisma.UserUncheckedCreateWithoutAddedTeamMembersInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutAddedTeamMembersInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutAddedTeamMembersInput, Prisma.UserUncheckedUpdateWithoutAddedTeamMembersInput>
+}
+
+export type UserUpdateWithoutAddedTeamMembersInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  needPasswordChange?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetPasswordToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  addedBy?: Prisma.UserUpdateOneWithoutCreatedUsersNestedInput
+  createdUsers?: Prisma.UserUpdateManyWithoutAddedByNestedInput
+  addedRoles?: Prisma.RoleUpdateManyWithoutAddedByNestedInput
+  addedTestimonials?: Prisma.TestimonialUpdateManyWithoutAddedByNestedInput
+  addedTravelInsights?: Prisma.TravelInsightUpdateManyWithoutAddedByNestedInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryUpdateManyWithoutAddedByNestedInput
+  addedTravelServices?: Prisma.TravelServiceUpdateManyWithoutAddedByNestedInput
+  addedServiceCategories?: Prisma.ServiceCategoryUpdateManyWithoutAddedByNestedInput
+  addedCaseStudies?: Prisma.CaseStudyUpdateManyWithoutAddedByNestedInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryUpdateManyWithoutAddedByNestedInput
+  addedPlaybooks?: Prisma.PlaybookUpdateManyWithoutAddedByNestedInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeUpdateManyWithoutAddedByNestedInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryUpdateManyWithoutAddedByNestedInput
+  role?: Prisma.RoleUpdateOneWithoutUsersNestedInput
+}
+
+export type UserUncheckedUpdateWithoutAddedTeamMembersInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  needPasswordChange?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  addedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  roleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdUsers?: Prisma.UserUncheckedUpdateManyWithoutAddedByNestedInput
+  addedRoles?: Prisma.RoleUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTestimonials?: Prisma.TestimonialUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTravelInsights?: Prisma.TravelInsightUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTravelServices?: Prisma.TravelServiceUncheckedUpdateManyWithoutAddedByNestedInput
+  addedServiceCategories?: Prisma.ServiceCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+  addedCaseStudies?: Prisma.CaseStudyUncheckedUpdateManyWithoutAddedByNestedInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+  addedPlaybooks?: Prisma.PlaybookUncheckedUpdateManyWithoutAddedByNestedInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeUncheckedUpdateManyWithoutAddedByNestedInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+}
+
+export type UserCreateWithoutAddedTestimonialsInput = {
+  id?: string
+  name: string
+  email: string
+  passwordHash: string
+  needPasswordChange?: boolean
+  lastLoginAt?: Date | string | null
+  resetPasswordToken?: string | null
+  resetPasswordExpires?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  addedBy?: Prisma.UserCreateNestedOneWithoutCreatedUsersInput
+  createdUsers?: Prisma.UserCreateNestedManyWithoutAddedByInput
+  addedRoles?: Prisma.RoleCreateNestedManyWithoutAddedByInput
+  addedTeamMembers?: Prisma.TeamMemberCreateNestedManyWithoutAddedByInput
+  addedTravelInsights?: Prisma.TravelInsightCreateNestedManyWithoutAddedByInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryCreateNestedManyWithoutAddedByInput
+  addedTravelServices?: Prisma.TravelServiceCreateNestedManyWithoutAddedByInput
+  addedServiceCategories?: Prisma.ServiceCategoryCreateNestedManyWithoutAddedByInput
+  addedCaseStudies?: Prisma.CaseStudyCreateNestedManyWithoutAddedByInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryCreateNestedManyWithoutAddedByInput
+  addedPlaybooks?: Prisma.PlaybookCreateNestedManyWithoutAddedByInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeCreateNestedManyWithoutAddedByInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryCreateNestedManyWithoutAddedByInput
+  role?: Prisma.RoleCreateNestedOneWithoutUsersInput
+}
+
+export type UserUncheckedCreateWithoutAddedTestimonialsInput = {
+  id?: string
+  name: string
+  email: string
+  passwordHash: string
+  needPasswordChange?: boolean
+  lastLoginAt?: Date | string | null
+  addedById?: string | null
+  resetPasswordToken?: string | null
+  resetPasswordExpires?: Date | string | null
+  roleId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutAddedByInput
+  addedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutAddedByInput
+  addedTeamMembers?: Prisma.TeamMemberUncheckedCreateNestedManyWithoutAddedByInput
+  addedTravelInsights?: Prisma.TravelInsightUncheckedCreateNestedManyWithoutAddedByInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryUncheckedCreateNestedManyWithoutAddedByInput
+  addedTravelServices?: Prisma.TravelServiceUncheckedCreateNestedManyWithoutAddedByInput
+  addedServiceCategories?: Prisma.ServiceCategoryUncheckedCreateNestedManyWithoutAddedByInput
+  addedCaseStudies?: Prisma.CaseStudyUncheckedCreateNestedManyWithoutAddedByInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryUncheckedCreateNestedManyWithoutAddedByInput
+  addedPlaybooks?: Prisma.PlaybookUncheckedCreateNestedManyWithoutAddedByInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeUncheckedCreateNestedManyWithoutAddedByInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedCreateNestedManyWithoutAddedByInput
+}
+
+export type UserCreateOrConnectWithoutAddedTestimonialsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutAddedTestimonialsInput, Prisma.UserUncheckedCreateWithoutAddedTestimonialsInput>
+}
+
+export type UserUpsertWithoutAddedTestimonialsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutAddedTestimonialsInput, Prisma.UserUncheckedUpdateWithoutAddedTestimonialsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutAddedTestimonialsInput, Prisma.UserUncheckedCreateWithoutAddedTestimonialsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutAddedTestimonialsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutAddedTestimonialsInput, Prisma.UserUncheckedUpdateWithoutAddedTestimonialsInput>
+}
+
+export type UserUpdateWithoutAddedTestimonialsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  needPasswordChange?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetPasswordToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  addedBy?: Prisma.UserUpdateOneWithoutCreatedUsersNestedInput
+  createdUsers?: Prisma.UserUpdateManyWithoutAddedByNestedInput
+  addedRoles?: Prisma.RoleUpdateManyWithoutAddedByNestedInput
+  addedTeamMembers?: Prisma.TeamMemberUpdateManyWithoutAddedByNestedInput
+  addedTravelInsights?: Prisma.TravelInsightUpdateManyWithoutAddedByNestedInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryUpdateManyWithoutAddedByNestedInput
+  addedTravelServices?: Prisma.TravelServiceUpdateManyWithoutAddedByNestedInput
+  addedServiceCategories?: Prisma.ServiceCategoryUpdateManyWithoutAddedByNestedInput
+  addedCaseStudies?: Prisma.CaseStudyUpdateManyWithoutAddedByNestedInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryUpdateManyWithoutAddedByNestedInput
+  addedPlaybooks?: Prisma.PlaybookUpdateManyWithoutAddedByNestedInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeUpdateManyWithoutAddedByNestedInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryUpdateManyWithoutAddedByNestedInput
+  role?: Prisma.RoleUpdateOneWithoutUsersNestedInput
+}
+
+export type UserUncheckedUpdateWithoutAddedTestimonialsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  needPasswordChange?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  addedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  roleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdUsers?: Prisma.UserUncheckedUpdateManyWithoutAddedByNestedInput
+  addedRoles?: Prisma.RoleUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTeamMembers?: Prisma.TeamMemberUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTravelInsights?: Prisma.TravelInsightUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTravelServices?: Prisma.TravelServiceUncheckedUpdateManyWithoutAddedByNestedInput
+  addedServiceCategories?: Prisma.ServiceCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+  addedCaseStudies?: Prisma.CaseStudyUncheckedUpdateManyWithoutAddedByNestedInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+  addedPlaybooks?: Prisma.PlaybookUncheckedUpdateManyWithoutAddedByNestedInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeUncheckedUpdateManyWithoutAddedByNestedInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+}
+
+export type UserCreateWithoutAddedTravelInsightsInput = {
+  id?: string
+  name: string
+  email: string
+  passwordHash: string
+  needPasswordChange?: boolean
+  lastLoginAt?: Date | string | null
+  resetPasswordToken?: string | null
+  resetPasswordExpires?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  addedBy?: Prisma.UserCreateNestedOneWithoutCreatedUsersInput
+  createdUsers?: Prisma.UserCreateNestedManyWithoutAddedByInput
+  addedRoles?: Prisma.RoleCreateNestedManyWithoutAddedByInput
+  addedTeamMembers?: Prisma.TeamMemberCreateNestedManyWithoutAddedByInput
+  addedTestimonials?: Prisma.TestimonialCreateNestedManyWithoutAddedByInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryCreateNestedManyWithoutAddedByInput
+  addedTravelServices?: Prisma.TravelServiceCreateNestedManyWithoutAddedByInput
+  addedServiceCategories?: Prisma.ServiceCategoryCreateNestedManyWithoutAddedByInput
+  addedCaseStudies?: Prisma.CaseStudyCreateNestedManyWithoutAddedByInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryCreateNestedManyWithoutAddedByInput
+  addedPlaybooks?: Prisma.PlaybookCreateNestedManyWithoutAddedByInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeCreateNestedManyWithoutAddedByInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryCreateNestedManyWithoutAddedByInput
+  role?: Prisma.RoleCreateNestedOneWithoutUsersInput
+}
+
+export type UserUncheckedCreateWithoutAddedTravelInsightsInput = {
+  id?: string
+  name: string
+  email: string
+  passwordHash: string
+  needPasswordChange?: boolean
+  lastLoginAt?: Date | string | null
+  addedById?: string | null
+  resetPasswordToken?: string | null
+  resetPasswordExpires?: Date | string | null
+  roleId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutAddedByInput
+  addedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutAddedByInput
+  addedTeamMembers?: Prisma.TeamMemberUncheckedCreateNestedManyWithoutAddedByInput
+  addedTestimonials?: Prisma.TestimonialUncheckedCreateNestedManyWithoutAddedByInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryUncheckedCreateNestedManyWithoutAddedByInput
+  addedTravelServices?: Prisma.TravelServiceUncheckedCreateNestedManyWithoutAddedByInput
+  addedServiceCategories?: Prisma.ServiceCategoryUncheckedCreateNestedManyWithoutAddedByInput
+  addedCaseStudies?: Prisma.CaseStudyUncheckedCreateNestedManyWithoutAddedByInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryUncheckedCreateNestedManyWithoutAddedByInput
+  addedPlaybooks?: Prisma.PlaybookUncheckedCreateNestedManyWithoutAddedByInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeUncheckedCreateNestedManyWithoutAddedByInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedCreateNestedManyWithoutAddedByInput
+}
+
+export type UserCreateOrConnectWithoutAddedTravelInsightsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutAddedTravelInsightsInput, Prisma.UserUncheckedCreateWithoutAddedTravelInsightsInput>
+}
+
+export type UserUpsertWithoutAddedTravelInsightsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutAddedTravelInsightsInput, Prisma.UserUncheckedUpdateWithoutAddedTravelInsightsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutAddedTravelInsightsInput, Prisma.UserUncheckedCreateWithoutAddedTravelInsightsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutAddedTravelInsightsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutAddedTravelInsightsInput, Prisma.UserUncheckedUpdateWithoutAddedTravelInsightsInput>
+}
+
+export type UserUpdateWithoutAddedTravelInsightsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  needPasswordChange?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetPasswordToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  addedBy?: Prisma.UserUpdateOneWithoutCreatedUsersNestedInput
+  createdUsers?: Prisma.UserUpdateManyWithoutAddedByNestedInput
+  addedRoles?: Prisma.RoleUpdateManyWithoutAddedByNestedInput
+  addedTeamMembers?: Prisma.TeamMemberUpdateManyWithoutAddedByNestedInput
+  addedTestimonials?: Prisma.TestimonialUpdateManyWithoutAddedByNestedInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryUpdateManyWithoutAddedByNestedInput
+  addedTravelServices?: Prisma.TravelServiceUpdateManyWithoutAddedByNestedInput
+  addedServiceCategories?: Prisma.ServiceCategoryUpdateManyWithoutAddedByNestedInput
+  addedCaseStudies?: Prisma.CaseStudyUpdateManyWithoutAddedByNestedInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryUpdateManyWithoutAddedByNestedInput
+  addedPlaybooks?: Prisma.PlaybookUpdateManyWithoutAddedByNestedInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeUpdateManyWithoutAddedByNestedInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryUpdateManyWithoutAddedByNestedInput
+  role?: Prisma.RoleUpdateOneWithoutUsersNestedInput
+}
+
+export type UserUncheckedUpdateWithoutAddedTravelInsightsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  needPasswordChange?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  addedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  roleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdUsers?: Prisma.UserUncheckedUpdateManyWithoutAddedByNestedInput
+  addedRoles?: Prisma.RoleUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTeamMembers?: Prisma.TeamMemberUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTestimonials?: Prisma.TestimonialUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTravelServices?: Prisma.TravelServiceUncheckedUpdateManyWithoutAddedByNestedInput
+  addedServiceCategories?: Prisma.ServiceCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+  addedCaseStudies?: Prisma.CaseStudyUncheckedUpdateManyWithoutAddedByNestedInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+  addedPlaybooks?: Prisma.PlaybookUncheckedUpdateManyWithoutAddedByNestedInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeUncheckedUpdateManyWithoutAddedByNestedInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+}
+
+export type UserCreateWithoutAddedTravelInsightCategoriesInput = {
+  id?: string
+  name: string
+  email: string
+  passwordHash: string
+  needPasswordChange?: boolean
+  lastLoginAt?: Date | string | null
+  resetPasswordToken?: string | null
+  resetPasswordExpires?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  addedBy?: Prisma.UserCreateNestedOneWithoutCreatedUsersInput
+  createdUsers?: Prisma.UserCreateNestedManyWithoutAddedByInput
+  addedRoles?: Prisma.RoleCreateNestedManyWithoutAddedByInput
+  addedTeamMembers?: Prisma.TeamMemberCreateNestedManyWithoutAddedByInput
+  addedTestimonials?: Prisma.TestimonialCreateNestedManyWithoutAddedByInput
+  addedTravelInsights?: Prisma.TravelInsightCreateNestedManyWithoutAddedByInput
+  addedTravelServices?: Prisma.TravelServiceCreateNestedManyWithoutAddedByInput
+  addedServiceCategories?: Prisma.ServiceCategoryCreateNestedManyWithoutAddedByInput
+  addedCaseStudies?: Prisma.CaseStudyCreateNestedManyWithoutAddedByInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryCreateNestedManyWithoutAddedByInput
+  addedPlaybooks?: Prisma.PlaybookCreateNestedManyWithoutAddedByInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeCreateNestedManyWithoutAddedByInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryCreateNestedManyWithoutAddedByInput
+  role?: Prisma.RoleCreateNestedOneWithoutUsersInput
+}
+
+export type UserUncheckedCreateWithoutAddedTravelInsightCategoriesInput = {
+  id?: string
+  name: string
+  email: string
+  passwordHash: string
+  needPasswordChange?: boolean
+  lastLoginAt?: Date | string | null
+  addedById?: string | null
+  resetPasswordToken?: string | null
+  resetPasswordExpires?: Date | string | null
+  roleId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutAddedByInput
+  addedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutAddedByInput
+  addedTeamMembers?: Prisma.TeamMemberUncheckedCreateNestedManyWithoutAddedByInput
+  addedTestimonials?: Prisma.TestimonialUncheckedCreateNestedManyWithoutAddedByInput
+  addedTravelInsights?: Prisma.TravelInsightUncheckedCreateNestedManyWithoutAddedByInput
+  addedTravelServices?: Prisma.TravelServiceUncheckedCreateNestedManyWithoutAddedByInput
+  addedServiceCategories?: Prisma.ServiceCategoryUncheckedCreateNestedManyWithoutAddedByInput
+  addedCaseStudies?: Prisma.CaseStudyUncheckedCreateNestedManyWithoutAddedByInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryUncheckedCreateNestedManyWithoutAddedByInput
+  addedPlaybooks?: Prisma.PlaybookUncheckedCreateNestedManyWithoutAddedByInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeUncheckedCreateNestedManyWithoutAddedByInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedCreateNestedManyWithoutAddedByInput
+}
+
+export type UserCreateOrConnectWithoutAddedTravelInsightCategoriesInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutAddedTravelInsightCategoriesInput, Prisma.UserUncheckedCreateWithoutAddedTravelInsightCategoriesInput>
+}
+
+export type UserUpsertWithoutAddedTravelInsightCategoriesInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutAddedTravelInsightCategoriesInput, Prisma.UserUncheckedUpdateWithoutAddedTravelInsightCategoriesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutAddedTravelInsightCategoriesInput, Prisma.UserUncheckedCreateWithoutAddedTravelInsightCategoriesInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutAddedTravelInsightCategoriesInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutAddedTravelInsightCategoriesInput, Prisma.UserUncheckedUpdateWithoutAddedTravelInsightCategoriesInput>
+}
+
+export type UserUpdateWithoutAddedTravelInsightCategoriesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  needPasswordChange?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetPasswordToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  addedBy?: Prisma.UserUpdateOneWithoutCreatedUsersNestedInput
+  createdUsers?: Prisma.UserUpdateManyWithoutAddedByNestedInput
+  addedRoles?: Prisma.RoleUpdateManyWithoutAddedByNestedInput
+  addedTeamMembers?: Prisma.TeamMemberUpdateManyWithoutAddedByNestedInput
+  addedTestimonials?: Prisma.TestimonialUpdateManyWithoutAddedByNestedInput
+  addedTravelInsights?: Prisma.TravelInsightUpdateManyWithoutAddedByNestedInput
+  addedTravelServices?: Prisma.TravelServiceUpdateManyWithoutAddedByNestedInput
+  addedServiceCategories?: Prisma.ServiceCategoryUpdateManyWithoutAddedByNestedInput
+  addedCaseStudies?: Prisma.CaseStudyUpdateManyWithoutAddedByNestedInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryUpdateManyWithoutAddedByNestedInput
+  addedPlaybooks?: Prisma.PlaybookUpdateManyWithoutAddedByNestedInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeUpdateManyWithoutAddedByNestedInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryUpdateManyWithoutAddedByNestedInput
+  role?: Prisma.RoleUpdateOneWithoutUsersNestedInput
+}
+
+export type UserUncheckedUpdateWithoutAddedTravelInsightCategoriesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  needPasswordChange?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  addedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  roleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdUsers?: Prisma.UserUncheckedUpdateManyWithoutAddedByNestedInput
+  addedRoles?: Prisma.RoleUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTeamMembers?: Prisma.TeamMemberUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTestimonials?: Prisma.TestimonialUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTravelInsights?: Prisma.TravelInsightUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTravelServices?: Prisma.TravelServiceUncheckedUpdateManyWithoutAddedByNestedInput
+  addedServiceCategories?: Prisma.ServiceCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+  addedCaseStudies?: Prisma.CaseStudyUncheckedUpdateManyWithoutAddedByNestedInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+  addedPlaybooks?: Prisma.PlaybookUncheckedUpdateManyWithoutAddedByNestedInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeUncheckedUpdateManyWithoutAddedByNestedInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+}
+
+export type UserCreateWithoutAddedTravelServicesInput = {
+  id?: string
+  name: string
+  email: string
+  passwordHash: string
+  needPasswordChange?: boolean
+  lastLoginAt?: Date | string | null
+  resetPasswordToken?: string | null
+  resetPasswordExpires?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  addedBy?: Prisma.UserCreateNestedOneWithoutCreatedUsersInput
+  createdUsers?: Prisma.UserCreateNestedManyWithoutAddedByInput
+  addedRoles?: Prisma.RoleCreateNestedManyWithoutAddedByInput
+  addedTeamMembers?: Prisma.TeamMemberCreateNestedManyWithoutAddedByInput
+  addedTestimonials?: Prisma.TestimonialCreateNestedManyWithoutAddedByInput
+  addedTravelInsights?: Prisma.TravelInsightCreateNestedManyWithoutAddedByInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryCreateNestedManyWithoutAddedByInput
+  addedServiceCategories?: Prisma.ServiceCategoryCreateNestedManyWithoutAddedByInput
+  addedCaseStudies?: Prisma.CaseStudyCreateNestedManyWithoutAddedByInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryCreateNestedManyWithoutAddedByInput
+  addedPlaybooks?: Prisma.PlaybookCreateNestedManyWithoutAddedByInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeCreateNestedManyWithoutAddedByInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryCreateNestedManyWithoutAddedByInput
+  role?: Prisma.RoleCreateNestedOneWithoutUsersInput
+}
+
+export type UserUncheckedCreateWithoutAddedTravelServicesInput = {
+  id?: string
+  name: string
+  email: string
+  passwordHash: string
+  needPasswordChange?: boolean
+  lastLoginAt?: Date | string | null
+  addedById?: string | null
+  resetPasswordToken?: string | null
+  resetPasswordExpires?: Date | string | null
+  roleId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutAddedByInput
+  addedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutAddedByInput
+  addedTeamMembers?: Prisma.TeamMemberUncheckedCreateNestedManyWithoutAddedByInput
+  addedTestimonials?: Prisma.TestimonialUncheckedCreateNestedManyWithoutAddedByInput
+  addedTravelInsights?: Prisma.TravelInsightUncheckedCreateNestedManyWithoutAddedByInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryUncheckedCreateNestedManyWithoutAddedByInput
+  addedServiceCategories?: Prisma.ServiceCategoryUncheckedCreateNestedManyWithoutAddedByInput
+  addedCaseStudies?: Prisma.CaseStudyUncheckedCreateNestedManyWithoutAddedByInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryUncheckedCreateNestedManyWithoutAddedByInput
+  addedPlaybooks?: Prisma.PlaybookUncheckedCreateNestedManyWithoutAddedByInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeUncheckedCreateNestedManyWithoutAddedByInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedCreateNestedManyWithoutAddedByInput
+}
+
+export type UserCreateOrConnectWithoutAddedTravelServicesInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutAddedTravelServicesInput, Prisma.UserUncheckedCreateWithoutAddedTravelServicesInput>
+}
+
+export type UserUpsertWithoutAddedTravelServicesInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutAddedTravelServicesInput, Prisma.UserUncheckedUpdateWithoutAddedTravelServicesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutAddedTravelServicesInput, Prisma.UserUncheckedCreateWithoutAddedTravelServicesInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutAddedTravelServicesInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutAddedTravelServicesInput, Prisma.UserUncheckedUpdateWithoutAddedTravelServicesInput>
+}
+
+export type UserUpdateWithoutAddedTravelServicesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  needPasswordChange?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetPasswordToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  addedBy?: Prisma.UserUpdateOneWithoutCreatedUsersNestedInput
+  createdUsers?: Prisma.UserUpdateManyWithoutAddedByNestedInput
+  addedRoles?: Prisma.RoleUpdateManyWithoutAddedByNestedInput
+  addedTeamMembers?: Prisma.TeamMemberUpdateManyWithoutAddedByNestedInput
+  addedTestimonials?: Prisma.TestimonialUpdateManyWithoutAddedByNestedInput
+  addedTravelInsights?: Prisma.TravelInsightUpdateManyWithoutAddedByNestedInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryUpdateManyWithoutAddedByNestedInput
+  addedServiceCategories?: Prisma.ServiceCategoryUpdateManyWithoutAddedByNestedInput
+  addedCaseStudies?: Prisma.CaseStudyUpdateManyWithoutAddedByNestedInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryUpdateManyWithoutAddedByNestedInput
+  addedPlaybooks?: Prisma.PlaybookUpdateManyWithoutAddedByNestedInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeUpdateManyWithoutAddedByNestedInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryUpdateManyWithoutAddedByNestedInput
+  role?: Prisma.RoleUpdateOneWithoutUsersNestedInput
+}
+
+export type UserUncheckedUpdateWithoutAddedTravelServicesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  needPasswordChange?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  addedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  roleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdUsers?: Prisma.UserUncheckedUpdateManyWithoutAddedByNestedInput
+  addedRoles?: Prisma.RoleUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTeamMembers?: Prisma.TeamMemberUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTestimonials?: Prisma.TestimonialUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTravelInsights?: Prisma.TravelInsightUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+  addedServiceCategories?: Prisma.ServiceCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+  addedCaseStudies?: Prisma.CaseStudyUncheckedUpdateManyWithoutAddedByNestedInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+  addedPlaybooks?: Prisma.PlaybookUncheckedUpdateManyWithoutAddedByNestedInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeUncheckedUpdateManyWithoutAddedByNestedInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+}
+
+export type UserCreateWithoutAddedServiceCategoriesInput = {
+  id?: string
+  name: string
+  email: string
+  passwordHash: string
+  needPasswordChange?: boolean
+  lastLoginAt?: Date | string | null
+  resetPasswordToken?: string | null
+  resetPasswordExpires?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  addedBy?: Prisma.UserCreateNestedOneWithoutCreatedUsersInput
+  createdUsers?: Prisma.UserCreateNestedManyWithoutAddedByInput
+  addedRoles?: Prisma.RoleCreateNestedManyWithoutAddedByInput
+  addedTeamMembers?: Prisma.TeamMemberCreateNestedManyWithoutAddedByInput
+  addedTestimonials?: Prisma.TestimonialCreateNestedManyWithoutAddedByInput
+  addedTravelInsights?: Prisma.TravelInsightCreateNestedManyWithoutAddedByInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryCreateNestedManyWithoutAddedByInput
+  addedTravelServices?: Prisma.TravelServiceCreateNestedManyWithoutAddedByInput
+  addedCaseStudies?: Prisma.CaseStudyCreateNestedManyWithoutAddedByInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryCreateNestedManyWithoutAddedByInput
+  addedPlaybooks?: Prisma.PlaybookCreateNestedManyWithoutAddedByInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeCreateNestedManyWithoutAddedByInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryCreateNestedManyWithoutAddedByInput
+  role?: Prisma.RoleCreateNestedOneWithoutUsersInput
+}
+
+export type UserUncheckedCreateWithoutAddedServiceCategoriesInput = {
+  id?: string
+  name: string
+  email: string
+  passwordHash: string
+  needPasswordChange?: boolean
+  lastLoginAt?: Date | string | null
+  addedById?: string | null
+  resetPasswordToken?: string | null
+  resetPasswordExpires?: Date | string | null
+  roleId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutAddedByInput
+  addedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutAddedByInput
+  addedTeamMembers?: Prisma.TeamMemberUncheckedCreateNestedManyWithoutAddedByInput
+  addedTestimonials?: Prisma.TestimonialUncheckedCreateNestedManyWithoutAddedByInput
+  addedTravelInsights?: Prisma.TravelInsightUncheckedCreateNestedManyWithoutAddedByInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryUncheckedCreateNestedManyWithoutAddedByInput
+  addedTravelServices?: Prisma.TravelServiceUncheckedCreateNestedManyWithoutAddedByInput
+  addedCaseStudies?: Prisma.CaseStudyUncheckedCreateNestedManyWithoutAddedByInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryUncheckedCreateNestedManyWithoutAddedByInput
+  addedPlaybooks?: Prisma.PlaybookUncheckedCreateNestedManyWithoutAddedByInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeUncheckedCreateNestedManyWithoutAddedByInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedCreateNestedManyWithoutAddedByInput
+}
+
+export type UserCreateOrConnectWithoutAddedServiceCategoriesInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutAddedServiceCategoriesInput, Prisma.UserUncheckedCreateWithoutAddedServiceCategoriesInput>
+}
+
+export type UserUpsertWithoutAddedServiceCategoriesInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutAddedServiceCategoriesInput, Prisma.UserUncheckedUpdateWithoutAddedServiceCategoriesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutAddedServiceCategoriesInput, Prisma.UserUncheckedCreateWithoutAddedServiceCategoriesInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutAddedServiceCategoriesInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutAddedServiceCategoriesInput, Prisma.UserUncheckedUpdateWithoutAddedServiceCategoriesInput>
+}
+
+export type UserUpdateWithoutAddedServiceCategoriesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  needPasswordChange?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetPasswordToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  addedBy?: Prisma.UserUpdateOneWithoutCreatedUsersNestedInput
+  createdUsers?: Prisma.UserUpdateManyWithoutAddedByNestedInput
+  addedRoles?: Prisma.RoleUpdateManyWithoutAddedByNestedInput
+  addedTeamMembers?: Prisma.TeamMemberUpdateManyWithoutAddedByNestedInput
+  addedTestimonials?: Prisma.TestimonialUpdateManyWithoutAddedByNestedInput
+  addedTravelInsights?: Prisma.TravelInsightUpdateManyWithoutAddedByNestedInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryUpdateManyWithoutAddedByNestedInput
+  addedTravelServices?: Prisma.TravelServiceUpdateManyWithoutAddedByNestedInput
+  addedCaseStudies?: Prisma.CaseStudyUpdateManyWithoutAddedByNestedInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryUpdateManyWithoutAddedByNestedInput
+  addedPlaybooks?: Prisma.PlaybookUpdateManyWithoutAddedByNestedInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeUpdateManyWithoutAddedByNestedInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryUpdateManyWithoutAddedByNestedInput
+  role?: Prisma.RoleUpdateOneWithoutUsersNestedInput
+}
+
+export type UserUncheckedUpdateWithoutAddedServiceCategoriesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  needPasswordChange?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  addedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  roleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdUsers?: Prisma.UserUncheckedUpdateManyWithoutAddedByNestedInput
+  addedRoles?: Prisma.RoleUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTeamMembers?: Prisma.TeamMemberUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTestimonials?: Prisma.TestimonialUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTravelInsights?: Prisma.TravelInsightUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTravelServices?: Prisma.TravelServiceUncheckedUpdateManyWithoutAddedByNestedInput
+  addedCaseStudies?: Prisma.CaseStudyUncheckedUpdateManyWithoutAddedByNestedInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+  addedPlaybooks?: Prisma.PlaybookUncheckedUpdateManyWithoutAddedByNestedInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeUncheckedUpdateManyWithoutAddedByNestedInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+}
+
+export type UserCreateWithoutAddedCaseStudiesInput = {
+  id?: string
+  name: string
+  email: string
+  passwordHash: string
+  needPasswordChange?: boolean
+  lastLoginAt?: Date | string | null
+  resetPasswordToken?: string | null
+  resetPasswordExpires?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  addedBy?: Prisma.UserCreateNestedOneWithoutCreatedUsersInput
+  createdUsers?: Prisma.UserCreateNestedManyWithoutAddedByInput
+  addedRoles?: Prisma.RoleCreateNestedManyWithoutAddedByInput
+  addedTeamMembers?: Prisma.TeamMemberCreateNestedManyWithoutAddedByInput
+  addedTestimonials?: Prisma.TestimonialCreateNestedManyWithoutAddedByInput
+  addedTravelInsights?: Prisma.TravelInsightCreateNestedManyWithoutAddedByInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryCreateNestedManyWithoutAddedByInput
+  addedTravelServices?: Prisma.TravelServiceCreateNestedManyWithoutAddedByInput
+  addedServiceCategories?: Prisma.ServiceCategoryCreateNestedManyWithoutAddedByInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryCreateNestedManyWithoutAddedByInput
+  addedPlaybooks?: Prisma.PlaybookCreateNestedManyWithoutAddedByInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeCreateNestedManyWithoutAddedByInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryCreateNestedManyWithoutAddedByInput
+  role?: Prisma.RoleCreateNestedOneWithoutUsersInput
+}
+
+export type UserUncheckedCreateWithoutAddedCaseStudiesInput = {
+  id?: string
+  name: string
+  email: string
+  passwordHash: string
+  needPasswordChange?: boolean
+  lastLoginAt?: Date | string | null
+  addedById?: string | null
+  resetPasswordToken?: string | null
+  resetPasswordExpires?: Date | string | null
+  roleId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutAddedByInput
+  addedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutAddedByInput
+  addedTeamMembers?: Prisma.TeamMemberUncheckedCreateNestedManyWithoutAddedByInput
+  addedTestimonials?: Prisma.TestimonialUncheckedCreateNestedManyWithoutAddedByInput
+  addedTravelInsights?: Prisma.TravelInsightUncheckedCreateNestedManyWithoutAddedByInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryUncheckedCreateNestedManyWithoutAddedByInput
+  addedTravelServices?: Prisma.TravelServiceUncheckedCreateNestedManyWithoutAddedByInput
+  addedServiceCategories?: Prisma.ServiceCategoryUncheckedCreateNestedManyWithoutAddedByInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryUncheckedCreateNestedManyWithoutAddedByInput
+  addedPlaybooks?: Prisma.PlaybookUncheckedCreateNestedManyWithoutAddedByInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeUncheckedCreateNestedManyWithoutAddedByInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedCreateNestedManyWithoutAddedByInput
+}
+
+export type UserCreateOrConnectWithoutAddedCaseStudiesInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutAddedCaseStudiesInput, Prisma.UserUncheckedCreateWithoutAddedCaseStudiesInput>
+}
+
+export type UserUpsertWithoutAddedCaseStudiesInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutAddedCaseStudiesInput, Prisma.UserUncheckedUpdateWithoutAddedCaseStudiesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutAddedCaseStudiesInput, Prisma.UserUncheckedCreateWithoutAddedCaseStudiesInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutAddedCaseStudiesInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutAddedCaseStudiesInput, Prisma.UserUncheckedUpdateWithoutAddedCaseStudiesInput>
+}
+
+export type UserUpdateWithoutAddedCaseStudiesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  needPasswordChange?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetPasswordToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  addedBy?: Prisma.UserUpdateOneWithoutCreatedUsersNestedInput
+  createdUsers?: Prisma.UserUpdateManyWithoutAddedByNestedInput
+  addedRoles?: Prisma.RoleUpdateManyWithoutAddedByNestedInput
+  addedTeamMembers?: Prisma.TeamMemberUpdateManyWithoutAddedByNestedInput
+  addedTestimonials?: Prisma.TestimonialUpdateManyWithoutAddedByNestedInput
+  addedTravelInsights?: Prisma.TravelInsightUpdateManyWithoutAddedByNestedInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryUpdateManyWithoutAddedByNestedInput
+  addedTravelServices?: Prisma.TravelServiceUpdateManyWithoutAddedByNestedInput
+  addedServiceCategories?: Prisma.ServiceCategoryUpdateManyWithoutAddedByNestedInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryUpdateManyWithoutAddedByNestedInput
+  addedPlaybooks?: Prisma.PlaybookUpdateManyWithoutAddedByNestedInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeUpdateManyWithoutAddedByNestedInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryUpdateManyWithoutAddedByNestedInput
+  role?: Prisma.RoleUpdateOneWithoutUsersNestedInput
+}
+
+export type UserUncheckedUpdateWithoutAddedCaseStudiesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  needPasswordChange?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  addedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  roleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdUsers?: Prisma.UserUncheckedUpdateManyWithoutAddedByNestedInput
+  addedRoles?: Prisma.RoleUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTeamMembers?: Prisma.TeamMemberUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTestimonials?: Prisma.TestimonialUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTravelInsights?: Prisma.TravelInsightUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTravelServices?: Prisma.TravelServiceUncheckedUpdateManyWithoutAddedByNestedInput
+  addedServiceCategories?: Prisma.ServiceCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+  addedPlaybooks?: Prisma.PlaybookUncheckedUpdateManyWithoutAddedByNestedInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeUncheckedUpdateManyWithoutAddedByNestedInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+}
+
+export type UserCreateWithoutAddedCaseStudyCategoriesInput = {
+  id?: string
+  name: string
+  email: string
+  passwordHash: string
+  needPasswordChange?: boolean
+  lastLoginAt?: Date | string | null
+  resetPasswordToken?: string | null
+  resetPasswordExpires?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  addedBy?: Prisma.UserCreateNestedOneWithoutCreatedUsersInput
+  createdUsers?: Prisma.UserCreateNestedManyWithoutAddedByInput
+  addedRoles?: Prisma.RoleCreateNestedManyWithoutAddedByInput
+  addedTeamMembers?: Prisma.TeamMemberCreateNestedManyWithoutAddedByInput
+  addedTestimonials?: Prisma.TestimonialCreateNestedManyWithoutAddedByInput
+  addedTravelInsights?: Prisma.TravelInsightCreateNestedManyWithoutAddedByInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryCreateNestedManyWithoutAddedByInput
+  addedTravelServices?: Prisma.TravelServiceCreateNestedManyWithoutAddedByInput
+  addedServiceCategories?: Prisma.ServiceCategoryCreateNestedManyWithoutAddedByInput
+  addedCaseStudies?: Prisma.CaseStudyCreateNestedManyWithoutAddedByInput
+  addedPlaybooks?: Prisma.PlaybookCreateNestedManyWithoutAddedByInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeCreateNestedManyWithoutAddedByInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryCreateNestedManyWithoutAddedByInput
+  role?: Prisma.RoleCreateNestedOneWithoutUsersInput
+}
+
+export type UserUncheckedCreateWithoutAddedCaseStudyCategoriesInput = {
+  id?: string
+  name: string
+  email: string
+  passwordHash: string
+  needPasswordChange?: boolean
+  lastLoginAt?: Date | string | null
+  addedById?: string | null
+  resetPasswordToken?: string | null
+  resetPasswordExpires?: Date | string | null
+  roleId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutAddedByInput
+  addedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutAddedByInput
+  addedTeamMembers?: Prisma.TeamMemberUncheckedCreateNestedManyWithoutAddedByInput
+  addedTestimonials?: Prisma.TestimonialUncheckedCreateNestedManyWithoutAddedByInput
+  addedTravelInsights?: Prisma.TravelInsightUncheckedCreateNestedManyWithoutAddedByInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryUncheckedCreateNestedManyWithoutAddedByInput
+  addedTravelServices?: Prisma.TravelServiceUncheckedCreateNestedManyWithoutAddedByInput
+  addedServiceCategories?: Prisma.ServiceCategoryUncheckedCreateNestedManyWithoutAddedByInput
+  addedCaseStudies?: Prisma.CaseStudyUncheckedCreateNestedManyWithoutAddedByInput
+  addedPlaybooks?: Prisma.PlaybookUncheckedCreateNestedManyWithoutAddedByInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeUncheckedCreateNestedManyWithoutAddedByInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedCreateNestedManyWithoutAddedByInput
+}
+
+export type UserCreateOrConnectWithoutAddedCaseStudyCategoriesInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutAddedCaseStudyCategoriesInput, Prisma.UserUncheckedCreateWithoutAddedCaseStudyCategoriesInput>
+}
+
+export type UserUpsertWithoutAddedCaseStudyCategoriesInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutAddedCaseStudyCategoriesInput, Prisma.UserUncheckedUpdateWithoutAddedCaseStudyCategoriesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutAddedCaseStudyCategoriesInput, Prisma.UserUncheckedCreateWithoutAddedCaseStudyCategoriesInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutAddedCaseStudyCategoriesInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutAddedCaseStudyCategoriesInput, Prisma.UserUncheckedUpdateWithoutAddedCaseStudyCategoriesInput>
+}
+
+export type UserUpdateWithoutAddedCaseStudyCategoriesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  needPasswordChange?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetPasswordToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  addedBy?: Prisma.UserUpdateOneWithoutCreatedUsersNestedInput
+  createdUsers?: Prisma.UserUpdateManyWithoutAddedByNestedInput
+  addedRoles?: Prisma.RoleUpdateManyWithoutAddedByNestedInput
+  addedTeamMembers?: Prisma.TeamMemberUpdateManyWithoutAddedByNestedInput
+  addedTestimonials?: Prisma.TestimonialUpdateManyWithoutAddedByNestedInput
+  addedTravelInsights?: Prisma.TravelInsightUpdateManyWithoutAddedByNestedInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryUpdateManyWithoutAddedByNestedInput
+  addedTravelServices?: Prisma.TravelServiceUpdateManyWithoutAddedByNestedInput
+  addedServiceCategories?: Prisma.ServiceCategoryUpdateManyWithoutAddedByNestedInput
+  addedCaseStudies?: Prisma.CaseStudyUpdateManyWithoutAddedByNestedInput
+  addedPlaybooks?: Prisma.PlaybookUpdateManyWithoutAddedByNestedInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeUpdateManyWithoutAddedByNestedInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryUpdateManyWithoutAddedByNestedInput
+  role?: Prisma.RoleUpdateOneWithoutUsersNestedInput
+}
+
+export type UserUncheckedUpdateWithoutAddedCaseStudyCategoriesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  needPasswordChange?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  addedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  roleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdUsers?: Prisma.UserUncheckedUpdateManyWithoutAddedByNestedInput
+  addedRoles?: Prisma.RoleUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTeamMembers?: Prisma.TeamMemberUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTestimonials?: Prisma.TestimonialUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTravelInsights?: Prisma.TravelInsightUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTravelServices?: Prisma.TravelServiceUncheckedUpdateManyWithoutAddedByNestedInput
+  addedServiceCategories?: Prisma.ServiceCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+  addedCaseStudies?: Prisma.CaseStudyUncheckedUpdateManyWithoutAddedByNestedInput
+  addedPlaybooks?: Prisma.PlaybookUncheckedUpdateManyWithoutAddedByNestedInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeUncheckedUpdateManyWithoutAddedByNestedInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+}
+
+export type UserCreateWithoutAddedPlaybooksInput = {
+  id?: string
+  name: string
+  email: string
+  passwordHash: string
+  needPasswordChange?: boolean
+  lastLoginAt?: Date | string | null
+  resetPasswordToken?: string | null
+  resetPasswordExpires?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  addedBy?: Prisma.UserCreateNestedOneWithoutCreatedUsersInput
+  createdUsers?: Prisma.UserCreateNestedManyWithoutAddedByInput
+  addedRoles?: Prisma.RoleCreateNestedManyWithoutAddedByInput
+  addedTeamMembers?: Prisma.TeamMemberCreateNestedManyWithoutAddedByInput
+  addedTestimonials?: Prisma.TestimonialCreateNestedManyWithoutAddedByInput
+  addedTravelInsights?: Prisma.TravelInsightCreateNestedManyWithoutAddedByInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryCreateNestedManyWithoutAddedByInput
+  addedTravelServices?: Prisma.TravelServiceCreateNestedManyWithoutAddedByInput
+  addedServiceCategories?: Prisma.ServiceCategoryCreateNestedManyWithoutAddedByInput
+  addedCaseStudies?: Prisma.CaseStudyCreateNestedManyWithoutAddedByInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryCreateNestedManyWithoutAddedByInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeCreateNestedManyWithoutAddedByInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryCreateNestedManyWithoutAddedByInput
+  role?: Prisma.RoleCreateNestedOneWithoutUsersInput
+}
+
+export type UserUncheckedCreateWithoutAddedPlaybooksInput = {
+  id?: string
+  name: string
+  email: string
+  passwordHash: string
+  needPasswordChange?: boolean
+  lastLoginAt?: Date | string | null
+  addedById?: string | null
+  resetPasswordToken?: string | null
+  resetPasswordExpires?: Date | string | null
+  roleId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutAddedByInput
+  addedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutAddedByInput
+  addedTeamMembers?: Prisma.TeamMemberUncheckedCreateNestedManyWithoutAddedByInput
+  addedTestimonials?: Prisma.TestimonialUncheckedCreateNestedManyWithoutAddedByInput
+  addedTravelInsights?: Prisma.TravelInsightUncheckedCreateNestedManyWithoutAddedByInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryUncheckedCreateNestedManyWithoutAddedByInput
+  addedTravelServices?: Prisma.TravelServiceUncheckedCreateNestedManyWithoutAddedByInput
+  addedServiceCategories?: Prisma.ServiceCategoryUncheckedCreateNestedManyWithoutAddedByInput
+  addedCaseStudies?: Prisma.CaseStudyUncheckedCreateNestedManyWithoutAddedByInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryUncheckedCreateNestedManyWithoutAddedByInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeUncheckedCreateNestedManyWithoutAddedByInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedCreateNestedManyWithoutAddedByInput
+}
+
+export type UserCreateOrConnectWithoutAddedPlaybooksInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutAddedPlaybooksInput, Prisma.UserUncheckedCreateWithoutAddedPlaybooksInput>
+}
+
+export type UserUpsertWithoutAddedPlaybooksInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutAddedPlaybooksInput, Prisma.UserUncheckedUpdateWithoutAddedPlaybooksInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutAddedPlaybooksInput, Prisma.UserUncheckedCreateWithoutAddedPlaybooksInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutAddedPlaybooksInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutAddedPlaybooksInput, Prisma.UserUncheckedUpdateWithoutAddedPlaybooksInput>
+}
+
+export type UserUpdateWithoutAddedPlaybooksInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  needPasswordChange?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetPasswordToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  addedBy?: Prisma.UserUpdateOneWithoutCreatedUsersNestedInput
+  createdUsers?: Prisma.UserUpdateManyWithoutAddedByNestedInput
+  addedRoles?: Prisma.RoleUpdateManyWithoutAddedByNestedInput
+  addedTeamMembers?: Prisma.TeamMemberUpdateManyWithoutAddedByNestedInput
+  addedTestimonials?: Prisma.TestimonialUpdateManyWithoutAddedByNestedInput
+  addedTravelInsights?: Prisma.TravelInsightUpdateManyWithoutAddedByNestedInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryUpdateManyWithoutAddedByNestedInput
+  addedTravelServices?: Prisma.TravelServiceUpdateManyWithoutAddedByNestedInput
+  addedServiceCategories?: Prisma.ServiceCategoryUpdateManyWithoutAddedByNestedInput
+  addedCaseStudies?: Prisma.CaseStudyUpdateManyWithoutAddedByNestedInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryUpdateManyWithoutAddedByNestedInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeUpdateManyWithoutAddedByNestedInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryUpdateManyWithoutAddedByNestedInput
+  role?: Prisma.RoleUpdateOneWithoutUsersNestedInput
+}
+
+export type UserUncheckedUpdateWithoutAddedPlaybooksInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  needPasswordChange?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  addedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  roleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdUsers?: Prisma.UserUncheckedUpdateManyWithoutAddedByNestedInput
+  addedRoles?: Prisma.RoleUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTeamMembers?: Prisma.TeamMemberUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTestimonials?: Prisma.TestimonialUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTravelInsights?: Prisma.TravelInsightUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTravelServices?: Prisma.TravelServiceUncheckedUpdateManyWithoutAddedByNestedInput
+  addedServiceCategories?: Prisma.ServiceCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+  addedCaseStudies?: Prisma.CaseStudyUncheckedUpdateManyWithoutAddedByNestedInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeUncheckedUpdateManyWithoutAddedByNestedInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+}
+
+export type UserCreateWithoutAddedPlaybookTypesInput = {
+  id?: string
+  name: string
+  email: string
+  passwordHash: string
+  needPasswordChange?: boolean
+  lastLoginAt?: Date | string | null
+  resetPasswordToken?: string | null
+  resetPasswordExpires?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  addedBy?: Prisma.UserCreateNestedOneWithoutCreatedUsersInput
+  createdUsers?: Prisma.UserCreateNestedManyWithoutAddedByInput
+  addedRoles?: Prisma.RoleCreateNestedManyWithoutAddedByInput
+  addedTeamMembers?: Prisma.TeamMemberCreateNestedManyWithoutAddedByInput
+  addedTestimonials?: Prisma.TestimonialCreateNestedManyWithoutAddedByInput
+  addedTravelInsights?: Prisma.TravelInsightCreateNestedManyWithoutAddedByInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryCreateNestedManyWithoutAddedByInput
+  addedTravelServices?: Prisma.TravelServiceCreateNestedManyWithoutAddedByInput
+  addedServiceCategories?: Prisma.ServiceCategoryCreateNestedManyWithoutAddedByInput
+  addedCaseStudies?: Prisma.CaseStudyCreateNestedManyWithoutAddedByInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryCreateNestedManyWithoutAddedByInput
+  addedPlaybooks?: Prisma.PlaybookCreateNestedManyWithoutAddedByInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryCreateNestedManyWithoutAddedByInput
+  role?: Prisma.RoleCreateNestedOneWithoutUsersInput
+}
+
+export type UserUncheckedCreateWithoutAddedPlaybookTypesInput = {
+  id?: string
+  name: string
+  email: string
+  passwordHash: string
+  needPasswordChange?: boolean
+  lastLoginAt?: Date | string | null
+  addedById?: string | null
+  resetPasswordToken?: string | null
+  resetPasswordExpires?: Date | string | null
+  roleId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutAddedByInput
+  addedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutAddedByInput
+  addedTeamMembers?: Prisma.TeamMemberUncheckedCreateNestedManyWithoutAddedByInput
+  addedTestimonials?: Prisma.TestimonialUncheckedCreateNestedManyWithoutAddedByInput
+  addedTravelInsights?: Prisma.TravelInsightUncheckedCreateNestedManyWithoutAddedByInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryUncheckedCreateNestedManyWithoutAddedByInput
+  addedTravelServices?: Prisma.TravelServiceUncheckedCreateNestedManyWithoutAddedByInput
+  addedServiceCategories?: Prisma.ServiceCategoryUncheckedCreateNestedManyWithoutAddedByInput
+  addedCaseStudies?: Prisma.CaseStudyUncheckedCreateNestedManyWithoutAddedByInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryUncheckedCreateNestedManyWithoutAddedByInput
+  addedPlaybooks?: Prisma.PlaybookUncheckedCreateNestedManyWithoutAddedByInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedCreateNestedManyWithoutAddedByInput
+}
+
+export type UserCreateOrConnectWithoutAddedPlaybookTypesInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutAddedPlaybookTypesInput, Prisma.UserUncheckedCreateWithoutAddedPlaybookTypesInput>
+}
+
+export type UserUpsertWithoutAddedPlaybookTypesInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutAddedPlaybookTypesInput, Prisma.UserUncheckedUpdateWithoutAddedPlaybookTypesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutAddedPlaybookTypesInput, Prisma.UserUncheckedCreateWithoutAddedPlaybookTypesInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutAddedPlaybookTypesInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutAddedPlaybookTypesInput, Prisma.UserUncheckedUpdateWithoutAddedPlaybookTypesInput>
+}
+
+export type UserUpdateWithoutAddedPlaybookTypesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  needPasswordChange?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetPasswordToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  addedBy?: Prisma.UserUpdateOneWithoutCreatedUsersNestedInput
+  createdUsers?: Prisma.UserUpdateManyWithoutAddedByNestedInput
+  addedRoles?: Prisma.RoleUpdateManyWithoutAddedByNestedInput
+  addedTeamMembers?: Prisma.TeamMemberUpdateManyWithoutAddedByNestedInput
+  addedTestimonials?: Prisma.TestimonialUpdateManyWithoutAddedByNestedInput
+  addedTravelInsights?: Prisma.TravelInsightUpdateManyWithoutAddedByNestedInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryUpdateManyWithoutAddedByNestedInput
+  addedTravelServices?: Prisma.TravelServiceUpdateManyWithoutAddedByNestedInput
+  addedServiceCategories?: Prisma.ServiceCategoryUpdateManyWithoutAddedByNestedInput
+  addedCaseStudies?: Prisma.CaseStudyUpdateManyWithoutAddedByNestedInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryUpdateManyWithoutAddedByNestedInput
+  addedPlaybooks?: Prisma.PlaybookUpdateManyWithoutAddedByNestedInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryUpdateManyWithoutAddedByNestedInput
+  role?: Prisma.RoleUpdateOneWithoutUsersNestedInput
+}
+
+export type UserUncheckedUpdateWithoutAddedPlaybookTypesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  needPasswordChange?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  addedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  roleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdUsers?: Prisma.UserUncheckedUpdateManyWithoutAddedByNestedInput
+  addedRoles?: Prisma.RoleUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTeamMembers?: Prisma.TeamMemberUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTestimonials?: Prisma.TestimonialUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTravelInsights?: Prisma.TravelInsightUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTravelServices?: Prisma.TravelServiceUncheckedUpdateManyWithoutAddedByNestedInput
+  addedServiceCategories?: Prisma.ServiceCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+  addedCaseStudies?: Prisma.CaseStudyUncheckedUpdateManyWithoutAddedByNestedInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+  addedPlaybooks?: Prisma.PlaybookUncheckedUpdateManyWithoutAddedByNestedInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+}
+
+export type UserCreateWithoutAddedPlaybookCategoriesInput = {
+  id?: string
+  name: string
+  email: string
+  passwordHash: string
+  needPasswordChange?: boolean
+  lastLoginAt?: Date | string | null
+  resetPasswordToken?: string | null
+  resetPasswordExpires?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  addedBy?: Prisma.UserCreateNestedOneWithoutCreatedUsersInput
+  createdUsers?: Prisma.UserCreateNestedManyWithoutAddedByInput
+  addedRoles?: Prisma.RoleCreateNestedManyWithoutAddedByInput
+  addedTeamMembers?: Prisma.TeamMemberCreateNestedManyWithoutAddedByInput
+  addedTestimonials?: Prisma.TestimonialCreateNestedManyWithoutAddedByInput
+  addedTravelInsights?: Prisma.TravelInsightCreateNestedManyWithoutAddedByInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryCreateNestedManyWithoutAddedByInput
+  addedTravelServices?: Prisma.TravelServiceCreateNestedManyWithoutAddedByInput
+  addedServiceCategories?: Prisma.ServiceCategoryCreateNestedManyWithoutAddedByInput
+  addedCaseStudies?: Prisma.CaseStudyCreateNestedManyWithoutAddedByInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryCreateNestedManyWithoutAddedByInput
+  addedPlaybooks?: Prisma.PlaybookCreateNestedManyWithoutAddedByInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeCreateNestedManyWithoutAddedByInput
+  role?: Prisma.RoleCreateNestedOneWithoutUsersInput
+}
+
+export type UserUncheckedCreateWithoutAddedPlaybookCategoriesInput = {
+  id?: string
+  name: string
+  email: string
+  passwordHash: string
+  needPasswordChange?: boolean
+  lastLoginAt?: Date | string | null
+  addedById?: string | null
+  resetPasswordToken?: string | null
+  resetPasswordExpires?: Date | string | null
+  roleId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutAddedByInput
+  addedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutAddedByInput
+  addedTeamMembers?: Prisma.TeamMemberUncheckedCreateNestedManyWithoutAddedByInput
+  addedTestimonials?: Prisma.TestimonialUncheckedCreateNestedManyWithoutAddedByInput
+  addedTravelInsights?: Prisma.TravelInsightUncheckedCreateNestedManyWithoutAddedByInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryUncheckedCreateNestedManyWithoutAddedByInput
+  addedTravelServices?: Prisma.TravelServiceUncheckedCreateNestedManyWithoutAddedByInput
+  addedServiceCategories?: Prisma.ServiceCategoryUncheckedCreateNestedManyWithoutAddedByInput
+  addedCaseStudies?: Prisma.CaseStudyUncheckedCreateNestedManyWithoutAddedByInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryUncheckedCreateNestedManyWithoutAddedByInput
+  addedPlaybooks?: Prisma.PlaybookUncheckedCreateNestedManyWithoutAddedByInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeUncheckedCreateNestedManyWithoutAddedByInput
+}
+
+export type UserCreateOrConnectWithoutAddedPlaybookCategoriesInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutAddedPlaybookCategoriesInput, Prisma.UserUncheckedCreateWithoutAddedPlaybookCategoriesInput>
+}
+
+export type UserUpsertWithoutAddedPlaybookCategoriesInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutAddedPlaybookCategoriesInput, Prisma.UserUncheckedUpdateWithoutAddedPlaybookCategoriesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutAddedPlaybookCategoriesInput, Prisma.UserUncheckedCreateWithoutAddedPlaybookCategoriesInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutAddedPlaybookCategoriesInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutAddedPlaybookCategoriesInput, Prisma.UserUncheckedUpdateWithoutAddedPlaybookCategoriesInput>
+}
+
+export type UserUpdateWithoutAddedPlaybookCategoriesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  needPasswordChange?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetPasswordToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  addedBy?: Prisma.UserUpdateOneWithoutCreatedUsersNestedInput
+  createdUsers?: Prisma.UserUpdateManyWithoutAddedByNestedInput
+  addedRoles?: Prisma.RoleUpdateManyWithoutAddedByNestedInput
+  addedTeamMembers?: Prisma.TeamMemberUpdateManyWithoutAddedByNestedInput
+  addedTestimonials?: Prisma.TestimonialUpdateManyWithoutAddedByNestedInput
+  addedTravelInsights?: Prisma.TravelInsightUpdateManyWithoutAddedByNestedInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryUpdateManyWithoutAddedByNestedInput
+  addedTravelServices?: Prisma.TravelServiceUpdateManyWithoutAddedByNestedInput
+  addedServiceCategories?: Prisma.ServiceCategoryUpdateManyWithoutAddedByNestedInput
+  addedCaseStudies?: Prisma.CaseStudyUpdateManyWithoutAddedByNestedInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryUpdateManyWithoutAddedByNestedInput
+  addedPlaybooks?: Prisma.PlaybookUpdateManyWithoutAddedByNestedInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeUpdateManyWithoutAddedByNestedInput
+  role?: Prisma.RoleUpdateOneWithoutUsersNestedInput
+}
+
+export type UserUncheckedUpdateWithoutAddedPlaybookCategoriesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  needPasswordChange?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  addedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  roleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdUsers?: Prisma.UserUncheckedUpdateManyWithoutAddedByNestedInput
+  addedRoles?: Prisma.RoleUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTeamMembers?: Prisma.TeamMemberUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTestimonials?: Prisma.TestimonialUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTravelInsights?: Prisma.TravelInsightUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTravelServices?: Prisma.TravelServiceUncheckedUpdateManyWithoutAddedByNestedInput
+  addedServiceCategories?: Prisma.ServiceCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+  addedCaseStudies?: Prisma.CaseStudyUncheckedUpdateManyWithoutAddedByNestedInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+  addedPlaybooks?: Prisma.PlaybookUncheckedUpdateManyWithoutAddedByNestedInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeUncheckedUpdateManyWithoutAddedByNestedInput
 }
 
 export type UserCreateManyAddedByInput = {
@@ -837,6 +2697,18 @@ export type UserUpdateWithoutAddedByInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdUsers?: Prisma.UserUpdateManyWithoutAddedByNestedInput
+  addedRoles?: Prisma.RoleUpdateManyWithoutAddedByNestedInput
+  addedTeamMembers?: Prisma.TeamMemberUpdateManyWithoutAddedByNestedInput
+  addedTestimonials?: Prisma.TestimonialUpdateManyWithoutAddedByNestedInput
+  addedTravelInsights?: Prisma.TravelInsightUpdateManyWithoutAddedByNestedInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryUpdateManyWithoutAddedByNestedInput
+  addedTravelServices?: Prisma.TravelServiceUpdateManyWithoutAddedByNestedInput
+  addedServiceCategories?: Prisma.ServiceCategoryUpdateManyWithoutAddedByNestedInput
+  addedCaseStudies?: Prisma.CaseStudyUpdateManyWithoutAddedByNestedInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryUpdateManyWithoutAddedByNestedInput
+  addedPlaybooks?: Prisma.PlaybookUpdateManyWithoutAddedByNestedInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeUpdateManyWithoutAddedByNestedInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryUpdateManyWithoutAddedByNestedInput
   role?: Prisma.RoleUpdateOneWithoutUsersNestedInput
 }
 
@@ -853,6 +2725,18 @@ export type UserUncheckedUpdateWithoutAddedByInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdUsers?: Prisma.UserUncheckedUpdateManyWithoutAddedByNestedInput
+  addedRoles?: Prisma.RoleUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTeamMembers?: Prisma.TeamMemberUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTestimonials?: Prisma.TestimonialUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTravelInsights?: Prisma.TravelInsightUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTravelServices?: Prisma.TravelServiceUncheckedUpdateManyWithoutAddedByNestedInput
+  addedServiceCategories?: Prisma.ServiceCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+  addedCaseStudies?: Prisma.CaseStudyUncheckedUpdateManyWithoutAddedByNestedInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+  addedPlaybooks?: Prisma.PlaybookUncheckedUpdateManyWithoutAddedByNestedInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeUncheckedUpdateManyWithoutAddedByNestedInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedUpdateManyWithoutAddedByNestedInput
 }
 
 export type UserUncheckedUpdateManyWithoutAddedByInput = {
@@ -896,6 +2780,18 @@ export type UserUpdateWithoutRoleInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   addedBy?: Prisma.UserUpdateOneWithoutCreatedUsersNestedInput
   createdUsers?: Prisma.UserUpdateManyWithoutAddedByNestedInput
+  addedRoles?: Prisma.RoleUpdateManyWithoutAddedByNestedInput
+  addedTeamMembers?: Prisma.TeamMemberUpdateManyWithoutAddedByNestedInput
+  addedTestimonials?: Prisma.TestimonialUpdateManyWithoutAddedByNestedInput
+  addedTravelInsights?: Prisma.TravelInsightUpdateManyWithoutAddedByNestedInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryUpdateManyWithoutAddedByNestedInput
+  addedTravelServices?: Prisma.TravelServiceUpdateManyWithoutAddedByNestedInput
+  addedServiceCategories?: Prisma.ServiceCategoryUpdateManyWithoutAddedByNestedInput
+  addedCaseStudies?: Prisma.CaseStudyUpdateManyWithoutAddedByNestedInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryUpdateManyWithoutAddedByNestedInput
+  addedPlaybooks?: Prisma.PlaybookUpdateManyWithoutAddedByNestedInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeUpdateManyWithoutAddedByNestedInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryUpdateManyWithoutAddedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRoleInput = {
@@ -911,6 +2807,18 @@ export type UserUncheckedUpdateWithoutRoleInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdUsers?: Prisma.UserUncheckedUpdateManyWithoutAddedByNestedInput
+  addedRoles?: Prisma.RoleUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTeamMembers?: Prisma.TeamMemberUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTestimonials?: Prisma.TestimonialUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTravelInsights?: Prisma.TravelInsightUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTravelServices?: Prisma.TravelServiceUncheckedUpdateManyWithoutAddedByNestedInput
+  addedServiceCategories?: Prisma.ServiceCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+  addedCaseStudies?: Prisma.CaseStudyUncheckedUpdateManyWithoutAddedByNestedInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+  addedPlaybooks?: Prisma.PlaybookUncheckedUpdateManyWithoutAddedByNestedInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeUncheckedUpdateManyWithoutAddedByNestedInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedUpdateManyWithoutAddedByNestedInput
 }
 
 export type UserUncheckedUpdateManyWithoutRoleInput = {
@@ -934,10 +2842,34 @@ export type UserUncheckedUpdateManyWithoutRoleInput = {
 
 export type UserCountOutputType = {
   createdUsers: number
+  addedRoles: number
+  addedTeamMembers: number
+  addedTestimonials: number
+  addedTravelInsights: number
+  addedTravelInsightCategories: number
+  addedTravelServices: number
+  addedServiceCategories: number
+  addedCaseStudies: number
+  addedCaseStudyCategories: number
+  addedPlaybooks: number
+  addedPlaybookTypes: number
+  addedPlaybookCategories: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   createdUsers?: boolean | UserCountOutputTypeCountCreatedUsersArgs
+  addedRoles?: boolean | UserCountOutputTypeCountAddedRolesArgs
+  addedTeamMembers?: boolean | UserCountOutputTypeCountAddedTeamMembersArgs
+  addedTestimonials?: boolean | UserCountOutputTypeCountAddedTestimonialsArgs
+  addedTravelInsights?: boolean | UserCountOutputTypeCountAddedTravelInsightsArgs
+  addedTravelInsightCategories?: boolean | UserCountOutputTypeCountAddedTravelInsightCategoriesArgs
+  addedTravelServices?: boolean | UserCountOutputTypeCountAddedTravelServicesArgs
+  addedServiceCategories?: boolean | UserCountOutputTypeCountAddedServiceCategoriesArgs
+  addedCaseStudies?: boolean | UserCountOutputTypeCountAddedCaseStudiesArgs
+  addedCaseStudyCategories?: boolean | UserCountOutputTypeCountAddedCaseStudyCategoriesArgs
+  addedPlaybooks?: boolean | UserCountOutputTypeCountAddedPlaybooksArgs
+  addedPlaybookTypes?: boolean | UserCountOutputTypeCountAddedPlaybookTypesArgs
+  addedPlaybookCategories?: boolean | UserCountOutputTypeCountAddedPlaybookCategoriesArgs
 }
 
 /**
@@ -957,6 +2889,90 @@ export type UserCountOutputTypeCountCreatedUsersArgs<ExtArgs extends runtime.Typ
   where?: Prisma.UserWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountAddedRolesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.RoleWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountAddedTeamMembersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.TeamMemberWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountAddedTestimonialsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.TestimonialWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountAddedTravelInsightsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.TravelInsightWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountAddedTravelInsightCategoriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.TravelInsightCategoryWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountAddedTravelServicesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.TravelServiceWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountAddedServiceCategoriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ServiceCategoryWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountAddedCaseStudiesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CaseStudyWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountAddedCaseStudyCategoriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CaseStudyCategoryWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountAddedPlaybooksArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PlaybookWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountAddedPlaybookTypesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PlaybookTypeWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountAddedPlaybookCategoriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PlaybookCategoryWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -973,6 +2989,18 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   updatedAt?: boolean
   addedBy?: boolean | Prisma.User$addedByArgs<ExtArgs>
   createdUsers?: boolean | Prisma.User$createdUsersArgs<ExtArgs>
+  addedRoles?: boolean | Prisma.User$addedRolesArgs<ExtArgs>
+  addedTeamMembers?: boolean | Prisma.User$addedTeamMembersArgs<ExtArgs>
+  addedTestimonials?: boolean | Prisma.User$addedTestimonialsArgs<ExtArgs>
+  addedTravelInsights?: boolean | Prisma.User$addedTravelInsightsArgs<ExtArgs>
+  addedTravelInsightCategories?: boolean | Prisma.User$addedTravelInsightCategoriesArgs<ExtArgs>
+  addedTravelServices?: boolean | Prisma.User$addedTravelServicesArgs<ExtArgs>
+  addedServiceCategories?: boolean | Prisma.User$addedServiceCategoriesArgs<ExtArgs>
+  addedCaseStudies?: boolean | Prisma.User$addedCaseStudiesArgs<ExtArgs>
+  addedCaseStudyCategories?: boolean | Prisma.User$addedCaseStudyCategoriesArgs<ExtArgs>
+  addedPlaybooks?: boolean | Prisma.User$addedPlaybooksArgs<ExtArgs>
+  addedPlaybookTypes?: boolean | Prisma.User$addedPlaybookTypesArgs<ExtArgs>
+  addedPlaybookCategories?: boolean | Prisma.User$addedPlaybookCategoriesArgs<ExtArgs>
   role?: boolean | Prisma.User$roleArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
@@ -1030,6 +3058,18 @@ export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = run
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   addedBy?: boolean | Prisma.User$addedByArgs<ExtArgs>
   createdUsers?: boolean | Prisma.User$createdUsersArgs<ExtArgs>
+  addedRoles?: boolean | Prisma.User$addedRolesArgs<ExtArgs>
+  addedTeamMembers?: boolean | Prisma.User$addedTeamMembersArgs<ExtArgs>
+  addedTestimonials?: boolean | Prisma.User$addedTestimonialsArgs<ExtArgs>
+  addedTravelInsights?: boolean | Prisma.User$addedTravelInsightsArgs<ExtArgs>
+  addedTravelInsightCategories?: boolean | Prisma.User$addedTravelInsightCategoriesArgs<ExtArgs>
+  addedTravelServices?: boolean | Prisma.User$addedTravelServicesArgs<ExtArgs>
+  addedServiceCategories?: boolean | Prisma.User$addedServiceCategoriesArgs<ExtArgs>
+  addedCaseStudies?: boolean | Prisma.User$addedCaseStudiesArgs<ExtArgs>
+  addedCaseStudyCategories?: boolean | Prisma.User$addedCaseStudyCategoriesArgs<ExtArgs>
+  addedPlaybooks?: boolean | Prisma.User$addedPlaybooksArgs<ExtArgs>
+  addedPlaybookTypes?: boolean | Prisma.User$addedPlaybookTypesArgs<ExtArgs>
+  addedPlaybookCategories?: boolean | Prisma.User$addedPlaybookCategoriesArgs<ExtArgs>
   role?: boolean | Prisma.User$roleArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
@@ -1047,6 +3087,18 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   objects: {
     addedBy: Prisma.$UserPayload<ExtArgs> | null
     createdUsers: Prisma.$UserPayload<ExtArgs>[]
+    addedRoles: Prisma.$RolePayload<ExtArgs>[]
+    addedTeamMembers: Prisma.$TeamMemberPayload<ExtArgs>[]
+    addedTestimonials: Prisma.$TestimonialPayload<ExtArgs>[]
+    addedTravelInsights: Prisma.$TravelInsightPayload<ExtArgs>[]
+    addedTravelInsightCategories: Prisma.$TravelInsightCategoryPayload<ExtArgs>[]
+    addedTravelServices: Prisma.$TravelServicePayload<ExtArgs>[]
+    addedServiceCategories: Prisma.$ServiceCategoryPayload<ExtArgs>[]
+    addedCaseStudies: Prisma.$CaseStudyPayload<ExtArgs>[]
+    addedCaseStudyCategories: Prisma.$CaseStudyCategoryPayload<ExtArgs>[]
+    addedPlaybooks: Prisma.$PlaybookPayload<ExtArgs>[]
+    addedPlaybookTypes: Prisma.$PlaybookTypePayload<ExtArgs>[]
+    addedPlaybookCategories: Prisma.$PlaybookCategoryPayload<ExtArgs>[]
     role: Prisma.$RolePayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
@@ -1458,6 +3510,18 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   readonly [Symbol.toStringTag]: "PrismaPromise"
   addedBy<T extends Prisma.User$addedByArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$addedByArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   createdUsers<T extends Prisma.User$createdUsersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$createdUsersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  addedRoles<T extends Prisma.User$addedRolesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$addedRolesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RolePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  addedTeamMembers<T extends Prisma.User$addedTeamMembersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$addedTeamMembersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TeamMemberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  addedTestimonials<T extends Prisma.User$addedTestimonialsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$addedTestimonialsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TestimonialPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  addedTravelInsights<T extends Prisma.User$addedTravelInsightsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$addedTravelInsightsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TravelInsightPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  addedTravelInsightCategories<T extends Prisma.User$addedTravelInsightCategoriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$addedTravelInsightCategoriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TravelInsightCategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  addedTravelServices<T extends Prisma.User$addedTravelServicesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$addedTravelServicesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TravelServicePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  addedServiceCategories<T extends Prisma.User$addedServiceCategoriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$addedServiceCategoriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ServiceCategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  addedCaseStudies<T extends Prisma.User$addedCaseStudiesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$addedCaseStudiesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CaseStudyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  addedCaseStudyCategories<T extends Prisma.User$addedCaseStudyCategoriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$addedCaseStudyCategoriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CaseStudyCategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  addedPlaybooks<T extends Prisma.User$addedPlaybooksArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$addedPlaybooksArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PlaybookPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  addedPlaybookTypes<T extends Prisma.User$addedPlaybookTypesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$addedPlaybookTypesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PlaybookTypePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  addedPlaybookCategories<T extends Prisma.User$addedPlaybookCategoriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$addedPlaybookCategoriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PlaybookCategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   role<T extends Prisma.User$roleArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$roleArgs<ExtArgs>>): Prisma.Prisma__RoleClient<runtime.Types.Result.GetResult<Prisma.$RolePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -1941,6 +4005,294 @@ export type User$createdUsersArgs<ExtArgs extends runtime.Types.Extensions.Inter
   take?: number
   skip?: number
   distinct?: Prisma.UserScalarFieldEnum | Prisma.UserScalarFieldEnum[]
+}
+
+/**
+ * User.addedRoles
+ */
+export type User$addedRolesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Role
+   */
+  select?: Prisma.RoleSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Role
+   */
+  omit?: Prisma.RoleOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.RoleInclude<ExtArgs> | null
+  where?: Prisma.RoleWhereInput
+  orderBy?: Prisma.RoleOrderByWithRelationInput | Prisma.RoleOrderByWithRelationInput[]
+  cursor?: Prisma.RoleWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.RoleScalarFieldEnum | Prisma.RoleScalarFieldEnum[]
+}
+
+/**
+ * User.addedTeamMembers
+ */
+export type User$addedTeamMembersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the TeamMember
+   */
+  select?: Prisma.TeamMemberSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the TeamMember
+   */
+  omit?: Prisma.TeamMemberOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TeamMemberInclude<ExtArgs> | null
+  where?: Prisma.TeamMemberWhereInput
+  orderBy?: Prisma.TeamMemberOrderByWithRelationInput | Prisma.TeamMemberOrderByWithRelationInput[]
+  cursor?: Prisma.TeamMemberWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.TeamMemberScalarFieldEnum | Prisma.TeamMemberScalarFieldEnum[]
+}
+
+/**
+ * User.addedTestimonials
+ */
+export type User$addedTestimonialsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Testimonial
+   */
+  select?: Prisma.TestimonialSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Testimonial
+   */
+  omit?: Prisma.TestimonialOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TestimonialInclude<ExtArgs> | null
+  where?: Prisma.TestimonialWhereInput
+  orderBy?: Prisma.TestimonialOrderByWithRelationInput | Prisma.TestimonialOrderByWithRelationInput[]
+  cursor?: Prisma.TestimonialWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.TestimonialScalarFieldEnum | Prisma.TestimonialScalarFieldEnum[]
+}
+
+/**
+ * User.addedTravelInsights
+ */
+export type User$addedTravelInsightsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the TravelInsight
+   */
+  select?: Prisma.TravelInsightSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the TravelInsight
+   */
+  omit?: Prisma.TravelInsightOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TravelInsightInclude<ExtArgs> | null
+  where?: Prisma.TravelInsightWhereInput
+  orderBy?: Prisma.TravelInsightOrderByWithRelationInput | Prisma.TravelInsightOrderByWithRelationInput[]
+  cursor?: Prisma.TravelInsightWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.TravelInsightScalarFieldEnum | Prisma.TravelInsightScalarFieldEnum[]
+}
+
+/**
+ * User.addedTravelInsightCategories
+ */
+export type User$addedTravelInsightCategoriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the TravelInsightCategory
+   */
+  select?: Prisma.TravelInsightCategorySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the TravelInsightCategory
+   */
+  omit?: Prisma.TravelInsightCategoryOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TravelInsightCategoryInclude<ExtArgs> | null
+  where?: Prisma.TravelInsightCategoryWhereInput
+  orderBy?: Prisma.TravelInsightCategoryOrderByWithRelationInput | Prisma.TravelInsightCategoryOrderByWithRelationInput[]
+  cursor?: Prisma.TravelInsightCategoryWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.TravelInsightCategoryScalarFieldEnum | Prisma.TravelInsightCategoryScalarFieldEnum[]
+}
+
+/**
+ * User.addedTravelServices
+ */
+export type User$addedTravelServicesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the TravelService
+   */
+  select?: Prisma.TravelServiceSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the TravelService
+   */
+  omit?: Prisma.TravelServiceOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TravelServiceInclude<ExtArgs> | null
+  where?: Prisma.TravelServiceWhereInput
+  orderBy?: Prisma.TravelServiceOrderByWithRelationInput | Prisma.TravelServiceOrderByWithRelationInput[]
+  cursor?: Prisma.TravelServiceWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.TravelServiceScalarFieldEnum | Prisma.TravelServiceScalarFieldEnum[]
+}
+
+/**
+ * User.addedServiceCategories
+ */
+export type User$addedServiceCategoriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ServiceCategory
+   */
+  select?: Prisma.ServiceCategorySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ServiceCategory
+   */
+  omit?: Prisma.ServiceCategoryOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ServiceCategoryInclude<ExtArgs> | null
+  where?: Prisma.ServiceCategoryWhereInput
+  orderBy?: Prisma.ServiceCategoryOrderByWithRelationInput | Prisma.ServiceCategoryOrderByWithRelationInput[]
+  cursor?: Prisma.ServiceCategoryWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ServiceCategoryScalarFieldEnum | Prisma.ServiceCategoryScalarFieldEnum[]
+}
+
+/**
+ * User.addedCaseStudies
+ */
+export type User$addedCaseStudiesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the CaseStudy
+   */
+  select?: Prisma.CaseStudySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the CaseStudy
+   */
+  omit?: Prisma.CaseStudyOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CaseStudyInclude<ExtArgs> | null
+  where?: Prisma.CaseStudyWhereInput
+  orderBy?: Prisma.CaseStudyOrderByWithRelationInput | Prisma.CaseStudyOrderByWithRelationInput[]
+  cursor?: Prisma.CaseStudyWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CaseStudyScalarFieldEnum | Prisma.CaseStudyScalarFieldEnum[]
+}
+
+/**
+ * User.addedCaseStudyCategories
+ */
+export type User$addedCaseStudyCategoriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the CaseStudyCategory
+   */
+  select?: Prisma.CaseStudyCategorySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the CaseStudyCategory
+   */
+  omit?: Prisma.CaseStudyCategoryOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CaseStudyCategoryInclude<ExtArgs> | null
+  where?: Prisma.CaseStudyCategoryWhereInput
+  orderBy?: Prisma.CaseStudyCategoryOrderByWithRelationInput | Prisma.CaseStudyCategoryOrderByWithRelationInput[]
+  cursor?: Prisma.CaseStudyCategoryWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CaseStudyCategoryScalarFieldEnum | Prisma.CaseStudyCategoryScalarFieldEnum[]
+}
+
+/**
+ * User.addedPlaybooks
+ */
+export type User$addedPlaybooksArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Playbook
+   */
+  select?: Prisma.PlaybookSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Playbook
+   */
+  omit?: Prisma.PlaybookOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PlaybookInclude<ExtArgs> | null
+  where?: Prisma.PlaybookWhereInput
+  orderBy?: Prisma.PlaybookOrderByWithRelationInput | Prisma.PlaybookOrderByWithRelationInput[]
+  cursor?: Prisma.PlaybookWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PlaybookScalarFieldEnum | Prisma.PlaybookScalarFieldEnum[]
+}
+
+/**
+ * User.addedPlaybookTypes
+ */
+export type User$addedPlaybookTypesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PlaybookType
+   */
+  select?: Prisma.PlaybookTypeSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PlaybookType
+   */
+  omit?: Prisma.PlaybookTypeOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PlaybookTypeInclude<ExtArgs> | null
+  where?: Prisma.PlaybookTypeWhereInput
+  orderBy?: Prisma.PlaybookTypeOrderByWithRelationInput | Prisma.PlaybookTypeOrderByWithRelationInput[]
+  cursor?: Prisma.PlaybookTypeWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PlaybookTypeScalarFieldEnum | Prisma.PlaybookTypeScalarFieldEnum[]
+}
+
+/**
+ * User.addedPlaybookCategories
+ */
+export type User$addedPlaybookCategoriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PlaybookCategory
+   */
+  select?: Prisma.PlaybookCategorySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PlaybookCategory
+   */
+  omit?: Prisma.PlaybookCategoryOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PlaybookCategoryInclude<ExtArgs> | null
+  where?: Prisma.PlaybookCategoryWhereInput
+  orderBy?: Prisma.PlaybookCategoryOrderByWithRelationInput | Prisma.PlaybookCategoryOrderByWithRelationInput[]
+  cursor?: Prisma.PlaybookCategoryWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PlaybookCategoryScalarFieldEnum | Prisma.PlaybookCategoryScalarFieldEnum[]
 }
 
 /**

@@ -8,6 +8,7 @@ import {
   Post,
   Query,
 } from '@nestjs/common';
+import { CurrentUser } from 'src/common/decorators/current-user.decorator';
 
 import { TeamMembersService } from '../services/team-members.service';
 
@@ -21,8 +22,8 @@ export class AdminTeamMembersController {
   constructor(private readonly service: TeamMembersService) {}
 
   @Post()
-  async create(@Body() dto: CreateTeamMemberDto) {
-    return this.service.create(dto);
+  async create(@Body() dto: CreateTeamMemberDto, @CurrentUser('sub') userId: string) {
+    return this.service.create(dto, userId);
   }
 
   @Get()

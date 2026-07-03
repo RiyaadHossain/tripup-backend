@@ -8,6 +8,7 @@ import {
   Post,
   Query,
 } from '@nestjs/common';
+import { CurrentUser } from 'src/common/decorators/current-user.decorator';
 
 import { PlaybookService } from '../services/playbooks.service';
 
@@ -21,8 +22,8 @@ export class AdminPlaybooksController {
   constructor(private readonly service: PlaybookService) {}
 
   @Post()
-  async create(@Body() dto: CreatePlaybookDto) {
-    return this.service.create(dto);
+  async create(@Body() dto: CreatePlaybookDto, @CurrentUser('sub') userId: string) {
+    return this.service.create(dto, userId);
   }
 
   @Get()

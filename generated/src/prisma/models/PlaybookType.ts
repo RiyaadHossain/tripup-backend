@@ -27,6 +27,7 @@ export type AggregatePlaybookType = {
 export type PlaybookTypeMinAggregateOutputType = {
   id: string | null
   name: string | null
+  addedById: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -34,6 +35,7 @@ export type PlaybookTypeMinAggregateOutputType = {
 export type PlaybookTypeMaxAggregateOutputType = {
   id: string | null
   name: string | null
+  addedById: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -41,6 +43,7 @@ export type PlaybookTypeMaxAggregateOutputType = {
 export type PlaybookTypeCountAggregateOutputType = {
   id: number
   name: number
+  addedById: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -50,6 +53,7 @@ export type PlaybookTypeCountAggregateOutputType = {
 export type PlaybookTypeMinAggregateInputType = {
   id?: true
   name?: true
+  addedById?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -57,6 +61,7 @@ export type PlaybookTypeMinAggregateInputType = {
 export type PlaybookTypeMaxAggregateInputType = {
   id?: true
   name?: true
+  addedById?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -64,6 +69,7 @@ export type PlaybookTypeMaxAggregateInputType = {
 export type PlaybookTypeCountAggregateInputType = {
   id?: true
   name?: true
+  addedById?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -144,6 +150,7 @@ export type PlaybookTypeGroupByArgs<ExtArgs extends runtime.Types.Extensions.Int
 export type PlaybookTypeGroupByOutputType = {
   id: string
   name: string
+  addedById: string | null
   createdAt: Date
   updatedAt: Date
   _count: PlaybookTypeCountAggregateOutputType | null
@@ -172,17 +179,21 @@ export type PlaybookTypeWhereInput = {
   NOT?: Prisma.PlaybookTypeWhereInput | Prisma.PlaybookTypeWhereInput[]
   id?: Prisma.StringFilter<"PlaybookType"> | string
   name?: Prisma.StringFilter<"PlaybookType"> | string
+  addedById?: Prisma.StringNullableFilter<"PlaybookType"> | string | null
   createdAt?: Prisma.DateTimeFilter<"PlaybookType"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"PlaybookType"> | Date | string
   playbooks?: Prisma.PlaybookListRelationFilter
+  addedBy?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
 }
 
 export type PlaybookTypeOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  addedById?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   playbooks?: Prisma.PlaybookOrderByRelationAggregateInput
+  addedBy?: Prisma.UserOrderByWithRelationInput
 }
 
 export type PlaybookTypeWhereUniqueInput = Prisma.AtLeast<{
@@ -191,14 +202,17 @@ export type PlaybookTypeWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.PlaybookTypeWhereInput | Prisma.PlaybookTypeWhereInput[]
   OR?: Prisma.PlaybookTypeWhereInput[]
   NOT?: Prisma.PlaybookTypeWhereInput | Prisma.PlaybookTypeWhereInput[]
+  addedById?: Prisma.StringNullableFilter<"PlaybookType"> | string | null
   createdAt?: Prisma.DateTimeFilter<"PlaybookType"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"PlaybookType"> | Date | string
   playbooks?: Prisma.PlaybookListRelationFilter
+  addedBy?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
 }, "id" | "name">
 
 export type PlaybookTypeOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  addedById?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.PlaybookTypeCountOrderByAggregateInput
@@ -212,6 +226,7 @@ export type PlaybookTypeScalarWhereWithAggregatesInput = {
   NOT?: Prisma.PlaybookTypeScalarWhereWithAggregatesInput | Prisma.PlaybookTypeScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"PlaybookType"> | string
   name?: Prisma.StringWithAggregatesFilter<"PlaybookType"> | string
+  addedById?: Prisma.StringNullableWithAggregatesFilter<"PlaybookType"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"PlaybookType"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"PlaybookType"> | Date | string
 }
@@ -222,11 +237,13 @@ export type PlaybookTypeCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   playbooks?: Prisma.PlaybookCreateNestedManyWithoutTypeInput
+  addedBy?: Prisma.UserCreateNestedOneWithoutAddedPlaybookTypesInput
 }
 
 export type PlaybookTypeUncheckedCreateInput = {
   id?: string
   name: string
+  addedById?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   playbooks?: Prisma.PlaybookUncheckedCreateNestedManyWithoutTypeInput
@@ -238,11 +255,13 @@ export type PlaybookTypeUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   playbooks?: Prisma.PlaybookUpdateManyWithoutTypeNestedInput
+  addedBy?: Prisma.UserUpdateOneWithoutAddedPlaybookTypesNestedInput
 }
 
 export type PlaybookTypeUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  addedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   playbooks?: Prisma.PlaybookUncheckedUpdateManyWithoutTypeNestedInput
@@ -251,6 +270,7 @@ export type PlaybookTypeUncheckedUpdateInput = {
 export type PlaybookTypeCreateManyInput = {
   id?: string
   name: string
+  addedById?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -265,8 +285,19 @@ export type PlaybookTypeUpdateManyMutationInput = {
 export type PlaybookTypeUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  addedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type PlaybookTypeListRelationFilter = {
+  every?: Prisma.PlaybookTypeWhereInput
+  some?: Prisma.PlaybookTypeWhereInput
+  none?: Prisma.PlaybookTypeWhereInput
+}
+
+export type PlaybookTypeOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
 }
 
 export type PlaybookTypeNullableScalarRelationFilter = {
@@ -277,6 +308,7 @@ export type PlaybookTypeNullableScalarRelationFilter = {
 export type PlaybookTypeCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  addedById?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -284,6 +316,7 @@ export type PlaybookTypeCountOrderByAggregateInput = {
 export type PlaybookTypeMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  addedById?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -291,8 +324,51 @@ export type PlaybookTypeMaxOrderByAggregateInput = {
 export type PlaybookTypeMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  addedById?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+}
+
+export type PlaybookTypeCreateNestedManyWithoutAddedByInput = {
+  create?: Prisma.XOR<Prisma.PlaybookTypeCreateWithoutAddedByInput, Prisma.PlaybookTypeUncheckedCreateWithoutAddedByInput> | Prisma.PlaybookTypeCreateWithoutAddedByInput[] | Prisma.PlaybookTypeUncheckedCreateWithoutAddedByInput[]
+  connectOrCreate?: Prisma.PlaybookTypeCreateOrConnectWithoutAddedByInput | Prisma.PlaybookTypeCreateOrConnectWithoutAddedByInput[]
+  createMany?: Prisma.PlaybookTypeCreateManyAddedByInputEnvelope
+  connect?: Prisma.PlaybookTypeWhereUniqueInput | Prisma.PlaybookTypeWhereUniqueInput[]
+}
+
+export type PlaybookTypeUncheckedCreateNestedManyWithoutAddedByInput = {
+  create?: Prisma.XOR<Prisma.PlaybookTypeCreateWithoutAddedByInput, Prisma.PlaybookTypeUncheckedCreateWithoutAddedByInput> | Prisma.PlaybookTypeCreateWithoutAddedByInput[] | Prisma.PlaybookTypeUncheckedCreateWithoutAddedByInput[]
+  connectOrCreate?: Prisma.PlaybookTypeCreateOrConnectWithoutAddedByInput | Prisma.PlaybookTypeCreateOrConnectWithoutAddedByInput[]
+  createMany?: Prisma.PlaybookTypeCreateManyAddedByInputEnvelope
+  connect?: Prisma.PlaybookTypeWhereUniqueInput | Prisma.PlaybookTypeWhereUniqueInput[]
+}
+
+export type PlaybookTypeUpdateManyWithoutAddedByNestedInput = {
+  create?: Prisma.XOR<Prisma.PlaybookTypeCreateWithoutAddedByInput, Prisma.PlaybookTypeUncheckedCreateWithoutAddedByInput> | Prisma.PlaybookTypeCreateWithoutAddedByInput[] | Prisma.PlaybookTypeUncheckedCreateWithoutAddedByInput[]
+  connectOrCreate?: Prisma.PlaybookTypeCreateOrConnectWithoutAddedByInput | Prisma.PlaybookTypeCreateOrConnectWithoutAddedByInput[]
+  upsert?: Prisma.PlaybookTypeUpsertWithWhereUniqueWithoutAddedByInput | Prisma.PlaybookTypeUpsertWithWhereUniqueWithoutAddedByInput[]
+  createMany?: Prisma.PlaybookTypeCreateManyAddedByInputEnvelope
+  set?: Prisma.PlaybookTypeWhereUniqueInput | Prisma.PlaybookTypeWhereUniqueInput[]
+  disconnect?: Prisma.PlaybookTypeWhereUniqueInput | Prisma.PlaybookTypeWhereUniqueInput[]
+  delete?: Prisma.PlaybookTypeWhereUniqueInput | Prisma.PlaybookTypeWhereUniqueInput[]
+  connect?: Prisma.PlaybookTypeWhereUniqueInput | Prisma.PlaybookTypeWhereUniqueInput[]
+  update?: Prisma.PlaybookTypeUpdateWithWhereUniqueWithoutAddedByInput | Prisma.PlaybookTypeUpdateWithWhereUniqueWithoutAddedByInput[]
+  updateMany?: Prisma.PlaybookTypeUpdateManyWithWhereWithoutAddedByInput | Prisma.PlaybookTypeUpdateManyWithWhereWithoutAddedByInput[]
+  deleteMany?: Prisma.PlaybookTypeScalarWhereInput | Prisma.PlaybookTypeScalarWhereInput[]
+}
+
+export type PlaybookTypeUncheckedUpdateManyWithoutAddedByNestedInput = {
+  create?: Prisma.XOR<Prisma.PlaybookTypeCreateWithoutAddedByInput, Prisma.PlaybookTypeUncheckedCreateWithoutAddedByInput> | Prisma.PlaybookTypeCreateWithoutAddedByInput[] | Prisma.PlaybookTypeUncheckedCreateWithoutAddedByInput[]
+  connectOrCreate?: Prisma.PlaybookTypeCreateOrConnectWithoutAddedByInput | Prisma.PlaybookTypeCreateOrConnectWithoutAddedByInput[]
+  upsert?: Prisma.PlaybookTypeUpsertWithWhereUniqueWithoutAddedByInput | Prisma.PlaybookTypeUpsertWithWhereUniqueWithoutAddedByInput[]
+  createMany?: Prisma.PlaybookTypeCreateManyAddedByInputEnvelope
+  set?: Prisma.PlaybookTypeWhereUniqueInput | Prisma.PlaybookTypeWhereUniqueInput[]
+  disconnect?: Prisma.PlaybookTypeWhereUniqueInput | Prisma.PlaybookTypeWhereUniqueInput[]
+  delete?: Prisma.PlaybookTypeWhereUniqueInput | Prisma.PlaybookTypeWhereUniqueInput[]
+  connect?: Prisma.PlaybookTypeWhereUniqueInput | Prisma.PlaybookTypeWhereUniqueInput[]
+  update?: Prisma.PlaybookTypeUpdateWithWhereUniqueWithoutAddedByInput | Prisma.PlaybookTypeUpdateWithWhereUniqueWithoutAddedByInput[]
+  updateMany?: Prisma.PlaybookTypeUpdateManyWithWhereWithoutAddedByInput | Prisma.PlaybookTypeUpdateManyWithWhereWithoutAddedByInput[]
+  deleteMany?: Prisma.PlaybookTypeScalarWhereInput | Prisma.PlaybookTypeScalarWhereInput[]
 }
 
 export type PlaybookTypeCreateNestedOneWithoutPlaybooksInput = {
@@ -311,16 +387,71 @@ export type PlaybookTypeUpdateOneWithoutPlaybooksNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.PlaybookTypeUpdateToOneWithWhereWithoutPlaybooksInput, Prisma.PlaybookTypeUpdateWithoutPlaybooksInput>, Prisma.PlaybookTypeUncheckedUpdateWithoutPlaybooksInput>
 }
 
+export type PlaybookTypeCreateWithoutAddedByInput = {
+  id?: string
+  name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  playbooks?: Prisma.PlaybookCreateNestedManyWithoutTypeInput
+}
+
+export type PlaybookTypeUncheckedCreateWithoutAddedByInput = {
+  id?: string
+  name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  playbooks?: Prisma.PlaybookUncheckedCreateNestedManyWithoutTypeInput
+}
+
+export type PlaybookTypeCreateOrConnectWithoutAddedByInput = {
+  where: Prisma.PlaybookTypeWhereUniqueInput
+  create: Prisma.XOR<Prisma.PlaybookTypeCreateWithoutAddedByInput, Prisma.PlaybookTypeUncheckedCreateWithoutAddedByInput>
+}
+
+export type PlaybookTypeCreateManyAddedByInputEnvelope = {
+  data: Prisma.PlaybookTypeCreateManyAddedByInput | Prisma.PlaybookTypeCreateManyAddedByInput[]
+  skipDuplicates?: boolean
+}
+
+export type PlaybookTypeUpsertWithWhereUniqueWithoutAddedByInput = {
+  where: Prisma.PlaybookTypeWhereUniqueInput
+  update: Prisma.XOR<Prisma.PlaybookTypeUpdateWithoutAddedByInput, Prisma.PlaybookTypeUncheckedUpdateWithoutAddedByInput>
+  create: Prisma.XOR<Prisma.PlaybookTypeCreateWithoutAddedByInput, Prisma.PlaybookTypeUncheckedCreateWithoutAddedByInput>
+}
+
+export type PlaybookTypeUpdateWithWhereUniqueWithoutAddedByInput = {
+  where: Prisma.PlaybookTypeWhereUniqueInput
+  data: Prisma.XOR<Prisma.PlaybookTypeUpdateWithoutAddedByInput, Prisma.PlaybookTypeUncheckedUpdateWithoutAddedByInput>
+}
+
+export type PlaybookTypeUpdateManyWithWhereWithoutAddedByInput = {
+  where: Prisma.PlaybookTypeScalarWhereInput
+  data: Prisma.XOR<Prisma.PlaybookTypeUpdateManyMutationInput, Prisma.PlaybookTypeUncheckedUpdateManyWithoutAddedByInput>
+}
+
+export type PlaybookTypeScalarWhereInput = {
+  AND?: Prisma.PlaybookTypeScalarWhereInput | Prisma.PlaybookTypeScalarWhereInput[]
+  OR?: Prisma.PlaybookTypeScalarWhereInput[]
+  NOT?: Prisma.PlaybookTypeScalarWhereInput | Prisma.PlaybookTypeScalarWhereInput[]
+  id?: Prisma.StringFilter<"PlaybookType"> | string
+  name?: Prisma.StringFilter<"PlaybookType"> | string
+  addedById?: Prisma.StringNullableFilter<"PlaybookType"> | string | null
+  createdAt?: Prisma.DateTimeFilter<"PlaybookType"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"PlaybookType"> | Date | string
+}
+
 export type PlaybookTypeCreateWithoutPlaybooksInput = {
   id?: string
   name: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  addedBy?: Prisma.UserCreateNestedOneWithoutAddedPlaybookTypesInput
 }
 
 export type PlaybookTypeUncheckedCreateWithoutPlaybooksInput = {
   id?: string
   name: string
+  addedById?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -346,9 +477,41 @@ export type PlaybookTypeUpdateWithoutPlaybooksInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  addedBy?: Prisma.UserUpdateOneWithoutAddedPlaybookTypesNestedInput
 }
 
 export type PlaybookTypeUncheckedUpdateWithoutPlaybooksInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  addedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type PlaybookTypeCreateManyAddedByInput = {
+  id?: string
+  name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type PlaybookTypeUpdateWithoutAddedByInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  playbooks?: Prisma.PlaybookUpdateManyWithoutTypeNestedInput
+}
+
+export type PlaybookTypeUncheckedUpdateWithoutAddedByInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  playbooks?: Prisma.PlaybookUncheckedUpdateManyWithoutTypeNestedInput
+}
+
+export type PlaybookTypeUncheckedUpdateManyWithoutAddedByInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -389,49 +552,63 @@ export type PlaybookTypeCountOutputTypeCountPlaybooksArgs<ExtArgs extends runtim
 export type PlaybookTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
+  addedById?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   playbooks?: boolean | Prisma.PlaybookType$playbooksArgs<ExtArgs>
+  addedBy?: boolean | Prisma.PlaybookType$addedByArgs<ExtArgs>
   _count?: boolean | Prisma.PlaybookTypeCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["playbookType"]>
 
 export type PlaybookTypeSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
+  addedById?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  addedBy?: boolean | Prisma.PlaybookType$addedByArgs<ExtArgs>
 }, ExtArgs["result"]["playbookType"]>
 
 export type PlaybookTypeSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
+  addedById?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  addedBy?: boolean | Prisma.PlaybookType$addedByArgs<ExtArgs>
 }, ExtArgs["result"]["playbookType"]>
 
 export type PlaybookTypeSelectScalar = {
   id?: boolean
   name?: boolean
+  addedById?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type PlaybookTypeOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "createdAt" | "updatedAt", ExtArgs["result"]["playbookType"]>
+export type PlaybookTypeOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "addedById" | "createdAt" | "updatedAt", ExtArgs["result"]["playbookType"]>
 export type PlaybookTypeInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   playbooks?: boolean | Prisma.PlaybookType$playbooksArgs<ExtArgs>
+  addedBy?: boolean | Prisma.PlaybookType$addedByArgs<ExtArgs>
   _count?: boolean | Prisma.PlaybookTypeCountOutputTypeDefaultArgs<ExtArgs>
 }
-export type PlaybookTypeIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
-export type PlaybookTypeIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
+export type PlaybookTypeIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  addedBy?: boolean | Prisma.PlaybookType$addedByArgs<ExtArgs>
+}
+export type PlaybookTypeIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  addedBy?: boolean | Prisma.PlaybookType$addedByArgs<ExtArgs>
+}
 
 export type $PlaybookTypePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "PlaybookType"
   objects: {
     playbooks: Prisma.$PlaybookPayload<ExtArgs>[]
+    addedBy: Prisma.$UserPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     name: string
+    addedById: string | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["playbookType"]>
@@ -829,6 +1006,7 @@ readonly fields: PlaybookTypeFieldRefs;
 export interface Prisma__PlaybookTypeClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   playbooks<T extends Prisma.PlaybookType$playbooksArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PlaybookType$playbooksArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PlaybookPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  addedBy<T extends Prisma.PlaybookType$addedByArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PlaybookType$addedByArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -860,6 +1038,7 @@ export interface Prisma__PlaybookTypeClient<T, Null = never, ExtArgs extends run
 export interface PlaybookTypeFieldRefs {
   readonly id: Prisma.FieldRef<"PlaybookType", 'String'>
   readonly name: Prisma.FieldRef<"PlaybookType", 'String'>
+  readonly addedById: Prisma.FieldRef<"PlaybookType", 'String'>
   readonly createdAt: Prisma.FieldRef<"PlaybookType", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"PlaybookType", 'DateTime'>
 }
@@ -1116,6 +1295,10 @@ export type PlaybookTypeCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Ex
    */
   data: Prisma.PlaybookTypeCreateManyInput | Prisma.PlaybookTypeCreateManyInput[]
   skipDuplicates?: boolean
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PlaybookTypeIncludeCreateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -1186,6 +1369,10 @@ export type PlaybookTypeUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Ex
    * Limit how many PlaybookTypes to update.
    */
   limit?: number
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PlaybookTypeIncludeUpdateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -1276,6 +1463,25 @@ export type PlaybookType$playbooksArgs<ExtArgs extends runtime.Types.Extensions.
   take?: number
   skip?: number
   distinct?: Prisma.PlaybookScalarFieldEnum | Prisma.PlaybookScalarFieldEnum[]
+}
+
+/**
+ * PlaybookType.addedBy
+ */
+export type PlaybookType$addedByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the User
+   */
+  select?: Prisma.UserSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the User
+   */
+  omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  where?: Prisma.UserWhereInput
 }
 
 /**

@@ -9,8 +9,8 @@ import { UpdateTravelInsightCategoryDto } from '../dto/update-travel-insight-cat
 export class TravelInsightCategoriesService {
   constructor(private readonly repository: TravelInsightCategoriesRepository) {}
 
-  async create(dto: CreateTravelInsightCategoryDto) {
-    return await this.repository.create(dto);
+  async create(dto: CreateTravelInsightCategoryDto, userId: string) {
+    return await this.repository.create({ ...dto, addedBy: userId ? { connect: { id: userId } } : undefined, });
   }
 
   async findAll() {

@@ -9,8 +9,8 @@ import { UpdatePlaybookTypeDto } from '../dto/update-playbook-type.dto';
 export class PlaybookTypesService {
   constructor(private readonly repository: PlaybookTypesRepository) {}
 
-  async create(dto: CreatePlaybookTypeDto) {
-    return await this.repository.create(dto);
+  async create(dto: CreatePlaybookTypeDto, userId: string) {
+    return await this.repository.create({ ...dto, addedBy: userId ? { connect: { id: userId } } : undefined, });
   }
 
   async findAll() {

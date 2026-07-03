@@ -9,8 +9,8 @@ import { UpdatePlaybookCategoryDto } from '../dto/update-playbook-category.dto';
 export class PlaybookCategoriesService {
   constructor(private readonly repository: PlaybookCategoriesRepository) {}
 
-  async create(dto: CreatePlaybookCategoryDto) {
-    return await this.repository.create(dto);
+  async create(dto: CreatePlaybookCategoryDto, userId: string) {
+    return await this.repository.create({ ...dto, addedBy: userId ? { connect: { id: userId } } : undefined, });
   }
 
   async findAll() {

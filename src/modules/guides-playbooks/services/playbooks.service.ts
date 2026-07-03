@@ -11,7 +11,7 @@ import { QueryPlaybooksDto } from '../dto/query-playbooks.dto';
 export class PlaybookService {
   constructor(private readonly repository: PlaybookRepository) {}
 
-  async create(dto: CreatePlaybookDto) {
+  async create(dto: CreatePlaybookDto, userId: string) {
     const { category, type, ...rest } = dto;
 
     if (rest.isFeatured) {

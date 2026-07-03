@@ -9,8 +9,8 @@ import { UpdateCaseStudyCategoryDto } from '../dto/update-case-study-category.dt
 export class CaseStudyCategoriesService {
   constructor(private readonly repository: CaseStudyCategoriesRepository) {}
 
-  async create(dto: CreateCaseStudyCategoryDto) {
-    return await this.repository.create(dto);
+  async create(dto: CreateCaseStudyCategoryDto, userId: string) {
+    return await this.repository.create({ ...dto, addedBy: userId ? { connect: { id: userId } } : undefined, });
   }
 
   async findAll() {

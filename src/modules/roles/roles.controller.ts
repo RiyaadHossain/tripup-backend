@@ -12,6 +12,8 @@ import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { Permission } from 'src/common/decorators/permission.decorator';
 import { PermissionGuard } from 'src/common/guards/permission.guard';
 import { perm } from 'src/common/constants/permissions.constant';
+import { CurrentUser } from 'src/common/decorators/current-user.decorator';
+import { JwtPayload } from '../auth/interfaces/jwt-payload.interface';
 import { CreateRoleDto } from './dto/create-role.dto';
 import { UpdateRoleDto } from './dto/update-role.dto';
 import { RolesService } from './roles.service';
@@ -33,8 +35,11 @@ export class RolesController {
    */
   @Post()
   @Permission(perm('team_management', 'CREATE'))
-  create(@Body() dto: CreateRoleDto) {
-    return this.rolesService.create(dto);
+  create(
+    @Body() dto: CreateRoleDto,
+    @CurrentUser('sub') userId: string,
+  ) {
+    return this.rolesService.create(dto, userId);
   }
 
   /**

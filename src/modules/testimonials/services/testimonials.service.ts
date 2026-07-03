@@ -10,8 +10,8 @@ import { QueryTestimonialDto } from '../dto/query-testimonial.dto';
 export class TestimonialsService {
   constructor(private readonly repository: TestimonialsRepository) {}
 
-  async create(dto: CreateTestimonialDto) {
-    return this.repository.create(dto);
+  async create(dto: CreateTestimonialDto, userId: string) {
+    return this.repository.create({ ...dto, addedBy: userId ? { connect: { id: userId } } : undefined, });
   }
 
   async findAll(query: QueryTestimonialDto) {

@@ -7,6 +7,7 @@ import {
   Patch,
   Post,
 } from '@nestjs/common';
+import { CurrentUser } from 'src/common/decorators/current-user.decorator';
 import { PlaybookCategoriesService } from '../services/playbook-categories.service';
 import { CreatePlaybookCategoryDto } from '../dto/create-playbook-category.dto';
 import { UpdatePlaybookCategoryDto } from '../dto/update-playbook-category.dto';
@@ -16,8 +17,8 @@ export class AdminPlaybookCategoriesController {
   constructor(private readonly service: PlaybookCategoriesService) {}
 
   @Post()
-  async create(@Body() dto: CreatePlaybookCategoryDto) {
-    return this.service.create(dto);
+  async create(@Body() dto: CreatePlaybookCategoryDto, @CurrentUser('sub') userId: string) {
+    return this.service.create(dto, userId);
   }
 
   @Get()

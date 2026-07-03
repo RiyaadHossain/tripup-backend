@@ -11,7 +11,7 @@ import { QueryTravelInsightsDto } from '../dto/query-travel-insights.dto';
 export class TravelInsightService {
   constructor(private readonly repository: TravelInsightRepository) {}
 
-  async create(dto: CreateTravelInsightDto) {
+  async create(dto: CreateTravelInsightDto, userId: string) {
     const { category, relatedServices, ...rest } = dto;
 
     if (rest.isFeatured) {

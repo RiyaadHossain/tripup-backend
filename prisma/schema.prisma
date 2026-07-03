@@ -24,17 +24,30 @@ enum PermissionAction {
 // ---------------------------------------------------------------------------
 
 model User {
-  id           String  @id @default(uuid())
+  id           String @id @default(uuid())
   name         String
-  email        String  @unique
+  email        String @unique
   passwordHash String
 
-  needPasswordChange Boolean @default(false)
+  needPasswordChange Boolean   @default(false)
   lastLoginAt        DateTime?
 
   addedById    String?
   addedBy      User?   @relation("UserCreator", fields: [addedById], references: [id])
   createdUsers User[]  @relation("UserCreator")
+
+  addedRoles                   Role[]                  @relation("AddedRole")
+  addedTeamMembers             TeamMember[]            @relation("AddedTeamMember")
+  addedTestimonials            Testimonial[]           @relation("AddedTestimonial")
+  addedTravelInsights          TravelInsight[]         @relation("AddedTravelInsight")
+  addedTravelInsightCategories TravelInsightCategory[] @relation("AddedTravelInsightCategory")
+  addedTravelServices          TravelService[]         @relation("AddedTravelService")
+  addedServiceCategories       ServiceCategory[]       @relation("AddedServiceCategory")
+  addedCaseStudies             CaseStudy[]             @relation("AddedCaseStudy")
+  addedCaseStudyCategories     CaseStudyCategory[]     @relation("AddedCaseStudyCategory")
+  addedPlaybooks               Playbook[]              @relation("AddedPlaybook")
+  addedPlaybookTypes           PlaybookType[]          @relation("AddedPlaybookType")
+  addedPlaybookCategories      PlaybookCategory[]      @relation("AddedPlaybookCategory")
 
   resetPasswordToken   String?
   resetPasswordExpires DateTime?
@@ -56,6 +69,9 @@ model Role {
 
   users       User[]
   permissions RolePermission[]
+
+  addedById String?
+  addedBy   User?   @relation("AddedRole", fields: [addedById], references: [id])
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -109,6 +125,9 @@ model TeamMember {
 
   displayOrder Int @default(autoincrement())
 
+  addedById String?
+  addedBy   User?   @relation("AddedTeamMember", fields: [addedById], references: [id])
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
@@ -129,6 +148,9 @@ model Testimonial {
   isPublished Boolean @default(true)
 
   displayOrder Int @default(autoincrement())
+
+  addedById String?
+  addedBy   User?   @relation("AddedTestimonial", fields: [addedById], references: [id])
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -159,6 +181,9 @@ model TravelInsight {
   category        TravelInsightCategory? @relation(fields: [categoryId], references: [id])
   relatedServices TravelService[]
 
+  addedById String?
+  addedBy   User?   @relation("AddedTravelInsight", fields: [addedById], references: [id])
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
@@ -173,6 +198,9 @@ model TravelInsightCategory {
   name String
 
   travelInsights TravelInsight[]
+
+  addedById String?
+  addedBy   User?   @relation("AddedTravelInsightCategory", fields: [addedById], references: [id])
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -206,6 +234,9 @@ model TravelService {
   serviceCategory   ServiceCategory? @relation(fields: [serviceCategoryId], references: [id])
   travelInsights    TravelInsight[]
 
+  addedById String?
+  addedBy   User?   @relation("AddedTravelService", fields: [addedById], references: [id])
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
@@ -221,35 +252,41 @@ model ServiceCategory {
 
   travelServices TravelService[]
 
+  addedById String?
+  addedBy   User?   @relation("AddedServiceCategory", fields: [addedById], references: [id])
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
 model CaseStudy {
-  id          String   @id @default(uuid())
+  id          String  @id @default(uuid())
   title       String
   excerpt     String
   date        String
   readingTime String
   ctaLabel    String
-  isFeatured  Boolean  @default(false)
-  isPublished Boolean  @default(true)
-  slug        String   @unique
+  isFeatured  Boolean @default(false)
+  isPublished Boolean @default(true)
+  slug        String  @unique
   industryTag String
   coverImage  String
 
-  metrics         Json
-  snapshot        Json
-  challenge       Json
-  approachSteps   Json
-  deliverables    String[]
-  transformation  Json
-  results         Json
-  keyTakeaways    String[]
-  testimonial     Json
+  metrics        Json
+  snapshot       Json
+  challenge      Json
+  approachSteps  Json
+  deliverables   String[]
+  transformation Json
+  results        Json
+  keyTakeaways   String[]
+  testimonial    Json
 
-  categoryId      String?
-  category        CaseStudyCategory? @relation(fields: [categoryId], references: [id])
+  categoryId String?
+  category   CaseStudyCategory? @relation(fields: [categoryId], references: [id])
+
+  addedById String?
+  addedBy   User?   @relation("AddedCaseStudy", fields: [addedById], references: [id])
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -261,43 +298,49 @@ model CaseStudy {
 }
 
 model CaseStudyCategory {
-  id          String      @id @default(uuid())
-  name        String
+  id   String @id @default(uuid())
+  name String
 
   caseStudies CaseStudy[]
 
-  createdAt   DateTime    @default(now())
-  updatedAt   DateTime    @updatedAt
+  addedById String?
+  addedBy   User?   @relation("AddedCaseStudyCategory", fields: [addedById], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Playbook {
-  id           String   @id @default(uuid())
-  title        String
-  excerpt      String
-  date         String
-  readingTime  String
-  author       String   @default("")
-  bestFor      String
-  ctaLabel     String
-  isFeatured   Boolean  @default(false)
-  isPublished  Boolean  @default(true)
-  slug         String   @unique
-  
+  id          String  @id @default(uuid())
+  title       String
+  excerpt     String
+  date        String
+  readingTime String
+  author      String  @default("")
+  bestFor     String
+  ctaLabel    String
+  isFeatured  Boolean @default(false)
+  isPublished Boolean @default(true)
+  slug        String  @unique
+
   keyTakeaways String[]
   whoIsItFor   String[]
   outcomes     String[]
-  
+
   frameworkSteps  Json
   samplePreviews  Json
   relatedServices Json
 
-  typeId       String?
-  type         PlaybookType? @relation(fields: [typeId], references: [id])
-  categoryId   String?
-  category     PlaybookCategory? @relation(fields: [categoryId], references: [id])
+  typeId     String?
+  type       PlaybookType?     @relation(fields: [typeId], references: [id])
+  categoryId String?
+  category   PlaybookCategory? @relation(fields: [categoryId], references: [id])
 
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  addedById String?
+  addedBy   User?   @relation("AddedPlaybook", fields: [addedById], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@index([title])
   @@index([typeId])
@@ -307,19 +350,25 @@ model Playbook {
 }
 
 model PlaybookType {
-  id        String   @id @default(uuid())
-  name      String   @unique
+  id        String     @id @default(uuid())
+  name      String     @unique
   playbooks Playbook[]
+
+  addedById String?
+  addedBy   User?   @relation("AddedPlaybookType", fields: [addedById], references: [id])
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
 model PlaybookCategory {
-  id        String   @id @default(uuid())
-  name      String   @unique
+  id        String     @id @default(uuid())
+  name      String     @unique
   playbooks Playbook[]
+
+  addedById String?
+  addedBy   User?   @relation("AddedPlaybookCategory", fields: [addedById], references: [id])
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
-
-

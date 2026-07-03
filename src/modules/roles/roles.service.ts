@@ -24,7 +24,7 @@ export class RolesService {
   // Create
   // ---------------------------------------------------------------------------
 
-  async create(dto: CreateRoleDto) {
+  async create(dto: CreateRoleDto, userId: string) {
     const existing = await this.prisma.role.findUnique({
       where: { name: dto.name },
     });
@@ -37,6 +37,7 @@ export class RolesService {
       data: {
         name: dto.name,
         description: dto.description,
+        addedBy: userId ? { connect: { id: userId } } : undefined,
         permissions: dto.permissionIds?.length
           ? {
               create: dto.permissionIds.map((permissionId) => ({

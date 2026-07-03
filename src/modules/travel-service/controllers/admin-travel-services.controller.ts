@@ -9,6 +9,7 @@ import {
   Query,
   UseGuards,
 } from '@nestjs/common';
+import { CurrentUser } from 'src/common/decorators/current-user.decorator';
 
 import { JwtAuthGuard } from 'src/modules/auth/guards/jwt-auth.guard';
 import { PermissionGuard } from 'src/common/guards/permission.guard';
@@ -37,8 +38,8 @@ export class AdminTravelServicesController {
   /** POST /admin/travel-services — requires services.create */
   @Post()
   @Permission(perm('services', 'CREATE'))
-  async create(@Body() dto: CreateTravelServiceDto) {
-    return this.service.create(dto);
+  async create(@Body() dto: CreateTravelServiceDto, @CurrentUser('sub') userId: string) {
+    return this.service.create(dto, userId);
   }
 
   /** GET /admin/travel-services — requires services.read */

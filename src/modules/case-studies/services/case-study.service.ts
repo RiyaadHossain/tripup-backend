@@ -11,7 +11,7 @@ import { QueryCaseStudiesDto } from '../dto/query-case-studies.dto';
 export class CaseStudyService {
   constructor(private readonly repository: CaseStudyRepository) {}
 
-  async create(dto: CreateCaseStudyDto) {
+  async create(dto: CreateCaseStudyDto, userId: string) {
     const { category, ...rest } = dto;
 
     if (rest.isFeatured) {
@@ -20,6 +20,7 @@ export class CaseStudyService {
 
     return this.repository.create({
       ...rest,
+      addedBy: userId ? { connect: { id: userId } } : undefined,
       metrics: rest.metrics as unknown as Prisma.InputJsonValue,
       snapshot: rest.snapshot as unknown as Prisma.InputJsonValue,
       challenge: rest.challenge as unknown as Prisma.InputJsonValue,

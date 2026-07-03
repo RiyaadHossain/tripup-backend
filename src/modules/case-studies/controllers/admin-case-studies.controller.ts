@@ -8,6 +8,7 @@ import {
   Post,
   Query,
 } from '@nestjs/common';
+import { CurrentUser } from 'src/common/decorators/current-user.decorator';
 
 import { CaseStudyService } from '../services/case-study.service';
 
@@ -21,8 +22,8 @@ export class AdminCaseStudiesController {
   constructor(private readonly service: CaseStudyService) {}
 
   @Post()
-  async create(@Body() dto: CreateCaseStudyDto) {
-    return this.service.create(dto);
+  async create(@Body() dto: CreateCaseStudyDto, @CurrentUser('sub') userId: string) {
+    return this.service.create(dto, userId);
   }
 
   @Get()

@@ -7,6 +7,7 @@ import {
   Patch,
   Post,
 } from '@nestjs/common';
+import { CurrentUser } from 'src/common/decorators/current-user.decorator';
 import { CaseStudyCategoriesService } from '../services/case-study-categories.service';
 import { CreateCaseStudyCategoryDto } from '../dto/create-case-study-category.dto';
 import { UpdateCaseStudyCategoryDto } from '../dto/update-case-study-category.dto';
@@ -16,8 +17,8 @@ export class AdminCaseStudyCategoriesController {
   constructor(private readonly service: CaseStudyCategoriesService) {}
 
   @Post()
-  async create(@Body() dto: CreateCaseStudyCategoryDto) {
-    return this.service.create(dto);
+  async create(@Body() dto: CreateCaseStudyCategoryDto, @CurrentUser('sub') userId: string) {
+    return this.service.create(dto, userId);
   }
 
   @Get()

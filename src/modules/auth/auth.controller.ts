@@ -1,8 +1,17 @@
-import { Body, Controller, Get, Patch, Post, Request, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Patch,
+  Post,
+  Request,
+  UseGuards,
+} from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { LoginDto } from './dto/login.dto';
 import { RegisterDto } from './dto/register.dto';
 import { UpdatePasswordDto } from './dto/update-password.dto';
+import { UpdateUserInfoDto } from './dto/update-user-info.dto';
 import { ForgotPasswordDto } from './dto/forgot-password.dto';
 import { ResetPasswordDto } from './dto/reset-password.dto';
 import { JwtAuthGuard } from './guards/jwt-auth.guard';
@@ -33,12 +42,38 @@ export class AuthController {
   }
 
   /**
+   * GET /auth/me
+   * Returns the logged-in user's profile, role, and permissions.
+   */
+  @UseGuards(JwtAuthGuard)
+  @Get('me')
+  getMe(@Request() req: { user: JwtPayload }) {
+    return this.authService.getMe(req.user.sub);
+  }
+
+  /**
+   * PATCH /auth/me
+   * Allows a logged-in user to update their own profile information.
+   */
+  @UseGuards(JwtAuthGuard)
+  @Patch('me')
+  updateMe(
+    @Request() req: { user: JwtPayload },
+    @Body() dto: UpdateUserInfoDto,
+  ) {
+    return this.authService.updateMe(req.user.sub, dto);
+  }
+
+  /**
    * PATCH /auth/update-password
    * Allows a logged-in user to change their password and resets needPasswordChange.
    */
   @UseGuards(JwtAuthGuard)
   @Patch('update-password')
-  updatePassword(@Request() req: { user: JwtPayload }, @Body() dto: UpdatePasswordDto) {
+  updatePassword(
+    @Request() req: { user: JwtPayload },
+    @Body() dto: UpdatePasswordDto,
+  ) {
     return this.authService.updatePassword(req.user.sub, dto);
   }
 

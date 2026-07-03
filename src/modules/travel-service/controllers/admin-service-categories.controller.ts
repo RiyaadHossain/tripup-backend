@@ -7,6 +7,7 @@ import {
   Patch,
   Post,
 } from '@nestjs/common';
+import { CurrentUser } from 'src/common/decorators/current-user.decorator';
 
 import { ServiceCategoriesService } from '../services/service-categories.service';
 
@@ -18,8 +19,8 @@ export class AdminServiceCategoriesController {
   constructor(private readonly service: ServiceCategoriesService) {}
 
   @Post()
-  async create(@Body() dto: CreateServiceCategoryDto) {
-    return this.service.create(dto);
+  async create(@Body() dto: CreateServiceCategoryDto, @CurrentUser('sub') userId: string) {
+    return this.service.create(dto, userId);
   }
 
   @Get()
