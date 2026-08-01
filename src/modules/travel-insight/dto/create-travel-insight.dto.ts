@@ -32,8 +32,9 @@ export class CreateTravelInsightDto {
   @MaxLength(200)
   slug!: string;
 
+  @IsOptional()
   @IsString()
-  description!: string;
+  description?: string;
 
   @Type(() => Number)
   @IsInt()

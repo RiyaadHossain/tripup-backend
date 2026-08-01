@@ -142,8 +142,8 @@ model Testimonial {
   testimony   String
   userName    String
   userImg     String?
-  designation String
-  company     String
+  designation String?
+  company     String?
 
   isFeatured  Boolean @default(false)
   isPublished Boolean @default(true)
@@ -165,7 +165,7 @@ model TravelInsight {
 
   title       String
   slug        String   @unique
-  description String
+  description String?
   timeReadMin Int
   author      String
   coverImgUrl String
@@ -263,25 +263,24 @@ model ServiceCategory {
 model CaseStudy {
   id          String  @id @default(uuid())
   title       String
-  excerpt     String
-  date        String
+  excerpt     String?
   readingTime String
-  ctaLabel    String
+  ctaLabel    String @default("View Case Study")
   isFeatured  Boolean @default(false)
   isPublished Boolean @default(true)
   slug        String  @unique
-  industryTag String
-  coverImage  String
+  industryTag String?
+  coverImage  String?
 
-  metrics        Json
-  snapshot       Json
-  challenge      Json
+  metrics        Json?
+  snapshot       Json?
+  challenge      Json?
   approachSteps  Json
   deliverables   String[]
-  transformation Json
-  results        Json
+  transformation Json?
+  results        Json?
   keyTakeaways   String[]
-  testimonial    Json
+  testimonial    Json?
 
   categoryId String?
   category   CaseStudyCategory? @relation(fields: [categoryId], references: [id])
@@ -314,12 +313,11 @@ model CaseStudyCategory {
 model Playbook {
   id          String  @id @default(uuid())
   title       String
-  excerpt     String
-  date        String
-  readingTime String
+  excerpt     String?
+  readingTime String?
   author      String  @default("")
-  bestFor     String
-  ctaLabel    String
+  bestFor     String?
+  ctaLabel    String @default("Read Playbook")
   isFeatured  Boolean @default(false)
   isPublished Boolean @default(true)
   slug        String  @unique
@@ -328,9 +326,9 @@ model Playbook {
   whoIsItFor   String[]
   outcomes     String[]
 
-  frameworkSteps  Json
-  samplePreviews  Json
-  relatedServices Json
+  frameworkSteps  Json?
+  samplePreviews  Json?
+  relatedServices Json?
 
   typeId     String?
   type       PlaybookType?     @relation(fields: [typeId], references: [id])

@@ -28,7 +28,6 @@ export type PlaybookMinAggregateOutputType = {
   id: string | null
   title: string | null
   excerpt: string | null
-  date: string | null
   readingTime: string | null
   author: string | null
   bestFor: string | null
@@ -47,7 +46,6 @@ export type PlaybookMaxAggregateOutputType = {
   id: string | null
   title: string | null
   excerpt: string | null
-  date: string | null
   readingTime: string | null
   author: string | null
   bestFor: string | null
@@ -66,7 +64,6 @@ export type PlaybookCountAggregateOutputType = {
   id: number
   title: number
   excerpt: number
-  date: number
   readingTime: number
   author: number
   bestFor: number
@@ -93,7 +90,6 @@ export type PlaybookMinAggregateInputType = {
   id?: true
   title?: true
   excerpt?: true
-  date?: true
   readingTime?: true
   author?: true
   bestFor?: true
@@ -112,7 +108,6 @@ export type PlaybookMaxAggregateInputType = {
   id?: true
   title?: true
   excerpt?: true
-  date?: true
   readingTime?: true
   author?: true
   bestFor?: true
@@ -131,7 +126,6 @@ export type PlaybookCountAggregateInputType = {
   id?: true
   title?: true
   excerpt?: true
-  date?: true
   readingTime?: true
   author?: true
   bestFor?: true
@@ -228,11 +222,10 @@ export type PlaybookGroupByArgs<ExtArgs extends runtime.Types.Extensions.Interna
 export type PlaybookGroupByOutputType = {
   id: string
   title: string
-  excerpt: string
-  date: string
-  readingTime: string
+  excerpt: string | null
+  readingTime: string | null
   author: string
-  bestFor: string
+  bestFor: string | null
   ctaLabel: string
   isFeatured: boolean
   isPublished: boolean
@@ -240,9 +233,9 @@ export type PlaybookGroupByOutputType = {
   keyTakeaways: string[]
   whoIsItFor: string[]
   outcomes: string[]
-  frameworkSteps: runtime.JsonValue
-  samplePreviews: runtime.JsonValue
-  relatedServices: runtime.JsonValue
+  frameworkSteps: runtime.JsonValue | null
+  samplePreviews: runtime.JsonValue | null
+  relatedServices: runtime.JsonValue | null
   typeId: string | null
   categoryId: string | null
   addedById: string | null
@@ -274,11 +267,10 @@ export type PlaybookWhereInput = {
   NOT?: Prisma.PlaybookWhereInput | Prisma.PlaybookWhereInput[]
   id?: Prisma.StringFilter<"Playbook"> | string
   title?: Prisma.StringFilter<"Playbook"> | string
-  excerpt?: Prisma.StringFilter<"Playbook"> | string
-  date?: Prisma.StringFilter<"Playbook"> | string
-  readingTime?: Prisma.StringFilter<"Playbook"> | string
+  excerpt?: Prisma.StringNullableFilter<"Playbook"> | string | null
+  readingTime?: Prisma.StringNullableFilter<"Playbook"> | string | null
   author?: Prisma.StringFilter<"Playbook"> | string
-  bestFor?: Prisma.StringFilter<"Playbook"> | string
+  bestFor?: Prisma.StringNullableFilter<"Playbook"> | string | null
   ctaLabel?: Prisma.StringFilter<"Playbook"> | string
   isFeatured?: Prisma.BoolFilter<"Playbook"> | boolean
   isPublished?: Prisma.BoolFilter<"Playbook"> | boolean
@@ -286,9 +278,9 @@ export type PlaybookWhereInput = {
   keyTakeaways?: Prisma.StringNullableListFilter<"Playbook">
   whoIsItFor?: Prisma.StringNullableListFilter<"Playbook">
   outcomes?: Prisma.StringNullableListFilter<"Playbook">
-  frameworkSteps?: Prisma.JsonFilter<"Playbook">
-  samplePreviews?: Prisma.JsonFilter<"Playbook">
-  relatedServices?: Prisma.JsonFilter<"Playbook">
+  frameworkSteps?: Prisma.JsonNullableFilter<"Playbook">
+  samplePreviews?: Prisma.JsonNullableFilter<"Playbook">
+  relatedServices?: Prisma.JsonNullableFilter<"Playbook">
   typeId?: Prisma.StringNullableFilter<"Playbook"> | string | null
   categoryId?: Prisma.StringNullableFilter<"Playbook"> | string | null
   addedById?: Prisma.StringNullableFilter<"Playbook"> | string | null
@@ -302,11 +294,10 @@ export type PlaybookWhereInput = {
 export type PlaybookOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
-  excerpt?: Prisma.SortOrder
-  date?: Prisma.SortOrder
-  readingTime?: Prisma.SortOrder
+  excerpt?: Prisma.SortOrderInput | Prisma.SortOrder
+  readingTime?: Prisma.SortOrderInput | Prisma.SortOrder
   author?: Prisma.SortOrder
-  bestFor?: Prisma.SortOrder
+  bestFor?: Prisma.SortOrderInput | Prisma.SortOrder
   ctaLabel?: Prisma.SortOrder
   isFeatured?: Prisma.SortOrder
   isPublished?: Prisma.SortOrder
@@ -314,9 +305,9 @@ export type PlaybookOrderByWithRelationInput = {
   keyTakeaways?: Prisma.SortOrder
   whoIsItFor?: Prisma.SortOrder
   outcomes?: Prisma.SortOrder
-  frameworkSteps?: Prisma.SortOrder
-  samplePreviews?: Prisma.SortOrder
-  relatedServices?: Prisma.SortOrder
+  frameworkSteps?: Prisma.SortOrderInput | Prisma.SortOrder
+  samplePreviews?: Prisma.SortOrderInput | Prisma.SortOrder
+  relatedServices?: Prisma.SortOrderInput | Prisma.SortOrder
   typeId?: Prisma.SortOrderInput | Prisma.SortOrder
   categoryId?: Prisma.SortOrderInput | Prisma.SortOrder
   addedById?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -334,20 +325,19 @@ export type PlaybookWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.PlaybookWhereInput[]
   NOT?: Prisma.PlaybookWhereInput | Prisma.PlaybookWhereInput[]
   title?: Prisma.StringFilter<"Playbook"> | string
-  excerpt?: Prisma.StringFilter<"Playbook"> | string
-  date?: Prisma.StringFilter<"Playbook"> | string
-  readingTime?: Prisma.StringFilter<"Playbook"> | string
+  excerpt?: Prisma.StringNullableFilter<"Playbook"> | string | null
+  readingTime?: Prisma.StringNullableFilter<"Playbook"> | string | null
   author?: Prisma.StringFilter<"Playbook"> | string
-  bestFor?: Prisma.StringFilter<"Playbook"> | string
+  bestFor?: Prisma.StringNullableFilter<"Playbook"> | string | null
   ctaLabel?: Prisma.StringFilter<"Playbook"> | string
   isFeatured?: Prisma.BoolFilter<"Playbook"> | boolean
   isPublished?: Prisma.BoolFilter<"Playbook"> | boolean
   keyTakeaways?: Prisma.StringNullableListFilter<"Playbook">
   whoIsItFor?: Prisma.StringNullableListFilter<"Playbook">
   outcomes?: Prisma.StringNullableListFilter<"Playbook">
-  frameworkSteps?: Prisma.JsonFilter<"Playbook">
-  samplePreviews?: Prisma.JsonFilter<"Playbook">
-  relatedServices?: Prisma.JsonFilter<"Playbook">
+  frameworkSteps?: Prisma.JsonNullableFilter<"Playbook">
+  samplePreviews?: Prisma.JsonNullableFilter<"Playbook">
+  relatedServices?: Prisma.JsonNullableFilter<"Playbook">
   typeId?: Prisma.StringNullableFilter<"Playbook"> | string | null
   categoryId?: Prisma.StringNullableFilter<"Playbook"> | string | null
   addedById?: Prisma.StringNullableFilter<"Playbook"> | string | null
@@ -361,11 +351,10 @@ export type PlaybookWhereUniqueInput = Prisma.AtLeast<{
 export type PlaybookOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
-  excerpt?: Prisma.SortOrder
-  date?: Prisma.SortOrder
-  readingTime?: Prisma.SortOrder
+  excerpt?: Prisma.SortOrderInput | Prisma.SortOrder
+  readingTime?: Prisma.SortOrderInput | Prisma.SortOrder
   author?: Prisma.SortOrder
-  bestFor?: Prisma.SortOrder
+  bestFor?: Prisma.SortOrderInput | Prisma.SortOrder
   ctaLabel?: Prisma.SortOrder
   isFeatured?: Prisma.SortOrder
   isPublished?: Prisma.SortOrder
@@ -373,9 +362,9 @@ export type PlaybookOrderByWithAggregationInput = {
   keyTakeaways?: Prisma.SortOrder
   whoIsItFor?: Prisma.SortOrder
   outcomes?: Prisma.SortOrder
-  frameworkSteps?: Prisma.SortOrder
-  samplePreviews?: Prisma.SortOrder
-  relatedServices?: Prisma.SortOrder
+  frameworkSteps?: Prisma.SortOrderInput | Prisma.SortOrder
+  samplePreviews?: Prisma.SortOrderInput | Prisma.SortOrder
+  relatedServices?: Prisma.SortOrderInput | Prisma.SortOrder
   typeId?: Prisma.SortOrderInput | Prisma.SortOrder
   categoryId?: Prisma.SortOrderInput | Prisma.SortOrder
   addedById?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -392,11 +381,10 @@ export type PlaybookScalarWhereWithAggregatesInput = {
   NOT?: Prisma.PlaybookScalarWhereWithAggregatesInput | Prisma.PlaybookScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"Playbook"> | string
   title?: Prisma.StringWithAggregatesFilter<"Playbook"> | string
-  excerpt?: Prisma.StringWithAggregatesFilter<"Playbook"> | string
-  date?: Prisma.StringWithAggregatesFilter<"Playbook"> | string
-  readingTime?: Prisma.StringWithAggregatesFilter<"Playbook"> | string
+  excerpt?: Prisma.StringNullableWithAggregatesFilter<"Playbook"> | string | null
+  readingTime?: Prisma.StringNullableWithAggregatesFilter<"Playbook"> | string | null
   author?: Prisma.StringWithAggregatesFilter<"Playbook"> | string
-  bestFor?: Prisma.StringWithAggregatesFilter<"Playbook"> | string
+  bestFor?: Prisma.StringNullableWithAggregatesFilter<"Playbook"> | string | null
   ctaLabel?: Prisma.StringWithAggregatesFilter<"Playbook"> | string
   isFeatured?: Prisma.BoolWithAggregatesFilter<"Playbook"> | boolean
   isPublished?: Prisma.BoolWithAggregatesFilter<"Playbook"> | boolean
@@ -404,9 +392,9 @@ export type PlaybookScalarWhereWithAggregatesInput = {
   keyTakeaways?: Prisma.StringNullableListFilter<"Playbook">
   whoIsItFor?: Prisma.StringNullableListFilter<"Playbook">
   outcomes?: Prisma.StringNullableListFilter<"Playbook">
-  frameworkSteps?: Prisma.JsonWithAggregatesFilter<"Playbook">
-  samplePreviews?: Prisma.JsonWithAggregatesFilter<"Playbook">
-  relatedServices?: Prisma.JsonWithAggregatesFilter<"Playbook">
+  frameworkSteps?: Prisma.JsonNullableWithAggregatesFilter<"Playbook">
+  samplePreviews?: Prisma.JsonNullableWithAggregatesFilter<"Playbook">
+  relatedServices?: Prisma.JsonNullableWithAggregatesFilter<"Playbook">
   typeId?: Prisma.StringNullableWithAggregatesFilter<"Playbook"> | string | null
   categoryId?: Prisma.StringNullableWithAggregatesFilter<"Playbook"> | string | null
   addedById?: Prisma.StringNullableWithAggregatesFilter<"Playbook"> | string | null
@@ -417,21 +405,20 @@ export type PlaybookScalarWhereWithAggregatesInput = {
 export type PlaybookCreateInput = {
   id?: string
   title: string
-  excerpt: string
-  date: string
-  readingTime: string
+  excerpt?: string | null
+  readingTime?: string | null
   author?: string
-  bestFor: string
-  ctaLabel: string
+  bestFor?: string | null
+  ctaLabel?: string
   isFeatured?: boolean
   isPublished?: boolean
   slug: string
   keyTakeaways?: Prisma.PlaybookCreatekeyTakeawaysInput | string[]
   whoIsItFor?: Prisma.PlaybookCreatewhoIsItForInput | string[]
   outcomes?: Prisma.PlaybookCreateoutcomesInput | string[]
-  frameworkSteps: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  samplePreviews: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  relatedServices: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  frameworkSteps?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  samplePreviews?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  relatedServices?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
   type?: Prisma.PlaybookTypeCreateNestedOneWithoutPlaybooksInput
@@ -442,21 +429,20 @@ export type PlaybookCreateInput = {
 export type PlaybookUncheckedCreateInput = {
   id?: string
   title: string
-  excerpt: string
-  date: string
-  readingTime: string
+  excerpt?: string | null
+  readingTime?: string | null
   author?: string
-  bestFor: string
-  ctaLabel: string
+  bestFor?: string | null
+  ctaLabel?: string
   isFeatured?: boolean
   isPublished?: boolean
   slug: string
   keyTakeaways?: Prisma.PlaybookCreatekeyTakeawaysInput | string[]
   whoIsItFor?: Prisma.PlaybookCreatewhoIsItForInput | string[]
   outcomes?: Prisma.PlaybookCreateoutcomesInput | string[]
-  frameworkSteps: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  samplePreviews: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  relatedServices: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  frameworkSteps?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  samplePreviews?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  relatedServices?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   typeId?: string | null
   categoryId?: string | null
   addedById?: string | null
@@ -467,11 +453,10 @@ export type PlaybookUncheckedCreateInput = {
 export type PlaybookUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  excerpt?: Prisma.StringFieldUpdateOperationsInput | string
-  date?: Prisma.StringFieldUpdateOperationsInput | string
-  readingTime?: Prisma.StringFieldUpdateOperationsInput | string
+  excerpt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  readingTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   author?: Prisma.StringFieldUpdateOperationsInput | string
-  bestFor?: Prisma.StringFieldUpdateOperationsInput | string
+  bestFor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ctaLabel?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -479,9 +464,9 @@ export type PlaybookUpdateInput = {
   keyTakeaways?: Prisma.PlaybookUpdatekeyTakeawaysInput | string[]
   whoIsItFor?: Prisma.PlaybookUpdatewhoIsItForInput | string[]
   outcomes?: Prisma.PlaybookUpdateoutcomesInput | string[]
-  frameworkSteps?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  samplePreviews?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  relatedServices?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  frameworkSteps?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  samplePreviews?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  relatedServices?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   type?: Prisma.PlaybookTypeUpdateOneWithoutPlaybooksNestedInput
@@ -492,11 +477,10 @@ export type PlaybookUpdateInput = {
 export type PlaybookUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  excerpt?: Prisma.StringFieldUpdateOperationsInput | string
-  date?: Prisma.StringFieldUpdateOperationsInput | string
-  readingTime?: Prisma.StringFieldUpdateOperationsInput | string
+  excerpt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  readingTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   author?: Prisma.StringFieldUpdateOperationsInput | string
-  bestFor?: Prisma.StringFieldUpdateOperationsInput | string
+  bestFor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ctaLabel?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -504,9 +488,9 @@ export type PlaybookUncheckedUpdateInput = {
   keyTakeaways?: Prisma.PlaybookUpdatekeyTakeawaysInput | string[]
   whoIsItFor?: Prisma.PlaybookUpdatewhoIsItForInput | string[]
   outcomes?: Prisma.PlaybookUpdateoutcomesInput | string[]
-  frameworkSteps?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  samplePreviews?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  relatedServices?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  frameworkSteps?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  samplePreviews?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  relatedServices?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   typeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   categoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   addedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -517,21 +501,20 @@ export type PlaybookUncheckedUpdateInput = {
 export type PlaybookCreateManyInput = {
   id?: string
   title: string
-  excerpt: string
-  date: string
-  readingTime: string
+  excerpt?: string | null
+  readingTime?: string | null
   author?: string
-  bestFor: string
-  ctaLabel: string
+  bestFor?: string | null
+  ctaLabel?: string
   isFeatured?: boolean
   isPublished?: boolean
   slug: string
   keyTakeaways?: Prisma.PlaybookCreatekeyTakeawaysInput | string[]
   whoIsItFor?: Prisma.PlaybookCreatewhoIsItForInput | string[]
   outcomes?: Prisma.PlaybookCreateoutcomesInput | string[]
-  frameworkSteps: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  samplePreviews: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  relatedServices: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  frameworkSteps?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  samplePreviews?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  relatedServices?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   typeId?: string | null
   categoryId?: string | null
   addedById?: string | null
@@ -542,11 +525,10 @@ export type PlaybookCreateManyInput = {
 export type PlaybookUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  excerpt?: Prisma.StringFieldUpdateOperationsInput | string
-  date?: Prisma.StringFieldUpdateOperationsInput | string
-  readingTime?: Prisma.StringFieldUpdateOperationsInput | string
+  excerpt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  readingTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   author?: Prisma.StringFieldUpdateOperationsInput | string
-  bestFor?: Prisma.StringFieldUpdateOperationsInput | string
+  bestFor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ctaLabel?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -554,9 +536,9 @@ export type PlaybookUpdateManyMutationInput = {
   keyTakeaways?: Prisma.PlaybookUpdatekeyTakeawaysInput | string[]
   whoIsItFor?: Prisma.PlaybookUpdatewhoIsItForInput | string[]
   outcomes?: Prisma.PlaybookUpdateoutcomesInput | string[]
-  frameworkSteps?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  samplePreviews?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  relatedServices?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  frameworkSteps?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  samplePreviews?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  relatedServices?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -564,11 +546,10 @@ export type PlaybookUpdateManyMutationInput = {
 export type PlaybookUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  excerpt?: Prisma.StringFieldUpdateOperationsInput | string
-  date?: Prisma.StringFieldUpdateOperationsInput | string
-  readingTime?: Prisma.StringFieldUpdateOperationsInput | string
+  excerpt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  readingTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   author?: Prisma.StringFieldUpdateOperationsInput | string
-  bestFor?: Prisma.StringFieldUpdateOperationsInput | string
+  bestFor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ctaLabel?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -576,9 +557,9 @@ export type PlaybookUncheckedUpdateManyInput = {
   keyTakeaways?: Prisma.PlaybookUpdatekeyTakeawaysInput | string[]
   whoIsItFor?: Prisma.PlaybookUpdatewhoIsItForInput | string[]
   outcomes?: Prisma.PlaybookUpdateoutcomesInput | string[]
-  frameworkSteps?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  samplePreviews?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  relatedServices?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  frameworkSteps?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  samplePreviews?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  relatedServices?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   typeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   categoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   addedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -600,7 +581,6 @@ export type PlaybookCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   excerpt?: Prisma.SortOrder
-  date?: Prisma.SortOrder
   readingTime?: Prisma.SortOrder
   author?: Prisma.SortOrder
   bestFor?: Prisma.SortOrder
@@ -625,7 +605,6 @@ export type PlaybookMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   excerpt?: Prisma.SortOrder
-  date?: Prisma.SortOrder
   readingTime?: Prisma.SortOrder
   author?: Prisma.SortOrder
   bestFor?: Prisma.SortOrder
@@ -644,7 +623,6 @@ export type PlaybookMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   excerpt?: Prisma.SortOrder
-  date?: Prisma.SortOrder
   readingTime?: Prisma.SortOrder
   author?: Prisma.SortOrder
   bestFor?: Prisma.SortOrder
@@ -815,21 +793,20 @@ export type PlaybookUncheckedUpdateManyWithoutCategoryNestedInput = {
 export type PlaybookCreateWithoutAddedByInput = {
   id?: string
   title: string
-  excerpt: string
-  date: string
-  readingTime: string
+  excerpt?: string | null
+  readingTime?: string | null
   author?: string
-  bestFor: string
-  ctaLabel: string
+  bestFor?: string | null
+  ctaLabel?: string
   isFeatured?: boolean
   isPublished?: boolean
   slug: string
   keyTakeaways?: Prisma.PlaybookCreatekeyTakeawaysInput | string[]
   whoIsItFor?: Prisma.PlaybookCreatewhoIsItForInput | string[]
   outcomes?: Prisma.PlaybookCreateoutcomesInput | string[]
-  frameworkSteps: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  samplePreviews: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  relatedServices: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  frameworkSteps?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  samplePreviews?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  relatedServices?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
   type?: Prisma.PlaybookTypeCreateNestedOneWithoutPlaybooksInput
@@ -839,21 +816,20 @@ export type PlaybookCreateWithoutAddedByInput = {
 export type PlaybookUncheckedCreateWithoutAddedByInput = {
   id?: string
   title: string
-  excerpt: string
-  date: string
-  readingTime: string
+  excerpt?: string | null
+  readingTime?: string | null
   author?: string
-  bestFor: string
-  ctaLabel: string
+  bestFor?: string | null
+  ctaLabel?: string
   isFeatured?: boolean
   isPublished?: boolean
   slug: string
   keyTakeaways?: Prisma.PlaybookCreatekeyTakeawaysInput | string[]
   whoIsItFor?: Prisma.PlaybookCreatewhoIsItForInput | string[]
   outcomes?: Prisma.PlaybookCreateoutcomesInput | string[]
-  frameworkSteps: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  samplePreviews: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  relatedServices: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  frameworkSteps?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  samplePreviews?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  relatedServices?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   typeId?: string | null
   categoryId?: string | null
   createdAt?: Date | string
@@ -892,11 +868,10 @@ export type PlaybookScalarWhereInput = {
   NOT?: Prisma.PlaybookScalarWhereInput | Prisma.PlaybookScalarWhereInput[]
   id?: Prisma.StringFilter<"Playbook"> | string
   title?: Prisma.StringFilter<"Playbook"> | string
-  excerpt?: Prisma.StringFilter<"Playbook"> | string
-  date?: Prisma.StringFilter<"Playbook"> | string
-  readingTime?: Prisma.StringFilter<"Playbook"> | string
+  excerpt?: Prisma.StringNullableFilter<"Playbook"> | string | null
+  readingTime?: Prisma.StringNullableFilter<"Playbook"> | string | null
   author?: Prisma.StringFilter<"Playbook"> | string
-  bestFor?: Prisma.StringFilter<"Playbook"> | string
+  bestFor?: Prisma.StringNullableFilter<"Playbook"> | string | null
   ctaLabel?: Prisma.StringFilter<"Playbook"> | string
   isFeatured?: Prisma.BoolFilter<"Playbook"> | boolean
   isPublished?: Prisma.BoolFilter<"Playbook"> | boolean
@@ -904,9 +879,9 @@ export type PlaybookScalarWhereInput = {
   keyTakeaways?: Prisma.StringNullableListFilter<"Playbook">
   whoIsItFor?: Prisma.StringNullableListFilter<"Playbook">
   outcomes?: Prisma.StringNullableListFilter<"Playbook">
-  frameworkSteps?: Prisma.JsonFilter<"Playbook">
-  samplePreviews?: Prisma.JsonFilter<"Playbook">
-  relatedServices?: Prisma.JsonFilter<"Playbook">
+  frameworkSteps?: Prisma.JsonNullableFilter<"Playbook">
+  samplePreviews?: Prisma.JsonNullableFilter<"Playbook">
+  relatedServices?: Prisma.JsonNullableFilter<"Playbook">
   typeId?: Prisma.StringNullableFilter<"Playbook"> | string | null
   categoryId?: Prisma.StringNullableFilter<"Playbook"> | string | null
   addedById?: Prisma.StringNullableFilter<"Playbook"> | string | null
@@ -917,21 +892,20 @@ export type PlaybookScalarWhereInput = {
 export type PlaybookCreateWithoutTypeInput = {
   id?: string
   title: string
-  excerpt: string
-  date: string
-  readingTime: string
+  excerpt?: string | null
+  readingTime?: string | null
   author?: string
-  bestFor: string
-  ctaLabel: string
+  bestFor?: string | null
+  ctaLabel?: string
   isFeatured?: boolean
   isPublished?: boolean
   slug: string
   keyTakeaways?: Prisma.PlaybookCreatekeyTakeawaysInput | string[]
   whoIsItFor?: Prisma.PlaybookCreatewhoIsItForInput | string[]
   outcomes?: Prisma.PlaybookCreateoutcomesInput | string[]
-  frameworkSteps: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  samplePreviews: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  relatedServices: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  frameworkSteps?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  samplePreviews?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  relatedServices?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
   category?: Prisma.PlaybookCategoryCreateNestedOneWithoutPlaybooksInput
@@ -941,21 +915,20 @@ export type PlaybookCreateWithoutTypeInput = {
 export type PlaybookUncheckedCreateWithoutTypeInput = {
   id?: string
   title: string
-  excerpt: string
-  date: string
-  readingTime: string
+  excerpt?: string | null
+  readingTime?: string | null
   author?: string
-  bestFor: string
-  ctaLabel: string
+  bestFor?: string | null
+  ctaLabel?: string
   isFeatured?: boolean
   isPublished?: boolean
   slug: string
   keyTakeaways?: Prisma.PlaybookCreatekeyTakeawaysInput | string[]
   whoIsItFor?: Prisma.PlaybookCreatewhoIsItForInput | string[]
   outcomes?: Prisma.PlaybookCreateoutcomesInput | string[]
-  frameworkSteps: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  samplePreviews: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  relatedServices: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  frameworkSteps?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  samplePreviews?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  relatedServices?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   categoryId?: string | null
   addedById?: string | null
   createdAt?: Date | string
@@ -991,21 +964,20 @@ export type PlaybookUpdateManyWithWhereWithoutTypeInput = {
 export type PlaybookCreateWithoutCategoryInput = {
   id?: string
   title: string
-  excerpt: string
-  date: string
-  readingTime: string
+  excerpt?: string | null
+  readingTime?: string | null
   author?: string
-  bestFor: string
-  ctaLabel: string
+  bestFor?: string | null
+  ctaLabel?: string
   isFeatured?: boolean
   isPublished?: boolean
   slug: string
   keyTakeaways?: Prisma.PlaybookCreatekeyTakeawaysInput | string[]
   whoIsItFor?: Prisma.PlaybookCreatewhoIsItForInput | string[]
   outcomes?: Prisma.PlaybookCreateoutcomesInput | string[]
-  frameworkSteps: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  samplePreviews: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  relatedServices: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  frameworkSteps?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  samplePreviews?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  relatedServices?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
   type?: Prisma.PlaybookTypeCreateNestedOneWithoutPlaybooksInput
@@ -1015,21 +987,20 @@ export type PlaybookCreateWithoutCategoryInput = {
 export type PlaybookUncheckedCreateWithoutCategoryInput = {
   id?: string
   title: string
-  excerpt: string
-  date: string
-  readingTime: string
+  excerpt?: string | null
+  readingTime?: string | null
   author?: string
-  bestFor: string
-  ctaLabel: string
+  bestFor?: string | null
+  ctaLabel?: string
   isFeatured?: boolean
   isPublished?: boolean
   slug: string
   keyTakeaways?: Prisma.PlaybookCreatekeyTakeawaysInput | string[]
   whoIsItFor?: Prisma.PlaybookCreatewhoIsItForInput | string[]
   outcomes?: Prisma.PlaybookCreateoutcomesInput | string[]
-  frameworkSteps: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  samplePreviews: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  relatedServices: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  frameworkSteps?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  samplePreviews?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  relatedServices?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   typeId?: string | null
   addedById?: string | null
   createdAt?: Date | string
@@ -1065,21 +1036,20 @@ export type PlaybookUpdateManyWithWhereWithoutCategoryInput = {
 export type PlaybookCreateManyAddedByInput = {
   id?: string
   title: string
-  excerpt: string
-  date: string
-  readingTime: string
+  excerpt?: string | null
+  readingTime?: string | null
   author?: string
-  bestFor: string
-  ctaLabel: string
+  bestFor?: string | null
+  ctaLabel?: string
   isFeatured?: boolean
   isPublished?: boolean
   slug: string
   keyTakeaways?: Prisma.PlaybookCreatekeyTakeawaysInput | string[]
   whoIsItFor?: Prisma.PlaybookCreatewhoIsItForInput | string[]
   outcomes?: Prisma.PlaybookCreateoutcomesInput | string[]
-  frameworkSteps: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  samplePreviews: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  relatedServices: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  frameworkSteps?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  samplePreviews?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  relatedServices?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   typeId?: string | null
   categoryId?: string | null
   createdAt?: Date | string
@@ -1089,11 +1059,10 @@ export type PlaybookCreateManyAddedByInput = {
 export type PlaybookUpdateWithoutAddedByInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  excerpt?: Prisma.StringFieldUpdateOperationsInput | string
-  date?: Prisma.StringFieldUpdateOperationsInput | string
-  readingTime?: Prisma.StringFieldUpdateOperationsInput | string
+  excerpt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  readingTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   author?: Prisma.StringFieldUpdateOperationsInput | string
-  bestFor?: Prisma.StringFieldUpdateOperationsInput | string
+  bestFor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ctaLabel?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -1101,9 +1070,9 @@ export type PlaybookUpdateWithoutAddedByInput = {
   keyTakeaways?: Prisma.PlaybookUpdatekeyTakeawaysInput | string[]
   whoIsItFor?: Prisma.PlaybookUpdatewhoIsItForInput | string[]
   outcomes?: Prisma.PlaybookUpdateoutcomesInput | string[]
-  frameworkSteps?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  samplePreviews?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  relatedServices?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  frameworkSteps?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  samplePreviews?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  relatedServices?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   type?: Prisma.PlaybookTypeUpdateOneWithoutPlaybooksNestedInput
@@ -1113,11 +1082,10 @@ export type PlaybookUpdateWithoutAddedByInput = {
 export type PlaybookUncheckedUpdateWithoutAddedByInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  excerpt?: Prisma.StringFieldUpdateOperationsInput | string
-  date?: Prisma.StringFieldUpdateOperationsInput | string
-  readingTime?: Prisma.StringFieldUpdateOperationsInput | string
+  excerpt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  readingTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   author?: Prisma.StringFieldUpdateOperationsInput | string
-  bestFor?: Prisma.StringFieldUpdateOperationsInput | string
+  bestFor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ctaLabel?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -1125,9 +1093,9 @@ export type PlaybookUncheckedUpdateWithoutAddedByInput = {
   keyTakeaways?: Prisma.PlaybookUpdatekeyTakeawaysInput | string[]
   whoIsItFor?: Prisma.PlaybookUpdatewhoIsItForInput | string[]
   outcomes?: Prisma.PlaybookUpdateoutcomesInput | string[]
-  frameworkSteps?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  samplePreviews?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  relatedServices?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  frameworkSteps?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  samplePreviews?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  relatedServices?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   typeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   categoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1137,11 +1105,10 @@ export type PlaybookUncheckedUpdateWithoutAddedByInput = {
 export type PlaybookUncheckedUpdateManyWithoutAddedByInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  excerpt?: Prisma.StringFieldUpdateOperationsInput | string
-  date?: Prisma.StringFieldUpdateOperationsInput | string
-  readingTime?: Prisma.StringFieldUpdateOperationsInput | string
+  excerpt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  readingTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   author?: Prisma.StringFieldUpdateOperationsInput | string
-  bestFor?: Prisma.StringFieldUpdateOperationsInput | string
+  bestFor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ctaLabel?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -1149,9 +1116,9 @@ export type PlaybookUncheckedUpdateManyWithoutAddedByInput = {
   keyTakeaways?: Prisma.PlaybookUpdatekeyTakeawaysInput | string[]
   whoIsItFor?: Prisma.PlaybookUpdatewhoIsItForInput | string[]
   outcomes?: Prisma.PlaybookUpdateoutcomesInput | string[]
-  frameworkSteps?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  samplePreviews?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  relatedServices?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  frameworkSteps?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  samplePreviews?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  relatedServices?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   typeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   categoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1161,21 +1128,20 @@ export type PlaybookUncheckedUpdateManyWithoutAddedByInput = {
 export type PlaybookCreateManyTypeInput = {
   id?: string
   title: string
-  excerpt: string
-  date: string
-  readingTime: string
+  excerpt?: string | null
+  readingTime?: string | null
   author?: string
-  bestFor: string
-  ctaLabel: string
+  bestFor?: string | null
+  ctaLabel?: string
   isFeatured?: boolean
   isPublished?: boolean
   slug: string
   keyTakeaways?: Prisma.PlaybookCreatekeyTakeawaysInput | string[]
   whoIsItFor?: Prisma.PlaybookCreatewhoIsItForInput | string[]
   outcomes?: Prisma.PlaybookCreateoutcomesInput | string[]
-  frameworkSteps: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  samplePreviews: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  relatedServices: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  frameworkSteps?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  samplePreviews?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  relatedServices?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   categoryId?: string | null
   addedById?: string | null
   createdAt?: Date | string
@@ -1185,11 +1151,10 @@ export type PlaybookCreateManyTypeInput = {
 export type PlaybookUpdateWithoutTypeInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  excerpt?: Prisma.StringFieldUpdateOperationsInput | string
-  date?: Prisma.StringFieldUpdateOperationsInput | string
-  readingTime?: Prisma.StringFieldUpdateOperationsInput | string
+  excerpt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  readingTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   author?: Prisma.StringFieldUpdateOperationsInput | string
-  bestFor?: Prisma.StringFieldUpdateOperationsInput | string
+  bestFor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ctaLabel?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -1197,9 +1162,9 @@ export type PlaybookUpdateWithoutTypeInput = {
   keyTakeaways?: Prisma.PlaybookUpdatekeyTakeawaysInput | string[]
   whoIsItFor?: Prisma.PlaybookUpdatewhoIsItForInput | string[]
   outcomes?: Prisma.PlaybookUpdateoutcomesInput | string[]
-  frameworkSteps?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  samplePreviews?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  relatedServices?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  frameworkSteps?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  samplePreviews?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  relatedServices?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   category?: Prisma.PlaybookCategoryUpdateOneWithoutPlaybooksNestedInput
@@ -1209,11 +1174,10 @@ export type PlaybookUpdateWithoutTypeInput = {
 export type PlaybookUncheckedUpdateWithoutTypeInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  excerpt?: Prisma.StringFieldUpdateOperationsInput | string
-  date?: Prisma.StringFieldUpdateOperationsInput | string
-  readingTime?: Prisma.StringFieldUpdateOperationsInput | string
+  excerpt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  readingTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   author?: Prisma.StringFieldUpdateOperationsInput | string
-  bestFor?: Prisma.StringFieldUpdateOperationsInput | string
+  bestFor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ctaLabel?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -1221,9 +1185,9 @@ export type PlaybookUncheckedUpdateWithoutTypeInput = {
   keyTakeaways?: Prisma.PlaybookUpdatekeyTakeawaysInput | string[]
   whoIsItFor?: Prisma.PlaybookUpdatewhoIsItForInput | string[]
   outcomes?: Prisma.PlaybookUpdateoutcomesInput | string[]
-  frameworkSteps?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  samplePreviews?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  relatedServices?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  frameworkSteps?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  samplePreviews?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  relatedServices?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   categoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   addedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1233,11 +1197,10 @@ export type PlaybookUncheckedUpdateWithoutTypeInput = {
 export type PlaybookUncheckedUpdateManyWithoutTypeInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  excerpt?: Prisma.StringFieldUpdateOperationsInput | string
-  date?: Prisma.StringFieldUpdateOperationsInput | string
-  readingTime?: Prisma.StringFieldUpdateOperationsInput | string
+  excerpt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  readingTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   author?: Prisma.StringFieldUpdateOperationsInput | string
-  bestFor?: Prisma.StringFieldUpdateOperationsInput | string
+  bestFor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ctaLabel?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -1245,9 +1208,9 @@ export type PlaybookUncheckedUpdateManyWithoutTypeInput = {
   keyTakeaways?: Prisma.PlaybookUpdatekeyTakeawaysInput | string[]
   whoIsItFor?: Prisma.PlaybookUpdatewhoIsItForInput | string[]
   outcomes?: Prisma.PlaybookUpdateoutcomesInput | string[]
-  frameworkSteps?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  samplePreviews?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  relatedServices?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  frameworkSteps?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  samplePreviews?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  relatedServices?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   categoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   addedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1257,21 +1220,20 @@ export type PlaybookUncheckedUpdateManyWithoutTypeInput = {
 export type PlaybookCreateManyCategoryInput = {
   id?: string
   title: string
-  excerpt: string
-  date: string
-  readingTime: string
+  excerpt?: string | null
+  readingTime?: string | null
   author?: string
-  bestFor: string
-  ctaLabel: string
+  bestFor?: string | null
+  ctaLabel?: string
   isFeatured?: boolean
   isPublished?: boolean
   slug: string
   keyTakeaways?: Prisma.PlaybookCreatekeyTakeawaysInput | string[]
   whoIsItFor?: Prisma.PlaybookCreatewhoIsItForInput | string[]
   outcomes?: Prisma.PlaybookCreateoutcomesInput | string[]
-  frameworkSteps: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  samplePreviews: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  relatedServices: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  frameworkSteps?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  samplePreviews?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  relatedServices?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   typeId?: string | null
   addedById?: string | null
   createdAt?: Date | string
@@ -1281,11 +1243,10 @@ export type PlaybookCreateManyCategoryInput = {
 export type PlaybookUpdateWithoutCategoryInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  excerpt?: Prisma.StringFieldUpdateOperationsInput | string
-  date?: Prisma.StringFieldUpdateOperationsInput | string
-  readingTime?: Prisma.StringFieldUpdateOperationsInput | string
+  excerpt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  readingTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   author?: Prisma.StringFieldUpdateOperationsInput | string
-  bestFor?: Prisma.StringFieldUpdateOperationsInput | string
+  bestFor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ctaLabel?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -1293,9 +1254,9 @@ export type PlaybookUpdateWithoutCategoryInput = {
   keyTakeaways?: Prisma.PlaybookUpdatekeyTakeawaysInput | string[]
   whoIsItFor?: Prisma.PlaybookUpdatewhoIsItForInput | string[]
   outcomes?: Prisma.PlaybookUpdateoutcomesInput | string[]
-  frameworkSteps?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  samplePreviews?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  relatedServices?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  frameworkSteps?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  samplePreviews?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  relatedServices?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   type?: Prisma.PlaybookTypeUpdateOneWithoutPlaybooksNestedInput
@@ -1305,11 +1266,10 @@ export type PlaybookUpdateWithoutCategoryInput = {
 export type PlaybookUncheckedUpdateWithoutCategoryInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  excerpt?: Prisma.StringFieldUpdateOperationsInput | string
-  date?: Prisma.StringFieldUpdateOperationsInput | string
-  readingTime?: Prisma.StringFieldUpdateOperationsInput | string
+  excerpt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  readingTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   author?: Prisma.StringFieldUpdateOperationsInput | string
-  bestFor?: Prisma.StringFieldUpdateOperationsInput | string
+  bestFor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ctaLabel?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -1317,9 +1277,9 @@ export type PlaybookUncheckedUpdateWithoutCategoryInput = {
   keyTakeaways?: Prisma.PlaybookUpdatekeyTakeawaysInput | string[]
   whoIsItFor?: Prisma.PlaybookUpdatewhoIsItForInput | string[]
   outcomes?: Prisma.PlaybookUpdateoutcomesInput | string[]
-  frameworkSteps?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  samplePreviews?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  relatedServices?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  frameworkSteps?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  samplePreviews?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  relatedServices?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   typeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   addedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1329,11 +1289,10 @@ export type PlaybookUncheckedUpdateWithoutCategoryInput = {
 export type PlaybookUncheckedUpdateManyWithoutCategoryInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  excerpt?: Prisma.StringFieldUpdateOperationsInput | string
-  date?: Prisma.StringFieldUpdateOperationsInput | string
-  readingTime?: Prisma.StringFieldUpdateOperationsInput | string
+  excerpt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  readingTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   author?: Prisma.StringFieldUpdateOperationsInput | string
-  bestFor?: Prisma.StringFieldUpdateOperationsInput | string
+  bestFor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ctaLabel?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -1341,9 +1300,9 @@ export type PlaybookUncheckedUpdateManyWithoutCategoryInput = {
   keyTakeaways?: Prisma.PlaybookUpdatekeyTakeawaysInput | string[]
   whoIsItFor?: Prisma.PlaybookUpdatewhoIsItForInput | string[]
   outcomes?: Prisma.PlaybookUpdateoutcomesInput | string[]
-  frameworkSteps?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  samplePreviews?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  relatedServices?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  frameworkSteps?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  samplePreviews?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  relatedServices?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   typeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   addedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1356,7 +1315,6 @@ export type PlaybookSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   id?: boolean
   title?: boolean
   excerpt?: boolean
-  date?: boolean
   readingTime?: boolean
   author?: boolean
   bestFor?: boolean
@@ -1384,7 +1342,6 @@ export type PlaybookSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
   id?: boolean
   title?: boolean
   excerpt?: boolean
-  date?: boolean
   readingTime?: boolean
   author?: boolean
   bestFor?: boolean
@@ -1412,7 +1369,6 @@ export type PlaybookSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
   id?: boolean
   title?: boolean
   excerpt?: boolean
-  date?: boolean
   readingTime?: boolean
   author?: boolean
   bestFor?: boolean
@@ -1440,7 +1396,6 @@ export type PlaybookSelectScalar = {
   id?: boolean
   title?: boolean
   excerpt?: boolean
-  date?: boolean
   readingTime?: boolean
   author?: boolean
   bestFor?: boolean
@@ -1461,7 +1416,7 @@ export type PlaybookSelectScalar = {
   updatedAt?: boolean
 }
 
-export type PlaybookOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "excerpt" | "date" | "readingTime" | "author" | "bestFor" | "ctaLabel" | "isFeatured" | "isPublished" | "slug" | "keyTakeaways" | "whoIsItFor" | "outcomes" | "frameworkSteps" | "samplePreviews" | "relatedServices" | "typeId" | "categoryId" | "addedById" | "createdAt" | "updatedAt", ExtArgs["result"]["playbook"]>
+export type PlaybookOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "excerpt" | "readingTime" | "author" | "bestFor" | "ctaLabel" | "isFeatured" | "isPublished" | "slug" | "keyTakeaways" | "whoIsItFor" | "outcomes" | "frameworkSteps" | "samplePreviews" | "relatedServices" | "typeId" | "categoryId" | "addedById" | "createdAt" | "updatedAt", ExtArgs["result"]["playbook"]>
 export type PlaybookInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   type?: boolean | Prisma.Playbook$typeArgs<ExtArgs>
   category?: boolean | Prisma.Playbook$categoryArgs<ExtArgs>
@@ -1488,11 +1443,10 @@ export type $PlaybookPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     title: string
-    excerpt: string
-    date: string
-    readingTime: string
+    excerpt: string | null
+    readingTime: string | null
     author: string
-    bestFor: string
+    bestFor: string | null
     ctaLabel: string
     isFeatured: boolean
     isPublished: boolean
@@ -1500,9 +1454,9 @@ export type $PlaybookPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     keyTakeaways: string[]
     whoIsItFor: string[]
     outcomes: string[]
-    frameworkSteps: runtime.JsonValue
-    samplePreviews: runtime.JsonValue
-    relatedServices: runtime.JsonValue
+    frameworkSteps: runtime.JsonValue | null
+    samplePreviews: runtime.JsonValue | null
+    relatedServices: runtime.JsonValue | null
     typeId: string | null
     categoryId: string | null
     addedById: string | null
@@ -1937,7 +1891,6 @@ export interface PlaybookFieldRefs {
   readonly id: Prisma.FieldRef<"Playbook", 'String'>
   readonly title: Prisma.FieldRef<"Playbook", 'String'>
   readonly excerpt: Prisma.FieldRef<"Playbook", 'String'>
-  readonly date: Prisma.FieldRef<"Playbook", 'String'>
   readonly readingTime: Prisma.FieldRef<"Playbook", 'String'>
   readonly author: Prisma.FieldRef<"Playbook", 'String'>
   readonly bestFor: Prisma.FieldRef<"Playbook", 'String'>

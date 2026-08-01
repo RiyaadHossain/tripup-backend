@@ -89,18 +89,16 @@ class TestimonialDto {
 
 export class CreateCaseStudyDto {
   @IsString()
-  @MaxLength(200)
+  @MaxLength(800)
   title!: string;
 
   @IsString()
-  @MaxLength(200)
+  @MaxLength(800)
   slug!: string;
 
   @IsString()
-  excerpt!: string;
-
-  @IsString()
-  date!: string;
+  @IsOptional()
+  excerpt?: string;
 
   @IsString()
   readingTime!: string;
@@ -108,26 +106,31 @@ export class CreateCaseStudyDto {
   @IsString()
   ctaLabel!: string;
 
+  @IsOptional()
   @IsString()
-  industryTag!: string;
+  industryTag?: string;
 
+  @IsOptional()
   @IsString()
-  coverImage!: string;
+  coverImage?: string;
 
+  @IsOptional()
   @IsArray()
   @ValidateNested({ each: true })
   @Type(() => MetricDto)
-  metrics!: MetricDto[];
+  metrics?: MetricDto[];
 
+  @IsOptional()
   @IsObject()
   @ValidateNested()
   @Type(() => SnapshotDto)
-  snapshot!: SnapshotDto;
+  snapshot?: SnapshotDto;
 
+  @IsOptional()
   @IsObject()
   @ValidateNested()
   @Type(() => ChallengeDto)
-  challenge!: ChallengeDto;
+  challenge?: ChallengeDto;
 
   @IsArray()
   @ValidateNested({ each: true })
@@ -138,24 +141,27 @@ export class CreateCaseStudyDto {
   @IsString({ each: true })
   deliverables!: string[];
 
+  @IsOptional()
   @IsObject()
   @ValidateNested()
   @Type(() => TransformationDto)
-  transformation!: TransformationDto;
+  transformation?: TransformationDto;
 
+  @IsOptional()
   @IsArray()
   @ValidateNested({ each: true })
   @Type(() => ResultDto)
-  results!: ResultDto[];
+  results?: ResultDto[];
 
   @IsArray()
   @IsString({ each: true })
   keyTakeaways!: string[];
 
+  @IsOptional()
   @IsObject()
   @ValidateNested()
   @Type(() => TestimonialDto)
-  testimonial!: TestimonialDto;
+  testimonial?: TestimonialDto;
 
   @IsOptional()
   @IsUUID('4')

@@ -226,8 +226,8 @@ export type TestimonialGroupByOutputType = {
   testimony: string
   userName: string
   userImg: string | null
-  designation: string
-  company: string
+  designation: string | null
+  company: string | null
   isFeatured: boolean
   isPublished: boolean
   displayOrder: number
@@ -264,8 +264,8 @@ export type TestimonialWhereInput = {
   testimony?: Prisma.StringFilter<"Testimonial"> | string
   userName?: Prisma.StringFilter<"Testimonial"> | string
   userImg?: Prisma.StringNullableFilter<"Testimonial"> | string | null
-  designation?: Prisma.StringFilter<"Testimonial"> | string
-  company?: Prisma.StringFilter<"Testimonial"> | string
+  designation?: Prisma.StringNullableFilter<"Testimonial"> | string | null
+  company?: Prisma.StringNullableFilter<"Testimonial"> | string | null
   isFeatured?: Prisma.BoolFilter<"Testimonial"> | boolean
   isPublished?: Prisma.BoolFilter<"Testimonial"> | boolean
   displayOrder?: Prisma.IntFilter<"Testimonial"> | number
@@ -280,8 +280,8 @@ export type TestimonialOrderByWithRelationInput = {
   testimony?: Prisma.SortOrder
   userName?: Prisma.SortOrder
   userImg?: Prisma.SortOrderInput | Prisma.SortOrder
-  designation?: Prisma.SortOrder
-  company?: Prisma.SortOrder
+  designation?: Prisma.SortOrderInput | Prisma.SortOrder
+  company?: Prisma.SortOrderInput | Prisma.SortOrder
   isFeatured?: Prisma.SortOrder
   isPublished?: Prisma.SortOrder
   displayOrder?: Prisma.SortOrder
@@ -299,8 +299,8 @@ export type TestimonialWhereUniqueInput = Prisma.AtLeast<{
   testimony?: Prisma.StringFilter<"Testimonial"> | string
   userName?: Prisma.StringFilter<"Testimonial"> | string
   userImg?: Prisma.StringNullableFilter<"Testimonial"> | string | null
-  designation?: Prisma.StringFilter<"Testimonial"> | string
-  company?: Prisma.StringFilter<"Testimonial"> | string
+  designation?: Prisma.StringNullableFilter<"Testimonial"> | string | null
+  company?: Prisma.StringNullableFilter<"Testimonial"> | string | null
   isFeatured?: Prisma.BoolFilter<"Testimonial"> | boolean
   isPublished?: Prisma.BoolFilter<"Testimonial"> | boolean
   displayOrder?: Prisma.IntFilter<"Testimonial"> | number
@@ -315,8 +315,8 @@ export type TestimonialOrderByWithAggregationInput = {
   testimony?: Prisma.SortOrder
   userName?: Prisma.SortOrder
   userImg?: Prisma.SortOrderInput | Prisma.SortOrder
-  designation?: Prisma.SortOrder
-  company?: Prisma.SortOrder
+  designation?: Prisma.SortOrderInput | Prisma.SortOrder
+  company?: Prisma.SortOrderInput | Prisma.SortOrder
   isFeatured?: Prisma.SortOrder
   isPublished?: Prisma.SortOrder
   displayOrder?: Prisma.SortOrder
@@ -338,8 +338,8 @@ export type TestimonialScalarWhereWithAggregatesInput = {
   testimony?: Prisma.StringWithAggregatesFilter<"Testimonial"> | string
   userName?: Prisma.StringWithAggregatesFilter<"Testimonial"> | string
   userImg?: Prisma.StringNullableWithAggregatesFilter<"Testimonial"> | string | null
-  designation?: Prisma.StringWithAggregatesFilter<"Testimonial"> | string
-  company?: Prisma.StringWithAggregatesFilter<"Testimonial"> | string
+  designation?: Prisma.StringNullableWithAggregatesFilter<"Testimonial"> | string | null
+  company?: Prisma.StringNullableWithAggregatesFilter<"Testimonial"> | string | null
   isFeatured?: Prisma.BoolWithAggregatesFilter<"Testimonial"> | boolean
   isPublished?: Prisma.BoolWithAggregatesFilter<"Testimonial"> | boolean
   displayOrder?: Prisma.IntWithAggregatesFilter<"Testimonial"> | number
@@ -353,8 +353,8 @@ export type TestimonialCreateInput = {
   testimony: string
   userName: string
   userImg?: string | null
-  designation: string
-  company: string
+  designation?: string | null
+  company?: string | null
   isFeatured?: boolean
   isPublished?: boolean
   displayOrder?: number
@@ -368,8 +368,8 @@ export type TestimonialUncheckedCreateInput = {
   testimony: string
   userName: string
   userImg?: string | null
-  designation: string
-  company: string
+  designation?: string | null
+  company?: string | null
   isFeatured?: boolean
   isPublished?: boolean
   displayOrder?: number
@@ -383,8 +383,8 @@ export type TestimonialUpdateInput = {
   testimony?: Prisma.StringFieldUpdateOperationsInput | string
   userName?: Prisma.StringFieldUpdateOperationsInput | string
   userImg?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  designation?: Prisma.StringFieldUpdateOperationsInput | string
-  company?: Prisma.StringFieldUpdateOperationsInput | string
+  designation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  company?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   displayOrder?: Prisma.IntFieldUpdateOperationsInput | number
@@ -398,8 +398,8 @@ export type TestimonialUncheckedUpdateInput = {
   testimony?: Prisma.StringFieldUpdateOperationsInput | string
   userName?: Prisma.StringFieldUpdateOperationsInput | string
   userImg?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  designation?: Prisma.StringFieldUpdateOperationsInput | string
-  company?: Prisma.StringFieldUpdateOperationsInput | string
+  designation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  company?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   displayOrder?: Prisma.IntFieldUpdateOperationsInput | number
@@ -413,8 +413,8 @@ export type TestimonialCreateManyInput = {
   testimony: string
   userName: string
   userImg?: string | null
-  designation: string
-  company: string
+  designation?: string | null
+  company?: string | null
   isFeatured?: boolean
   isPublished?: boolean
   displayOrder?: number
@@ -428,8 +428,8 @@ export type TestimonialUpdateManyMutationInput = {
   testimony?: Prisma.StringFieldUpdateOperationsInput | string
   userName?: Prisma.StringFieldUpdateOperationsInput | string
   userImg?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  designation?: Prisma.StringFieldUpdateOperationsInput | string
-  company?: Prisma.StringFieldUpdateOperationsInput | string
+  designation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  company?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   displayOrder?: Prisma.IntFieldUpdateOperationsInput | number
@@ -442,8 +442,8 @@ export type TestimonialUncheckedUpdateManyInput = {
   testimony?: Prisma.StringFieldUpdateOperationsInput | string
   userName?: Prisma.StringFieldUpdateOperationsInput | string
   userImg?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  designation?: Prisma.StringFieldUpdateOperationsInput | string
-  company?: Prisma.StringFieldUpdateOperationsInput | string
+  designation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  company?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   displayOrder?: Prisma.IntFieldUpdateOperationsInput | number
@@ -562,8 +562,8 @@ export type TestimonialCreateWithoutAddedByInput = {
   testimony: string
   userName: string
   userImg?: string | null
-  designation: string
-  company: string
+  designation?: string | null
+  company?: string | null
   isFeatured?: boolean
   isPublished?: boolean
   displayOrder?: number
@@ -576,8 +576,8 @@ export type TestimonialUncheckedCreateWithoutAddedByInput = {
   testimony: string
   userName: string
   userImg?: string | null
-  designation: string
-  company: string
+  designation?: string | null
+  company?: string | null
   isFeatured?: boolean
   isPublished?: boolean
   displayOrder?: number
@@ -619,8 +619,8 @@ export type TestimonialScalarWhereInput = {
   testimony?: Prisma.StringFilter<"Testimonial"> | string
   userName?: Prisma.StringFilter<"Testimonial"> | string
   userImg?: Prisma.StringNullableFilter<"Testimonial"> | string | null
-  designation?: Prisma.StringFilter<"Testimonial"> | string
-  company?: Prisma.StringFilter<"Testimonial"> | string
+  designation?: Prisma.StringNullableFilter<"Testimonial"> | string | null
+  company?: Prisma.StringNullableFilter<"Testimonial"> | string | null
   isFeatured?: Prisma.BoolFilter<"Testimonial"> | boolean
   isPublished?: Prisma.BoolFilter<"Testimonial"> | boolean
   displayOrder?: Prisma.IntFilter<"Testimonial"> | number
@@ -634,8 +634,8 @@ export type TestimonialCreateManyAddedByInput = {
   testimony: string
   userName: string
   userImg?: string | null
-  designation: string
-  company: string
+  designation?: string | null
+  company?: string | null
   isFeatured?: boolean
   isPublished?: boolean
   displayOrder?: number
@@ -648,8 +648,8 @@ export type TestimonialUpdateWithoutAddedByInput = {
   testimony?: Prisma.StringFieldUpdateOperationsInput | string
   userName?: Prisma.StringFieldUpdateOperationsInput | string
   userImg?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  designation?: Prisma.StringFieldUpdateOperationsInput | string
-  company?: Prisma.StringFieldUpdateOperationsInput | string
+  designation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  company?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   displayOrder?: Prisma.IntFieldUpdateOperationsInput | number
@@ -662,8 +662,8 @@ export type TestimonialUncheckedUpdateWithoutAddedByInput = {
   testimony?: Prisma.StringFieldUpdateOperationsInput | string
   userName?: Prisma.StringFieldUpdateOperationsInput | string
   userImg?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  designation?: Prisma.StringFieldUpdateOperationsInput | string
-  company?: Prisma.StringFieldUpdateOperationsInput | string
+  designation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  company?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   displayOrder?: Prisma.IntFieldUpdateOperationsInput | number
@@ -676,8 +676,8 @@ export type TestimonialUncheckedUpdateManyWithoutAddedByInput = {
   testimony?: Prisma.StringFieldUpdateOperationsInput | string
   userName?: Prisma.StringFieldUpdateOperationsInput | string
   userImg?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  designation?: Prisma.StringFieldUpdateOperationsInput | string
-  company?: Prisma.StringFieldUpdateOperationsInput | string
+  designation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  company?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   displayOrder?: Prisma.IntFieldUpdateOperationsInput | number
@@ -771,8 +771,8 @@ export type $TestimonialPayload<ExtArgs extends runtime.Types.Extensions.Interna
     testimony: string
     userName: string
     userImg: string | null
-    designation: string
-    company: string
+    designation: string | null
+    company: string | null
     isFeatured: boolean
     isPublished: boolean
     displayOrder: number

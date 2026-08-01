@@ -20,13 +20,15 @@ export class CreateTestimonialDto {
   @IsUrl()
   userImg?: string;
 
+  @IsOptional()
   @IsString()
   @MaxLength(100)
-  designation!: string;
+  designation?: string;
 
+  @IsOptional()
   @IsString()
   @MaxLength(100)
-  company!: string;
+  company?: string;
 
   @IsOptional()
   @IsBoolean()

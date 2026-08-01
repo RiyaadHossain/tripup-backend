@@ -101,7 +101,6 @@ export class CaseStudyService {
       title: item.title,
       slug: item.slug,
       excerpt: item.excerpt,
-      date: item.date,
       readingTime: item.readingTime,
       ctaLabel: item.ctaLabel,
       industryTag: item.industryTag,
@@ -160,13 +159,27 @@ export class CaseStudyService {
 
     return this.repository.update(id, {
       ...rest,
-      metrics: rest.metrics ? (rest.metrics as unknown as Prisma.InputJsonValue) : undefined,
-      snapshot: rest.snapshot ? (rest.snapshot as unknown as Prisma.InputJsonValue) : undefined,
-      challenge: rest.challenge ? (rest.challenge as unknown as Prisma.InputJsonValue) : undefined,
-      approachSteps: rest.approachSteps ? (rest.approachSteps as unknown as Prisma.InputJsonValue) : undefined,
-      transformation: rest.transformation ? (rest.transformation as unknown as Prisma.InputJsonValue) : undefined,
-      results: rest.results ? (rest.results as unknown as Prisma.InputJsonValue) : undefined,
-      testimonial: rest.testimonial ? (rest.testimonial as unknown as Prisma.InputJsonValue) : undefined,
+      metrics: rest.metrics
+        ? (rest.metrics as unknown as Prisma.InputJsonValue)
+        : undefined,
+      snapshot: rest.snapshot
+        ? (rest.snapshot as unknown as Prisma.InputJsonValue)
+        : undefined,
+      challenge: rest.challenge
+        ? (rest.challenge as unknown as Prisma.InputJsonValue)
+        : undefined,
+      approachSteps: rest.approachSteps
+        ? (rest.approachSteps as unknown as Prisma.InputJsonValue)
+        : undefined,
+      transformation: rest.transformation
+        ? (rest.transformation as unknown as Prisma.InputJsonValue)
+        : undefined,
+      results: rest.results
+        ? (rest.results as unknown as Prisma.InputJsonValue)
+        : undefined,
+      testimonial: rest.testimonial
+        ? (rest.testimonial as unknown as Prisma.InputJsonValue)
+        : undefined,
       category:
         category !== undefined
           ? category

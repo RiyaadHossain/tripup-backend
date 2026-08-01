@@ -47,20 +47,21 @@ export class CreatePlaybookDto {
   @MaxLength(200)
   slug!: string;
 
+  @IsOptional()
   @IsString()
-  excerpt!: string;
+  excerpt?: string;
 
-  @IsString()
-  date!: string;
 
+  @IsOptional()
   @IsString()
-  readingTime!: string;
+  readingTime?: string;
 
   @IsString()
   author!: string;
 
+  @IsOptional()
   @IsString()
-  bestFor!: string;
+  bestFor?: string;
 
   @IsString()
   ctaLabel!: string;
@@ -85,20 +86,23 @@ export class CreatePlaybookDto {
   @IsString({ each: true })
   outcomes!: string[];
 
+  @IsOptional()
   @IsArray()
   @ValidateNested({ each: true })
   @Type(() => FrameworkStepDto)
-  frameworkSteps!: FrameworkStepDto[];
+  frameworkSteps?: FrameworkStepDto[];
 
+  @IsOptional()
   @IsArray()
   @ValidateNested({ each: true })
   @Type(() => SamplePreviewDto)
-  samplePreviews!: SamplePreviewDto[];
+  samplePreviews?: SamplePreviewDto[];
 
+  @IsOptional()
   @IsArray()
   @ValidateNested({ each: true })
   @Type(() => RelatedServiceDto)
-  relatedServices!: RelatedServiceDto[];
+  relatedServices?: RelatedServiceDto[];
 
   @IsOptional()
   @IsUUID('4')

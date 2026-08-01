@@ -245,7 +245,7 @@ export type TravelInsightGroupByOutputType = {
   id: string
   title: string
   slug: string
-  description: string
+  description: string | null
   timeReadMin: number
   author: string
   coverImgUrl: string
@@ -289,7 +289,7 @@ export type TravelInsightWhereInput = {
   id?: Prisma.StringFilter<"TravelInsight"> | string
   title?: Prisma.StringFilter<"TravelInsight"> | string
   slug?: Prisma.StringFilter<"TravelInsight"> | string
-  description?: Prisma.StringFilter<"TravelInsight"> | string
+  description?: Prisma.StringNullableFilter<"TravelInsight"> | string | null
   timeReadMin?: Prisma.IntFilter<"TravelInsight"> | number
   author?: Prisma.StringFilter<"TravelInsight"> | string
   coverImgUrl?: Prisma.StringFilter<"TravelInsight"> | string
@@ -313,7 +313,7 @@ export type TravelInsightOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   slug?: Prisma.SortOrder
-  description?: Prisma.SortOrder
+  description?: Prisma.SortOrderInput | Prisma.SortOrder
   timeReadMin?: Prisma.SortOrder
   author?: Prisma.SortOrder
   coverImgUrl?: Prisma.SortOrder
@@ -340,7 +340,7 @@ export type TravelInsightWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.TravelInsightWhereInput[]
   NOT?: Prisma.TravelInsightWhereInput | Prisma.TravelInsightWhereInput[]
   title?: Prisma.StringFilter<"TravelInsight"> | string
-  description?: Prisma.StringFilter<"TravelInsight"> | string
+  description?: Prisma.StringNullableFilter<"TravelInsight"> | string | null
   timeReadMin?: Prisma.IntFilter<"TravelInsight"> | number
   author?: Prisma.StringFilter<"TravelInsight"> | string
   coverImgUrl?: Prisma.StringFilter<"TravelInsight"> | string
@@ -364,7 +364,7 @@ export type TravelInsightOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   slug?: Prisma.SortOrder
-  description?: Prisma.SortOrder
+  description?: Prisma.SortOrderInput | Prisma.SortOrder
   timeReadMin?: Prisma.SortOrder
   author?: Prisma.SortOrder
   coverImgUrl?: Prisma.SortOrder
@@ -393,7 +393,7 @@ export type TravelInsightScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"TravelInsight"> | string
   title?: Prisma.StringWithAggregatesFilter<"TravelInsight"> | string
   slug?: Prisma.StringWithAggregatesFilter<"TravelInsight"> | string
-  description?: Prisma.StringWithAggregatesFilter<"TravelInsight"> | string
+  description?: Prisma.StringNullableWithAggregatesFilter<"TravelInsight"> | string | null
   timeReadMin?: Prisma.IntWithAggregatesFilter<"TravelInsight"> | number
   author?: Prisma.StringWithAggregatesFilter<"TravelInsight"> | string
   coverImgUrl?: Prisma.StringWithAggregatesFilter<"TravelInsight"> | string
@@ -414,7 +414,7 @@ export type TravelInsightCreateInput = {
   id?: string
   title: string
   slug: string
-  description: string
+  description?: string | null
   timeReadMin: number
   author: string
   coverImgUrl: string
@@ -436,7 +436,7 @@ export type TravelInsightUncheckedCreateInput = {
   id?: string
   title: string
   slug: string
-  description: string
+  description?: string | null
   timeReadMin: number
   author: string
   coverImgUrl: string
@@ -458,7 +458,7 @@ export type TravelInsightUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timeReadMin?: Prisma.IntFieldUpdateOperationsInput | number
   author?: Prisma.StringFieldUpdateOperationsInput | string
   coverImgUrl?: Prisma.StringFieldUpdateOperationsInput | string
@@ -480,7 +480,7 @@ export type TravelInsightUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timeReadMin?: Prisma.IntFieldUpdateOperationsInput | number
   author?: Prisma.StringFieldUpdateOperationsInput | string
   coverImgUrl?: Prisma.StringFieldUpdateOperationsInput | string
@@ -502,7 +502,7 @@ export type TravelInsightCreateManyInput = {
   id?: string
   title: string
   slug: string
-  description: string
+  description?: string | null
   timeReadMin: number
   author: string
   coverImgUrl: string
@@ -523,7 +523,7 @@ export type TravelInsightUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timeReadMin?: Prisma.IntFieldUpdateOperationsInput | number
   author?: Prisma.StringFieldUpdateOperationsInput | string
   coverImgUrl?: Prisma.StringFieldUpdateOperationsInput | string
@@ -542,7 +542,7 @@ export type TravelInsightUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timeReadMin?: Prisma.IntFieldUpdateOperationsInput | number
   author?: Prisma.StringFieldUpdateOperationsInput | string
   coverImgUrl?: Prisma.StringFieldUpdateOperationsInput | string
@@ -793,7 +793,7 @@ export type TravelInsightCreateWithoutAddedByInput = {
   id?: string
   title: string
   slug: string
-  description: string
+  description?: string | null
   timeReadMin: number
   author: string
   coverImgUrl: string
@@ -814,7 +814,7 @@ export type TravelInsightUncheckedCreateWithoutAddedByInput = {
   id?: string
   title: string
   slug: string
-  description: string
+  description?: string | null
   timeReadMin: number
   author: string
   coverImgUrl: string
@@ -864,7 +864,7 @@ export type TravelInsightScalarWhereInput = {
   id?: Prisma.StringFilter<"TravelInsight"> | string
   title?: Prisma.StringFilter<"TravelInsight"> | string
   slug?: Prisma.StringFilter<"TravelInsight"> | string
-  description?: Prisma.StringFilter<"TravelInsight"> | string
+  description?: Prisma.StringNullableFilter<"TravelInsight"> | string | null
   timeReadMin?: Prisma.IntFilter<"TravelInsight"> | number
   author?: Prisma.StringFilter<"TravelInsight"> | string
   coverImgUrl?: Prisma.StringFilter<"TravelInsight"> | string
@@ -885,7 +885,7 @@ export type TravelInsightCreateWithoutCategoryInput = {
   id?: string
   title: string
   slug: string
-  description: string
+  description?: string | null
   timeReadMin: number
   author: string
   coverImgUrl: string
@@ -906,7 +906,7 @@ export type TravelInsightUncheckedCreateWithoutCategoryInput = {
   id?: string
   title: string
   slug: string
-  description: string
+  description?: string | null
   timeReadMin: number
   author: string
   coverImgUrl: string
@@ -953,7 +953,7 @@ export type TravelInsightCreateWithoutRelatedServicesInput = {
   id?: string
   title: string
   slug: string
-  description: string
+  description?: string | null
   timeReadMin: number
   author: string
   coverImgUrl: string
@@ -974,7 +974,7 @@ export type TravelInsightUncheckedCreateWithoutRelatedServicesInput = {
   id?: string
   title: string
   slug: string
-  description: string
+  description?: string | null
   timeReadMin: number
   author: string
   coverImgUrl: string
@@ -1016,7 +1016,7 @@ export type TravelInsightCreateManyAddedByInput = {
   id?: string
   title: string
   slug: string
-  description: string
+  description?: string | null
   timeReadMin: number
   author: string
   coverImgUrl: string
@@ -1036,7 +1036,7 @@ export type TravelInsightUpdateWithoutAddedByInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timeReadMin?: Prisma.IntFieldUpdateOperationsInput | number
   author?: Prisma.StringFieldUpdateOperationsInput | string
   coverImgUrl?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1057,7 +1057,7 @@ export type TravelInsightUncheckedUpdateWithoutAddedByInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timeReadMin?: Prisma.IntFieldUpdateOperationsInput | number
   author?: Prisma.StringFieldUpdateOperationsInput | string
   coverImgUrl?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1078,7 +1078,7 @@ export type TravelInsightUncheckedUpdateManyWithoutAddedByInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timeReadMin?: Prisma.IntFieldUpdateOperationsInput | number
   author?: Prisma.StringFieldUpdateOperationsInput | string
   coverImgUrl?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1098,7 +1098,7 @@ export type TravelInsightCreateManyCategoryInput = {
   id?: string
   title: string
   slug: string
-  description: string
+  description?: string | null
   timeReadMin: number
   author: string
   coverImgUrl: string
@@ -1118,7 +1118,7 @@ export type TravelInsightUpdateWithoutCategoryInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timeReadMin?: Prisma.IntFieldUpdateOperationsInput | number
   author?: Prisma.StringFieldUpdateOperationsInput | string
   coverImgUrl?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1139,7 +1139,7 @@ export type TravelInsightUncheckedUpdateWithoutCategoryInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timeReadMin?: Prisma.IntFieldUpdateOperationsInput | number
   author?: Prisma.StringFieldUpdateOperationsInput | string
   coverImgUrl?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1160,7 +1160,7 @@ export type TravelInsightUncheckedUpdateManyWithoutCategoryInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timeReadMin?: Prisma.IntFieldUpdateOperationsInput | number
   author?: Prisma.StringFieldUpdateOperationsInput | string
   coverImgUrl?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1180,7 +1180,7 @@ export type TravelInsightUpdateWithoutRelatedServicesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timeReadMin?: Prisma.IntFieldUpdateOperationsInput | number
   author?: Prisma.StringFieldUpdateOperationsInput | string
   coverImgUrl?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1201,7 +1201,7 @@ export type TravelInsightUncheckedUpdateWithoutRelatedServicesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timeReadMin?: Prisma.IntFieldUpdateOperationsInput | number
   author?: Prisma.StringFieldUpdateOperationsInput | string
   coverImgUrl?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1222,7 +1222,7 @@ export type TravelInsightUncheckedUpdateManyWithoutRelatedServicesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timeReadMin?: Prisma.IntFieldUpdateOperationsInput | number
   author?: Prisma.StringFieldUpdateOperationsInput | string
   coverImgUrl?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1389,7 +1389,7 @@ export type $TravelInsightPayload<ExtArgs extends runtime.Types.Extensions.Inter
     id: string
     title: string
     slug: string
-    description: string
+    description: string | null
     timeReadMin: number
     author: string
     coverImgUrl: string

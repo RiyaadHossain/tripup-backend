@@ -84,7 +84,6 @@ export class PlaybookRepository {
         title: true,
         slug: true,
         excerpt: true,
-        date: true,
         readingTime: true,
         bestFor: true,
         ctaLabel: true,

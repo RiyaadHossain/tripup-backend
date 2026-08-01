@@ -113,7 +113,6 @@ export class PlaybookService {
       slug: item.slug,
       excerpt: item.excerpt,
       author: item.author,
-      date: item.date,
       readingTime: item.readingTime,
       bestFor: item.bestFor,
       ctaLabel: item.ctaLabel,

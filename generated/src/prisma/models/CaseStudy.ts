@@ -28,7 +28,6 @@ export type CaseStudyMinAggregateOutputType = {
   id: string | null
   title: string | null
   excerpt: string | null
-  date: string | null
   readingTime: string | null
   ctaLabel: string | null
   isFeatured: boolean | null
@@ -46,7 +45,6 @@ export type CaseStudyMaxAggregateOutputType = {
   id: string | null
   title: string | null
   excerpt: string | null
-  date: string | null
   readingTime: string | null
   ctaLabel: string | null
   isFeatured: boolean | null
@@ -64,7 +62,6 @@ export type CaseStudyCountAggregateOutputType = {
   id: number
   title: number
   excerpt: number
-  date: number
   readingTime: number
   ctaLabel: number
   isFeatured: number
@@ -93,7 +90,6 @@ export type CaseStudyMinAggregateInputType = {
   id?: true
   title?: true
   excerpt?: true
-  date?: true
   readingTime?: true
   ctaLabel?: true
   isFeatured?: true
@@ -111,7 +107,6 @@ export type CaseStudyMaxAggregateInputType = {
   id?: true
   title?: true
   excerpt?: true
-  date?: true
   readingTime?: true
   ctaLabel?: true
   isFeatured?: true
@@ -129,7 +124,6 @@ export type CaseStudyCountAggregateInputType = {
   id?: true
   title?: true
   excerpt?: true
-  date?: true
   readingTime?: true
   ctaLabel?: true
   isFeatured?: true
@@ -228,24 +222,23 @@ export type CaseStudyGroupByArgs<ExtArgs extends runtime.Types.Extensions.Intern
 export type CaseStudyGroupByOutputType = {
   id: string
   title: string
-  excerpt: string
-  date: string
+  excerpt: string | null
   readingTime: string
   ctaLabel: string
   isFeatured: boolean
   isPublished: boolean
   slug: string
-  industryTag: string
-  coverImage: string
-  metrics: runtime.JsonValue
-  snapshot: runtime.JsonValue
-  challenge: runtime.JsonValue
+  industryTag: string | null
+  coverImage: string | null
+  metrics: runtime.JsonValue | null
+  snapshot: runtime.JsonValue | null
+  challenge: runtime.JsonValue | null
   approachSteps: runtime.JsonValue
   deliverables: string[]
-  transformation: runtime.JsonValue
-  results: runtime.JsonValue
+  transformation: runtime.JsonValue | null
+  results: runtime.JsonValue | null
   keyTakeaways: string[]
-  testimonial: runtime.JsonValue
+  testimonial: runtime.JsonValue | null
   categoryId: string | null
   addedById: string | null
   createdAt: Date
@@ -276,24 +269,23 @@ export type CaseStudyWhereInput = {
   NOT?: Prisma.CaseStudyWhereInput | Prisma.CaseStudyWhereInput[]
   id?: Prisma.StringFilter<"CaseStudy"> | string
   title?: Prisma.StringFilter<"CaseStudy"> | string
-  excerpt?: Prisma.StringFilter<"CaseStudy"> | string
-  date?: Prisma.StringFilter<"CaseStudy"> | string
+  excerpt?: Prisma.StringNullableFilter<"CaseStudy"> | string | null
   readingTime?: Prisma.StringFilter<"CaseStudy"> | string
   ctaLabel?: Prisma.StringFilter<"CaseStudy"> | string
   isFeatured?: Prisma.BoolFilter<"CaseStudy"> | boolean
   isPublished?: Prisma.BoolFilter<"CaseStudy"> | boolean
   slug?: Prisma.StringFilter<"CaseStudy"> | string
-  industryTag?: Prisma.StringFilter<"CaseStudy"> | string
-  coverImage?: Prisma.StringFilter<"CaseStudy"> | string
-  metrics?: Prisma.JsonFilter<"CaseStudy">
-  snapshot?: Prisma.JsonFilter<"CaseStudy">
-  challenge?: Prisma.JsonFilter<"CaseStudy">
+  industryTag?: Prisma.StringNullableFilter<"CaseStudy"> | string | null
+  coverImage?: Prisma.StringNullableFilter<"CaseStudy"> | string | null
+  metrics?: Prisma.JsonNullableFilter<"CaseStudy">
+  snapshot?: Prisma.JsonNullableFilter<"CaseStudy">
+  challenge?: Prisma.JsonNullableFilter<"CaseStudy">
   approachSteps?: Prisma.JsonFilter<"CaseStudy">
   deliverables?: Prisma.StringNullableListFilter<"CaseStudy">
-  transformation?: Prisma.JsonFilter<"CaseStudy">
-  results?: Prisma.JsonFilter<"CaseStudy">
+  transformation?: Prisma.JsonNullableFilter<"CaseStudy">
+  results?: Prisma.JsonNullableFilter<"CaseStudy">
   keyTakeaways?: Prisma.StringNullableListFilter<"CaseStudy">
-  testimonial?: Prisma.JsonFilter<"CaseStudy">
+  testimonial?: Prisma.JsonNullableFilter<"CaseStudy">
   categoryId?: Prisma.StringNullableFilter<"CaseStudy"> | string | null
   addedById?: Prisma.StringNullableFilter<"CaseStudy"> | string | null
   createdAt?: Prisma.DateTimeFilter<"CaseStudy"> | Date | string
@@ -305,24 +297,23 @@ export type CaseStudyWhereInput = {
 export type CaseStudyOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
-  excerpt?: Prisma.SortOrder
-  date?: Prisma.SortOrder
+  excerpt?: Prisma.SortOrderInput | Prisma.SortOrder
   readingTime?: Prisma.SortOrder
   ctaLabel?: Prisma.SortOrder
   isFeatured?: Prisma.SortOrder
   isPublished?: Prisma.SortOrder
   slug?: Prisma.SortOrder
-  industryTag?: Prisma.SortOrder
-  coverImage?: Prisma.SortOrder
-  metrics?: Prisma.SortOrder
-  snapshot?: Prisma.SortOrder
-  challenge?: Prisma.SortOrder
+  industryTag?: Prisma.SortOrderInput | Prisma.SortOrder
+  coverImage?: Prisma.SortOrderInput | Prisma.SortOrder
+  metrics?: Prisma.SortOrderInput | Prisma.SortOrder
+  snapshot?: Prisma.SortOrderInput | Prisma.SortOrder
+  challenge?: Prisma.SortOrderInput | Prisma.SortOrder
   approachSteps?: Prisma.SortOrder
   deliverables?: Prisma.SortOrder
-  transformation?: Prisma.SortOrder
-  results?: Prisma.SortOrder
+  transformation?: Prisma.SortOrderInput | Prisma.SortOrder
+  results?: Prisma.SortOrderInput | Prisma.SortOrder
   keyTakeaways?: Prisma.SortOrder
-  testimonial?: Prisma.SortOrder
+  testimonial?: Prisma.SortOrderInput | Prisma.SortOrder
   categoryId?: Prisma.SortOrderInput | Prisma.SortOrder
   addedById?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -338,23 +329,22 @@ export type CaseStudyWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.CaseStudyWhereInput[]
   NOT?: Prisma.CaseStudyWhereInput | Prisma.CaseStudyWhereInput[]
   title?: Prisma.StringFilter<"CaseStudy"> | string
-  excerpt?: Prisma.StringFilter<"CaseStudy"> | string
-  date?: Prisma.StringFilter<"CaseStudy"> | string
+  excerpt?: Prisma.StringNullableFilter<"CaseStudy"> | string | null
   readingTime?: Prisma.StringFilter<"CaseStudy"> | string
   ctaLabel?: Prisma.StringFilter<"CaseStudy"> | string
   isFeatured?: Prisma.BoolFilter<"CaseStudy"> | boolean
   isPublished?: Prisma.BoolFilter<"CaseStudy"> | boolean
-  industryTag?: Prisma.StringFilter<"CaseStudy"> | string
-  coverImage?: Prisma.StringFilter<"CaseStudy"> | string
-  metrics?: Prisma.JsonFilter<"CaseStudy">
-  snapshot?: Prisma.JsonFilter<"CaseStudy">
-  challenge?: Prisma.JsonFilter<"CaseStudy">
+  industryTag?: Prisma.StringNullableFilter<"CaseStudy"> | string | null
+  coverImage?: Prisma.StringNullableFilter<"CaseStudy"> | string | null
+  metrics?: Prisma.JsonNullableFilter<"CaseStudy">
+  snapshot?: Prisma.JsonNullableFilter<"CaseStudy">
+  challenge?: Prisma.JsonNullableFilter<"CaseStudy">
   approachSteps?: Prisma.JsonFilter<"CaseStudy">
   deliverables?: Prisma.StringNullableListFilter<"CaseStudy">
-  transformation?: Prisma.JsonFilter<"CaseStudy">
-  results?: Prisma.JsonFilter<"CaseStudy">
+  transformation?: Prisma.JsonNullableFilter<"CaseStudy">
+  results?: Prisma.JsonNullableFilter<"CaseStudy">
   keyTakeaways?: Prisma.StringNullableListFilter<"CaseStudy">
-  testimonial?: Prisma.JsonFilter<"CaseStudy">
+  testimonial?: Prisma.JsonNullableFilter<"CaseStudy">
   categoryId?: Prisma.StringNullableFilter<"CaseStudy"> | string | null
   addedById?: Prisma.StringNullableFilter<"CaseStudy"> | string | null
   createdAt?: Prisma.DateTimeFilter<"CaseStudy"> | Date | string
@@ -366,24 +356,23 @@ export type CaseStudyWhereUniqueInput = Prisma.AtLeast<{
 export type CaseStudyOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
-  excerpt?: Prisma.SortOrder
-  date?: Prisma.SortOrder
+  excerpt?: Prisma.SortOrderInput | Prisma.SortOrder
   readingTime?: Prisma.SortOrder
   ctaLabel?: Prisma.SortOrder
   isFeatured?: Prisma.SortOrder
   isPublished?: Prisma.SortOrder
   slug?: Prisma.SortOrder
-  industryTag?: Prisma.SortOrder
-  coverImage?: Prisma.SortOrder
-  metrics?: Prisma.SortOrder
-  snapshot?: Prisma.SortOrder
-  challenge?: Prisma.SortOrder
+  industryTag?: Prisma.SortOrderInput | Prisma.SortOrder
+  coverImage?: Prisma.SortOrderInput | Prisma.SortOrder
+  metrics?: Prisma.SortOrderInput | Prisma.SortOrder
+  snapshot?: Prisma.SortOrderInput | Prisma.SortOrder
+  challenge?: Prisma.SortOrderInput | Prisma.SortOrder
   approachSteps?: Prisma.SortOrder
   deliverables?: Prisma.SortOrder
-  transformation?: Prisma.SortOrder
-  results?: Prisma.SortOrder
+  transformation?: Prisma.SortOrderInput | Prisma.SortOrder
+  results?: Prisma.SortOrderInput | Prisma.SortOrder
   keyTakeaways?: Prisma.SortOrder
-  testimonial?: Prisma.SortOrder
+  testimonial?: Prisma.SortOrderInput | Prisma.SortOrder
   categoryId?: Prisma.SortOrderInput | Prisma.SortOrder
   addedById?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -399,24 +388,23 @@ export type CaseStudyScalarWhereWithAggregatesInput = {
   NOT?: Prisma.CaseStudyScalarWhereWithAggregatesInput | Prisma.CaseStudyScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"CaseStudy"> | string
   title?: Prisma.StringWithAggregatesFilter<"CaseStudy"> | string
-  excerpt?: Prisma.StringWithAggregatesFilter<"CaseStudy"> | string
-  date?: Prisma.StringWithAggregatesFilter<"CaseStudy"> | string
+  excerpt?: Prisma.StringNullableWithAggregatesFilter<"CaseStudy"> | string | null
   readingTime?: Prisma.StringWithAggregatesFilter<"CaseStudy"> | string
   ctaLabel?: Prisma.StringWithAggregatesFilter<"CaseStudy"> | string
   isFeatured?: Prisma.BoolWithAggregatesFilter<"CaseStudy"> | boolean
   isPublished?: Prisma.BoolWithAggregatesFilter<"CaseStudy"> | boolean
   slug?: Prisma.StringWithAggregatesFilter<"CaseStudy"> | string
-  industryTag?: Prisma.StringWithAggregatesFilter<"CaseStudy"> | string
-  coverImage?: Prisma.StringWithAggregatesFilter<"CaseStudy"> | string
-  metrics?: Prisma.JsonWithAggregatesFilter<"CaseStudy">
-  snapshot?: Prisma.JsonWithAggregatesFilter<"CaseStudy">
-  challenge?: Prisma.JsonWithAggregatesFilter<"CaseStudy">
+  industryTag?: Prisma.StringNullableWithAggregatesFilter<"CaseStudy"> | string | null
+  coverImage?: Prisma.StringNullableWithAggregatesFilter<"CaseStudy"> | string | null
+  metrics?: Prisma.JsonNullableWithAggregatesFilter<"CaseStudy">
+  snapshot?: Prisma.JsonNullableWithAggregatesFilter<"CaseStudy">
+  challenge?: Prisma.JsonNullableWithAggregatesFilter<"CaseStudy">
   approachSteps?: Prisma.JsonWithAggregatesFilter<"CaseStudy">
   deliverables?: Prisma.StringNullableListFilter<"CaseStudy">
-  transformation?: Prisma.JsonWithAggregatesFilter<"CaseStudy">
-  results?: Prisma.JsonWithAggregatesFilter<"CaseStudy">
+  transformation?: Prisma.JsonNullableWithAggregatesFilter<"CaseStudy">
+  results?: Prisma.JsonNullableWithAggregatesFilter<"CaseStudy">
   keyTakeaways?: Prisma.StringNullableListFilter<"CaseStudy">
-  testimonial?: Prisma.JsonWithAggregatesFilter<"CaseStudy">
+  testimonial?: Prisma.JsonNullableWithAggregatesFilter<"CaseStudy">
   categoryId?: Prisma.StringNullableWithAggregatesFilter<"CaseStudy"> | string | null
   addedById?: Prisma.StringNullableWithAggregatesFilter<"CaseStudy"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"CaseStudy"> | Date | string
@@ -426,24 +414,23 @@ export type CaseStudyScalarWhereWithAggregatesInput = {
 export type CaseStudyCreateInput = {
   id?: string
   title: string
-  excerpt: string
-  date: string
+  excerpt?: string | null
   readingTime: string
-  ctaLabel: string
+  ctaLabel?: string
   isFeatured?: boolean
   isPublished?: boolean
   slug: string
-  industryTag: string
-  coverImage: string
-  metrics: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  snapshot: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  challenge: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  industryTag?: string | null
+  coverImage?: string | null
+  metrics?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  snapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  challenge?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   approachSteps: Prisma.JsonNullValueInput | runtime.InputJsonValue
   deliverables?: Prisma.CaseStudyCreatedeliverablesInput | string[]
-  transformation: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  results: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  transformation?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  results?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   keyTakeaways?: Prisma.CaseStudyCreatekeyTakeawaysInput | string[]
-  testimonial: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  testimonial?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
   category?: Prisma.CaseStudyCategoryCreateNestedOneWithoutCaseStudiesInput
@@ -453,24 +440,23 @@ export type CaseStudyCreateInput = {
 export type CaseStudyUncheckedCreateInput = {
   id?: string
   title: string
-  excerpt: string
-  date: string
+  excerpt?: string | null
   readingTime: string
-  ctaLabel: string
+  ctaLabel?: string
   isFeatured?: boolean
   isPublished?: boolean
   slug: string
-  industryTag: string
-  coverImage: string
-  metrics: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  snapshot: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  challenge: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  industryTag?: string | null
+  coverImage?: string | null
+  metrics?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  snapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  challenge?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   approachSteps: Prisma.JsonNullValueInput | runtime.InputJsonValue
   deliverables?: Prisma.CaseStudyCreatedeliverablesInput | string[]
-  transformation: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  results: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  transformation?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  results?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   keyTakeaways?: Prisma.CaseStudyCreatekeyTakeawaysInput | string[]
-  testimonial: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  testimonial?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   categoryId?: string | null
   addedById?: string | null
   createdAt?: Date | string
@@ -480,24 +466,23 @@ export type CaseStudyUncheckedCreateInput = {
 export type CaseStudyUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  excerpt?: Prisma.StringFieldUpdateOperationsInput | string
-  date?: Prisma.StringFieldUpdateOperationsInput | string
+  excerpt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   readingTime?: Prisma.StringFieldUpdateOperationsInput | string
   ctaLabel?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   slug?: Prisma.StringFieldUpdateOperationsInput | string
-  industryTag?: Prisma.StringFieldUpdateOperationsInput | string
-  coverImage?: Prisma.StringFieldUpdateOperationsInput | string
-  metrics?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  snapshot?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  challenge?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  industryTag?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metrics?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  snapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  challenge?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   approachSteps?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   deliverables?: Prisma.CaseStudyUpdatedeliverablesInput | string[]
-  transformation?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  results?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  transformation?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  results?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   keyTakeaways?: Prisma.CaseStudyUpdatekeyTakeawaysInput | string[]
-  testimonial?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  testimonial?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   category?: Prisma.CaseStudyCategoryUpdateOneWithoutCaseStudiesNestedInput
@@ -507,24 +492,23 @@ export type CaseStudyUpdateInput = {
 export type CaseStudyUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  excerpt?: Prisma.StringFieldUpdateOperationsInput | string
-  date?: Prisma.StringFieldUpdateOperationsInput | string
+  excerpt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   readingTime?: Prisma.StringFieldUpdateOperationsInput | string
   ctaLabel?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   slug?: Prisma.StringFieldUpdateOperationsInput | string
-  industryTag?: Prisma.StringFieldUpdateOperationsInput | string
-  coverImage?: Prisma.StringFieldUpdateOperationsInput | string
-  metrics?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  snapshot?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  challenge?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  industryTag?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metrics?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  snapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  challenge?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   approachSteps?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   deliverables?: Prisma.CaseStudyUpdatedeliverablesInput | string[]
-  transformation?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  results?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  transformation?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  results?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   keyTakeaways?: Prisma.CaseStudyUpdatekeyTakeawaysInput | string[]
-  testimonial?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  testimonial?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   categoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   addedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -534,24 +518,23 @@ export type CaseStudyUncheckedUpdateInput = {
 export type CaseStudyCreateManyInput = {
   id?: string
   title: string
-  excerpt: string
-  date: string
+  excerpt?: string | null
   readingTime: string
-  ctaLabel: string
+  ctaLabel?: string
   isFeatured?: boolean
   isPublished?: boolean
   slug: string
-  industryTag: string
-  coverImage: string
-  metrics: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  snapshot: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  challenge: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  industryTag?: string | null
+  coverImage?: string | null
+  metrics?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  snapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  challenge?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   approachSteps: Prisma.JsonNullValueInput | runtime.InputJsonValue
   deliverables?: Prisma.CaseStudyCreatedeliverablesInput | string[]
-  transformation: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  results: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  transformation?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  results?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   keyTakeaways?: Prisma.CaseStudyCreatekeyTakeawaysInput | string[]
-  testimonial: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  testimonial?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   categoryId?: string | null
   addedById?: string | null
   createdAt?: Date | string
@@ -561,24 +544,23 @@ export type CaseStudyCreateManyInput = {
 export type CaseStudyUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  excerpt?: Prisma.StringFieldUpdateOperationsInput | string
-  date?: Prisma.StringFieldUpdateOperationsInput | string
+  excerpt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   readingTime?: Prisma.StringFieldUpdateOperationsInput | string
   ctaLabel?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   slug?: Prisma.StringFieldUpdateOperationsInput | string
-  industryTag?: Prisma.StringFieldUpdateOperationsInput | string
-  coverImage?: Prisma.StringFieldUpdateOperationsInput | string
-  metrics?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  snapshot?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  challenge?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  industryTag?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metrics?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  snapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  challenge?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   approachSteps?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   deliverables?: Prisma.CaseStudyUpdatedeliverablesInput | string[]
-  transformation?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  results?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  transformation?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  results?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   keyTakeaways?: Prisma.CaseStudyUpdatekeyTakeawaysInput | string[]
-  testimonial?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  testimonial?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -586,24 +568,23 @@ export type CaseStudyUpdateManyMutationInput = {
 export type CaseStudyUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  excerpt?: Prisma.StringFieldUpdateOperationsInput | string
-  date?: Prisma.StringFieldUpdateOperationsInput | string
+  excerpt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   readingTime?: Prisma.StringFieldUpdateOperationsInput | string
   ctaLabel?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   slug?: Prisma.StringFieldUpdateOperationsInput | string
-  industryTag?: Prisma.StringFieldUpdateOperationsInput | string
-  coverImage?: Prisma.StringFieldUpdateOperationsInput | string
-  metrics?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  snapshot?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  challenge?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  industryTag?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metrics?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  snapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  challenge?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   approachSteps?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   deliverables?: Prisma.CaseStudyUpdatedeliverablesInput | string[]
-  transformation?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  results?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  transformation?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  results?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   keyTakeaways?: Prisma.CaseStudyUpdatekeyTakeawaysInput | string[]
-  testimonial?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  testimonial?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   categoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   addedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -624,7 +605,6 @@ export type CaseStudyCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   excerpt?: Prisma.SortOrder
-  date?: Prisma.SortOrder
   readingTime?: Prisma.SortOrder
   ctaLabel?: Prisma.SortOrder
   isFeatured?: Prisma.SortOrder
@@ -651,7 +631,6 @@ export type CaseStudyMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   excerpt?: Prisma.SortOrder
-  date?: Prisma.SortOrder
   readingTime?: Prisma.SortOrder
   ctaLabel?: Prisma.SortOrder
   isFeatured?: Prisma.SortOrder
@@ -669,7 +648,6 @@ export type CaseStudyMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   excerpt?: Prisma.SortOrder
-  date?: Prisma.SortOrder
   readingTime?: Prisma.SortOrder
   ctaLabel?: Prisma.SortOrder
   isFeatured?: Prisma.SortOrder
@@ -788,24 +766,23 @@ export type CaseStudyUncheckedUpdateManyWithoutCategoryNestedInput = {
 export type CaseStudyCreateWithoutAddedByInput = {
   id?: string
   title: string
-  excerpt: string
-  date: string
+  excerpt?: string | null
   readingTime: string
-  ctaLabel: string
+  ctaLabel?: string
   isFeatured?: boolean
   isPublished?: boolean
   slug: string
-  industryTag: string
-  coverImage: string
-  metrics: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  snapshot: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  challenge: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  industryTag?: string | null
+  coverImage?: string | null
+  metrics?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  snapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  challenge?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   approachSteps: Prisma.JsonNullValueInput | runtime.InputJsonValue
   deliverables?: Prisma.CaseStudyCreatedeliverablesInput | string[]
-  transformation: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  results: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  transformation?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  results?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   keyTakeaways?: Prisma.CaseStudyCreatekeyTakeawaysInput | string[]
-  testimonial: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  testimonial?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
   category?: Prisma.CaseStudyCategoryCreateNestedOneWithoutCaseStudiesInput
@@ -814,24 +791,23 @@ export type CaseStudyCreateWithoutAddedByInput = {
 export type CaseStudyUncheckedCreateWithoutAddedByInput = {
   id?: string
   title: string
-  excerpt: string
-  date: string
+  excerpt?: string | null
   readingTime: string
-  ctaLabel: string
+  ctaLabel?: string
   isFeatured?: boolean
   isPublished?: boolean
   slug: string
-  industryTag: string
-  coverImage: string
-  metrics: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  snapshot: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  challenge: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  industryTag?: string | null
+  coverImage?: string | null
+  metrics?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  snapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  challenge?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   approachSteps: Prisma.JsonNullValueInput | runtime.InputJsonValue
   deliverables?: Prisma.CaseStudyCreatedeliverablesInput | string[]
-  transformation: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  results: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  transformation?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  results?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   keyTakeaways?: Prisma.CaseStudyCreatekeyTakeawaysInput | string[]
-  testimonial: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  testimonial?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   categoryId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -869,24 +845,23 @@ export type CaseStudyScalarWhereInput = {
   NOT?: Prisma.CaseStudyScalarWhereInput | Prisma.CaseStudyScalarWhereInput[]
   id?: Prisma.StringFilter<"CaseStudy"> | string
   title?: Prisma.StringFilter<"CaseStudy"> | string
-  excerpt?: Prisma.StringFilter<"CaseStudy"> | string
-  date?: Prisma.StringFilter<"CaseStudy"> | string
+  excerpt?: Prisma.StringNullableFilter<"CaseStudy"> | string | null
   readingTime?: Prisma.StringFilter<"CaseStudy"> | string
   ctaLabel?: Prisma.StringFilter<"CaseStudy"> | string
   isFeatured?: Prisma.BoolFilter<"CaseStudy"> | boolean
   isPublished?: Prisma.BoolFilter<"CaseStudy"> | boolean
   slug?: Prisma.StringFilter<"CaseStudy"> | string
-  industryTag?: Prisma.StringFilter<"CaseStudy"> | string
-  coverImage?: Prisma.StringFilter<"CaseStudy"> | string
-  metrics?: Prisma.JsonFilter<"CaseStudy">
-  snapshot?: Prisma.JsonFilter<"CaseStudy">
-  challenge?: Prisma.JsonFilter<"CaseStudy">
+  industryTag?: Prisma.StringNullableFilter<"CaseStudy"> | string | null
+  coverImage?: Prisma.StringNullableFilter<"CaseStudy"> | string | null
+  metrics?: Prisma.JsonNullableFilter<"CaseStudy">
+  snapshot?: Prisma.JsonNullableFilter<"CaseStudy">
+  challenge?: Prisma.JsonNullableFilter<"CaseStudy">
   approachSteps?: Prisma.JsonFilter<"CaseStudy">
   deliverables?: Prisma.StringNullableListFilter<"CaseStudy">
-  transformation?: Prisma.JsonFilter<"CaseStudy">
-  results?: Prisma.JsonFilter<"CaseStudy">
+  transformation?: Prisma.JsonNullableFilter<"CaseStudy">
+  results?: Prisma.JsonNullableFilter<"CaseStudy">
   keyTakeaways?: Prisma.StringNullableListFilter<"CaseStudy">
-  testimonial?: Prisma.JsonFilter<"CaseStudy">
+  testimonial?: Prisma.JsonNullableFilter<"CaseStudy">
   categoryId?: Prisma.StringNullableFilter<"CaseStudy"> | string | null
   addedById?: Prisma.StringNullableFilter<"CaseStudy"> | string | null
   createdAt?: Prisma.DateTimeFilter<"CaseStudy"> | Date | string
@@ -896,24 +871,23 @@ export type CaseStudyScalarWhereInput = {
 export type CaseStudyCreateWithoutCategoryInput = {
   id?: string
   title: string
-  excerpt: string
-  date: string
+  excerpt?: string | null
   readingTime: string
-  ctaLabel: string
+  ctaLabel?: string
   isFeatured?: boolean
   isPublished?: boolean
   slug: string
-  industryTag: string
-  coverImage: string
-  metrics: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  snapshot: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  challenge: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  industryTag?: string | null
+  coverImage?: string | null
+  metrics?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  snapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  challenge?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   approachSteps: Prisma.JsonNullValueInput | runtime.InputJsonValue
   deliverables?: Prisma.CaseStudyCreatedeliverablesInput | string[]
-  transformation: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  results: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  transformation?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  results?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   keyTakeaways?: Prisma.CaseStudyCreatekeyTakeawaysInput | string[]
-  testimonial: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  testimonial?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
   addedBy?: Prisma.UserCreateNestedOneWithoutAddedCaseStudiesInput
@@ -922,24 +896,23 @@ export type CaseStudyCreateWithoutCategoryInput = {
 export type CaseStudyUncheckedCreateWithoutCategoryInput = {
   id?: string
   title: string
-  excerpt: string
-  date: string
+  excerpt?: string | null
   readingTime: string
-  ctaLabel: string
+  ctaLabel?: string
   isFeatured?: boolean
   isPublished?: boolean
   slug: string
-  industryTag: string
-  coverImage: string
-  metrics: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  snapshot: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  challenge: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  industryTag?: string | null
+  coverImage?: string | null
+  metrics?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  snapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  challenge?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   approachSteps: Prisma.JsonNullValueInput | runtime.InputJsonValue
   deliverables?: Prisma.CaseStudyCreatedeliverablesInput | string[]
-  transformation: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  results: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  transformation?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  results?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   keyTakeaways?: Prisma.CaseStudyCreatekeyTakeawaysInput | string[]
-  testimonial: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  testimonial?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   addedById?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -974,24 +947,23 @@ export type CaseStudyUpdateManyWithWhereWithoutCategoryInput = {
 export type CaseStudyCreateManyAddedByInput = {
   id?: string
   title: string
-  excerpt: string
-  date: string
+  excerpt?: string | null
   readingTime: string
-  ctaLabel: string
+  ctaLabel?: string
   isFeatured?: boolean
   isPublished?: boolean
   slug: string
-  industryTag: string
-  coverImage: string
-  metrics: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  snapshot: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  challenge: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  industryTag?: string | null
+  coverImage?: string | null
+  metrics?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  snapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  challenge?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   approachSteps: Prisma.JsonNullValueInput | runtime.InputJsonValue
   deliverables?: Prisma.CaseStudyCreatedeliverablesInput | string[]
-  transformation: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  results: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  transformation?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  results?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   keyTakeaways?: Prisma.CaseStudyCreatekeyTakeawaysInput | string[]
-  testimonial: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  testimonial?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   categoryId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1000,24 +972,23 @@ export type CaseStudyCreateManyAddedByInput = {
 export type CaseStudyUpdateWithoutAddedByInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  excerpt?: Prisma.StringFieldUpdateOperationsInput | string
-  date?: Prisma.StringFieldUpdateOperationsInput | string
+  excerpt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   readingTime?: Prisma.StringFieldUpdateOperationsInput | string
   ctaLabel?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   slug?: Prisma.StringFieldUpdateOperationsInput | string
-  industryTag?: Prisma.StringFieldUpdateOperationsInput | string
-  coverImage?: Prisma.StringFieldUpdateOperationsInput | string
-  metrics?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  snapshot?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  challenge?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  industryTag?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metrics?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  snapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  challenge?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   approachSteps?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   deliverables?: Prisma.CaseStudyUpdatedeliverablesInput | string[]
-  transformation?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  results?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  transformation?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  results?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   keyTakeaways?: Prisma.CaseStudyUpdatekeyTakeawaysInput | string[]
-  testimonial?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  testimonial?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   category?: Prisma.CaseStudyCategoryUpdateOneWithoutCaseStudiesNestedInput
@@ -1026,24 +997,23 @@ export type CaseStudyUpdateWithoutAddedByInput = {
 export type CaseStudyUncheckedUpdateWithoutAddedByInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  excerpt?: Prisma.StringFieldUpdateOperationsInput | string
-  date?: Prisma.StringFieldUpdateOperationsInput | string
+  excerpt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   readingTime?: Prisma.StringFieldUpdateOperationsInput | string
   ctaLabel?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   slug?: Prisma.StringFieldUpdateOperationsInput | string
-  industryTag?: Prisma.StringFieldUpdateOperationsInput | string
-  coverImage?: Prisma.StringFieldUpdateOperationsInput | string
-  metrics?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  snapshot?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  challenge?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  industryTag?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metrics?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  snapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  challenge?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   approachSteps?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   deliverables?: Prisma.CaseStudyUpdatedeliverablesInput | string[]
-  transformation?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  results?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  transformation?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  results?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   keyTakeaways?: Prisma.CaseStudyUpdatekeyTakeawaysInput | string[]
-  testimonial?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  testimonial?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   categoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1052,24 +1022,23 @@ export type CaseStudyUncheckedUpdateWithoutAddedByInput = {
 export type CaseStudyUncheckedUpdateManyWithoutAddedByInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  excerpt?: Prisma.StringFieldUpdateOperationsInput | string
-  date?: Prisma.StringFieldUpdateOperationsInput | string
+  excerpt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   readingTime?: Prisma.StringFieldUpdateOperationsInput | string
   ctaLabel?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   slug?: Prisma.StringFieldUpdateOperationsInput | string
-  industryTag?: Prisma.StringFieldUpdateOperationsInput | string
-  coverImage?: Prisma.StringFieldUpdateOperationsInput | string
-  metrics?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  snapshot?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  challenge?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  industryTag?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metrics?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  snapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  challenge?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   approachSteps?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   deliverables?: Prisma.CaseStudyUpdatedeliverablesInput | string[]
-  transformation?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  results?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  transformation?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  results?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   keyTakeaways?: Prisma.CaseStudyUpdatekeyTakeawaysInput | string[]
-  testimonial?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  testimonial?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   categoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1078,24 +1047,23 @@ export type CaseStudyUncheckedUpdateManyWithoutAddedByInput = {
 export type CaseStudyCreateManyCategoryInput = {
   id?: string
   title: string
-  excerpt: string
-  date: string
+  excerpt?: string | null
   readingTime: string
-  ctaLabel: string
+  ctaLabel?: string
   isFeatured?: boolean
   isPublished?: boolean
   slug: string
-  industryTag: string
-  coverImage: string
-  metrics: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  snapshot: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  challenge: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  industryTag?: string | null
+  coverImage?: string | null
+  metrics?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  snapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  challenge?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   approachSteps: Prisma.JsonNullValueInput | runtime.InputJsonValue
   deliverables?: Prisma.CaseStudyCreatedeliverablesInput | string[]
-  transformation: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  results: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  transformation?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  results?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   keyTakeaways?: Prisma.CaseStudyCreatekeyTakeawaysInput | string[]
-  testimonial: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  testimonial?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   addedById?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1104,24 +1072,23 @@ export type CaseStudyCreateManyCategoryInput = {
 export type CaseStudyUpdateWithoutCategoryInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  excerpt?: Prisma.StringFieldUpdateOperationsInput | string
-  date?: Prisma.StringFieldUpdateOperationsInput | string
+  excerpt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   readingTime?: Prisma.StringFieldUpdateOperationsInput | string
   ctaLabel?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   slug?: Prisma.StringFieldUpdateOperationsInput | string
-  industryTag?: Prisma.StringFieldUpdateOperationsInput | string
-  coverImage?: Prisma.StringFieldUpdateOperationsInput | string
-  metrics?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  snapshot?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  challenge?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  industryTag?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metrics?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  snapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  challenge?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   approachSteps?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   deliverables?: Prisma.CaseStudyUpdatedeliverablesInput | string[]
-  transformation?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  results?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  transformation?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  results?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   keyTakeaways?: Prisma.CaseStudyUpdatekeyTakeawaysInput | string[]
-  testimonial?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  testimonial?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   addedBy?: Prisma.UserUpdateOneWithoutAddedCaseStudiesNestedInput
@@ -1130,24 +1097,23 @@ export type CaseStudyUpdateWithoutCategoryInput = {
 export type CaseStudyUncheckedUpdateWithoutCategoryInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  excerpt?: Prisma.StringFieldUpdateOperationsInput | string
-  date?: Prisma.StringFieldUpdateOperationsInput | string
+  excerpt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   readingTime?: Prisma.StringFieldUpdateOperationsInput | string
   ctaLabel?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   slug?: Prisma.StringFieldUpdateOperationsInput | string
-  industryTag?: Prisma.StringFieldUpdateOperationsInput | string
-  coverImage?: Prisma.StringFieldUpdateOperationsInput | string
-  metrics?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  snapshot?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  challenge?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  industryTag?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metrics?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  snapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  challenge?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   approachSteps?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   deliverables?: Prisma.CaseStudyUpdatedeliverablesInput | string[]
-  transformation?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  results?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  transformation?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  results?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   keyTakeaways?: Prisma.CaseStudyUpdatekeyTakeawaysInput | string[]
-  testimonial?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  testimonial?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   addedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1156,24 +1122,23 @@ export type CaseStudyUncheckedUpdateWithoutCategoryInput = {
 export type CaseStudyUncheckedUpdateManyWithoutCategoryInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  excerpt?: Prisma.StringFieldUpdateOperationsInput | string
-  date?: Prisma.StringFieldUpdateOperationsInput | string
+  excerpt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   readingTime?: Prisma.StringFieldUpdateOperationsInput | string
   ctaLabel?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   slug?: Prisma.StringFieldUpdateOperationsInput | string
-  industryTag?: Prisma.StringFieldUpdateOperationsInput | string
-  coverImage?: Prisma.StringFieldUpdateOperationsInput | string
-  metrics?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  snapshot?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  challenge?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  industryTag?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metrics?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  snapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  challenge?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   approachSteps?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   deliverables?: Prisma.CaseStudyUpdatedeliverablesInput | string[]
-  transformation?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  results?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  transformation?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  results?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   keyTakeaways?: Prisma.CaseStudyUpdatekeyTakeawaysInput | string[]
-  testimonial?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  testimonial?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   addedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1185,7 +1150,6 @@ export type CaseStudySelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   id?: boolean
   title?: boolean
   excerpt?: boolean
-  date?: boolean
   readingTime?: boolean
   ctaLabel?: boolean
   isFeatured?: boolean
@@ -1214,7 +1178,6 @@ export type CaseStudySelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ext
   id?: boolean
   title?: boolean
   excerpt?: boolean
-  date?: boolean
   readingTime?: boolean
   ctaLabel?: boolean
   isFeatured?: boolean
@@ -1243,7 +1206,6 @@ export type CaseStudySelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ext
   id?: boolean
   title?: boolean
   excerpt?: boolean
-  date?: boolean
   readingTime?: boolean
   ctaLabel?: boolean
   isFeatured?: boolean
@@ -1272,7 +1234,6 @@ export type CaseStudySelectScalar = {
   id?: boolean
   title?: boolean
   excerpt?: boolean
-  date?: boolean
   readingTime?: boolean
   ctaLabel?: boolean
   isFeatured?: boolean
@@ -1295,7 +1256,7 @@ export type CaseStudySelectScalar = {
   updatedAt?: boolean
 }
 
-export type CaseStudyOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "excerpt" | "date" | "readingTime" | "ctaLabel" | "isFeatured" | "isPublished" | "slug" | "industryTag" | "coverImage" | "metrics" | "snapshot" | "challenge" | "approachSteps" | "deliverables" | "transformation" | "results" | "keyTakeaways" | "testimonial" | "categoryId" | "addedById" | "createdAt" | "updatedAt", ExtArgs["result"]["caseStudy"]>
+export type CaseStudyOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "excerpt" | "readingTime" | "ctaLabel" | "isFeatured" | "isPublished" | "slug" | "industryTag" | "coverImage" | "metrics" | "snapshot" | "challenge" | "approachSteps" | "deliverables" | "transformation" | "results" | "keyTakeaways" | "testimonial" | "categoryId" | "addedById" | "createdAt" | "updatedAt", ExtArgs["result"]["caseStudy"]>
 export type CaseStudyInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   category?: boolean | Prisma.CaseStudy$categoryArgs<ExtArgs>
   addedBy?: boolean | Prisma.CaseStudy$addedByArgs<ExtArgs>
@@ -1318,24 +1279,23 @@ export type $CaseStudyPayload<ExtArgs extends runtime.Types.Extensions.InternalA
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     title: string
-    excerpt: string
-    date: string
+    excerpt: string | null
     readingTime: string
     ctaLabel: string
     isFeatured: boolean
     isPublished: boolean
     slug: string
-    industryTag: string
-    coverImage: string
-    metrics: runtime.JsonValue
-    snapshot: runtime.JsonValue
-    challenge: runtime.JsonValue
+    industryTag: string | null
+    coverImage: string | null
+    metrics: runtime.JsonValue | null
+    snapshot: runtime.JsonValue | null
+    challenge: runtime.JsonValue | null
     approachSteps: runtime.JsonValue
     deliverables: string[]
-    transformation: runtime.JsonValue
-    results: runtime.JsonValue
+    transformation: runtime.JsonValue | null
+    results: runtime.JsonValue | null
     keyTakeaways: string[]
-    testimonial: runtime.JsonValue
+    testimonial: runtime.JsonValue | null
     categoryId: string | null
     addedById: string | null
     createdAt: Date
@@ -1768,7 +1728,6 @@ export interface CaseStudyFieldRefs {
   readonly id: Prisma.FieldRef<"CaseStudy", 'String'>
   readonly title: Prisma.FieldRef<"CaseStudy", 'String'>
   readonly excerpt: Prisma.FieldRef<"CaseStudy", 'String'>
-  readonly date: Prisma.FieldRef<"CaseStudy", 'String'>
   readonly readingTime: Prisma.FieldRef<"CaseStudy", 'String'>
   readonly ctaLabel: Prisma.FieldRef<"CaseStudy", 'String'>
   readonly isFeatured: Prisma.FieldRef<"CaseStudy", 'Boolean'>
