@@ -1901,6 +1901,7 @@ export const LeadScalarFieldEnum = {
   phone: 'phone',
   location: 'location',
   status: 'status',
+  priority: 'priority',
   niche: 'niche',
   facebookLink: 'facebookLink',
   linkedInLink: 'linkedInLink',
@@ -1909,6 +1910,7 @@ export const LeadScalarFieldEnum = {
   website: 'website',
   contactPerson: 'contactPerson',
   notes: 'notes',
+  isPotential: 'isPotential',
   addedById: 'addedById',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -2059,6 +2061,20 @@ export type EnumLeadStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$Prism
  * Reference to a field of type 'LeadStatus[]'
  */
 export type ListEnumLeadStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LeadStatus[]'>
+    
+
+
+/**
+ * Reference to a field of type 'LeadPriority'
+ */
+export type EnumLeadPriorityFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LeadPriority'>
+    
+
+
+/**
+ * Reference to a field of type 'LeadPriority[]'
+ */
+export type ListEnumLeadPriorityFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LeadPriority[]'>
     
 
 

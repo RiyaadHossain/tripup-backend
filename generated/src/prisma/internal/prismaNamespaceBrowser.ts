@@ -344,6 +344,7 @@ export const LeadScalarFieldEnum = {
   phone: 'phone',
   location: 'location',
   status: 'status',
+  priority: 'priority',
   niche: 'niche',
   facebookLink: 'facebookLink',
   linkedInLink: 'linkedInLink',
@@ -352,6 +353,7 @@ export const LeadScalarFieldEnum = {
   website: 'website',
   contactPerson: 'contactPerson',
   notes: 'notes',
+  isPotential: 'isPotential',
   addedById: 'addedById',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'

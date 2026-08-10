@@ -19,6 +19,15 @@ export const PermissionAction = {
 export type PermissionAction = (typeof PermissionAction)[keyof typeof PermissionAction]
 
 
+export const LeadPriority = {
+  HIGH: 'HIGH',
+  MEDIUM: 'MEDIUM',
+  LOW: 'LOW'
+} as const
+
+export type LeadPriority = (typeof LeadPriority)[keyof typeof LeadPriority]
+
+
 export const LeadStatus = {
   NEW: 'NEW',
   OLD: 'OLD',

@@ -1,13 +1,18 @@
 import {
+  IsBoolean,
   IsEnum,
   IsOptional,
   IsString,
   IsUrl,
   MaxLength,
 } from 'class-validator';
-import { LeadStatus } from 'generated/src/prisma/client';
+import { LeadStatus, LeadPriority } from 'generated/src/prisma/client';
 
 export class CreateLeadDto {
+  @IsOptional()
+  @IsBoolean()
+  isPotential?: boolean;
+
   @IsString()
   @MaxLength(255)
   businessName: string;
@@ -29,6 +34,10 @@ export class CreateLeadDto {
   @IsOptional()
   @IsEnum(LeadStatus)
   status?: LeadStatus;
+
+  @IsOptional()
+  @IsEnum(LeadPriority)
+  priority?: LeadPriority;
 
   @IsOptional()
   @IsString()

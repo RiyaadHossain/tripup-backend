@@ -60,6 +60,10 @@ export class PermissionGuard implements CanActivate {
       userPermissions.includes(required),
     );
 
+    console.log('hasAll', hasAll);
+    console.log('requiredPermissions', requiredPermissions);
+    console.log('userPermissions', userPermissions);
+
     if (!hasAll) {
       throw new ForbiddenException(
         'You do not have permission to perform this action',

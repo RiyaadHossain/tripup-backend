@@ -8,7 +8,10 @@ import {
   Post,
   Query,
   UseGuards,
+  UploadedFile,
+  UseInterceptors,
 } from '@nestjs/common';
+import { FileInterceptor } from '@nestjs/platform-express';
 import { JwtAuthGuard } from 'src/modules/auth/guards/jwt-auth.guard';
 import { PermissionGuard } from 'src/common/guards/permission.guard';
 import { Permission } from 'src/common/decorators/permission.decorator';
@@ -20,6 +23,7 @@ import { CreateLeadDto } from '../dto/create-lead.dto';
 import { UpdateLeadDto } from '../dto/update-lead.dto';
 import { QueryLeadsDto } from '../dto/query-leads.dto';
 import { BulkDeleteLeadsDto } from '../dto/bulk-delete-leads.dto';
+import { UploadLeadsDto } from '../dto/upload-leads.dto';
 
 @UseGuards(JwtAuthGuard, PermissionGuard)
 @Controller('admin/leads')
@@ -33,6 +37,17 @@ export class AdminLeadsController {
     @CurrentUser('sub') userId: string,
   ) {
     return this.service.create(dto, userId);
+  }
+
+  @Post('upload-csv')
+  @Permission(perm('leads', 'CREATE'))
+  @UseInterceptors(FileInterceptor('file'))
+  async uploadCSV(
+    @UploadedFile() file: Express.Multer.File,
+    @Body() commonFields: UploadLeadsDto,
+    @CurrentUser('sub') userId: string,
+  ) {
+    return this.service.uploadCSV(file, commonFields, userId);
   }
 
   @Get()

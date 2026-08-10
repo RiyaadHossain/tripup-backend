@@ -1,12 +1,13 @@
 import {
+  IsBoolean,
   IsEnum,
   IsInt,
   IsOptional,
   IsString,
   Min,
 } from 'class-validator';
-import { Type } from 'class-transformer';
-import { LeadStatus } from 'generated/src/prisma/client';
+import { Type, Transform } from 'class-transformer';
+import { LeadStatus, LeadPriority } from 'generated/src/prisma/client';
 
 export class QueryLeadsDto {
   @IsOptional()
@@ -28,4 +29,17 @@ export class QueryLeadsDto {
   @IsOptional()
   @IsEnum(LeadStatus)
   status?: LeadStatus;
+
+  @IsOptional()
+  @IsEnum(LeadPriority)
+  priority?: LeadPriority;
+
+  @IsOptional()
+  @Transform(({ value }) => {
+    if (value === 'true') return true;
+    if (value === 'false') return false;
+    return value;
+  })
+  @IsBoolean()
+  isPotential?: boolean;
 }

@@ -31,6 +31,7 @@ export type LeadMinAggregateOutputType = {
   phone: string | null
   location: string | null
   status: $Enums.LeadStatus | null
+  priority: $Enums.LeadPriority | null
   niche: string | null
   facebookLink: string | null
   linkedInLink: string | null
@@ -39,6 +40,7 @@ export type LeadMinAggregateOutputType = {
   website: string | null
   contactPerson: string | null
   notes: string | null
+  isPotential: boolean | null
   addedById: string | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -51,6 +53,7 @@ export type LeadMaxAggregateOutputType = {
   phone: string | null
   location: string | null
   status: $Enums.LeadStatus | null
+  priority: $Enums.LeadPriority | null
   niche: string | null
   facebookLink: string | null
   linkedInLink: string | null
@@ -59,6 +62,7 @@ export type LeadMaxAggregateOutputType = {
   website: string | null
   contactPerson: string | null
   notes: string | null
+  isPotential: boolean | null
   addedById: string | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -71,6 +75,7 @@ export type LeadCountAggregateOutputType = {
   phone: number
   location: number
   status: number
+  priority: number
   niche: number
   facebookLink: number
   linkedInLink: number
@@ -79,6 +84,7 @@ export type LeadCountAggregateOutputType = {
   website: number
   contactPerson: number
   notes: number
+  isPotential: number
   addedById: number
   createdAt: number
   updatedAt: number
@@ -93,6 +99,7 @@ export type LeadMinAggregateInputType = {
   phone?: true
   location?: true
   status?: true
+  priority?: true
   niche?: true
   facebookLink?: true
   linkedInLink?: true
@@ -101,6 +108,7 @@ export type LeadMinAggregateInputType = {
   website?: true
   contactPerson?: true
   notes?: true
+  isPotential?: true
   addedById?: true
   createdAt?: true
   updatedAt?: true
@@ -113,6 +121,7 @@ export type LeadMaxAggregateInputType = {
   phone?: true
   location?: true
   status?: true
+  priority?: true
   niche?: true
   facebookLink?: true
   linkedInLink?: true
@@ -121,6 +130,7 @@ export type LeadMaxAggregateInputType = {
   website?: true
   contactPerson?: true
   notes?: true
+  isPotential?: true
   addedById?: true
   createdAt?: true
   updatedAt?: true
@@ -133,6 +143,7 @@ export type LeadCountAggregateInputType = {
   phone?: true
   location?: true
   status?: true
+  priority?: true
   niche?: true
   facebookLink?: true
   linkedInLink?: true
@@ -141,6 +152,7 @@ export type LeadCountAggregateInputType = {
   website?: true
   contactPerson?: true
   notes?: true
+  isPotential?: true
   addedById?: true
   createdAt?: true
   updatedAt?: true
@@ -226,6 +238,7 @@ export type LeadGroupByOutputType = {
   phone: string | null
   location: string | null
   status: $Enums.LeadStatus
+  priority: $Enums.LeadPriority
   niche: string | null
   facebookLink: string | null
   linkedInLink: string | null
@@ -234,6 +247,7 @@ export type LeadGroupByOutputType = {
   website: string | null
   contactPerson: string | null
   notes: string | null
+  isPotential: boolean
   addedById: string | null
   createdAt: Date
   updatedAt: Date
@@ -267,6 +281,7 @@ export type LeadWhereInput = {
   phone?: Prisma.StringNullableFilter<"Lead"> | string | null
   location?: Prisma.StringNullableFilter<"Lead"> | string | null
   status?: Prisma.EnumLeadStatusFilter<"Lead"> | $Enums.LeadStatus
+  priority?: Prisma.EnumLeadPriorityFilter<"Lead"> | $Enums.LeadPriority
   niche?: Prisma.StringNullableFilter<"Lead"> | string | null
   facebookLink?: Prisma.StringNullableFilter<"Lead"> | string | null
   linkedInLink?: Prisma.StringNullableFilter<"Lead"> | string | null
@@ -275,6 +290,7 @@ export type LeadWhereInput = {
   website?: Prisma.StringNullableFilter<"Lead"> | string | null
   contactPerson?: Prisma.StringNullableFilter<"Lead"> | string | null
   notes?: Prisma.StringNullableFilter<"Lead"> | string | null
+  isPotential?: Prisma.BoolFilter<"Lead"> | boolean
   addedById?: Prisma.StringNullableFilter<"Lead"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Lead"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Lead"> | Date | string
@@ -288,6 +304,7 @@ export type LeadOrderByWithRelationInput = {
   phone?: Prisma.SortOrderInput | Prisma.SortOrder
   location?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
+  priority?: Prisma.SortOrder
   niche?: Prisma.SortOrderInput | Prisma.SortOrder
   facebookLink?: Prisma.SortOrderInput | Prisma.SortOrder
   linkedInLink?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -296,6 +313,7 @@ export type LeadOrderByWithRelationInput = {
   website?: Prisma.SortOrderInput | Prisma.SortOrder
   contactPerson?: Prisma.SortOrderInput | Prisma.SortOrder
   notes?: Prisma.SortOrderInput | Prisma.SortOrder
+  isPotential?: Prisma.SortOrder
   addedById?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -312,6 +330,7 @@ export type LeadWhereUniqueInput = Prisma.AtLeast<{
   phone?: Prisma.StringNullableFilter<"Lead"> | string | null
   location?: Prisma.StringNullableFilter<"Lead"> | string | null
   status?: Prisma.EnumLeadStatusFilter<"Lead"> | $Enums.LeadStatus
+  priority?: Prisma.EnumLeadPriorityFilter<"Lead"> | $Enums.LeadPriority
   niche?: Prisma.StringNullableFilter<"Lead"> | string | null
   facebookLink?: Prisma.StringNullableFilter<"Lead"> | string | null
   linkedInLink?: Prisma.StringNullableFilter<"Lead"> | string | null
@@ -320,6 +339,7 @@ export type LeadWhereUniqueInput = Prisma.AtLeast<{
   website?: Prisma.StringNullableFilter<"Lead"> | string | null
   contactPerson?: Prisma.StringNullableFilter<"Lead"> | string | null
   notes?: Prisma.StringNullableFilter<"Lead"> | string | null
+  isPotential?: Prisma.BoolFilter<"Lead"> | boolean
   addedById?: Prisma.StringNullableFilter<"Lead"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Lead"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Lead"> | Date | string
@@ -333,6 +353,7 @@ export type LeadOrderByWithAggregationInput = {
   phone?: Prisma.SortOrderInput | Prisma.SortOrder
   location?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
+  priority?: Prisma.SortOrder
   niche?: Prisma.SortOrderInput | Prisma.SortOrder
   facebookLink?: Prisma.SortOrderInput | Prisma.SortOrder
   linkedInLink?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -341,6 +362,7 @@ export type LeadOrderByWithAggregationInput = {
   website?: Prisma.SortOrderInput | Prisma.SortOrder
   contactPerson?: Prisma.SortOrderInput | Prisma.SortOrder
   notes?: Prisma.SortOrderInput | Prisma.SortOrder
+  isPotential?: Prisma.SortOrder
   addedById?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -359,6 +381,7 @@ export type LeadScalarWhereWithAggregatesInput = {
   phone?: Prisma.StringNullableWithAggregatesFilter<"Lead"> | string | null
   location?: Prisma.StringNullableWithAggregatesFilter<"Lead"> | string | null
   status?: Prisma.EnumLeadStatusWithAggregatesFilter<"Lead"> | $Enums.LeadStatus
+  priority?: Prisma.EnumLeadPriorityWithAggregatesFilter<"Lead"> | $Enums.LeadPriority
   niche?: Prisma.StringNullableWithAggregatesFilter<"Lead"> | string | null
   facebookLink?: Prisma.StringNullableWithAggregatesFilter<"Lead"> | string | null
   linkedInLink?: Prisma.StringNullableWithAggregatesFilter<"Lead"> | string | null
@@ -367,6 +390,7 @@ export type LeadScalarWhereWithAggregatesInput = {
   website?: Prisma.StringNullableWithAggregatesFilter<"Lead"> | string | null
   contactPerson?: Prisma.StringNullableWithAggregatesFilter<"Lead"> | string | null
   notes?: Prisma.StringNullableWithAggregatesFilter<"Lead"> | string | null
+  isPotential?: Prisma.BoolWithAggregatesFilter<"Lead"> | boolean
   addedById?: Prisma.StringNullableWithAggregatesFilter<"Lead"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Lead"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Lead"> | Date | string
@@ -379,6 +403,7 @@ export type LeadCreateInput = {
   phone?: string | null
   location?: string | null
   status?: $Enums.LeadStatus
+  priority?: $Enums.LeadPriority
   niche?: string | null
   facebookLink?: string | null
   linkedInLink?: string | null
@@ -387,6 +412,7 @@ export type LeadCreateInput = {
   website?: string | null
   contactPerson?: string | null
   notes?: string | null
+  isPotential?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   addedBy?: Prisma.UserCreateNestedOneWithoutAddedLeadsInput
@@ -399,6 +425,7 @@ export type LeadUncheckedCreateInput = {
   phone?: string | null
   location?: string | null
   status?: $Enums.LeadStatus
+  priority?: $Enums.LeadPriority
   niche?: string | null
   facebookLink?: string | null
   linkedInLink?: string | null
@@ -407,6 +434,7 @@ export type LeadUncheckedCreateInput = {
   website?: string | null
   contactPerson?: string | null
   notes?: string | null
+  isPotential?: boolean
   addedById?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -419,6 +447,7 @@ export type LeadUpdateInput = {
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumLeadStatusFieldUpdateOperationsInput | $Enums.LeadStatus
+  priority?: Prisma.EnumLeadPriorityFieldUpdateOperationsInput | $Enums.LeadPriority
   niche?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   facebookLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   linkedInLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -427,6 +456,7 @@ export type LeadUpdateInput = {
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contactPerson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isPotential?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   addedBy?: Prisma.UserUpdateOneWithoutAddedLeadsNestedInput
@@ -439,6 +469,7 @@ export type LeadUncheckedUpdateInput = {
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumLeadStatusFieldUpdateOperationsInput | $Enums.LeadStatus
+  priority?: Prisma.EnumLeadPriorityFieldUpdateOperationsInput | $Enums.LeadPriority
   niche?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   facebookLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   linkedInLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -447,6 +478,7 @@ export type LeadUncheckedUpdateInput = {
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contactPerson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isPotential?: Prisma.BoolFieldUpdateOperationsInput | boolean
   addedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -459,6 +491,7 @@ export type LeadCreateManyInput = {
   phone?: string | null
   location?: string | null
   status?: $Enums.LeadStatus
+  priority?: $Enums.LeadPriority
   niche?: string | null
   facebookLink?: string | null
   linkedInLink?: string | null
@@ -467,6 +500,7 @@ export type LeadCreateManyInput = {
   website?: string | null
   contactPerson?: string | null
   notes?: string | null
+  isPotential?: boolean
   addedById?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -479,6 +513,7 @@ export type LeadUpdateManyMutationInput = {
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumLeadStatusFieldUpdateOperationsInput | $Enums.LeadStatus
+  priority?: Prisma.EnumLeadPriorityFieldUpdateOperationsInput | $Enums.LeadPriority
   niche?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   facebookLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   linkedInLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -487,6 +522,7 @@ export type LeadUpdateManyMutationInput = {
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contactPerson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isPotential?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -498,6 +534,7 @@ export type LeadUncheckedUpdateManyInput = {
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumLeadStatusFieldUpdateOperationsInput | $Enums.LeadStatus
+  priority?: Prisma.EnumLeadPriorityFieldUpdateOperationsInput | $Enums.LeadPriority
   niche?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   facebookLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   linkedInLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -506,6 +543,7 @@ export type LeadUncheckedUpdateManyInput = {
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contactPerson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isPotential?: Prisma.BoolFieldUpdateOperationsInput | boolean
   addedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -528,6 +566,7 @@ export type LeadCountOrderByAggregateInput = {
   phone?: Prisma.SortOrder
   location?: Prisma.SortOrder
   status?: Prisma.SortOrder
+  priority?: Prisma.SortOrder
   niche?: Prisma.SortOrder
   facebookLink?: Prisma.SortOrder
   linkedInLink?: Prisma.SortOrder
@@ -536,6 +575,7 @@ export type LeadCountOrderByAggregateInput = {
   website?: Prisma.SortOrder
   contactPerson?: Prisma.SortOrder
   notes?: Prisma.SortOrder
+  isPotential?: Prisma.SortOrder
   addedById?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -548,6 +588,7 @@ export type LeadMaxOrderByAggregateInput = {
   phone?: Prisma.SortOrder
   location?: Prisma.SortOrder
   status?: Prisma.SortOrder
+  priority?: Prisma.SortOrder
   niche?: Prisma.SortOrder
   facebookLink?: Prisma.SortOrder
   linkedInLink?: Prisma.SortOrder
@@ -556,6 +597,7 @@ export type LeadMaxOrderByAggregateInput = {
   website?: Prisma.SortOrder
   contactPerson?: Prisma.SortOrder
   notes?: Prisma.SortOrder
+  isPotential?: Prisma.SortOrder
   addedById?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -568,6 +610,7 @@ export type LeadMinOrderByAggregateInput = {
   phone?: Prisma.SortOrder
   location?: Prisma.SortOrder
   status?: Prisma.SortOrder
+  priority?: Prisma.SortOrder
   niche?: Prisma.SortOrder
   facebookLink?: Prisma.SortOrder
   linkedInLink?: Prisma.SortOrder
@@ -576,6 +619,7 @@ export type LeadMinOrderByAggregateInput = {
   website?: Prisma.SortOrder
   contactPerson?: Prisma.SortOrder
   notes?: Prisma.SortOrder
+  isPotential?: Prisma.SortOrder
   addedById?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -627,6 +671,10 @@ export type EnumLeadStatusFieldUpdateOperationsInput = {
   set?: $Enums.LeadStatus
 }
 
+export type EnumLeadPriorityFieldUpdateOperationsInput = {
+  set?: $Enums.LeadPriority
+}
+
 export type LeadCreateWithoutAddedByInput = {
   id?: string
   businessName: string
@@ -634,6 +682,7 @@ export type LeadCreateWithoutAddedByInput = {
   phone?: string | null
   location?: string | null
   status?: $Enums.LeadStatus
+  priority?: $Enums.LeadPriority
   niche?: string | null
   facebookLink?: string | null
   linkedInLink?: string | null
@@ -642,6 +691,7 @@ export type LeadCreateWithoutAddedByInput = {
   website?: string | null
   contactPerson?: string | null
   notes?: string | null
+  isPotential?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -653,6 +703,7 @@ export type LeadUncheckedCreateWithoutAddedByInput = {
   phone?: string | null
   location?: string | null
   status?: $Enums.LeadStatus
+  priority?: $Enums.LeadPriority
   niche?: string | null
   facebookLink?: string | null
   linkedInLink?: string | null
@@ -661,6 +712,7 @@ export type LeadUncheckedCreateWithoutAddedByInput = {
   website?: string | null
   contactPerson?: string | null
   notes?: string | null
+  isPotential?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -701,6 +753,7 @@ export type LeadScalarWhereInput = {
   phone?: Prisma.StringNullableFilter<"Lead"> | string | null
   location?: Prisma.StringNullableFilter<"Lead"> | string | null
   status?: Prisma.EnumLeadStatusFilter<"Lead"> | $Enums.LeadStatus
+  priority?: Prisma.EnumLeadPriorityFilter<"Lead"> | $Enums.LeadPriority
   niche?: Prisma.StringNullableFilter<"Lead"> | string | null
   facebookLink?: Prisma.StringNullableFilter<"Lead"> | string | null
   linkedInLink?: Prisma.StringNullableFilter<"Lead"> | string | null
@@ -709,6 +762,7 @@ export type LeadScalarWhereInput = {
   website?: Prisma.StringNullableFilter<"Lead"> | string | null
   contactPerson?: Prisma.StringNullableFilter<"Lead"> | string | null
   notes?: Prisma.StringNullableFilter<"Lead"> | string | null
+  isPotential?: Prisma.BoolFilter<"Lead"> | boolean
   addedById?: Prisma.StringNullableFilter<"Lead"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Lead"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Lead"> | Date | string
@@ -721,6 +775,7 @@ export type LeadCreateManyAddedByInput = {
   phone?: string | null
   location?: string | null
   status?: $Enums.LeadStatus
+  priority?: $Enums.LeadPriority
   niche?: string | null
   facebookLink?: string | null
   linkedInLink?: string | null
@@ -729,6 +784,7 @@ export type LeadCreateManyAddedByInput = {
   website?: string | null
   contactPerson?: string | null
   notes?: string | null
+  isPotential?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -740,6 +796,7 @@ export type LeadUpdateWithoutAddedByInput = {
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumLeadStatusFieldUpdateOperationsInput | $Enums.LeadStatus
+  priority?: Prisma.EnumLeadPriorityFieldUpdateOperationsInput | $Enums.LeadPriority
   niche?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   facebookLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   linkedInLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -748,6 +805,7 @@ export type LeadUpdateWithoutAddedByInput = {
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contactPerson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isPotential?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -759,6 +817,7 @@ export type LeadUncheckedUpdateWithoutAddedByInput = {
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumLeadStatusFieldUpdateOperationsInput | $Enums.LeadStatus
+  priority?: Prisma.EnumLeadPriorityFieldUpdateOperationsInput | $Enums.LeadPriority
   niche?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   facebookLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   linkedInLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -767,6 +826,7 @@ export type LeadUncheckedUpdateWithoutAddedByInput = {
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contactPerson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isPotential?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -778,6 +838,7 @@ export type LeadUncheckedUpdateManyWithoutAddedByInput = {
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumLeadStatusFieldUpdateOperationsInput | $Enums.LeadStatus
+  priority?: Prisma.EnumLeadPriorityFieldUpdateOperationsInput | $Enums.LeadPriority
   niche?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   facebookLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   linkedInLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -786,6 +847,7 @@ export type LeadUncheckedUpdateManyWithoutAddedByInput = {
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contactPerson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isPotential?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -799,6 +861,7 @@ export type LeadSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   phone?: boolean
   location?: boolean
   status?: boolean
+  priority?: boolean
   niche?: boolean
   facebookLink?: boolean
   linkedInLink?: boolean
@@ -807,6 +870,7 @@ export type LeadSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   website?: boolean
   contactPerson?: boolean
   notes?: boolean
+  isPotential?: boolean
   addedById?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -820,6 +884,7 @@ export type LeadSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   phone?: boolean
   location?: boolean
   status?: boolean
+  priority?: boolean
   niche?: boolean
   facebookLink?: boolean
   linkedInLink?: boolean
@@ -828,6 +893,7 @@ export type LeadSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   website?: boolean
   contactPerson?: boolean
   notes?: boolean
+  isPotential?: boolean
   addedById?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -841,6 +907,7 @@ export type LeadSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   phone?: boolean
   location?: boolean
   status?: boolean
+  priority?: boolean
   niche?: boolean
   facebookLink?: boolean
   linkedInLink?: boolean
@@ -849,6 +916,7 @@ export type LeadSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   website?: boolean
   contactPerson?: boolean
   notes?: boolean
+  isPotential?: boolean
   addedById?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -862,6 +930,7 @@ export type LeadSelectScalar = {
   phone?: boolean
   location?: boolean
   status?: boolean
+  priority?: boolean
   niche?: boolean
   facebookLink?: boolean
   linkedInLink?: boolean
@@ -870,12 +939,13 @@ export type LeadSelectScalar = {
   website?: boolean
   contactPerson?: boolean
   notes?: boolean
+  isPotential?: boolean
   addedById?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type LeadOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "businessName" | "email" | "phone" | "location" | "status" | "niche" | "facebookLink" | "linkedInLink" | "instagramLink" | "twitterLink" | "website" | "contactPerson" | "notes" | "addedById" | "createdAt" | "updatedAt", ExtArgs["result"]["lead"]>
+export type LeadOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "businessName" | "email" | "phone" | "location" | "status" | "priority" | "niche" | "facebookLink" | "linkedInLink" | "instagramLink" | "twitterLink" | "website" | "contactPerson" | "notes" | "isPotential" | "addedById" | "createdAt" | "updatedAt", ExtArgs["result"]["lead"]>
 export type LeadInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   addedBy?: boolean | Prisma.Lead$addedByArgs<ExtArgs>
 }
@@ -898,6 +968,7 @@ export type $LeadPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     phone: string | null
     location: string | null
     status: $Enums.LeadStatus
+    priority: $Enums.LeadPriority
     niche: string | null
     facebookLink: string | null
     linkedInLink: string | null
@@ -906,6 +977,7 @@ export type $LeadPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     website: string | null
     contactPerson: string | null
     notes: string | null
+    isPotential: boolean
     addedById: string | null
     createdAt: Date
     updatedAt: Date
@@ -1339,6 +1411,7 @@ export interface LeadFieldRefs {
   readonly phone: Prisma.FieldRef<"Lead", 'String'>
   readonly location: Prisma.FieldRef<"Lead", 'String'>
   readonly status: Prisma.FieldRef<"Lead", 'LeadStatus'>
+  readonly priority: Prisma.FieldRef<"Lead", 'LeadPriority'>
   readonly niche: Prisma.FieldRef<"Lead", 'String'>
   readonly facebookLink: Prisma.FieldRef<"Lead", 'String'>
   readonly linkedInLink: Prisma.FieldRef<"Lead", 'String'>
@@ -1347,6 +1420,7 @@ export interface LeadFieldRefs {
   readonly website: Prisma.FieldRef<"Lead", 'String'>
   readonly contactPerson: Prisma.FieldRef<"Lead", 'String'>
   readonly notes: Prisma.FieldRef<"Lead", 'String'>
+  readonly isPotential: Prisma.FieldRef<"Lead", 'Boolean'>
   readonly addedById: Prisma.FieldRef<"Lead", 'String'>
   readonly createdAt: Prisma.FieldRef<"Lead", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Lead", 'DateTime'>

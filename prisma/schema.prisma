@@ -372,6 +372,12 @@ model PlaybookCategory {
   updatedAt DateTime @updatedAt
 }
 
+enum LeadPriority {
+  HIGH
+  MEDIUM
+  LOW
+}
+
 enum LeadStatus {
   NEW
   OLD
@@ -384,12 +390,13 @@ enum LeadStatus {
 }
 
 model Lead {
-  id            String     @id @default(uuid())
+  id            String       @id @default(uuid())
   businessName  String
   email         String?
   phone         String?
   location      String?
-  status        LeadStatus @default(NEW)
+  status        LeadStatus   @default(NEW)
+  priority      LeadPriority @default(MEDIUM)
   niche         String?
   facebookLink  String?
   linkedInLink  String?
@@ -398,6 +405,7 @@ model Lead {
   website       String?
   contactPerson String?
   notes         String?
+  isPotential   Boolean    @default(false)
 
   addedById String?
   addedBy   User?   @relation("AddedLead", fields: [addedById], references: [id])

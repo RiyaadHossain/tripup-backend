@@ -1,14 +1,40 @@
-import { Injectable } from '@nestjs/common';
-import { AuthGuard } from '@nestjs/passport';
+import {
+    CanActivate,
+    ExecutionContext,
+    Injectable,
+    UnauthorizedException,
+} from '@nestjs/common';
+import { JwtService } from '@nestjs/jwt';
+import { ConfigService } from '@nestjs/config';
 
-/**
- * Thin wrapper around the Passport 'jwt' strategy.
- * Apply to any controller/route that requires a valid Bearer token.
- *
- * @example
- * \@UseGuards(JwtAuthGuard)
- * \@Get('profile')
- * getProfile() {}
- */
+
 @Injectable()
-export class JwtAuthGuard extends AuthGuard('jwt') {}
+export class JwtAuthGuard implements CanActivate {
+    constructor(
+        private readonly jwtService: JwtService,
+        private readonly configService: ConfigService,
+    ) { }
+
+    async canActivate(context: ExecutionContext): Promise<boolean> {
+        const request = context.switchToHttp().getRequest();
+        const authHeader = request.headers.authorization;
+
+        if (!authHeader)
+            throw new UnauthorizedException('Authorization header is missing');
+
+        const [type, token] = authHeader.split(' ');
+
+        if (type !== 'Bearer' || !token)
+            throw new UnauthorizedException('Invalid token format');
+
+        try {
+            const secret = this.configService.get<string>('JWT_SECRET');
+            const payload = await this.jwtService.verifyAsync(token, { secret });
+            request.user = payload;
+            return true;
+        } catch (err) {
+            console.log(err)
+            throw new UnauthorizedException('Invalid or expired token');
+        }
+    }
+}

@@ -10,6 +10,10 @@ export class LeadsRepository {
     return this.prisma.lead.create({ data });
   }
 
+  async createMany(data: Prisma.LeadCreateManyInput[]) {
+    return this.prisma.lead.createMany({ data });
+  }
+
   async findMany(params: Prisma.LeadFindManyArgs) {
     return this.prisma.lead.findMany(params);
   }
