@@ -66,7 +66,8 @@ export const ModelName = {
   Playbook: 'Playbook',
   PlaybookType: 'PlaybookType',
   PlaybookCategory: 'PlaybookCategory',
-  Lead: 'Lead'
+  Lead: 'Lead',
+  Expense: 'Expense'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -360,6 +361,29 @@ export const LeadScalarFieldEnum = {
 } as const
 
 export type LeadScalarFieldEnum = (typeof LeadScalarFieldEnum)[keyof typeof LeadScalarFieldEnum]
+
+
+export const ExpenseScalarFieldEnum = {
+  id: 'id',
+  description: 'description',
+  category: 'category',
+  amount: 'amount',
+  currency: 'currency',
+  status: 'status',
+  expenseDate: 'expenseDate',
+  paidBy: 'paidBy',
+  vendor: 'vendor',
+  vendorContact: 'vendorContact',
+  paymentMethod: 'paymentMethod',
+  reference: 'reference',
+  attachment: 'attachment',
+  notes: 'notes',
+  createdById: 'createdById',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ExpenseScalarFieldEnum = (typeof ExpenseScalarFieldEnum)[keyof typeof ExpenseScalarFieldEnum]
 
 
 export const SortOrder = {

@@ -49,6 +49,7 @@ model User {
   addedPlaybookTypes           PlaybookType[]          @relation("AddedPlaybookType")
   addedPlaybookCategories      PlaybookCategory[]      @relation("AddedPlaybookCategory")
   addedLeads                   Lead[]                  @relation("AddedLead")
+  createdExpenses              Expense[]               @relation("CreatedExpense")
 
   resetPasswordToken   String?
   resetPasswordExpires DateTime?
@@ -416,3 +417,46 @@ model Lead {
   @@index([businessName])
   @@index([status])
 }
+
+enum ExpenseStatus {
+  PENDING
+  DUE
+  PAID
+}
+
+enum PaymentMethod {
+  CASH
+  BANK_TRANSFER
+  CARD
+  MOBILE_BANKING
+  OTHER
+}
+
+model Expense {
+  id            String        @id @default(uuid())
+  description   String        @db.VarChar(500)
+  category      String        @db.VarChar(255)
+  amount        Decimal       @db.Decimal(12, 2)
+  currency      String        @default("BDT") @db.VarChar(3)
+  status        ExpenseStatus
+  expenseDate   DateTime      @db.Date
+  paidBy        String?       @db.VarChar(255)
+  vendor        String?       @db.VarChar(255)
+  vendorContact String?       @db.VarChar(255)
+  paymentMethod PaymentMethod?
+  reference     String?       @db.VarChar(255)
+  attachment    Json?
+  notes         String?       @db.Text
+
+  createdById   String?
+  createdBy     User?         @relation("CreatedExpense", fields: [createdById], references: [id])
+
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  @@index([status])
+  @@index([category])
+  @@index([expenseDate])
+  @@map("expenses")
+}
+

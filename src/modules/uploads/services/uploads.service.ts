@@ -18,4 +18,18 @@ export class UploadsService {
       publicId: result.publicId,
     };
   }
+
+  async uploadFile(file: Express.Multer.File) {
+    const result = await this.cloudinaryService.uploadFile(
+      file,
+      'tripup/attachments',
+    );
+
+    return {
+      name: file.originalname,
+      type: file.mimetype,
+      size: file.size,
+      url: result.url,
+    };
+  }
 }

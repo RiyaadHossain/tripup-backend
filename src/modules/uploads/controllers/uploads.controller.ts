@@ -35,4 +35,25 @@ export class UploadsController {
   ) {
     return this.uploadsService.uploadImage(file);
   }
+
+  @Post('file')
+  @UseInterceptors(
+    FileInterceptor('file', {
+      storage: diskStorage({
+        destination: './uploads',
+        filename: (_req: any, file: any, cb: any) => {
+          cb(null, file.originalname);
+        },
+      }),
+      limits: {
+        fileSize: 20 * 1024 * 1024,
+      },
+    }),
+  )
+  async uploadFile(
+    @UploadedFile()
+    file: Express.Multer.File,
+  ) {
+    return this.uploadsService.uploadFile(file);
+  }
 }

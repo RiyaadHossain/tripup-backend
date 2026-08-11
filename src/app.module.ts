@@ -22,6 +22,7 @@ import { CaseStudiesModule } from './modules/case-studies/case-studies.module';
 import { GuidesPlaybooksModule } from './modules/guides-playbooks/guides-playbooks.module';
 import { UploadsModule } from './modules/uploads/uploads.module';
 import { LeadModule } from './modules/lead/lead.module';
+import { CostManagementModule } from './modules/cost-management/cost-management.module';
 
 @Module({
   imports: [
@@ -44,6 +45,7 @@ import { LeadModule } from './modules/lead/lead.module';
     GuidesPlaybooksModule,
     UploadsModule,
     LeadModule,
+    CostManagementModule,
   ],
   controllers: [],
   providers: [],

@@ -47,6 +47,7 @@ export class CloudinaryService {
     const response = await cloudinary.uploader.upload(filePath, {
       folder,
       public_id: uploadFilename,
+      resource_type: 'auto',
     });
 
     console.log(response);
