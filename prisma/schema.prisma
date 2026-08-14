@@ -19,6 +19,14 @@ enum PermissionAction {
   DELETE
 }
 
+enum ActivityAction {
+  LOGIN
+  ACCOUNT_CREATED
+  CREATE
+  UPDATE
+  DELETE
+}
+
 // ---------------------------------------------------------------------------
 // Auth & RBAC Models
 // ---------------------------------------------------------------------------
@@ -50,6 +58,7 @@ model User {
   addedPlaybookCategories      PlaybookCategory[]      @relation("AddedPlaybookCategory")
   addedLeads                   Lead[]                  @relation("AddedLead")
   createdExpenses              Expense[]               @relation("CreatedExpense")
+  activities                   UserActivity[]
 
   resetPasswordToken   String?
   resetPasswordExpires DateTime?
@@ -460,3 +469,26 @@ model Expense {
   @@map("expenses")
 }
 
+// ---------------------------------------------------------------------------
+// User Activity
+// ---------------------------------------------------------------------------
+
+/// Audit log of every significant action performed by a user.
+/// objectMeta stores a lightweight snapshot (e.g. { id, name }) so the
+/// frontend can render meaningful messages without extra DB lookups.
+model UserActivity {
+  id         String         @id @default(uuid())
+  action     ActivityAction
+  module     String         // e.g. "leads", "case_studies", "travel_services"
+  objectId   String?        // ID of the affected resource
+  objectMeta Json?          // Lightweight snapshot: { id, name } for display
+
+  userId String?
+  user   User?  @relation(fields: [userId], references: [id])
+
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+  @@index([module])
+  @@index([createdAt])
+}

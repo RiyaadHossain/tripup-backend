@@ -6,10 +6,14 @@ import { CaseStudyRepository } from '../repositories/case-study.repository';
 import { CreateCaseStudyDto } from '../dto/create-case-study.dto';
 import { UpdateCaseStudyDto } from '../dto/update-case-study.dto';
 import { QueryCaseStudiesDto } from '../dto/query-case-studies.dto';
+import { UserActivityService } from 'src/modules/user-activity/user-activity.service';
 
 @Injectable()
 export class CaseStudyService {
-  constructor(private readonly repository: CaseStudyRepository) {}
+  constructor(
+    private readonly repository: CaseStudyRepository,
+    private readonly activityService: UserActivityService,
+  ) {}
 
   async create(dto: CreateCaseStudyDto, userId: string) {
     const { category, ...rest } = dto;
@@ -18,7 +22,7 @@ export class CaseStudyService {
       await this.repository.clearFeatured();
     }
 
-    return this.repository.create({
+    const caseStudy = await this.repository.create({
       ...rest,
       addedBy: userId ? { connect: { id: userId } } : undefined,
       metrics: rest.metrics as unknown as Prisma.InputJsonValue,
@@ -34,6 +38,13 @@ export class CaseStudyService {
           }
         : undefined,
     });
+
+    this.activityService.log('CREATE', 'case_studies', userId, {
+      id: caseStudy.id,
+      name: caseStudy.title,
+    });
+
+    return caseStudy;
   }
 
   async findAll(query: QueryCaseStudiesDto) {
@@ -144,7 +155,7 @@ export class CaseStudyService {
     return caseStudy;
   }
 
-  async update(id: string, dto: UpdateCaseStudyDto) {
+  async update(id: string, dto: UpdateCaseStudyDto, userId?: string) {
     const existing = await this.repository.findById(id);
 
     if (!existing) {
@@ -157,7 +168,7 @@ export class CaseStudyService {
       await this.repository.clearFeatured(id);
     }
 
-    return this.repository.update(id, {
+    const updated = await this.repository.update(id, {
       ...rest,
       metrics: rest.metrics
         ? (rest.metrics as unknown as Prisma.InputJsonValue)
@@ -191,19 +202,32 @@ export class CaseStudyService {
               }
           : undefined,
     });
+
+    this.activityService.log('UPDATE', 'case_studies', userId, {
+      id: updated.id,
+      name: updated.title,
+    });
+
+    return updated;
   }
 
-  async remove(id: string) {
+  async remove(id: string, userId?: string) {
     const existing = await this.repository.findById(id);
 
     if (!existing) {
       throw new NotFoundException('Case study not found');
     }
 
+    this.activityService.log('DELETE', 'case_studies', userId, {
+      id: existing.id ?? '',
+      name: existing.title ?? '',
+    });
+
     return this.repository.delete(id);
   }
 
-  async removeMany(ids: string[]) {
+  async removeMany(ids: string[], userId?: string) {
+    this.activityService.log('DELETE', 'case_studies', userId, null);
     return this.repository.deleteMany(ids);
   }
 }

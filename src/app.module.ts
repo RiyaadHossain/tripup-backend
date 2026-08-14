@@ -23,6 +23,7 @@ import { GuidesPlaybooksModule } from './modules/guides-playbooks/guides-playboo
 import { UploadsModule } from './modules/uploads/uploads.module';
 import { LeadModule } from './modules/lead/lead.module';
 import { CostManagementModule } from './modules/cost-management/cost-management.module';
+import { UserActivityModule } from './modules/user-activity/user-activity.module';
 
 @Module({
   imports: [
@@ -46,6 +47,7 @@ import { CostManagementModule } from './modules/cost-management/cost-management.
     UploadsModule,
     LeadModule,
     CostManagementModule,
+    UserActivityModule,
   ],
   controllers: [],
   providers: [],

@@ -64,19 +64,29 @@ export class AdminLeadsController {
 
   @Patch(':id')
   @Permission(perm('leads', 'UPDATE'))
-  async update(@Param('id') id: string, @Body() dto: UpdateLeadDto) {
-    return this.service.update(id, dto);
+  async update(
+    @Param('id') id: string,
+    @Body() dto: UpdateLeadDto,
+    @CurrentUser('sub') userId: string,
+  ) {
+    return this.service.update(id, dto, userId);
   }
 
   @Delete(':id')
   @Permission(perm('leads', 'DELETE'))
-  async remove(@Param('id') id: string) {
-    return this.service.remove(id);
+  async remove(
+    @Param('id') id: string,
+    @CurrentUser('sub') userId: string,
+  ) {
+    return this.service.remove(id, userId);
   }
 
   @Delete()
   @Permission(perm('leads', 'DELETE'))
-  async removeMany(@Body() dto: BulkDeleteLeadsDto) {
-    return this.service.removeMany(dto.ids);
+  async removeMany(
+    @Body() dto: BulkDeleteLeadsDto,
+    @CurrentUser('sub') userId: string,
+  ) {
+    return this.service.removeMany(dto.ids, userId);
   }
 }

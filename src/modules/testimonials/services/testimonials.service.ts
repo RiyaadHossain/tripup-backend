@@ -5,13 +5,24 @@ import { TestimonialsRepository } from '../repositories/testimonials.repository'
 import { CreateTestimonialDto } from '../dto/create-testimonial.dto';
 import { UpdateTestimonialDto } from '../dto/update-testimonial.dto';
 import { QueryTestimonialDto } from '../dto/query-testimonial.dto';
+import { UserActivityService } from 'src/modules/user-activity/user-activity.service';
 
 @Injectable()
 export class TestimonialsService {
-  constructor(private readonly repository: TestimonialsRepository) {}
+  constructor(
+    private readonly repository: TestimonialsRepository,
+    private readonly activityService: UserActivityService,
+  ) {}
 
   async create(dto: CreateTestimonialDto, userId: string) {
-    return this.repository.create({ ...dto, addedBy: userId ? { connect: { id: userId } } : undefined, });
+    const testimonial = await this.repository.create({ ...dto, addedBy: userId ? { connect: { id: userId } } : undefined });
+
+    this.activityService.log('CREATE', 'testimonials', userId, {
+      id: testimonial.id,
+      name: testimonial.userName,
+    });
+
+    return testimonial;
   }
 
   async findAll(query: QueryTestimonialDto) {
@@ -72,27 +83,40 @@ export class TestimonialsService {
     };
   }
 
-  async update(id: string, dto: UpdateTestimonialDto) {
+  async update(id: string, dto: UpdateTestimonialDto, userId?: string) {
     const existing = await this.repository.findById(id);
 
     if (!existing) {
       throw new NotFoundException('Testimonial not found');
     }
 
-    return this.repository.update(id, dto);
+    const updated = await this.repository.update(id, dto);
+
+    this.activityService.log('UPDATE', 'testimonials', userId, {
+      id: updated.id,
+      name: updated.userName,
+    });
+
+    return updated;
   }
 
-  async remove(id: string) {
+  async remove(id: string, userId?: string) {
     const existing = await this.repository.findById(id);
 
     if (!existing) {
       throw new NotFoundException('Testimonial not found');
     }
+
+    this.activityService.log('DELETE', 'testimonials', userId, {
+      id: existing.id,
+      name: existing.userName,
+    });
 
     return this.repository.delete(id);
   }
 
-  async removeMany(ids: string[]) {
+  async removeMany(ids: string[], userId?: string) {
+    this.activityService.log('DELETE', 'testimonials', userId, null);
     return this.repository.deleteMany(ids);
   }
 }

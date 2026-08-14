@@ -6,9 +6,10 @@ import { TravelInsightService } from './services/travel-insight.service';
 import { TravelInsightCategoriesService } from './services/travel-insight-categories.service';
 import { TravelInsightRepository } from './repositories/travel-insight.repository';
 import { TravelInsightCategoriesRepository } from './repositories/travel-insight-categories.repository';
+import { UserActivityModule } from 'src/modules/user-activity/user-activity.module';
 
 @Module({
-  imports: [],
+  imports: [UserActivityModule],
   controllers: [
     PublicTravelInsightController,
     AdminTravelInsightController,

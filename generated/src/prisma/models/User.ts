@@ -254,6 +254,7 @@ export type UserWhereInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryListRelationFilter
   addedLeads?: Prisma.LeadListRelationFilter
   createdExpenses?: Prisma.ExpenseListRelationFilter
+  activities?: Prisma.UserActivityListRelationFilter
   role?: Prisma.XOR<Prisma.RoleNullableScalarRelationFilter, Prisma.RoleWhereInput> | null
 }
 
@@ -286,6 +287,7 @@ export type UserOrderByWithRelationInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryOrderByRelationAggregateInput
   addedLeads?: Prisma.LeadOrderByRelationAggregateInput
   createdExpenses?: Prisma.ExpenseOrderByRelationAggregateInput
+  activities?: Prisma.UserActivityOrderByRelationAggregateInput
   role?: Prisma.RoleOrderByWithRelationInput
 }
 
@@ -321,6 +323,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   addedPlaybookCategories?: Prisma.PlaybookCategoryListRelationFilter
   addedLeads?: Prisma.LeadListRelationFilter
   createdExpenses?: Prisma.ExpenseListRelationFilter
+  activities?: Prisma.UserActivityListRelationFilter
   role?: Prisma.XOR<Prisma.RoleNullableScalarRelationFilter, Prisma.RoleWhereInput> | null
 }, "id" | "email">
 
@@ -387,6 +390,7 @@ export type UserCreateInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryCreateNestedManyWithoutAddedByInput
   addedLeads?: Prisma.LeadCreateNestedManyWithoutAddedByInput
   createdExpenses?: Prisma.ExpenseCreateNestedManyWithoutCreatedByInput
+  activities?: Prisma.UserActivityCreateNestedManyWithoutUserInput
   role?: Prisma.RoleCreateNestedOneWithoutUsersInput
 }
 
@@ -418,6 +422,7 @@ export type UserUncheckedCreateInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedCreateNestedManyWithoutAddedByInput
   addedLeads?: Prisma.LeadUncheckedCreateNestedManyWithoutAddedByInput
   createdExpenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutCreatedByInput
+  activities?: Prisma.UserActivityUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -447,6 +452,7 @@ export type UserUpdateInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryUpdateManyWithoutAddedByNestedInput
   addedLeads?: Prisma.LeadUpdateManyWithoutAddedByNestedInput
   createdExpenses?: Prisma.ExpenseUpdateManyWithoutCreatedByNestedInput
+  activities?: Prisma.UserActivityUpdateManyWithoutUserNestedInput
   role?: Prisma.RoleUpdateOneWithoutUsersNestedInput
 }
 
@@ -478,6 +484,7 @@ export type UserUncheckedUpdateInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedUpdateManyWithoutAddedByNestedInput
   addedLeads?: Prisma.LeadUncheckedUpdateManyWithoutAddedByNestedInput
   createdExpenses?: Prisma.ExpenseUncheckedUpdateManyWithoutCreatedByNestedInput
+  activities?: Prisma.UserActivityUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -927,6 +934,22 @@ export type UserUpdateOneWithoutCreatedExpensesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutCreatedExpensesInput, Prisma.UserUpdateWithoutCreatedExpensesInput>, Prisma.UserUncheckedUpdateWithoutCreatedExpensesInput>
 }
 
+export type UserCreateNestedOneWithoutActivitiesInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutActivitiesInput, Prisma.UserUncheckedCreateWithoutActivitiesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutActivitiesInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneWithoutActivitiesNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutActivitiesInput, Prisma.UserUncheckedCreateWithoutActivitiesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutActivitiesInput
+  upsert?: Prisma.UserUpsertWithoutActivitiesInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutActivitiesInput, Prisma.UserUpdateWithoutActivitiesInput>, Prisma.UserUncheckedUpdateWithoutActivitiesInput>
+}
+
 export type UserCreateWithoutCreatedUsersInput = {
   id?: string
   name: string
@@ -953,6 +976,7 @@ export type UserCreateWithoutCreatedUsersInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryCreateNestedManyWithoutAddedByInput
   addedLeads?: Prisma.LeadCreateNestedManyWithoutAddedByInput
   createdExpenses?: Prisma.ExpenseCreateNestedManyWithoutCreatedByInput
+  activities?: Prisma.UserActivityCreateNestedManyWithoutUserInput
   role?: Prisma.RoleCreateNestedOneWithoutUsersInput
 }
 
@@ -983,6 +1007,7 @@ export type UserUncheckedCreateWithoutCreatedUsersInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedCreateNestedManyWithoutAddedByInput
   addedLeads?: Prisma.LeadUncheckedCreateNestedManyWithoutAddedByInput
   createdExpenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutCreatedByInput
+  activities?: Prisma.UserActivityUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutCreatedUsersInput = {
@@ -1016,6 +1041,7 @@ export type UserCreateWithoutAddedByInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryCreateNestedManyWithoutAddedByInput
   addedLeads?: Prisma.LeadCreateNestedManyWithoutAddedByInput
   createdExpenses?: Prisma.ExpenseCreateNestedManyWithoutCreatedByInput
+  activities?: Prisma.UserActivityCreateNestedManyWithoutUserInput
   role?: Prisma.RoleCreateNestedOneWithoutUsersInput
 }
 
@@ -1046,6 +1072,7 @@ export type UserUncheckedCreateWithoutAddedByInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedCreateNestedManyWithoutAddedByInput
   addedLeads?: Prisma.LeadUncheckedCreateNestedManyWithoutAddedByInput
   createdExpenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutCreatedByInput
+  activities?: Prisma.UserActivityUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutAddedByInput = {
@@ -1095,6 +1122,7 @@ export type UserUpdateWithoutCreatedUsersInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryUpdateManyWithoutAddedByNestedInput
   addedLeads?: Prisma.LeadUpdateManyWithoutAddedByNestedInput
   createdExpenses?: Prisma.ExpenseUpdateManyWithoutCreatedByNestedInput
+  activities?: Prisma.UserActivityUpdateManyWithoutUserNestedInput
   role?: Prisma.RoleUpdateOneWithoutUsersNestedInput
 }
 
@@ -1125,6 +1153,7 @@ export type UserUncheckedUpdateWithoutCreatedUsersInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedUpdateManyWithoutAddedByNestedInput
   addedLeads?: Prisma.LeadUncheckedUpdateManyWithoutAddedByNestedInput
   createdExpenses?: Prisma.ExpenseUncheckedUpdateManyWithoutCreatedByNestedInput
+  activities?: Prisma.UserActivityUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithWhereUniqueWithoutAddedByInput = {
@@ -1188,6 +1217,7 @@ export type UserCreateWithoutRoleInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryCreateNestedManyWithoutAddedByInput
   addedLeads?: Prisma.LeadCreateNestedManyWithoutAddedByInput
   createdExpenses?: Prisma.ExpenseCreateNestedManyWithoutCreatedByInput
+  activities?: Prisma.UserActivityCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutRoleInput = {
@@ -1217,6 +1247,7 @@ export type UserUncheckedCreateWithoutRoleInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedCreateNestedManyWithoutAddedByInput
   addedLeads?: Prisma.LeadUncheckedCreateNestedManyWithoutAddedByInput
   createdExpenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutCreatedByInput
+  activities?: Prisma.UserActivityUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutRoleInput = {
@@ -1255,6 +1286,7 @@ export type UserCreateWithoutAddedRolesInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryCreateNestedManyWithoutAddedByInput
   addedLeads?: Prisma.LeadCreateNestedManyWithoutAddedByInput
   createdExpenses?: Prisma.ExpenseCreateNestedManyWithoutCreatedByInput
+  activities?: Prisma.UserActivityCreateNestedManyWithoutUserInput
   role?: Prisma.RoleCreateNestedOneWithoutUsersInput
 }
 
@@ -1285,6 +1317,7 @@ export type UserUncheckedCreateWithoutAddedRolesInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedCreateNestedManyWithoutAddedByInput
   addedLeads?: Prisma.LeadUncheckedCreateNestedManyWithoutAddedByInput
   createdExpenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutCreatedByInput
+  activities?: Prisma.UserActivityUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutAddedRolesInput = {
@@ -1345,6 +1378,7 @@ export type UserUpdateWithoutAddedRolesInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryUpdateManyWithoutAddedByNestedInput
   addedLeads?: Prisma.LeadUpdateManyWithoutAddedByNestedInput
   createdExpenses?: Prisma.ExpenseUpdateManyWithoutCreatedByNestedInput
+  activities?: Prisma.UserActivityUpdateManyWithoutUserNestedInput
   role?: Prisma.RoleUpdateOneWithoutUsersNestedInput
 }
 
@@ -1375,6 +1409,7 @@ export type UserUncheckedUpdateWithoutAddedRolesInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedUpdateManyWithoutAddedByNestedInput
   addedLeads?: Prisma.LeadUncheckedUpdateManyWithoutAddedByNestedInput
   createdExpenses?: Prisma.ExpenseUncheckedUpdateManyWithoutCreatedByNestedInput
+  activities?: Prisma.UserActivityUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutAddedTeamMembersInput = {
@@ -1403,6 +1438,7 @@ export type UserCreateWithoutAddedTeamMembersInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryCreateNestedManyWithoutAddedByInput
   addedLeads?: Prisma.LeadCreateNestedManyWithoutAddedByInput
   createdExpenses?: Prisma.ExpenseCreateNestedManyWithoutCreatedByInput
+  activities?: Prisma.UserActivityCreateNestedManyWithoutUserInput
   role?: Prisma.RoleCreateNestedOneWithoutUsersInput
 }
 
@@ -1433,6 +1469,7 @@ export type UserUncheckedCreateWithoutAddedTeamMembersInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedCreateNestedManyWithoutAddedByInput
   addedLeads?: Prisma.LeadUncheckedCreateNestedManyWithoutAddedByInput
   createdExpenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutCreatedByInput
+  activities?: Prisma.UserActivityUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutAddedTeamMembersInput = {
@@ -1477,6 +1514,7 @@ export type UserUpdateWithoutAddedTeamMembersInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryUpdateManyWithoutAddedByNestedInput
   addedLeads?: Prisma.LeadUpdateManyWithoutAddedByNestedInput
   createdExpenses?: Prisma.ExpenseUpdateManyWithoutCreatedByNestedInput
+  activities?: Prisma.UserActivityUpdateManyWithoutUserNestedInput
   role?: Prisma.RoleUpdateOneWithoutUsersNestedInput
 }
 
@@ -1507,6 +1545,7 @@ export type UserUncheckedUpdateWithoutAddedTeamMembersInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedUpdateManyWithoutAddedByNestedInput
   addedLeads?: Prisma.LeadUncheckedUpdateManyWithoutAddedByNestedInput
   createdExpenses?: Prisma.ExpenseUncheckedUpdateManyWithoutCreatedByNestedInput
+  activities?: Prisma.UserActivityUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutAddedTestimonialsInput = {
@@ -1535,6 +1574,7 @@ export type UserCreateWithoutAddedTestimonialsInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryCreateNestedManyWithoutAddedByInput
   addedLeads?: Prisma.LeadCreateNestedManyWithoutAddedByInput
   createdExpenses?: Prisma.ExpenseCreateNestedManyWithoutCreatedByInput
+  activities?: Prisma.UserActivityCreateNestedManyWithoutUserInput
   role?: Prisma.RoleCreateNestedOneWithoutUsersInput
 }
 
@@ -1565,6 +1605,7 @@ export type UserUncheckedCreateWithoutAddedTestimonialsInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedCreateNestedManyWithoutAddedByInput
   addedLeads?: Prisma.LeadUncheckedCreateNestedManyWithoutAddedByInput
   createdExpenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutCreatedByInput
+  activities?: Prisma.UserActivityUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutAddedTestimonialsInput = {
@@ -1609,6 +1650,7 @@ export type UserUpdateWithoutAddedTestimonialsInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryUpdateManyWithoutAddedByNestedInput
   addedLeads?: Prisma.LeadUpdateManyWithoutAddedByNestedInput
   createdExpenses?: Prisma.ExpenseUpdateManyWithoutCreatedByNestedInput
+  activities?: Prisma.UserActivityUpdateManyWithoutUserNestedInput
   role?: Prisma.RoleUpdateOneWithoutUsersNestedInput
 }
 
@@ -1639,6 +1681,7 @@ export type UserUncheckedUpdateWithoutAddedTestimonialsInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedUpdateManyWithoutAddedByNestedInput
   addedLeads?: Prisma.LeadUncheckedUpdateManyWithoutAddedByNestedInput
   createdExpenses?: Prisma.ExpenseUncheckedUpdateManyWithoutCreatedByNestedInput
+  activities?: Prisma.UserActivityUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutAddedTravelInsightsInput = {
@@ -1667,6 +1710,7 @@ export type UserCreateWithoutAddedTravelInsightsInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryCreateNestedManyWithoutAddedByInput
   addedLeads?: Prisma.LeadCreateNestedManyWithoutAddedByInput
   createdExpenses?: Prisma.ExpenseCreateNestedManyWithoutCreatedByInput
+  activities?: Prisma.UserActivityCreateNestedManyWithoutUserInput
   role?: Prisma.RoleCreateNestedOneWithoutUsersInput
 }
 
@@ -1697,6 +1741,7 @@ export type UserUncheckedCreateWithoutAddedTravelInsightsInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedCreateNestedManyWithoutAddedByInput
   addedLeads?: Prisma.LeadUncheckedCreateNestedManyWithoutAddedByInput
   createdExpenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutCreatedByInput
+  activities?: Prisma.UserActivityUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutAddedTravelInsightsInput = {
@@ -1741,6 +1786,7 @@ export type UserUpdateWithoutAddedTravelInsightsInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryUpdateManyWithoutAddedByNestedInput
   addedLeads?: Prisma.LeadUpdateManyWithoutAddedByNestedInput
   createdExpenses?: Prisma.ExpenseUpdateManyWithoutCreatedByNestedInput
+  activities?: Prisma.UserActivityUpdateManyWithoutUserNestedInput
   role?: Prisma.RoleUpdateOneWithoutUsersNestedInput
 }
 
@@ -1771,6 +1817,7 @@ export type UserUncheckedUpdateWithoutAddedTravelInsightsInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedUpdateManyWithoutAddedByNestedInput
   addedLeads?: Prisma.LeadUncheckedUpdateManyWithoutAddedByNestedInput
   createdExpenses?: Prisma.ExpenseUncheckedUpdateManyWithoutCreatedByNestedInput
+  activities?: Prisma.UserActivityUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutAddedTravelInsightCategoriesInput = {
@@ -1799,6 +1846,7 @@ export type UserCreateWithoutAddedTravelInsightCategoriesInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryCreateNestedManyWithoutAddedByInput
   addedLeads?: Prisma.LeadCreateNestedManyWithoutAddedByInput
   createdExpenses?: Prisma.ExpenseCreateNestedManyWithoutCreatedByInput
+  activities?: Prisma.UserActivityCreateNestedManyWithoutUserInput
   role?: Prisma.RoleCreateNestedOneWithoutUsersInput
 }
 
@@ -1829,6 +1877,7 @@ export type UserUncheckedCreateWithoutAddedTravelInsightCategoriesInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedCreateNestedManyWithoutAddedByInput
   addedLeads?: Prisma.LeadUncheckedCreateNestedManyWithoutAddedByInput
   createdExpenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutCreatedByInput
+  activities?: Prisma.UserActivityUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutAddedTravelInsightCategoriesInput = {
@@ -1873,6 +1922,7 @@ export type UserUpdateWithoutAddedTravelInsightCategoriesInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryUpdateManyWithoutAddedByNestedInput
   addedLeads?: Prisma.LeadUpdateManyWithoutAddedByNestedInput
   createdExpenses?: Prisma.ExpenseUpdateManyWithoutCreatedByNestedInput
+  activities?: Prisma.UserActivityUpdateManyWithoutUserNestedInput
   role?: Prisma.RoleUpdateOneWithoutUsersNestedInput
 }
 
@@ -1903,6 +1953,7 @@ export type UserUncheckedUpdateWithoutAddedTravelInsightCategoriesInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedUpdateManyWithoutAddedByNestedInput
   addedLeads?: Prisma.LeadUncheckedUpdateManyWithoutAddedByNestedInput
   createdExpenses?: Prisma.ExpenseUncheckedUpdateManyWithoutCreatedByNestedInput
+  activities?: Prisma.UserActivityUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutAddedTravelServicesInput = {
@@ -1931,6 +1982,7 @@ export type UserCreateWithoutAddedTravelServicesInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryCreateNestedManyWithoutAddedByInput
   addedLeads?: Prisma.LeadCreateNestedManyWithoutAddedByInput
   createdExpenses?: Prisma.ExpenseCreateNestedManyWithoutCreatedByInput
+  activities?: Prisma.UserActivityCreateNestedManyWithoutUserInput
   role?: Prisma.RoleCreateNestedOneWithoutUsersInput
 }
 
@@ -1961,6 +2013,7 @@ export type UserUncheckedCreateWithoutAddedTravelServicesInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedCreateNestedManyWithoutAddedByInput
   addedLeads?: Prisma.LeadUncheckedCreateNestedManyWithoutAddedByInput
   createdExpenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutCreatedByInput
+  activities?: Prisma.UserActivityUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutAddedTravelServicesInput = {
@@ -2005,6 +2058,7 @@ export type UserUpdateWithoutAddedTravelServicesInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryUpdateManyWithoutAddedByNestedInput
   addedLeads?: Prisma.LeadUpdateManyWithoutAddedByNestedInput
   createdExpenses?: Prisma.ExpenseUpdateManyWithoutCreatedByNestedInput
+  activities?: Prisma.UserActivityUpdateManyWithoutUserNestedInput
   role?: Prisma.RoleUpdateOneWithoutUsersNestedInput
 }
 
@@ -2035,6 +2089,7 @@ export type UserUncheckedUpdateWithoutAddedTravelServicesInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedUpdateManyWithoutAddedByNestedInput
   addedLeads?: Prisma.LeadUncheckedUpdateManyWithoutAddedByNestedInput
   createdExpenses?: Prisma.ExpenseUncheckedUpdateManyWithoutCreatedByNestedInput
+  activities?: Prisma.UserActivityUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutAddedServiceCategoriesInput = {
@@ -2063,6 +2118,7 @@ export type UserCreateWithoutAddedServiceCategoriesInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryCreateNestedManyWithoutAddedByInput
   addedLeads?: Prisma.LeadCreateNestedManyWithoutAddedByInput
   createdExpenses?: Prisma.ExpenseCreateNestedManyWithoutCreatedByInput
+  activities?: Prisma.UserActivityCreateNestedManyWithoutUserInput
   role?: Prisma.RoleCreateNestedOneWithoutUsersInput
 }
 
@@ -2093,6 +2149,7 @@ export type UserUncheckedCreateWithoutAddedServiceCategoriesInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedCreateNestedManyWithoutAddedByInput
   addedLeads?: Prisma.LeadUncheckedCreateNestedManyWithoutAddedByInput
   createdExpenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutCreatedByInput
+  activities?: Prisma.UserActivityUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutAddedServiceCategoriesInput = {
@@ -2137,6 +2194,7 @@ export type UserUpdateWithoutAddedServiceCategoriesInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryUpdateManyWithoutAddedByNestedInput
   addedLeads?: Prisma.LeadUpdateManyWithoutAddedByNestedInput
   createdExpenses?: Prisma.ExpenseUpdateManyWithoutCreatedByNestedInput
+  activities?: Prisma.UserActivityUpdateManyWithoutUserNestedInput
   role?: Prisma.RoleUpdateOneWithoutUsersNestedInput
 }
 
@@ -2167,6 +2225,7 @@ export type UserUncheckedUpdateWithoutAddedServiceCategoriesInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedUpdateManyWithoutAddedByNestedInput
   addedLeads?: Prisma.LeadUncheckedUpdateManyWithoutAddedByNestedInput
   createdExpenses?: Prisma.ExpenseUncheckedUpdateManyWithoutCreatedByNestedInput
+  activities?: Prisma.UserActivityUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutAddedCaseStudiesInput = {
@@ -2195,6 +2254,7 @@ export type UserCreateWithoutAddedCaseStudiesInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryCreateNestedManyWithoutAddedByInput
   addedLeads?: Prisma.LeadCreateNestedManyWithoutAddedByInput
   createdExpenses?: Prisma.ExpenseCreateNestedManyWithoutCreatedByInput
+  activities?: Prisma.UserActivityCreateNestedManyWithoutUserInput
   role?: Prisma.RoleCreateNestedOneWithoutUsersInput
 }
 
@@ -2225,6 +2285,7 @@ export type UserUncheckedCreateWithoutAddedCaseStudiesInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedCreateNestedManyWithoutAddedByInput
   addedLeads?: Prisma.LeadUncheckedCreateNestedManyWithoutAddedByInput
   createdExpenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutCreatedByInput
+  activities?: Prisma.UserActivityUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutAddedCaseStudiesInput = {
@@ -2269,6 +2330,7 @@ export type UserUpdateWithoutAddedCaseStudiesInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryUpdateManyWithoutAddedByNestedInput
   addedLeads?: Prisma.LeadUpdateManyWithoutAddedByNestedInput
   createdExpenses?: Prisma.ExpenseUpdateManyWithoutCreatedByNestedInput
+  activities?: Prisma.UserActivityUpdateManyWithoutUserNestedInput
   role?: Prisma.RoleUpdateOneWithoutUsersNestedInput
 }
 
@@ -2299,6 +2361,7 @@ export type UserUncheckedUpdateWithoutAddedCaseStudiesInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedUpdateManyWithoutAddedByNestedInput
   addedLeads?: Prisma.LeadUncheckedUpdateManyWithoutAddedByNestedInput
   createdExpenses?: Prisma.ExpenseUncheckedUpdateManyWithoutCreatedByNestedInput
+  activities?: Prisma.UserActivityUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutAddedCaseStudyCategoriesInput = {
@@ -2327,6 +2390,7 @@ export type UserCreateWithoutAddedCaseStudyCategoriesInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryCreateNestedManyWithoutAddedByInput
   addedLeads?: Prisma.LeadCreateNestedManyWithoutAddedByInput
   createdExpenses?: Prisma.ExpenseCreateNestedManyWithoutCreatedByInput
+  activities?: Prisma.UserActivityCreateNestedManyWithoutUserInput
   role?: Prisma.RoleCreateNestedOneWithoutUsersInput
 }
 
@@ -2357,6 +2421,7 @@ export type UserUncheckedCreateWithoutAddedCaseStudyCategoriesInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedCreateNestedManyWithoutAddedByInput
   addedLeads?: Prisma.LeadUncheckedCreateNestedManyWithoutAddedByInput
   createdExpenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutCreatedByInput
+  activities?: Prisma.UserActivityUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutAddedCaseStudyCategoriesInput = {
@@ -2401,6 +2466,7 @@ export type UserUpdateWithoutAddedCaseStudyCategoriesInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryUpdateManyWithoutAddedByNestedInput
   addedLeads?: Prisma.LeadUpdateManyWithoutAddedByNestedInput
   createdExpenses?: Prisma.ExpenseUpdateManyWithoutCreatedByNestedInput
+  activities?: Prisma.UserActivityUpdateManyWithoutUserNestedInput
   role?: Prisma.RoleUpdateOneWithoutUsersNestedInput
 }
 
@@ -2431,6 +2497,7 @@ export type UserUncheckedUpdateWithoutAddedCaseStudyCategoriesInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedUpdateManyWithoutAddedByNestedInput
   addedLeads?: Prisma.LeadUncheckedUpdateManyWithoutAddedByNestedInput
   createdExpenses?: Prisma.ExpenseUncheckedUpdateManyWithoutCreatedByNestedInput
+  activities?: Prisma.UserActivityUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutAddedPlaybooksInput = {
@@ -2459,6 +2526,7 @@ export type UserCreateWithoutAddedPlaybooksInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryCreateNestedManyWithoutAddedByInput
   addedLeads?: Prisma.LeadCreateNestedManyWithoutAddedByInput
   createdExpenses?: Prisma.ExpenseCreateNestedManyWithoutCreatedByInput
+  activities?: Prisma.UserActivityCreateNestedManyWithoutUserInput
   role?: Prisma.RoleCreateNestedOneWithoutUsersInput
 }
 
@@ -2489,6 +2557,7 @@ export type UserUncheckedCreateWithoutAddedPlaybooksInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedCreateNestedManyWithoutAddedByInput
   addedLeads?: Prisma.LeadUncheckedCreateNestedManyWithoutAddedByInput
   createdExpenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutCreatedByInput
+  activities?: Prisma.UserActivityUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutAddedPlaybooksInput = {
@@ -2533,6 +2602,7 @@ export type UserUpdateWithoutAddedPlaybooksInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryUpdateManyWithoutAddedByNestedInput
   addedLeads?: Prisma.LeadUpdateManyWithoutAddedByNestedInput
   createdExpenses?: Prisma.ExpenseUpdateManyWithoutCreatedByNestedInput
+  activities?: Prisma.UserActivityUpdateManyWithoutUserNestedInput
   role?: Prisma.RoleUpdateOneWithoutUsersNestedInput
 }
 
@@ -2563,6 +2633,7 @@ export type UserUncheckedUpdateWithoutAddedPlaybooksInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedUpdateManyWithoutAddedByNestedInput
   addedLeads?: Prisma.LeadUncheckedUpdateManyWithoutAddedByNestedInput
   createdExpenses?: Prisma.ExpenseUncheckedUpdateManyWithoutCreatedByNestedInput
+  activities?: Prisma.UserActivityUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutAddedPlaybookTypesInput = {
@@ -2591,6 +2662,7 @@ export type UserCreateWithoutAddedPlaybookTypesInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryCreateNestedManyWithoutAddedByInput
   addedLeads?: Prisma.LeadCreateNestedManyWithoutAddedByInput
   createdExpenses?: Prisma.ExpenseCreateNestedManyWithoutCreatedByInput
+  activities?: Prisma.UserActivityCreateNestedManyWithoutUserInput
   role?: Prisma.RoleCreateNestedOneWithoutUsersInput
 }
 
@@ -2621,6 +2693,7 @@ export type UserUncheckedCreateWithoutAddedPlaybookTypesInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedCreateNestedManyWithoutAddedByInput
   addedLeads?: Prisma.LeadUncheckedCreateNestedManyWithoutAddedByInput
   createdExpenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutCreatedByInput
+  activities?: Prisma.UserActivityUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutAddedPlaybookTypesInput = {
@@ -2665,6 +2738,7 @@ export type UserUpdateWithoutAddedPlaybookTypesInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryUpdateManyWithoutAddedByNestedInput
   addedLeads?: Prisma.LeadUpdateManyWithoutAddedByNestedInput
   createdExpenses?: Prisma.ExpenseUpdateManyWithoutCreatedByNestedInput
+  activities?: Prisma.UserActivityUpdateManyWithoutUserNestedInput
   role?: Prisma.RoleUpdateOneWithoutUsersNestedInput
 }
 
@@ -2695,6 +2769,7 @@ export type UserUncheckedUpdateWithoutAddedPlaybookTypesInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedUpdateManyWithoutAddedByNestedInput
   addedLeads?: Prisma.LeadUncheckedUpdateManyWithoutAddedByNestedInput
   createdExpenses?: Prisma.ExpenseUncheckedUpdateManyWithoutCreatedByNestedInput
+  activities?: Prisma.UserActivityUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutAddedPlaybookCategoriesInput = {
@@ -2723,6 +2798,7 @@ export type UserCreateWithoutAddedPlaybookCategoriesInput = {
   addedPlaybookTypes?: Prisma.PlaybookTypeCreateNestedManyWithoutAddedByInput
   addedLeads?: Prisma.LeadCreateNestedManyWithoutAddedByInput
   createdExpenses?: Prisma.ExpenseCreateNestedManyWithoutCreatedByInput
+  activities?: Prisma.UserActivityCreateNestedManyWithoutUserInput
   role?: Prisma.RoleCreateNestedOneWithoutUsersInput
 }
 
@@ -2753,6 +2829,7 @@ export type UserUncheckedCreateWithoutAddedPlaybookCategoriesInput = {
   addedPlaybookTypes?: Prisma.PlaybookTypeUncheckedCreateNestedManyWithoutAddedByInput
   addedLeads?: Prisma.LeadUncheckedCreateNestedManyWithoutAddedByInput
   createdExpenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutCreatedByInput
+  activities?: Prisma.UserActivityUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutAddedPlaybookCategoriesInput = {
@@ -2797,6 +2874,7 @@ export type UserUpdateWithoutAddedPlaybookCategoriesInput = {
   addedPlaybookTypes?: Prisma.PlaybookTypeUpdateManyWithoutAddedByNestedInput
   addedLeads?: Prisma.LeadUpdateManyWithoutAddedByNestedInput
   createdExpenses?: Prisma.ExpenseUpdateManyWithoutCreatedByNestedInput
+  activities?: Prisma.UserActivityUpdateManyWithoutUserNestedInput
   role?: Prisma.RoleUpdateOneWithoutUsersNestedInput
 }
 
@@ -2827,6 +2905,7 @@ export type UserUncheckedUpdateWithoutAddedPlaybookCategoriesInput = {
   addedPlaybookTypes?: Prisma.PlaybookTypeUncheckedUpdateManyWithoutAddedByNestedInput
   addedLeads?: Prisma.LeadUncheckedUpdateManyWithoutAddedByNestedInput
   createdExpenses?: Prisma.ExpenseUncheckedUpdateManyWithoutCreatedByNestedInput
+  activities?: Prisma.UserActivityUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutAddedLeadsInput = {
@@ -2855,6 +2934,7 @@ export type UserCreateWithoutAddedLeadsInput = {
   addedPlaybookTypes?: Prisma.PlaybookTypeCreateNestedManyWithoutAddedByInput
   addedPlaybookCategories?: Prisma.PlaybookCategoryCreateNestedManyWithoutAddedByInput
   createdExpenses?: Prisma.ExpenseCreateNestedManyWithoutCreatedByInput
+  activities?: Prisma.UserActivityCreateNestedManyWithoutUserInput
   role?: Prisma.RoleCreateNestedOneWithoutUsersInput
 }
 
@@ -2885,6 +2965,7 @@ export type UserUncheckedCreateWithoutAddedLeadsInput = {
   addedPlaybookTypes?: Prisma.PlaybookTypeUncheckedCreateNestedManyWithoutAddedByInput
   addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedCreateNestedManyWithoutAddedByInput
   createdExpenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutCreatedByInput
+  activities?: Prisma.UserActivityUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutAddedLeadsInput = {
@@ -2929,6 +3010,7 @@ export type UserUpdateWithoutAddedLeadsInput = {
   addedPlaybookTypes?: Prisma.PlaybookTypeUpdateManyWithoutAddedByNestedInput
   addedPlaybookCategories?: Prisma.PlaybookCategoryUpdateManyWithoutAddedByNestedInput
   createdExpenses?: Prisma.ExpenseUpdateManyWithoutCreatedByNestedInput
+  activities?: Prisma.UserActivityUpdateManyWithoutUserNestedInput
   role?: Prisma.RoleUpdateOneWithoutUsersNestedInput
 }
 
@@ -2959,6 +3041,7 @@ export type UserUncheckedUpdateWithoutAddedLeadsInput = {
   addedPlaybookTypes?: Prisma.PlaybookTypeUncheckedUpdateManyWithoutAddedByNestedInput
   addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedUpdateManyWithoutAddedByNestedInput
   createdExpenses?: Prisma.ExpenseUncheckedUpdateManyWithoutCreatedByNestedInput
+  activities?: Prisma.UserActivityUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutCreatedExpensesInput = {
@@ -2987,6 +3070,7 @@ export type UserCreateWithoutCreatedExpensesInput = {
   addedPlaybookTypes?: Prisma.PlaybookTypeCreateNestedManyWithoutAddedByInput
   addedPlaybookCategories?: Prisma.PlaybookCategoryCreateNestedManyWithoutAddedByInput
   addedLeads?: Prisma.LeadCreateNestedManyWithoutAddedByInput
+  activities?: Prisma.UserActivityCreateNestedManyWithoutUserInput
   role?: Prisma.RoleCreateNestedOneWithoutUsersInput
 }
 
@@ -3017,6 +3101,7 @@ export type UserUncheckedCreateWithoutCreatedExpensesInput = {
   addedPlaybookTypes?: Prisma.PlaybookTypeUncheckedCreateNestedManyWithoutAddedByInput
   addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedCreateNestedManyWithoutAddedByInput
   addedLeads?: Prisma.LeadUncheckedCreateNestedManyWithoutAddedByInput
+  activities?: Prisma.UserActivityUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutCreatedExpensesInput = {
@@ -3061,6 +3146,7 @@ export type UserUpdateWithoutCreatedExpensesInput = {
   addedPlaybookTypes?: Prisma.PlaybookTypeUpdateManyWithoutAddedByNestedInput
   addedPlaybookCategories?: Prisma.PlaybookCategoryUpdateManyWithoutAddedByNestedInput
   addedLeads?: Prisma.LeadUpdateManyWithoutAddedByNestedInput
+  activities?: Prisma.UserActivityUpdateManyWithoutUserNestedInput
   role?: Prisma.RoleUpdateOneWithoutUsersNestedInput
 }
 
@@ -3091,6 +3177,143 @@ export type UserUncheckedUpdateWithoutCreatedExpensesInput = {
   addedPlaybookTypes?: Prisma.PlaybookTypeUncheckedUpdateManyWithoutAddedByNestedInput
   addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedUpdateManyWithoutAddedByNestedInput
   addedLeads?: Prisma.LeadUncheckedUpdateManyWithoutAddedByNestedInput
+  activities?: Prisma.UserActivityUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutActivitiesInput = {
+  id?: string
+  name: string
+  email: string
+  passwordHash: string
+  needPasswordChange?: boolean
+  lastLoginAt?: Date | string | null
+  resetPasswordToken?: string | null
+  resetPasswordExpires?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  addedBy?: Prisma.UserCreateNestedOneWithoutCreatedUsersInput
+  createdUsers?: Prisma.UserCreateNestedManyWithoutAddedByInput
+  addedRoles?: Prisma.RoleCreateNestedManyWithoutAddedByInput
+  addedTeamMembers?: Prisma.TeamMemberCreateNestedManyWithoutAddedByInput
+  addedTestimonials?: Prisma.TestimonialCreateNestedManyWithoutAddedByInput
+  addedTravelInsights?: Prisma.TravelInsightCreateNestedManyWithoutAddedByInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryCreateNestedManyWithoutAddedByInput
+  addedTravelServices?: Prisma.TravelServiceCreateNestedManyWithoutAddedByInput
+  addedServiceCategories?: Prisma.ServiceCategoryCreateNestedManyWithoutAddedByInput
+  addedCaseStudies?: Prisma.CaseStudyCreateNestedManyWithoutAddedByInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryCreateNestedManyWithoutAddedByInput
+  addedPlaybooks?: Prisma.PlaybookCreateNestedManyWithoutAddedByInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeCreateNestedManyWithoutAddedByInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryCreateNestedManyWithoutAddedByInput
+  addedLeads?: Prisma.LeadCreateNestedManyWithoutAddedByInput
+  createdExpenses?: Prisma.ExpenseCreateNestedManyWithoutCreatedByInput
+  role?: Prisma.RoleCreateNestedOneWithoutUsersInput
+}
+
+export type UserUncheckedCreateWithoutActivitiesInput = {
+  id?: string
+  name: string
+  email: string
+  passwordHash: string
+  needPasswordChange?: boolean
+  lastLoginAt?: Date | string | null
+  addedById?: string | null
+  resetPasswordToken?: string | null
+  resetPasswordExpires?: Date | string | null
+  roleId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutAddedByInput
+  addedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutAddedByInput
+  addedTeamMembers?: Prisma.TeamMemberUncheckedCreateNestedManyWithoutAddedByInput
+  addedTestimonials?: Prisma.TestimonialUncheckedCreateNestedManyWithoutAddedByInput
+  addedTravelInsights?: Prisma.TravelInsightUncheckedCreateNestedManyWithoutAddedByInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryUncheckedCreateNestedManyWithoutAddedByInput
+  addedTravelServices?: Prisma.TravelServiceUncheckedCreateNestedManyWithoutAddedByInput
+  addedServiceCategories?: Prisma.ServiceCategoryUncheckedCreateNestedManyWithoutAddedByInput
+  addedCaseStudies?: Prisma.CaseStudyUncheckedCreateNestedManyWithoutAddedByInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryUncheckedCreateNestedManyWithoutAddedByInput
+  addedPlaybooks?: Prisma.PlaybookUncheckedCreateNestedManyWithoutAddedByInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeUncheckedCreateNestedManyWithoutAddedByInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedCreateNestedManyWithoutAddedByInput
+  addedLeads?: Prisma.LeadUncheckedCreateNestedManyWithoutAddedByInput
+  createdExpenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutCreatedByInput
+}
+
+export type UserCreateOrConnectWithoutActivitiesInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutActivitiesInput, Prisma.UserUncheckedCreateWithoutActivitiesInput>
+}
+
+export type UserUpsertWithoutActivitiesInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutActivitiesInput, Prisma.UserUncheckedUpdateWithoutActivitiesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutActivitiesInput, Prisma.UserUncheckedCreateWithoutActivitiesInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutActivitiesInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutActivitiesInput, Prisma.UserUncheckedUpdateWithoutActivitiesInput>
+}
+
+export type UserUpdateWithoutActivitiesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  needPasswordChange?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetPasswordToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  addedBy?: Prisma.UserUpdateOneWithoutCreatedUsersNestedInput
+  createdUsers?: Prisma.UserUpdateManyWithoutAddedByNestedInput
+  addedRoles?: Prisma.RoleUpdateManyWithoutAddedByNestedInput
+  addedTeamMembers?: Prisma.TeamMemberUpdateManyWithoutAddedByNestedInput
+  addedTestimonials?: Prisma.TestimonialUpdateManyWithoutAddedByNestedInput
+  addedTravelInsights?: Prisma.TravelInsightUpdateManyWithoutAddedByNestedInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryUpdateManyWithoutAddedByNestedInput
+  addedTravelServices?: Prisma.TravelServiceUpdateManyWithoutAddedByNestedInput
+  addedServiceCategories?: Prisma.ServiceCategoryUpdateManyWithoutAddedByNestedInput
+  addedCaseStudies?: Prisma.CaseStudyUpdateManyWithoutAddedByNestedInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryUpdateManyWithoutAddedByNestedInput
+  addedPlaybooks?: Prisma.PlaybookUpdateManyWithoutAddedByNestedInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeUpdateManyWithoutAddedByNestedInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryUpdateManyWithoutAddedByNestedInput
+  addedLeads?: Prisma.LeadUpdateManyWithoutAddedByNestedInput
+  createdExpenses?: Prisma.ExpenseUpdateManyWithoutCreatedByNestedInput
+  role?: Prisma.RoleUpdateOneWithoutUsersNestedInput
+}
+
+export type UserUncheckedUpdateWithoutActivitiesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  needPasswordChange?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  addedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  roleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdUsers?: Prisma.UserUncheckedUpdateManyWithoutAddedByNestedInput
+  addedRoles?: Prisma.RoleUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTeamMembers?: Prisma.TeamMemberUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTestimonials?: Prisma.TestimonialUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTravelInsights?: Prisma.TravelInsightUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTravelServices?: Prisma.TravelServiceUncheckedUpdateManyWithoutAddedByNestedInput
+  addedServiceCategories?: Prisma.ServiceCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+  addedCaseStudies?: Prisma.CaseStudyUncheckedUpdateManyWithoutAddedByNestedInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+  addedPlaybooks?: Prisma.PlaybookUncheckedUpdateManyWithoutAddedByNestedInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeUncheckedUpdateManyWithoutAddedByNestedInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+  addedLeads?: Prisma.LeadUncheckedUpdateManyWithoutAddedByNestedInput
+  createdExpenses?: Prisma.ExpenseUncheckedUpdateManyWithoutCreatedByNestedInput
 }
 
 export type UserCreateManyAddedByInput = {
@@ -3133,6 +3356,7 @@ export type UserUpdateWithoutAddedByInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryUpdateManyWithoutAddedByNestedInput
   addedLeads?: Prisma.LeadUpdateManyWithoutAddedByNestedInput
   createdExpenses?: Prisma.ExpenseUpdateManyWithoutCreatedByNestedInput
+  activities?: Prisma.UserActivityUpdateManyWithoutUserNestedInput
   role?: Prisma.RoleUpdateOneWithoutUsersNestedInput
 }
 
@@ -3163,6 +3387,7 @@ export type UserUncheckedUpdateWithoutAddedByInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedUpdateManyWithoutAddedByNestedInput
   addedLeads?: Prisma.LeadUncheckedUpdateManyWithoutAddedByNestedInput
   createdExpenses?: Prisma.ExpenseUncheckedUpdateManyWithoutCreatedByNestedInput
+  activities?: Prisma.UserActivityUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateManyWithoutAddedByInput = {
@@ -3220,6 +3445,7 @@ export type UserUpdateWithoutRoleInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryUpdateManyWithoutAddedByNestedInput
   addedLeads?: Prisma.LeadUpdateManyWithoutAddedByNestedInput
   createdExpenses?: Prisma.ExpenseUpdateManyWithoutCreatedByNestedInput
+  activities?: Prisma.UserActivityUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRoleInput = {
@@ -3249,6 +3475,7 @@ export type UserUncheckedUpdateWithoutRoleInput = {
   addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedUpdateManyWithoutAddedByNestedInput
   addedLeads?: Prisma.LeadUncheckedUpdateManyWithoutAddedByNestedInput
   createdExpenses?: Prisma.ExpenseUncheckedUpdateManyWithoutCreatedByNestedInput
+  activities?: Prisma.UserActivityUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateManyWithoutRoleInput = {
@@ -3286,6 +3513,7 @@ export type UserCountOutputType = {
   addedPlaybookCategories: number
   addedLeads: number
   createdExpenses: number
+  activities: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -3304,6 +3532,7 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   addedPlaybookCategories?: boolean | UserCountOutputTypeCountAddedPlaybookCategoriesArgs
   addedLeads?: boolean | UserCountOutputTypeCountAddedLeadsArgs
   createdExpenses?: boolean | UserCountOutputTypeCountCreatedExpensesArgs
+  activities?: boolean | UserCountOutputTypeCountActivitiesArgs
 }
 
 /**
@@ -3421,6 +3650,13 @@ export type UserCountOutputTypeCountCreatedExpensesArgs<ExtArgs extends runtime.
   where?: Prisma.ExpenseWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountActivitiesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.UserActivityWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -3451,6 +3687,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   addedPlaybookCategories?: boolean | Prisma.User$addedPlaybookCategoriesArgs<ExtArgs>
   addedLeads?: boolean | Prisma.User$addedLeadsArgs<ExtArgs>
   createdExpenses?: boolean | Prisma.User$createdExpensesArgs<ExtArgs>
+  activities?: boolean | Prisma.User$activitiesArgs<ExtArgs>
   role?: boolean | Prisma.User$roleArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
@@ -3522,6 +3759,7 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   addedPlaybookCategories?: boolean | Prisma.User$addedPlaybookCategoriesArgs<ExtArgs>
   addedLeads?: boolean | Prisma.User$addedLeadsArgs<ExtArgs>
   createdExpenses?: boolean | Prisma.User$createdExpensesArgs<ExtArgs>
+  activities?: boolean | Prisma.User$activitiesArgs<ExtArgs>
   role?: boolean | Prisma.User$roleArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
@@ -3553,6 +3791,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     addedPlaybookCategories: Prisma.$PlaybookCategoryPayload<ExtArgs>[]
     addedLeads: Prisma.$LeadPayload<ExtArgs>[]
     createdExpenses: Prisma.$ExpensePayload<ExtArgs>[]
+    activities: Prisma.$UserActivityPayload<ExtArgs>[]
     role: Prisma.$RolePayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
@@ -3978,6 +4217,7 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   addedPlaybookCategories<T extends Prisma.User$addedPlaybookCategoriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$addedPlaybookCategoriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PlaybookCategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   addedLeads<T extends Prisma.User$addedLeadsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$addedLeadsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LeadPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   createdExpenses<T extends Prisma.User$createdExpensesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$createdExpensesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ExpensePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  activities<T extends Prisma.User$activitiesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$activitiesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserActivityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   role<T extends Prisma.User$roleArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$roleArgs<ExtArgs>>): Prisma.Prisma__RoleClient<runtime.Types.Result.GetResult<Prisma.$RolePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -4797,6 +5037,30 @@ export type User$createdExpensesArgs<ExtArgs extends runtime.Types.Extensions.In
   take?: number
   skip?: number
   distinct?: Prisma.ExpenseScalarFieldEnum | Prisma.ExpenseScalarFieldEnum[]
+}
+
+/**
+ * User.activities
+ */
+export type User$activitiesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the UserActivity
+   */
+  select?: Prisma.UserActivitySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the UserActivity
+   */
+  omit?: Prisma.UserActivityOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserActivityInclude<ExtArgs> | null
+  where?: Prisma.UserActivityWhereInput
+  orderBy?: Prisma.UserActivityOrderByWithRelationInput | Prisma.UserActivityOrderByWithRelationInput[]
+  cursor?: Prisma.UserActivityWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.UserActivityScalarFieldEnum | Prisma.UserActivityScalarFieldEnum[]
 }
 
 /**

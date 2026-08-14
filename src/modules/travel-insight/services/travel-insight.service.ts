@@ -6,10 +6,14 @@ import { TravelInsightRepository } from '../repositories/travel-insight.reposito
 import { CreateTravelInsightDto } from '../dto/create-travel-insight.dto';
 import { UpdateTravelInsightDto } from '../dto/update-travel-insight.dto';
 import { QueryTravelInsightsDto } from '../dto/query-travel-insights.dto';
+import { UserActivityService } from 'src/modules/user-activity/user-activity.service';
 
 @Injectable()
 export class TravelInsightService {
-  constructor(private readonly repository: TravelInsightRepository) {}
+  constructor(
+    private readonly repository: TravelInsightRepository,
+    private readonly activityService: UserActivityService,
+  ) { }
 
   async create(dto: CreateTravelInsightDto, userId: string) {
     const { category, relatedServices, ...rest } = dto;
@@ -18,20 +22,27 @@ export class TravelInsightService {
       await this.repository.clearFeatured();
     }
 
-    return this.repository.create({
+    const insight = await this.repository.create({
       ...rest,
       seo: { ...rest.seo } as Prisma.InputJsonValue,
       category: category
         ? {
-            connect: { id: category },
-          }
+          connect: { id: category },
+        }
         : undefined,
       relatedServices: relatedServices?.length
         ? {
-            connect: relatedServices.map((id) => ({ id })),
-          }
+          connect: relatedServices.map((id) => ({ id })),
+        }
         : undefined,
     });
+
+    this.activityService.log('CREATE', 'travel_insights', userId, {
+      id: insight.id,
+      name: insight.title,
+    });
+
+    return insight;
   }
 
   async findAll(query: QueryTravelInsightsDto) {
@@ -146,7 +157,7 @@ export class TravelInsightService {
     return insight;
   }
 
-  async update(id: string, dto: UpdateTravelInsightDto) {
+  async update(id: string, dto: UpdateTravelInsightDto, userId?: string) {
     const existing = await this.repository.findById(id);
 
     if (!existing) {
@@ -159,38 +170,50 @@ export class TravelInsightService {
       await this.repository.clearFeatured(id);
     }
 
-    return this.repository.update(id, {
+    const updated = await this.repository.update(id, {
       ...rest,
       seo: rest.seo ? ({ ...rest.seo } as Prisma.InputJsonValue) : undefined,
       category:
         category !== undefined
           ? category
             ? {
-                connect: { id: category },
-              }
+              connect: { id: category },
+            }
             : {
-                disconnect: true,
-              }
+              disconnect: true,
+            }
           : undefined,
       relatedServices: relatedServices
         ? {
-            set: relatedServices.map((serviceId) => ({ id: serviceId })),
-          }
+          set: relatedServices.map((serviceId) => ({ id: serviceId })),
+        }
         : undefined,
     });
+
+    this.activityService.log('UPDATE', 'travel_insights', userId, {
+      id: updated.id,
+      name: updated.title,
+    });
+
+    return updated;
   }
 
-  async remove(id: string) {
+  async remove(id: string, userId?: string) {
     const existing = await this.repository.findById(id);
 
-    if (!existing) {
+    if (!existing)
       throw new NotFoundException('Travel insight not found');
-    }
+
+    this.activityService.log('DELETE', 'travel_insights', userId, {
+      id: existing.id ?? '',
+      name: existing.title ?? '',
+    });
 
     return this.repository.delete(id);
   }
 
-  async removeMany(ids: string[]) {
+  async removeMany(ids: string[], userId?: string) {
+    this.activityService.log('DELETE', 'travel_insights', userId, null);
     return this.repository.deleteMany(ids);
   }
 }

@@ -10,6 +10,7 @@
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "seed:travel-services": "npm run build && node dist/prisma/seed-travel-services.js",
     "seed:permissions": "npm run build && node dist/prisma/seed-permissions.js",
+    "seed:super-admin": "npm run build && node dist/prisma/seed-super-admin.js",
     "start": "nest start",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",

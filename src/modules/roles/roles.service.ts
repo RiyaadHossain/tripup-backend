@@ -8,6 +8,7 @@ import { PrismaService } from 'src/database/prisma/prisma.service';
 import { SUPER_ADMIN_ROLE } from 'src/common/constants/permissions.constant';
 import { CreateRoleDto } from './dto/create-role.dto';
 import { UpdateRoleDto } from './dto/update-role.dto';
+import { UserActivityService } from 'src/modules/user-activity/user-activity.service';
 
 /** Prisma include shape reused for every role query that needs permissions. */
 const ROLE_WITH_PERMISSIONS = {
@@ -18,7 +19,10 @@ const ROLE_WITH_PERMISSIONS = {
 
 @Injectable()
 export class RolesService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly activityService: UserActivityService,
+  ) {}
 
   // ---------------------------------------------------------------------------
   // Create
@@ -33,7 +37,7 @@ export class RolesService {
       throw new ConflictException(`Role "${dto.name}" already exists`);
     }
 
-    return this.prisma.role.create({
+    const role = await this.prisma.role.create({
       data: {
         name: dto.name,
         description: dto.description,
@@ -48,6 +52,13 @@ export class RolesService {
       },
       include: ROLE_WITH_PERMISSIONS,
     });
+
+    this.activityService.log('CREATE', 'roles', userId, {
+      id: role.id,
+      name: role.name,
+    });
+
+    return role;
   }
 
   // ---------------------------------------------------------------------------
@@ -82,7 +93,7 @@ export class RolesService {
    * Updates name/description and, when permissionIds is provided, atomically
    * replaces all permission assignments using a Prisma transaction.
    */
-  async update(id: string, dto: UpdateRoleDto) {
+  async update(id: string, dto: UpdateRoleDto, userId?: string) {
     const existing = await this.prisma.role.findUnique({ where: { id } });
 
     if (!existing) {
@@ -107,7 +118,7 @@ export class RolesService {
         await tx.rolePermission.deleteMany({ where: { roleId: id } });
 
         // Re-create with the new set
-        return tx.role.update({
+        const updated = await tx.role.update({
           where: { id },
           data: {
             name: dto.name,
@@ -122,11 +133,18 @@ export class RolesService {
           },
           include: ROLE_WITH_PERMISSIONS,
         });
+
+        this.activityService.log('UPDATE', 'roles', userId, {
+          id: updated.id,
+          name: updated.name,
+        });
+
+        return updated;
       });
     }
 
     // No permissionIds provided — update only the scalar fields
-    return this.prisma.role.update({
+    const updated = await this.prisma.role.update({
       where: { id },
       data: {
         name: dto.name,
@@ -134,13 +152,20 @@ export class RolesService {
       },
       include: ROLE_WITH_PERMISSIONS,
     });
+
+    this.activityService.log('UPDATE', 'roles', userId, {
+      id: updated.id,
+      name: updated.name,
+    });
+
+    return updated;
   }
 
   // ---------------------------------------------------------------------------
   // Delete
   // ---------------------------------------------------------------------------
 
-  async remove(id: string) {
+  async remove(id: string, userId?: string) {
     const role = await this.prisma.role.findUnique({ where: { id } });
 
     if (!role) {
@@ -152,6 +177,11 @@ export class RolesService {
         `The "${SUPER_ADMIN_ROLE}" role cannot be deleted`,
       );
     }
+
+    this.activityService.log('DELETE', 'roles', userId, {
+      id: role.id,
+      name: role.name,
+    });
 
     return this.prisma.role.delete({ where: { id } });
   }

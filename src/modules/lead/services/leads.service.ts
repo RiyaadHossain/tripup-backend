@@ -5,16 +5,27 @@ import { UpdateLeadDto } from '../dto/update-lead.dto';
 import { QueryLeadsDto } from '../dto/query-leads.dto';
 import { UploadLeadsDto } from '../dto/upload-leads.dto';
 import { Prisma } from 'generated/src/prisma/client';
+import { UserActivityService } from 'src/modules/user-activity/user-activity.service';
 
 @Injectable()
 export class LeadsService {
-  constructor(private readonly repository: LeadsRepository) {}
+  constructor(
+    private readonly repository: LeadsRepository,
+    private readonly activityService: UserActivityService,
+  ) {}
 
   async create(dto: CreateLeadDto, userId: string) {
-    return this.repository.create({
+    const lead = await this.repository.create({
       ...dto,
       addedBy: userId ? { connect: { id: userId } } : undefined,
     });
+
+    this.activityService.log('CREATE', 'leads', userId, {
+      id: lead.id,
+      name: lead.businessName,
+    });
+
+    return lead;
   }
 
   async findAll(query: QueryLeadsDto) {
@@ -78,27 +89,40 @@ export class LeadsService {
     return lead;
   }
 
-  async update(id: string, dto: UpdateLeadDto) {
+  async update(id: string, dto: UpdateLeadDto, userId?: string) {
     const existing = await this.repository.findById(id);
 
     if (!existing) {
       throw new NotFoundException('Lead not found');
     }
 
-    return this.repository.update(id, dto);
+    const lead = await this.repository.update(id, dto);
+
+    this.activityService.log('UPDATE', 'leads', userId, {
+      id: lead.id,
+      name: lead.businessName,
+    });
+
+    return lead;
   }
 
-  async remove(id: string) {
+  async remove(id: string, userId?: string) {
     const existing = await this.repository.findById(id);
 
     if (!existing) {
       throw new NotFoundException('Lead not found');
     }
+
+    this.activityService.log('DELETE', 'leads', userId, {
+      id: existing.id,
+      name: existing.businessName,
+    });
 
     return this.repository.delete(id);
   }
 
-  async removeMany(ids: string[]) {
+  async removeMany(ids: string[], userId?: string) {
+    this.activityService.log('DELETE', 'leads', userId, null);
     return this.repository.deleteMany(ids);
   }
 

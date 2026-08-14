@@ -6,9 +6,10 @@ import { CaseStudyService } from './services/case-study.service';
 import { CaseStudyCategoriesService } from './services/case-study-categories.service';
 import { CaseStudyRepository } from './repositories/case-study.repository';
 import { CaseStudyCategoriesRepository } from './repositories/case-study-categories.repository';
+import { UserActivityModule } from 'src/modules/user-activity/user-activity.module';
 
 @Module({
-  imports: [],
+  imports: [UserActivityModule],
   controllers: [
     PublicCaseStudiesController,
     AdminCaseStudiesController,

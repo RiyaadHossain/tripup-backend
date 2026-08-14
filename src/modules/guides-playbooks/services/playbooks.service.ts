@@ -6,10 +6,14 @@ import { PlaybookRepository } from '../repositories/playbooks.repository';
 import { CreatePlaybookDto } from '../dto/create-playbook.dto';
 import { UpdatePlaybookDto } from '../dto/update-playbook.dto';
 import { QueryPlaybooksDto } from '../dto/query-playbooks.dto';
+import { UserActivityService } from 'src/modules/user-activity/user-activity.service';
 
 @Injectable()
 export class PlaybookService {
-  constructor(private readonly repository: PlaybookRepository) {}
+  constructor(
+    private readonly repository: PlaybookRepository,
+    private readonly activityService: UserActivityService,
+  ) {}
 
   async create(dto: CreatePlaybookDto, userId: string) {
     const { category, type, ...rest } = dto;
@@ -18,7 +22,7 @@ export class PlaybookService {
       await this.repository.clearFeatured();
     }
 
-    return this.repository.create({
+    const playbook = await this.repository.create({
       ...rest,
       frameworkSteps: rest.frameworkSteps as unknown as Prisma.InputJsonValue,
       samplePreviews: rest.samplePreviews as unknown as Prisma.InputJsonValue,
@@ -34,6 +38,13 @@ export class PlaybookService {
           }
         : undefined,
     });
+
+    this.activityService.log('CREATE', 'guides_playbooks', userId, {
+      id: playbook.id,
+      name: playbook.title,
+    });
+
+    return playbook;
   }
 
   async findAll(query: QueryPlaybooksDto) {
@@ -146,7 +157,7 @@ export class PlaybookService {
     return playbook;
   }
 
-  async update(id: string, dto: UpdatePlaybookDto) {
+  async update(id: string, dto: UpdatePlaybookDto, userId?: string) {
     const existing = await this.repository.findByIdOrSlug(id);
 
     if (!existing) {
@@ -159,7 +170,7 @@ export class PlaybookService {
       await this.repository.clearFeatured(id);
     }
 
-    return this.repository.update(id, {
+    const updated = await this.repository.update(id, {
       ...rest,
       frameworkSteps: rest.frameworkSteps
         ? (rest.frameworkSteps as unknown as Prisma.InputJsonValue)
@@ -191,19 +202,32 @@ export class PlaybookService {
               }
           : undefined,
     });
+
+    this.activityService.log('UPDATE', 'guides_playbooks', userId, {
+      id: updated.id,
+      name: updated.title,
+    });
+
+    return updated;
   }
 
-  async remove(id: string) {
+  async remove(id: string, userId?: string) {
     const existing = await this.repository.findByIdOrSlug(id);
 
     if (!existing) {
       throw new NotFoundException('Playbook not found');
     }
 
+    this.activityService.log('DELETE', 'guides_playbooks', userId, {
+      id: existing.id,
+      name: existing.title,
+    });
+
     return this.repository.delete(id);
   }
 
-  async removeMany(ids: string[]) {
+  async removeMany(ids: string[], userId?: string) {
+    this.activityService.log('DELETE', 'guides_playbooks', userId, null);
     return this.repository.deleteMany(ids);
   }
 }

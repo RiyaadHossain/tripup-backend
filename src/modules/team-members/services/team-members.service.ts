@@ -5,19 +5,30 @@ import { PrismaService } from 'src/database/prisma/prisma.service';
 import { CreateTeamMemberDto } from '../dto/create-team-member.dto';
 import { UpdateTeamMemberDto } from '../dto/update-team-member.dto';
 import { QueryTeamMembersDto } from '../dto/query-team-members.dto';
+import { UserActivityService } from 'src/modules/user-activity/user-activity.service';
 
 @Injectable()
 export class TeamMembersService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly activityService: UserActivityService,
+  ) {}
 
   async create(dto: CreateTeamMemberDto, userId: string) {
     const { profileImg, ...rest } = dto;
 
-    return this.prisma.teamMember.create({ data: { addedBy: userId ? { connect: { id: userId } } : undefined,
+    const member = await this.prisma.teamMember.create({ data: { addedBy: userId ? { connect: { id: userId } } : undefined,
         ...rest,
         profileImg,
       },
     });
+
+    this.activityService.log('CREATE', 'team_members', userId, {
+      id: member.id,
+      name: member.name,
+    });
+
+    return member;
   }
 
   async findAll(query: QueryTeamMembersDto) {
@@ -72,7 +83,7 @@ export class TeamMembersService {
     };
   }
 
-  async update(id: string, dto: UpdateTeamMemberDto) {
+  async update(id: string, dto: UpdateTeamMemberDto, userId?: string) {
     const existing = await this.prisma.teamMember.findUnique({
       where: { id },
     });
@@ -83,16 +94,23 @@ export class TeamMembersService {
 
     const { profileImg, ...rest } = dto;
 
-    return this.prisma.teamMember.update({
+    const updated = await this.prisma.teamMember.update({
       where: { id },
       data: {
         ...rest,
         profileImg,
       },
     });
+
+    this.activityService.log('UPDATE', 'team_members', userId, {
+      id: updated.id,
+      name: updated.name,
+    });
+
+    return updated;
   }
 
-  async remove(id: string) {
+  async remove(id: string, userId?: string) {
     const existing = await this.prisma.teamMember.findUnique({
       where: { id },
     });
@@ -101,12 +119,18 @@ export class TeamMembersService {
       throw new NotFoundException('Team member not found');
     }
 
+    this.activityService.log('DELETE', 'team_members', userId, {
+      id: existing.id,
+      name: existing.name,
+    });
+
     return this.prisma.teamMember.delete({
       where: { id },
     });
   }
 
-  async removeMany(ids: string[]) {
+  async removeMany(ids: string[], userId?: string) {
+    this.activityService.log('DELETE', 'team_members', userId, null);
     return this.prisma.teamMember.deleteMany({
       where: {
         id: {

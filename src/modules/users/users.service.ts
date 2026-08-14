@@ -4,12 +4,14 @@ import * as crypto from 'crypto';
 import { PrismaService } from 'src/database/prisma/prisma.service';
 import { MailService } from 'src/modules/mail/mail.service';
 import { CreateUserDto } from './dto/create-user.dto';
+import { UserActivityService } from 'src/modules/user-activity/user-activity.service';
 
 @Injectable()
 export class UsersService {
   constructor(
     private readonly prisma: PrismaService,
     private readonly mailService: MailService,
+    private readonly activityService: UserActivityService,
   ) {}
 
   /** Admin creates a user. Auto-generates password and sends email. */
@@ -52,6 +54,12 @@ export class UsersService {
 
     // Don't return hashes or sensitive data
     const { passwordHash: _, resetPasswordToken: __, ...safeUser } = user;
+
+    this.activityService.log('ACCOUNT_CREATED', 'users', creatorId, {
+      id: user.id,
+      name: user.name,
+    });
+
     return safeUser;
   }
 

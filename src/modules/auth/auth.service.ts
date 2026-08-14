@@ -17,6 +17,7 @@ import { UpdateUserInfoDto } from './dto/update-user-info.dto';
 import { ForgotPasswordDto } from './dto/forgot-password.dto';
 import { ResetPasswordDto } from './dto/reset-password.dto';
 import { JwtPayload } from './interfaces/jwt-payload.interface';
+import { UserActivityService } from 'src/modules/user-activity/user-activity.service';
 
 @Injectable()
 export class AuthService {
@@ -24,6 +25,7 @@ export class AuthService {
     private readonly prisma: PrismaService,
     private readonly jwtService: JwtService,
     private readonly mailService: MailService,
+    private readonly activityService: UserActivityService,
   ) {}
 
   // ---------------------------------------------------------------------------
@@ -48,6 +50,11 @@ export class AuthService {
         passwordHash,
       },
       select: { id: true, name: true, email: true, createdAt: true },
+    });
+
+    this.activityService.log('ACCOUNT_CREATED', 'auth', user.id, {
+      id: user.id,
+      name: user.name,
     });
 
     return user;
@@ -87,6 +94,12 @@ export class AuthService {
       where: { id: user.id },
       data: { lastLoginAt: new Date() },
     }).catch(err => console.error('Failed to update lastLoginAt:', err));
+
+    // Log login activity
+    this.activityService.log('LOGIN', 'auth', user.id, {
+      id: user.id,
+      name: user.name,
+    });
 
     // Build the flat permission string list that gets embedded in the JWT.
     // Format: module.action_lowercase  (e.g. "services.read")

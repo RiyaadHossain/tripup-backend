@@ -32,17 +32,27 @@ export class AdminTeamMembersController {
   }
 
   @Patch(':id')
-  async update(@Param('id') id: string, @Body() dto: UpdateTeamMemberDto) {
-    return this.service.update(id, dto);
+  async update(
+    @Param('id') id: string,
+    @Body() dto: UpdateTeamMemberDto,
+    @CurrentUser('sub') userId: string,
+  ) {
+    return this.service.update(id, dto, userId);
   }
 
   @Delete(':id')
-  async remove(@Param('id') id: string) {
-    return this.service.remove(id);
+  async remove(
+    @Param('id') id: string,
+    @CurrentUser('sub') userId: string,
+  ) {
+    return this.service.remove(id, userId);
   }
 
   @Delete()
-  async removeMany(@Body() dto: BulkDeleteTeamMembersDto) {
-    return this.service.removeMany(dto.ids);
+  async removeMany(
+    @Body() dto: BulkDeleteTeamMembersDto,
+    @CurrentUser('sub') userId: string,
+  ) {
+    return this.service.removeMany(dto.ids, userId);
   }
 }

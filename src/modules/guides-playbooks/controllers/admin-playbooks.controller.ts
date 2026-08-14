@@ -37,17 +37,27 @@ export class AdminPlaybooksController {
   }
 
   @Patch(':id')
-  async update(@Param('id') id: string, @Body() dto: UpdatePlaybookDto) {
-    return this.service.update(id, dto);
+  async update(
+    @Param('id') id: string,
+    @Body() dto: UpdatePlaybookDto,
+    @CurrentUser('sub') userId: string,
+  ) {
+    return this.service.update(id, dto, userId);
   }
 
   @Delete(':id')
-  async remove(@Param('id') id: string) {
-    return this.service.remove(id);
+  async remove(
+    @Param('id') id: string,
+    @CurrentUser('sub') userId: string,
+  ) {
+    return this.service.remove(id, userId);
   }
 
   @Delete()
-  async removeMany(@Body() dto: BulkDeletePlaybooksDto) {
-    return this.service.removeMany(dto.ids);
+  async removeMany(
+    @Body() dto: BulkDeletePlaybooksDto,
+    @CurrentUser('sub') userId: string,
+  ) {
+    return this.service.removeMany(dto.ids, userId);
   }
 }

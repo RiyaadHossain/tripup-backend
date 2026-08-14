@@ -69,8 +69,12 @@ export class RolesController {
    */
   @Patch(':id')
   @Permission(perm('team_management', 'UPDATE'))
-  update(@Param('id') id: string, @Body() dto: UpdateRoleDto) {
-    return this.rolesService.update(id, dto);
+  update(
+    @Param('id') id: string,
+    @Body() dto: UpdateRoleDto,
+    @CurrentUser('sub') userId: string,
+  ) {
+    return this.rolesService.update(id, dto, userId);
   }
 
   /**
@@ -79,7 +83,10 @@ export class RolesController {
    */
   @Delete(':id')
   @Permission(perm('team_management', 'DELETE'))
-  remove(@Param('id') id: string) {
-    return this.rolesService.remove(id);
+  remove(
+    @Param('id') id: string,
+    @CurrentUser('sub') userId: string,
+  ) {
+    return this.rolesService.remove(id, userId);
   }
 }

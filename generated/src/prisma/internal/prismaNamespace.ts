@@ -400,7 +400,8 @@ export const ModelName = {
   PlaybookType: 'PlaybookType',
   PlaybookCategory: 'PlaybookCategory',
   Lead: 'Lead',
-  Expense: 'Expense'
+  Expense: 'Expense',
+  UserActivity: 'UserActivity'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -416,7 +417,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "role" | "permission" | "rolePermission" | "teamMember" | "testimonial" | "travelInsight" | "travelInsightCategory" | "travelService" | "serviceCategory" | "caseStudy" | "caseStudyCategory" | "playbook" | "playbookType" | "playbookCategory" | "lead" | "expense"
+    modelProps: "user" | "role" | "permission" | "rolePermission" | "teamMember" | "testimonial" | "travelInsight" | "travelInsightCategory" | "travelService" | "serviceCategory" | "caseStudy" | "caseStudyCategory" | "playbook" | "playbookType" | "playbookCategory" | "lead" | "expense" | "userActivity"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1678,6 +1679,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    UserActivity: {
+      payload: Prisma.$UserActivityPayload<ExtArgs>
+      fields: Prisma.UserActivityFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.UserActivityFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserActivityPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.UserActivityFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserActivityPayload>
+        }
+        findFirst: {
+          args: Prisma.UserActivityFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserActivityPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.UserActivityFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserActivityPayload>
+        }
+        findMany: {
+          args: Prisma.UserActivityFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserActivityPayload>[]
+        }
+        create: {
+          args: Prisma.UserActivityCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserActivityPayload>
+        }
+        createMany: {
+          args: Prisma.UserActivityCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.UserActivityCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserActivityPayload>[]
+        }
+        delete: {
+          args: Prisma.UserActivityDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserActivityPayload>
+        }
+        update: {
+          args: Prisma.UserActivityUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserActivityPayload>
+        }
+        deleteMany: {
+          args: Prisma.UserActivityDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.UserActivityUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.UserActivityUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserActivityPayload>[]
+        }
+        upsert: {
+          args: Prisma.UserActivityUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserActivityPayload>
+        }
+        aggregate: {
+          args: Prisma.UserActivityAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateUserActivity>
+        }
+        groupBy: {
+          args: Prisma.UserActivityGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.UserActivityGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.UserActivityCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.UserActivityCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -2017,6 +2092,19 @@ export const ExpenseScalarFieldEnum = {
 export type ExpenseScalarFieldEnum = (typeof ExpenseScalarFieldEnum)[keyof typeof ExpenseScalarFieldEnum]
 
 
+export const UserActivityScalarFieldEnum = {
+  id: 'id',
+  action: 'action',
+  module: 'module',
+  objectId: 'objectId',
+  objectMeta: 'objectMeta',
+  userId: 'userId',
+  createdAt: 'createdAt'
+} as const
+
+export type UserActivityScalarFieldEnum = (typeof UserActivityScalarFieldEnum)[keyof typeof UserActivityScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -2219,6 +2307,20 @@ export type ListEnumPaymentMethodFieldRefInput<$PrismaModel> = FieldRefInputType
 
 
 /**
+ * Reference to a field of type 'ActivityAction'
+ */
+export type EnumActivityActionFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ActivityAction'>
+    
+
+
+/**
+ * Reference to a field of type 'ActivityAction[]'
+ */
+export type ListEnumActivityActionFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ActivityAction[]'>
+    
+
+
+/**
  * Reference to a field of type 'Float'
  */
 export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -2358,6 +2460,7 @@ export type GlobalOmitConfig = {
   playbookCategory?: Prisma.PlaybookCategoryOmit
   lead?: Prisma.LeadOmit
   expense?: Prisma.ExpenseOmit
+  userActivity?: Prisma.UserActivityOmit
 }
 
 /* Types for Logging */

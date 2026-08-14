@@ -37,17 +37,27 @@ export class AdminTravelInsightController {
   }
 
   @Patch(':id')
-  async update(@Param('id') id: string, @Body() dto: UpdateTravelInsightDto) {
-    return this.service.update(id, dto);
+  async update(
+    @Param('id') id: string,
+    @Body() dto: UpdateTravelInsightDto,
+    @CurrentUser('sub') userId: string,
+  ) {
+    return this.service.update(id, dto, userId);
   }
 
   @Delete(':id')
-  async remove(@Param('id') id: string) {
-    return this.service.remove(id);
+  async remove(
+    @Param('id') id: string,
+    @CurrentUser('sub') userId: string,
+  ) {
+    return this.service.remove(id, userId);
   }
 
   @Delete()
-  async removeMany(@Body() dto: BulkDeleteTravelInsightsDto) {
-    return this.service.removeMany(dto.ids);
+  async removeMany(
+    @Body() dto: BulkDeleteTravelInsightsDto,
+    @CurrentUser('sub') userId: string,
+  ) {
+    return this.service.removeMany(dto.ids, userId);
   }
 }

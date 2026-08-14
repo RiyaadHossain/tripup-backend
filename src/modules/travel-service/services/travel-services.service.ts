@@ -5,15 +5,19 @@ import { PrismaService } from 'src/database/prisma/prisma.service';
 import { CreateTravelServiceDto } from '../dto/create-travel-service.dto';
 import { QueryTravelServicesDto } from '../dto/query-travel-services.dto';
 import { UpdateTravelServiceDto } from '../dto/update-travel-service.dto';
+import { UserActivityService } from 'src/modules/user-activity/user-activity.service';
 
 @Injectable()
 export class TravelServicesService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly activityService: UserActivityService,
+  ) {}
 
   async create(dto: CreateTravelServiceDto, userId: string) {
     const { serviceCategory, ...rest } = dto;
 
-    return await this.prisma.travelService.create({ data: { addedBy: userId ? { connect: { id: userId } } : undefined,
+    const service = await this.prisma.travelService.create({ data: { addedBy: userId ? { connect: { id: userId } } : undefined,
         ...this.toCreateData(rest),
         serviceCategory: serviceCategory
           ? {
@@ -25,6 +29,13 @@ export class TravelServicesService {
         serviceCategory: true,
       },
     });
+
+    this.activityService.log('CREATE', 'travel_services', userId, {
+      id: service.id,
+      name: service.title,
+    });
+
+    return service;
   }
 
   async findAll(query: QueryTravelServicesDto) {
@@ -166,7 +177,7 @@ export class TravelServicesService {
     }));
   }
 
-  async update(id: string, dto: UpdateTravelServiceDto) {
+  async update(id: string, dto: UpdateTravelServiceDto, userId?: string) {
     const existing = await this.prisma.travelService.findUnique({
       where: { id },
     });
@@ -177,7 +188,7 @@ export class TravelServicesService {
 
     const { serviceCategory, ...rest } = dto;
 
-    return this.prisma.travelService.update({
+    const updated = await this.prisma.travelService.update({
       where: { id },
       data: {
         ...this.toUpdateData(rest),
@@ -196,9 +207,16 @@ export class TravelServicesService {
         serviceCategory: true,
       },
     });
+
+    this.activityService.log('UPDATE', 'travel_services', userId, {
+      id: updated.id,
+      name: updated.title,
+    });
+
+    return updated;
   }
 
-  async remove(id: string) {
+  async remove(id: string, userId?: string) {
     const existing = await this.prisma.travelService.findUnique({
       where: { id },
     });
@@ -207,12 +225,18 @@ export class TravelServicesService {
       throw new NotFoundException('Travel service not found');
     }
 
+    this.activityService.log('DELETE', 'travel_services', userId, {
+      id: existing.id,
+      name: existing.title,
+    });
+
     return await this.prisma.travelService.delete({
       where: { id },
     });
   }
 
-  async removeMany(ids: string[]) {
+  async removeMany(ids: string[], userId?: string) {
+    this.activityService.log('DELETE', 'travel_services', userId, null);
     return await this.prisma.travelService.deleteMany({
       where: {
         id: {

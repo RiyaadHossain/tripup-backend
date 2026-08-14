@@ -19,6 +19,17 @@ export const PermissionAction = {
 export type PermissionAction = (typeof PermissionAction)[keyof typeof PermissionAction]
 
 
+export const ActivityAction = {
+  LOGIN: 'LOGIN',
+  ACCOUNT_CREATED: 'ACCOUNT_CREATED',
+  CREATE: 'CREATE',
+  UPDATE: 'UPDATE',
+  DELETE: 'DELETE'
+} as const
+
+export type ActivityAction = (typeof ActivityAction)[keyof typeof ActivityAction]
+
+
 export const LeadPriority = {
   HIGH: 'HIGH',
   MEDIUM: 'MEDIUM',

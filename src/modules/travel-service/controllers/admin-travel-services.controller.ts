@@ -66,21 +66,31 @@ export class AdminTravelServicesController {
   /** PATCH /admin/travel-services/:id — requires services.update */
   @Patch(':id')
   @Permission(perm('services', 'UPDATE'))
-  async update(@Param('id') id: string, @Body() dto: UpdateTravelServiceDto) {
-    return this.service.update(id, dto);
+  async update(
+    @Param('id') id: string,
+    @Body() dto: UpdateTravelServiceDto,
+    @CurrentUser('sub') userId: string,
+  ) {
+    return this.service.update(id, dto, userId);
   }
 
   /** DELETE /admin/travel-services/:id — requires services.delete */
   @Delete(':id')
   @Permission(perm('services', 'DELETE'))
-  async remove(@Param('id') id: string) {
-    return this.service.remove(id);
+  async remove(
+    @Param('id') id: string,
+    @CurrentUser('sub') userId: string,
+  ) {
+    return this.service.remove(id, userId);
   }
 
   /** DELETE /admin/travel-services (bulk) — requires services.delete */
   @Delete()
   @Permission(perm('services', 'DELETE'))
-  async removeMany(@Body() dto: BulkDeleteTravelServicesDto) {
-    return this.service.removeMany(dto.ids);
+  async removeMany(
+    @Body() dto: BulkDeleteTravelServicesDto,
+    @CurrentUser('sub') userId: string,
+  ) {
+    return this.service.removeMany(dto.ids, userId);
   }
 }

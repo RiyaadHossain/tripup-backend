@@ -4,19 +4,30 @@ import { CreateExpenseDto } from '../dto/create-expense.dto';
 import { UpdateExpenseDto } from '../dto/update-expense.dto';
 import { QueryExpensesDto } from '../dto/query-expenses.dto';
 import { Prisma } from 'generated/src/prisma/client';
+import { UserActivityService } from 'src/modules/user-activity/user-activity.service';
 
 @Injectable()
 export class ExpensesService {
-  constructor(private readonly repository: ExpensesRepository) {}
+  constructor(
+    private readonly repository: ExpensesRepository,
+    private readonly activityService: UserActivityService,
+  ) {}
 
   async create(dto: CreateExpenseDto, userId: string) {
     const { expenseDate, attachment, ...rest } = dto;
-    return this.repository.create({
+    const expense = await this.repository.create({
       ...rest,
       expenseDate: new Date(expenseDate),
       attachment: attachment ? (attachment as unknown as Prisma.InputJsonValue) : undefined,
       createdBy: userId ? { connect: { id: userId } } : undefined,
     });
+
+    this.activityService.log('CREATE', 'expenses', userId, {
+      id: expense.id,
+      name: expense.description,
+    });
+
+    return expense;
   }
 
   async findAll(query: QueryExpensesDto) {
@@ -117,7 +128,7 @@ export class ExpensesService {
     return expense;
   }
 
-  async update(id: string, dto: UpdateExpenseDto) {
+  async update(id: string, dto: UpdateExpenseDto, userId?: string) {
     const existing = await this.repository.findById(id);
     if (!existing) {
       throw new NotFoundException('Expense not found');
@@ -137,14 +148,27 @@ export class ExpensesService {
       updateData.attachment = attachment as unknown as Prisma.InputJsonValue;
     }
 
-    return this.repository.update(id, updateData);
+    const updated = await this.repository.update(id, updateData);
+
+    this.activityService.log('UPDATE', 'expenses', userId, {
+      id: updated.id,
+      name: updated.description,
+    });
+
+    return updated;
   }
 
-  async remove(id: string) {
+  async remove(id: string, userId?: string) {
     const existing = await this.repository.findById(id);
     if (!existing) {
       throw new NotFoundException('Expense not found');
     }
+
+    this.activityService.log('DELETE', 'expenses', userId, {
+      id: existing.id,
+      name: existing.description,
+    });
+
     return this.repository.delete(id);
   }
 }

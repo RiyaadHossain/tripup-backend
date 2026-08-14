@@ -67,7 +67,8 @@ export const ModelName = {
   PlaybookType: 'PlaybookType',
   PlaybookCategory: 'PlaybookCategory',
   Lead: 'Lead',
-  Expense: 'Expense'
+  Expense: 'Expense',
+  UserActivity: 'UserActivity'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -384,6 +385,19 @@ export const ExpenseScalarFieldEnum = {
 } as const
 
 export type ExpenseScalarFieldEnum = (typeof ExpenseScalarFieldEnum)[keyof typeof ExpenseScalarFieldEnum]
+
+
+export const UserActivityScalarFieldEnum = {
+  id: 'id',
+  action: 'action',
+  module: 'module',
+  objectId: 'objectId',
+  objectMeta: 'objectMeta',
+  userId: 'userId',
+  createdAt: 'createdAt'
+} as const
+
+export type UserActivityScalarFieldEnum = (typeof UserActivityScalarFieldEnum)[keyof typeof UserActivityScalarFieldEnum]
 
 
 export const SortOrder = {

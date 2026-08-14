@@ -105,3 +105,10 @@ export type Lead = Prisma.LeadModel
  * 
  */
 export type Expense = Prisma.ExpenseModel
+/**
+ * Model UserActivity
+ * Audit log of every significant action performed by a user.
+ * objectMeta stores a lightweight snapshot (e.g. { id, name }) so the
+ * frontend can render meaningful messages without extra DB lookups.
+ */
+export type UserActivity = Prisma.UserActivityModel

@@ -22,6 +22,7 @@ export const APP_MODULES = [
   'team_management',
   'settings',
   'expenses',
+  'user_activity',
 ] as const;
 
 export type AppModule = (typeof APP_MODULES)[number];

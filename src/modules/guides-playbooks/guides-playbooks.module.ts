@@ -9,9 +9,10 @@ import { PlaybookTypesService } from './services/playbook-types.service';
 import { PlaybookRepository } from './repositories/playbooks.repository';
 import { PlaybookCategoriesRepository } from './repositories/playbook-categories.repository';
 import { PlaybookTypesRepository } from './repositories/playbook-types.repository';
+import { UserActivityModule } from 'src/modules/user-activity/user-activity.module';
 
 @Module({
-  imports: [],
+  imports: [UserActivityModule],
   controllers: [
     PublicPlaybooksController,
     AdminPlaybooksController,

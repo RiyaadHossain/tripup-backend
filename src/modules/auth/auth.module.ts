@@ -6,6 +6,7 @@ import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { JwtStrategy } from './strategies/jwt.strategy';
 import { JwtAuthGuard } from './guards/jwt-auth.guard';
+import { UserActivityModule } from 'src/modules/user-activity/user-activity.module';
 
 @Global()
 @Module({
@@ -21,6 +22,7 @@ import { JwtAuthGuard } from './guards/jwt-auth.guard';
         },
       }),
     }),
+    UserActivityModule,
   ],
   controllers: [AuthController],
   providers: [AuthService, JwtStrategy, JwtAuthGuard],

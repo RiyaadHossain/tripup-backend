@@ -51,13 +51,17 @@ export class AdminExpensesController {
   async update(
     @Param('id') id: string,
     @Body() dto: UpdateExpenseDto,
+    @CurrentUser('sub') userId: string,
   ) {
-    return this.service.update(id, dto);
+    return this.service.update(id, dto, userId);
   }
 
   @Delete(':id')
   @Permission(perm('expenses', 'DELETE'))
-  async remove(@Param('id') id: string) {
-    return this.service.remove(id);
+  async remove(
+    @Param('id') id: string,
+    @CurrentUser('sub') userId: string,
+  ) {
+    return this.service.remove(id, userId);
   }
 }

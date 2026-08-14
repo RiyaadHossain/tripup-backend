@@ -111,9 +111,9 @@ async function main() {
         roleId: superAdminRole.id,
       },
     });
-    console.log(`  ✔  Created Super Admin user: ${SUPER_ADMIN_EMAIL}`);
-    console.log(`     Default password: ${SUPER_ADMIN_PASSWORD}`);
-    console.log(`     ⚠️  Change this password immediately after first login!\n`);
+    console.log(`✔ Created Super Admin user: ${SUPER_ADMIN_EMAIL}`);
+    console.log(`Default password: ${SUPER_ADMIN_PASSWORD}`);
+    console.log('⚠️ Change this password immediately after first login!\n');
   }
 
   console.log('\n✅  Seed completed successfully.\n');
