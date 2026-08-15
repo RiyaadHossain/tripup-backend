@@ -4,13 +4,24 @@ import { TravelInsightCategoriesRepository } from '../repositories/travel-insigh
 
 import { CreateTravelInsightCategoryDto } from '../dto/create-travel-insight-category.dto';
 import { UpdateTravelInsightCategoryDto } from '../dto/update-travel-insight-category.dto';
+import { UserActivityService } from 'src/modules/user-activity/user-activity.service';
 
 @Injectable()
 export class TravelInsightCategoriesService {
-  constructor(private readonly repository: TravelInsightCategoriesRepository) {}
+  constructor(
+    private readonly repository: TravelInsightCategoriesRepository,
+    private readonly activityService: UserActivityService,
+  ) {}
 
   async create(dto: CreateTravelInsightCategoryDto, userId: string) {
-    return await this.repository.create({ ...dto, addedBy: userId ? { connect: { id: userId } } : undefined, });
+    const category = await this.repository.create({ ...dto, addedBy: userId ? { connect: { id: userId } } : undefined, });
+
+    this.activityService.log('CREATE', 'travel_insight_categories', userId, {
+      id: category.id,
+      name: category.name,
+    });
+
+    return category;
   }
 
   async findAll() {
@@ -31,22 +42,34 @@ export class TravelInsightCategoriesService {
     }));
   }
 
-  async update(id: string, dto: UpdateTravelInsightCategoryDto) {
+  async update(id: string, dto: UpdateTravelInsightCategoryDto, userId?: string) {
     const existing = await this.repository.findById(id);
 
     if (!existing) {
       throw new NotFoundException('Travel insight category not found');
     }
 
-    return await this.repository.update(id, dto);
+    const updated = await this.repository.update(id, dto);
+
+    this.activityService.log('UPDATE', 'travel_insight_categories', userId, {
+      id: updated.id,
+      name: updated.name,
+    });
+
+    return updated;
   }
 
-  async remove(id: string) {
+  async remove(id: string, userId?: string) {
     const existing = await this.repository.findById(id);
 
     if (!existing) {
       throw new NotFoundException('Travel insight category not found');
     }
+
+    this.activityService.log('DELETE', 'travel_insight_categories', userId, {
+      id: existing.id,
+      name: existing.name,
+    });
 
     return await this.repository.delete(id);
   }

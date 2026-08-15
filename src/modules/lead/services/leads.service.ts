@@ -256,6 +256,12 @@ export class LeadsService {
     }
 
     const result = await this.repository.createMany(leadsToCreate);
+
+    this.activityService.log('CREATE', 'leads', userId, {
+      id: 'bulk',
+      name: `CSV import — ${result.count} lead(s)`,
+    });
+
     return {
       count: result.count,
       message: `${result.count} leads successfully created`,

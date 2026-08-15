@@ -4,13 +4,24 @@ import { PlaybookCategoriesRepository } from '../repositories/playbook-categorie
 
 import { CreatePlaybookCategoryDto } from '../dto/create-playbook-category.dto';
 import { UpdatePlaybookCategoryDto } from '../dto/update-playbook-category.dto';
+import { UserActivityService } from 'src/modules/user-activity/user-activity.service';
 
 @Injectable()
 export class PlaybookCategoriesService {
-  constructor(private readonly repository: PlaybookCategoriesRepository) {}
+  constructor(
+    private readonly repository: PlaybookCategoriesRepository,
+    private readonly activityService: UserActivityService,
+  ) {}
 
   async create(dto: CreatePlaybookCategoryDto, userId: string) {
-    return await this.repository.create({ ...dto, addedBy: userId ? { connect: { id: userId } } : undefined, });
+    const category = await this.repository.create({ ...dto, addedBy: userId ? { connect: { id: userId } } : undefined, });
+
+    this.activityService.log('CREATE', 'playbook_categories', userId, {
+      id: category.id,
+      name: category.name,
+    });
+
+    return category;
   }
 
   async findAll() {
@@ -31,22 +42,34 @@ export class PlaybookCategoriesService {
     }));
   }
 
-  async update(id: string, dto: UpdatePlaybookCategoryDto) {
+  async update(id: string, dto: UpdatePlaybookCategoryDto, userId?: string) {
     const existing = await this.repository.findById(id);
 
     if (!existing) {
       throw new NotFoundException('Playbook category not found');
     }
 
-    return await this.repository.update(id, dto);
+    const updated = await this.repository.update(id, dto);
+
+    this.activityService.log('UPDATE', 'playbook_categories', userId, {
+      id: updated.id,
+      name: updated.name,
+    });
+
+    return updated;
   }
 
-  async remove(id: string) {
+  async remove(id: string, userId?: string) {
     const existing = await this.repository.findById(id);
 
     if (!existing) {
       throw new NotFoundException('Playbook category not found');
     }
+
+    this.activityService.log('DELETE', 'playbook_categories', userId, {
+      id: existing.id,
+      name: existing.name,
+    });
 
     return await this.repository.delete(id);
   }

@@ -4,13 +4,24 @@ import { CaseStudyCategoriesRepository } from '../repositories/case-study-catego
 
 import { CreateCaseStudyCategoryDto } from '../dto/create-case-study-category.dto';
 import { UpdateCaseStudyCategoryDto } from '../dto/update-case-study-category.dto';
+import { UserActivityService } from 'src/modules/user-activity/user-activity.service';
 
 @Injectable()
 export class CaseStudyCategoriesService {
-  constructor(private readonly repository: CaseStudyCategoriesRepository) {}
+  constructor(
+    private readonly repository: CaseStudyCategoriesRepository,
+    private readonly activityService: UserActivityService,
+  ) {}
 
   async create(dto: CreateCaseStudyCategoryDto, userId: string) {
-    return await this.repository.create({ ...dto, addedBy: userId ? { connect: { id: userId } } : undefined, });
+    const category = await this.repository.create({ ...dto, addedBy: userId ? { connect: { id: userId } } : undefined, });
+
+    this.activityService.log('CREATE', 'case_study_categories', userId, {
+      id: category.id,
+      name: category.name,
+    });
+
+    return category;
   }
 
   async findAll() {
@@ -31,22 +42,34 @@ export class CaseStudyCategoriesService {
     }));
   }
 
-  async update(id: string, dto: UpdateCaseStudyCategoryDto) {
+  async update(id: string, dto: UpdateCaseStudyCategoryDto, userId?: string) {
     const existing = await this.repository.findById(id);
 
     if (!existing) {
       throw new NotFoundException('Case study category not found');
     }
 
-    return await this.repository.update(id, dto);
+    const updated = await this.repository.update(id, dto);
+
+    this.activityService.log('UPDATE', 'case_study_categories', userId, {
+      id: updated.id,
+      name: updated.name,
+    });
+
+    return updated;
   }
 
-  async remove(id: string) {
+  async remove(id: string, userId?: string) {
     const existing = await this.repository.findById(id);
 
     if (!existing) {
       throw new NotFoundException('Case study category not found');
     }
+
+    this.activityService.log('DELETE', 'case_study_categories', userId, {
+      id: existing.id,
+      name: existing.name,
+    });
 
     return await this.repository.delete(id);
   }

@@ -39,7 +39,8 @@ export class CaseStudyService {
         : undefined,
     });
 
-    this.activityService.log('CREATE', 'case_studies', userId, {
+    console.log(userId)
+    await this.activityService.log('CREATE', 'case_studies', userId, {
       id: caseStudy.id,
       name: caseStudy.title,
     });
@@ -203,7 +204,7 @@ export class CaseStudyService {
           : undefined,
     });
 
-    this.activityService.log('UPDATE', 'case_studies', userId, {
+    await this.activityService.log('UPDATE', 'case_studies', userId, {
       id: updated.id,
       name: updated.title,
     });
@@ -218,7 +219,7 @@ export class CaseStudyService {
       throw new NotFoundException('Case study not found');
     }
 
-    this.activityService.log('DELETE', 'case_studies', userId, {
+    await this.activityService.log('DELETE', 'case_studies', userId, {
       id: existing.id ?? '',
       name: existing.title ?? '',
     });
@@ -227,7 +228,7 @@ export class CaseStudyService {
   }
 
   async removeMany(ids: string[], userId?: string) {
-    this.activityService.log('DELETE', 'case_studies', userId, null);
+    await this.activityService.log('DELETE', 'case_studies', userId, null);
     return this.repository.deleteMany(ids);
   }
 }

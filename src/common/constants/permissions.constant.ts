@@ -22,6 +22,7 @@ export const APP_MODULES = [
   'team_management',
   'settings',
   'expenses',
+  'testimonials',
   'user_activity',
 ] as const;
 

@@ -17,13 +17,13 @@ export class UserActivityService {
    * Fire-and-forget activity logger.
    * Never throws — a failure to log must never break the primary operation.
    */
-  log(
+  async log(
     action: ActivityAction,
     module: string,
     userId?: string | null,
     objectMeta?: ActivityObjectMeta | null,
-  ): void {
-    this.prisma.userActivity
+  ) {
+     await this.prisma.userActivity
       .create({
         data: {
           action,

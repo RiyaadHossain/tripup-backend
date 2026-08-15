@@ -15,13 +15,13 @@ export class TravelServicesService {
   ) {}
 
   async create(dto: CreateTravelServiceDto, userId: string) {
-    const { serviceCategory, ...rest } = dto;
+    const { serviceCategoryId, ...rest } = dto;
 
     const service = await this.prisma.travelService.create({ data: { addedBy: userId ? { connect: { id: userId } } : undefined,
         ...this.toCreateData(rest),
-        serviceCategory: serviceCategory
+        serviceCategory: serviceCategoryId
           ? {
-              connect: { id: serviceCategory },
+              connect: { id: serviceCategoryId },
             }
           : undefined,
       },
@@ -30,7 +30,7 @@ export class TravelServicesService {
       },
     });
 
-    this.activityService.log('CREATE', 'travel_services', userId, {
+    await this.activityService.log('CREATE', 'travel_services', userId, {
       id: service.id,
       name: service.title,
     });
@@ -186,17 +186,17 @@ export class TravelServicesService {
       throw new NotFoundException('Travel service not found');
     }
 
-    const { serviceCategory, ...rest } = dto;
+    const { serviceCategoryId, ...rest } = dto;
 
     const updated = await this.prisma.travelService.update({
       where: { id },
       data: {
         ...this.toUpdateData(rest),
         serviceCategory:
-          serviceCategory !== undefined
-            ? serviceCategory
+          serviceCategoryId !== undefined
+            ? serviceCategoryId
               ? {
-                  connect: { id: serviceCategory },
+                  connect: { id: serviceCategoryId },
                 }
               : {
                   disconnect: true,
@@ -207,8 +207,8 @@ export class TravelServicesService {
         serviceCategory: true,
       },
     });
-
-    this.activityService.log('UPDATE', 'travel_services', userId, {
+    
+    await this.activityService.log('UPDATE', 'travel_services', userId, {
       id: updated.id,
       name: updated.title,
     });
@@ -225,7 +225,7 @@ export class TravelServicesService {
       throw new NotFoundException('Travel service not found');
     }
 
-    this.activityService.log('DELETE', 'travel_services', userId, {
+    await this.activityService.log('DELETE', 'travel_services', userId, {
       id: existing.id,
       name: existing.title,
     });
@@ -236,7 +236,7 @@ export class TravelServicesService {
   }
 
   async removeMany(ids: string[], userId?: string) {
-    this.activityService.log('DELETE', 'travel_services', userId, null);
+    await this.activityService.log('DELETE', 'travel_services', userId, null);
     return await this.prisma.travelService.deleteMany({
       where: {
         id: {
