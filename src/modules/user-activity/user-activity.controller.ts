@@ -35,6 +35,6 @@ export class UserActivityController {
     @Param('userId') userId: string,
     @Query() query: QueryActivitiesDto,
   ) {
-    return this.service.findByUser(userId, query);
+    return this.service.findByUser(userId, query); 
   }
 }
