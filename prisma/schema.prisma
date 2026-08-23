@@ -25,6 +25,20 @@ enum ActivityAction {
   CREATE
   UPDATE
   DELETE
+  ASSIGN
+}
+
+enum TaskPriority {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+enum TaskStatus {
+  TO_DO
+  IN_PROGRESS
+  IN_REVIEW
+  DONE
 }
 
 // ---------------------------------------------------------------------------
@@ -59,6 +73,12 @@ model User {
   addedLeads                   Lead[]                  @relation("AddedLead")
   createdExpenses              Expense[]               @relation("CreatedExpense")
   activities                   UserActivity[]
+
+  // Task Management
+  addedDepartments Department[] @relation("AddedDepartment")
+  addedMilestones  Milestone[]  @relation("AddedMilestone")
+  addedTasks       Task[]       @relation("AddedTask")
+  taskAssignments  TaskAssignee[]
 
   resetPasswordToken   String?
   resetPasswordExpires DateTime?
@@ -467,6 +487,93 @@ model Expense {
   @@index([category])
   @@index([expenseDate])
   @@map("expenses")
+}
+
+// ---------------------------------------------------------------------------
+// Task Management
+// ---------------------------------------------------------------------------
+
+model Department {
+  id          String  @id @default(uuid())
+  name        String  @unique
+  description String?
+
+  tasks Task[]
+
+  addedById String?
+  addedBy   User?   @relation("AddedDepartment", fields: [addedById], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([name])
+}
+
+model Milestone {
+  id          String    @id @default(uuid())
+  name        String
+  description String?
+  dueDate     DateTime?
+
+  tasks Task[]
+
+  addedById String?
+  addedBy   User?   @relation("AddedMilestone", fields: [addedById], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([name])
+}
+
+model Task {
+  id          String      @id @default(uuid())
+  title       String
+  description String?
+  deadline    DateTime?
+  priority    TaskPriority @default(MEDIUM)
+  status      TaskStatus   @default(TO_DO)
+  attachment  Json?        // { url, name, size, mimeType }
+
+  // Self-referencing for child/sub-tasks
+  parentId String?
+  parent   Task?   @relation("TaskChildren", fields: [parentId], references: [id])
+  children Task[]  @relation("TaskChildren")
+
+  // Relations
+  milestoneId  String?
+  milestone    Milestone?  @relation(fields: [milestoneId], references: [id])
+  departmentId String?
+  department   Department? @relation(fields: [departmentId], references: [id])
+
+  assignees TaskAssignee[]
+
+  addedById String?
+  addedBy   User?   @relation("AddedTask", fields: [addedById], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([status])
+  @@index([priority])
+  @@index([milestoneId])
+  @@index([departmentId])
+  @@index([parentId])
+  @@index([deadline])
+}
+
+/// Join table: many-to-many between Task and User (assignees)
+model TaskAssignee {
+  taskId String
+  userId String
+
+  task Task @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  assignedAt DateTime @default(now())
+
+  @@id([taskId, userId])
+  @@index([userId])
 }
 
 // ---------------------------------------------------------------------------

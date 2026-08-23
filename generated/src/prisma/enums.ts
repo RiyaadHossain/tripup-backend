@@ -24,10 +24,30 @@ export const ActivityAction = {
   ACCOUNT_CREATED: 'ACCOUNT_CREATED',
   CREATE: 'CREATE',
   UPDATE: 'UPDATE',
-  DELETE: 'DELETE'
+  DELETE: 'DELETE',
+  ASSIGN: 'ASSIGN'
 } as const
 
 export type ActivityAction = (typeof ActivityAction)[keyof typeof ActivityAction]
+
+
+export const TaskPriority = {
+  LOW: 'LOW',
+  MEDIUM: 'MEDIUM',
+  HIGH: 'HIGH'
+} as const
+
+export type TaskPriority = (typeof TaskPriority)[keyof typeof TaskPriority]
+
+
+export const TaskStatus = {
+  TO_DO: 'TO_DO',
+  IN_PROGRESS: 'IN_PROGRESS',
+  IN_REVIEW: 'IN_REVIEW',
+  DONE: 'DONE'
+} as const
+
+export type TaskStatus = (typeof TaskStatus)[keyof typeof TaskStatus]
 
 
 export const LeadPriority = {

@@ -128,6 +128,26 @@ export type Lead = Prisma.LeadModel
  */
 export type Expense = Prisma.ExpenseModel
 /**
+ * Model Department
+ * 
+ */
+export type Department = Prisma.DepartmentModel
+/**
+ * Model Milestone
+ * 
+ */
+export type Milestone = Prisma.MilestoneModel
+/**
+ * Model Task
+ * 
+ */
+export type Task = Prisma.TaskModel
+/**
+ * Model TaskAssignee
+ * Join table: many-to-many between Task and User (assignees)
+ */
+export type TaskAssignee = Prisma.TaskAssigneeModel
+/**
  * Model UserActivity
  * Audit log of every significant action performed by a user.
  * objectMeta stores a lightweight snapshot (e.g. { id, name }) so the

@@ -24,6 +24,7 @@ import { UploadsModule } from './modules/uploads/uploads.module';
 import { LeadModule } from './modules/lead/lead.module';
 import { CostManagementModule } from './modules/cost-management/cost-management.module';
 import { UserActivityModule } from './modules/user-activity/user-activity.module';
+import { TaskManagementModule } from './modules/task-management/task-management.module';
 
 @Module({
   imports: [
@@ -48,6 +49,7 @@ import { UserActivityModule } from './modules/user-activity/user-activity.module
     LeadModule,
     CostManagementModule,
     UserActivityModule,
+    TaskManagementModule,
   ],
   controllers: [],
   providers: [],
