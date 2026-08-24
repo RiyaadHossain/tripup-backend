@@ -67,6 +67,13 @@ export class TaskRepository {
     return this.prisma.task.findUnique({ where: { id }, include: TASK_INCLUDE });
   }
 
+  async findListing() {
+    return this.prisma.task.findMany({
+      orderBy: { title: 'asc' },
+      select: { id: true, title: true },
+    });
+  }
+
   async update(id: string, data: Prisma.TaskUpdateInput) {
     return this.prisma.task.update({ where: { id }, data, include: TASK_INCLUDE });
   }

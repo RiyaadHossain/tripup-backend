@@ -77,6 +77,15 @@ export class TasksService {
     return task;
   }
 
+  async findListing() {
+    const tasks = await this.repository.findListing();
+
+    return tasks.map((t) => ({
+      label: t.title,
+      value: t.id,
+    }));
+  }
+
   // ---------------------------------------------------------------------------
   // Update
   // ---------------------------------------------------------------------------

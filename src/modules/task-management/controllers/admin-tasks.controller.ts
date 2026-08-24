@@ -38,6 +38,16 @@ export class AdminTasksController {
     return this.service.findAll(query);
   }
 
+  /**
+   * Returns tasks formatted as select options: [{ label, value }]
+   * Ready-to-use for frontend dropdowns — no transformation needed.
+   */
+  @Get('listing')
+  @Permission(perm('tasks', 'READ'))
+  async findListing() {
+    return this.service.findListing();
+  }
+
   @Get(':id')
   @Permission(perm('tasks', 'READ'))
   async findOne(@Param('id') id: string) {
