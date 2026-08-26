@@ -351,6 +351,7 @@ export const LeadScalarFieldEnum = {
   location: 'location',
   status: 'status',
   priority: 'priority',
+  source: 'source',
   niche: 'niche',
   facebookLink: 'facebookLink',
   linkedInLink: 'linkedInLink',

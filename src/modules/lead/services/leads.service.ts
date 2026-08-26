@@ -29,7 +29,7 @@ export class LeadsService {
   }
 
   async findAll(query: QueryLeadsDto) {
-    const { page, limit, search, status, isPotential, priority } = query;
+    const { page, limit, search, status, isPotential, priority, source } = query;
 
     const skip = (page - 1) * limit;
 
@@ -50,6 +50,10 @@ export class LeadsService {
 
     if (priority) {
       where.priority = priority;
+    }
+
+    if (source) {
+      where.source = source;
     }
 
     if (isPotential !== undefined) {
@@ -165,6 +169,8 @@ export class LeadsService {
       'name': 'businessName',
       'agencyname': 'businessName',
       'type': 'niche',
+      'source': 'source',
+      'lead source': 'source',
       'website': 'website',
       'phone': 'phone',
       'facebook': 'facebookLink',
@@ -238,6 +244,7 @@ export class LeadsService {
         location: mergedLead.location || null,
         status: mergedLead.status,
         priority: mergedLead.priority || 'MEDIUM',
+        source: mergedLead.source || null,
         niche: mergedLead.niche || null,
         facebookLink: mergedLead.facebookLink || null,
         linkedInLink: mergedLead.linkedInLink || null,

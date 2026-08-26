@@ -7,7 +7,7 @@ import {
   Min,
 } from 'class-validator';
 import { Type, Transform } from 'class-transformer';
-import { LeadStatus, LeadPriority } from 'generated/src/prisma/client';
+import { LeadStatus, LeadPriority, LeadSource } from 'generated/src/prisma/client';
 
 export class QueryLeadsDto {
   @IsOptional()
@@ -33,6 +33,10 @@ export class QueryLeadsDto {
   @IsOptional()
   @IsEnum(LeadPriority)
   priority?: LeadPriority;
+
+  @IsOptional()
+  @IsEnum(LeadSource)
+  source?: LeadSource;
 
   @IsOptional()
   @Transform(({ value }) => {

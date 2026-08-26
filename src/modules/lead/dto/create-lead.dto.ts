@@ -6,7 +6,7 @@ import {
   IsUrl,
   MaxLength,
 } from 'class-validator';
-import { LeadStatus, LeadPriority } from 'generated/src/prisma/client';
+import { LeadStatus, LeadPriority, LeadSource } from 'generated/src/prisma/client';
 
 export class CreateLeadDto {
   @IsOptional()
@@ -38,6 +38,10 @@ export class CreateLeadDto {
   @IsOptional()
   @IsEnum(LeadPriority)
   priority?: LeadPriority;
+
+  @IsOptional()
+  @IsEnum(LeadSource)
+  source?: LeadSource;
 
   @IsOptional()
   @IsString()

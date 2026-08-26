@@ -73,6 +73,25 @@ export const LeadStatus = {
 export type LeadStatus = (typeof LeadStatus)[keyof typeof LeadStatus]
 
 
+export const LeadSource = {
+  FACEBOOK: 'FACEBOOK',
+  LINKEDIN: 'LINKEDIN',
+  INSTAGRAM: 'INSTAGRAM',
+  TWITTER: 'TWITTER',
+  REDDIT: 'REDDIT',
+  GOOGLE_MAPS: 'GOOGLE_MAPS',
+  WEBSITE: 'WEBSITE',
+  COLD_EMAIL: 'COLD_EMAIL',
+  COLD_CALL: 'COLD_CALL',
+  DIRECT_CONTACT: 'DIRECT_CONTACT',
+  REFERRAL: 'REFERRAL',
+  PERSONAL_CONNECTION: 'PERSONAL_CONNECTION',
+  OTHER: 'OTHER'
+} as const
+
+export type LeadSource = (typeof LeadSource)[keyof typeof LeadSource]
+
+
 export const ExpenseStatus = {
   PENDING: 'PENDING',
   DUE: 'DUE',
