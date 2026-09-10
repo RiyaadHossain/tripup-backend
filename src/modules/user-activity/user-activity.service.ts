@@ -76,7 +76,7 @@ export class UserActivityService {
         orderBy: { createdAt: 'desc' },
         include: {
           user: {
-            select: { id: true, name: true, email: true },
+            select: { id: true, name: true, email: true, profileImgUrl: true },
           },
         },
       }),

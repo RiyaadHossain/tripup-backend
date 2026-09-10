@@ -9,4 +9,8 @@ export class UpdateUserInfoDto {
   @IsOptional()
   @IsEmail()
   email?: string;
+
+  @IsOptional()
+  @IsString()
+  profileImgUrl?: string;
 }

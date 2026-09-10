@@ -125,6 +125,7 @@ export class AuthService {
         id: user.id,
         name: user.name,
         email: user.email,
+        profileImgUrl: user.profileImgUrl,
         role: user.role?.name ?? null,
         permissions,
         needPasswordChange: user.needPasswordChange,
@@ -177,6 +178,7 @@ export class AuthService {
       data: {
         name: dto.name,
         email: dto.email,
+        profileImgUrl: dto.profileImgUrl,
       },
       include: {
         role: {
@@ -288,6 +290,7 @@ export class AuthService {
     id: string;
     name: string;
     email: string;
+    profileImgUrl: string | null;
     needPasswordChange: boolean;
     lastLoginAt: Date | null;
     createdAt: Date;
@@ -313,6 +316,7 @@ export class AuthService {
       id: user.id,
       name: user.name,
       email: user.email,
+      profileImgUrl: user.profileImgUrl,
       role: user.role ? { id: user.role.id, name: user.role.name } : null,
       permissions,
       needPasswordChange: user.needPasswordChange,
