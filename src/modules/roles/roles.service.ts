@@ -9,6 +9,7 @@ import { SUPER_ADMIN_ROLE } from 'src/common/constants/permissions.constant';
 import { CreateRoleDto } from './dto/create-role.dto';
 import { UpdateRoleDto } from './dto/update-role.dto';
 import { UserActivityService } from 'src/modules/user-activity/user-activity.service';
+import { timeout } from 'rxjs';
 
 /** Prisma include shape reused for every role query that needs permissions. */
 const ROLE_WITH_PERMISSIONS = {
@@ -139,10 +140,16 @@ export class RolesService {
               : undefined,
           },
           include: ROLE_WITH_PERMISSIONS,
-        });
+
+        },
+        );
 
         return updated;
-      });
+      },
+        {
+          maxWait: 6000,
+          timeout: 10000
+        });
     }
 
     // No permissionIds provided — update only the scalar fields
