@@ -22,7 +22,7 @@ export class RolesService {
   constructor(
     private readonly prisma: PrismaService,
     private readonly activityService: UserActivityService,
-  ) {}
+  ) { }
 
   // ---------------------------------------------------------------------------
   // Create
@@ -44,10 +44,10 @@ export class RolesService {
         addedBy: userId ? { connect: { id: userId } } : undefined,
         permissions: dto.permissionIds?.length
           ? {
-              create: dto.permissionIds.map((permissionId) => ({
-                permission: { connect: { id: permissionId } },
-              })),
-            }
+            create: dto.permissionIds.map((permissionId) => ({
+              permission: { connect: { id: permissionId } },
+            })),
+          }
           : undefined,
       },
       include: ROLE_WITH_PERMISSIONS,
@@ -111,8 +111,14 @@ export class RolesService {
       );
     }
 
+    console.log('permissionIds:', dto.permissionIds);
+    console.log('count:', dto.permissionIds?.length);
+    console.log('unique count:', new Set(dto.permissionIds ?? []).size);
+
     // If permissionIds is explicitly provided, replace all permissions atomically
     if (dto.permissionIds !== undefined) {
+      const permissionIds = [...new Set(dto.permissionIds)];
+
       return this.prisma.$transaction(async (tx) => {
         // Delete existing permission links
         await tx.rolePermission.deleteMany({ where: { roleId: id } });
@@ -123,18 +129,18 @@ export class RolesService {
           data: {
             name: dto.name,
             description: dto.description,
-            permissions: dto.permissionIds!.length
+            permissions: permissionIds.length
               ? {
-                  create: dto.permissionIds!.map((permissionId) => ({
-                    permission: { connect: { id: permissionId } },
-                  })),
-                }
+                create: permissionIds.map((permissionId) => ({
+                  permission: { connect: { id: permissionId } },
+                })),
+              }
               : undefined,
           },
           include: ROLE_WITH_PERMISSIONS,
         });
 
-        this.activityService.log('UPDATE', 'roles', userId, {
+        await this.activityService.log('UPDATE', 'roles', userId, {
           id: updated.id,
           name: updated.name,
         });
