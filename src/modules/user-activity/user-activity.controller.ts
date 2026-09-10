@@ -8,16 +8,16 @@ import { UserActivityService } from './user-activity.service';
 import { QueryActivitiesDto } from './dto/query-activities.dto';
 
 @UseGuards(JwtAuthGuard, PermissionGuard)
-@Controller('admin/activities')
+@Controller(['admin/activities', 'user-activities'])
 export class UserActivityController {
   constructor(private readonly service: UserActivityService) {}
 
   /**
-   * GET /admin/activities/me
+   * GET /admin/activities/me or GET /user-activities/me
    * Returns the authenticated user's own activity feed.
+   * Accessible by any authenticated user without permission restrictions.
    */
   @Get('me')
-  @Permission(perm('user_activity', 'READ'))
   findMine(
     @CurrentUser('sub') userId: string,
     @Query() query: QueryActivitiesDto,
@@ -26,8 +26,9 @@ export class UserActivityController {
   }
 
   /**
-   * GET /admin/activities/user/:userId
+   * GET /admin/activities/user/:userId or GET /user-activities/user/:userId
    * Returns activity feed for any user (admin/supervisor use case).
+   * Requires `user_activity.READ` permission.
    */
   @Get('user/:userId')
   @Permission(perm('user_activity', 'READ'))
