@@ -116,10 +116,11 @@ export class RolesService {
     console.log('unique count:', new Set(dto.permissionIds ?? []).size);
 
     // If permissionIds is explicitly provided, replace all permissions atomically
+    let updated;
     if (dto.permissionIds !== undefined) {
       const permissionIds = [...new Set(dto.permissionIds)];
 
-      return this.prisma.$transaction(async (tx) => {
+      updated = await this.prisma.$transaction(async (tx) => {
         // Delete existing permission links
         await tx.rolePermission.deleteMany({ where: { roleId: id } });
 
@@ -140,17 +141,12 @@ export class RolesService {
           include: ROLE_WITH_PERMISSIONS,
         });
 
-        await this.activityService.log('UPDATE', 'roles', userId, {
-          id: updated.id,
-          name: updated.name,
-        });
-
         return updated;
       });
     }
 
     // No permissionIds provided — update only the scalar fields
-    const updated = await this.prisma.role.update({
+    updated = await this.prisma.role.update({
       where: { id },
       data: {
         name: dto.name,
@@ -159,7 +155,7 @@ export class RolesService {
       include: ROLE_WITH_PERMISSIONS,
     });
 
-    this.activityService.log('UPDATE', 'roles', userId, {
+    await this.activityService.log('UPDATE', 'roles', userId, {
       id: updated.id,
       name: updated.name,
     });
