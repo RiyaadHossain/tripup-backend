@@ -1,10 +1,12 @@
-import { Body, Controller, Get, Post, Request, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Param, Patch, Post, Request, UseGuards } from '@nestjs/common';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { PermissionGuard } from 'src/common/guards/permission.guard';
+import { SuperAdminGuard } from 'src/common/guards/super-admin.guard';
 import { Permission } from 'src/common/decorators/permission.decorator';
 import { perm } from 'src/common/constants/permissions.constant';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
+import { UpdateUserRoleDto } from './dto/update-user-role.dto';
 import { JwtPayload } from '../auth/interfaces/jwt-payload.interface';
 
 @UseGuards(JwtAuthGuard, PermissionGuard)
@@ -31,5 +33,20 @@ export class UsersController {
   findAll() {
     return this.usersService.findAll();
   }
+
+  /**
+   * PATCH /users/:id/role
+   * Update a user's role. Super Admin only.
+   */
+  @Patch(':id/role')
+  @UseGuards(SuperAdminGuard)
+  updateRole(
+    @Param('id') id: string,
+    @Body() dto: UpdateUserRoleDto,
+    @Request() req: { user: JwtPayload },
+  ) {
+    return this.usersService.updateUserRole(id, dto.roleId, req.user.sub);
+  }
 }
+
 

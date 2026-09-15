@@ -12,7 +12,7 @@ export class UsersService {
     private readonly prisma: PrismaService,
     private readonly mailService: MailService,
     private readonly activityService: UserActivityService,
-  ) {}
+  ) { }
 
   /** Admin creates a user. Auto-generates password and sends email. */
   async create(dto: CreateUserDto, creatorId: string) {
@@ -104,21 +104,45 @@ export class UsersService {
     return user;
   }
 
-  /** Assign (or remove) a role from a user. */
-  async assignRole(userId: string, roleId: string | null) {
-    return this.prisma.user.update({
+  /** Update user role (Super Admin only). */
+  async updateUserRole(userId: string, roleId: string, executorId?: string) {
+    const user = await this.prisma.user.findUnique({
       where: { id: userId },
-      data: {
-        role: roleId ? { connect: { id: roleId } } : { disconnect: true },
-      },
+    });
+
+    if (!user) {
+      throw new NotFoundException('User not found');
+    }
+
+    const role = await this.prisma.role.findUnique({
+      where: { id: roleId },
+    });
+
+    if (!role) {
+      throw new NotFoundException('Role not found');
+    }
+
+    const updatedUser = await this.prisma.user.update({
+      where: { id: userId },
+      data: { roleId },
       include: {
         role: {
-          include: {
-            permissions: { include: { permission: true } },
-          },
+          select: { id: true, name: true, description: true },
         },
       },
     });
-  }
 
+    if (executorId) {
+      this.activityService.log('UPDATE', 'users', executorId, {
+        id: userId,
+        name: user.name,
+        targetUserId: userId,
+        newRoleId: roleId,
+        newRoleName: role.name,
+      });
+    }
+
+    const { passwordHash: _, resetPasswordToken: __, ...safeUser } = updatedUser;
+    return safeUser;
+  }
 }
