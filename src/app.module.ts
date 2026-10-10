@@ -26,6 +26,7 @@ import { CostManagementModule } from './modules/cost-management/cost-management.
 import { UserActivityModule } from './modules/user-activity/user-activity.module';
 import { TaskManagementModule } from './modules/task-management/task-management.module';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
+import { DesignsModule } from './modules/designs/designs.module';
 
 @Module({
   imports: [
@@ -52,6 +53,7 @@ import { DashboardModule } from './modules/dashboard/dashboard.module';
     UserActivityModule,
     TaskManagementModule,
     DashboardModule,
+    DesignsModule,
   ],
   controllers: [],
   providers: [],

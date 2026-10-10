@@ -20,12 +20,12 @@ export class JwtAuthGuard implements CanActivate {
         const authHeader = request.headers.authorization;
 
         if (!authHeader)
-            throw new UnauthorizedException('Authorization header is missing');
+            throw new UnauthorizedException('Authentication required');
 
         const [type, token] = authHeader.split(' ');
 
         if (type !== 'Bearer' || !token)
-            throw new UnauthorizedException('Invalid token format');
+            throw new UnauthorizedException('Authentication required');
 
         try {
             const secret = this.configService.get<string>('JWT_SECRET');
@@ -34,7 +34,7 @@ export class JwtAuthGuard implements CanActivate {
             return true;
         } catch (err) {
             console.log(err)
-            throw new UnauthorizedException('Invalid or expired token');
+            throw new UnauthorizedException('Authentication required');
         }
     }
 }

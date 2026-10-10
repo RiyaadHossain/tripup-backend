@@ -16,8 +16,27 @@ export class ResponseInterceptor implements NestInterceptor {
 
     return next.handle().pipe(
       map((data) => {
+        if (
+          data !== null &&
+          typeof data === 'object' &&
+          data.success === true &&
+          'data' in data
+        ) {
+          const res: Record<string, any> = {
+            success: true,
+            data: data.data !== null && data.data !== undefined ? data.data : [],
+          };
+          if ('message' in data && data.message !== undefined) {
+            res.message = data.message;
+          }
+          if ('meta' in data && data.meta !== undefined) {
+            res.meta = data.meta;
+          }
+          return res;
+        }
+
         const message = data?.message || 'Request successful';
-        const responseData = data?.data || data;
+        const responseData = data?.data !== undefined ? data.data : data;
         const meta = data?.meta || null;
 
         return {
