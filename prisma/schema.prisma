@@ -618,3 +618,23 @@ model UserActivity {
   @@index([module])
   @@index([createdAt])
 }
+
+// ---------------------------------------------------------------------------
+// Design Resource
+// ---------------------------------------------------------------------------
+
+model Design {
+  id           String    @id @default(uuid())
+  title        String
+  slug         String    @unique
+  images       Json
+  clientName   String?
+  deliveryDate DateTime? @db.Date
+  isPublished  Boolean   @default(true)
+
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@index([isPublished, createdAt(sort: Desc)])
+}
+

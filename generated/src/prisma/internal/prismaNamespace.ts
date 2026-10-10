@@ -405,7 +405,8 @@ export const ModelName = {
   Milestone: 'Milestone',
   Task: 'Task',
   TaskAssignee: 'TaskAssignee',
-  UserActivity: 'UserActivity'
+  UserActivity: 'UserActivity',
+  Design: 'Design'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -421,7 +422,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "role" | "permission" | "rolePermission" | "teamMember" | "testimonial" | "travelInsight" | "travelInsightCategory" | "travelService" | "serviceCategory" | "caseStudy" | "caseStudyCategory" | "playbook" | "playbookType" | "playbookCategory" | "lead" | "expense" | "department" | "milestone" | "task" | "taskAssignee" | "userActivity"
+    modelProps: "user" | "role" | "permission" | "rolePermission" | "teamMember" | "testimonial" | "travelInsight" | "travelInsightCategory" | "travelService" | "serviceCategory" | "caseStudy" | "caseStudyCategory" | "playbook" | "playbookType" | "playbookCategory" | "lead" | "expense" | "department" | "milestone" | "task" | "taskAssignee" | "userActivity" | "design"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -2053,6 +2054,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Design: {
+      payload: Prisma.$DesignPayload<ExtArgs>
+      fields: Prisma.DesignFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.DesignFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DesignPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.DesignFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DesignPayload>
+        }
+        findFirst: {
+          args: Prisma.DesignFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DesignPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.DesignFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DesignPayload>
+        }
+        findMany: {
+          args: Prisma.DesignFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DesignPayload>[]
+        }
+        create: {
+          args: Prisma.DesignCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DesignPayload>
+        }
+        createMany: {
+          args: Prisma.DesignCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.DesignCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DesignPayload>[]
+        }
+        delete: {
+          args: Prisma.DesignDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DesignPayload>
+        }
+        update: {
+          args: Prisma.DesignUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DesignPayload>
+        }
+        deleteMany: {
+          args: Prisma.DesignDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.DesignUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.DesignUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DesignPayload>[]
+        }
+        upsert: {
+          args: Prisma.DesignUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DesignPayload>
+        }
+        aggregate: {
+          args: Prisma.DesignAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateDesign>
+        }
+        groupBy: {
+          args: Prisma.DesignGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.DesignGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.DesignCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.DesignCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -2460,6 +2535,21 @@ export const UserActivityScalarFieldEnum = {
 export type UserActivityScalarFieldEnum = (typeof UserActivityScalarFieldEnum)[keyof typeof UserActivityScalarFieldEnum]
 
 
+export const DesignScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  slug: 'slug',
+  images: 'images',
+  clientName: 'clientName',
+  deliveryDate: 'deliveryDate',
+  isPublished: 'isPublished',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type DesignScalarFieldEnum = (typeof DesignScalarFieldEnum)[keyof typeof DesignScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -2862,6 +2952,7 @@ export type GlobalOmitConfig = {
   task?: Prisma.TaskOmit
   taskAssignee?: Prisma.TaskAssigneeOmit
   userActivity?: Prisma.UserActivityOmit
+  design?: Prisma.DesignOmit
 }
 
 /* Types for Logging */

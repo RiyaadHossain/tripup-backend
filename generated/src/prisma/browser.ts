@@ -132,3 +132,8 @@ export type TaskAssignee = Prisma.TaskAssigneeModel
  * frontend can render meaningful messages without extra DB lookups.
  */
 export type UserActivity = Prisma.UserActivityModel
+/**
+ * Model Design
+ * 
+ */
+export type Design = Prisma.DesignModel
