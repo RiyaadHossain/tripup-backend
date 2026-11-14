@@ -1,5 +1,13 @@
-import { IsBoolean, IsEnum, IsOptional, IsString } from 'class-validator';
-import { Transform } from 'class-transformer';
+import {
+  IsBoolean,
+  IsEnum,
+  IsInt,
+  IsOptional,
+  IsString,
+  Max,
+  Min,
+} from 'class-validator';
+import { Type, Transform } from 'class-transformer';
 import { LeadStatus, LeadPriority, LeadSource } from 'generated/src/prisma/client';
 
 export class UploadLeadsDto {
@@ -31,4 +39,26 @@ export class UploadLeadsDto {
   })
   @IsBoolean()
   isPotential?: boolean;
+
+  @IsOptional()
+  @IsString()
+  recommendedOpportunity?: string;
+
+  @IsOptional()
+  @Type(() => Number)
+  @IsInt()
+  @Min(1)
+  @Max(5)
+  strength?: number;
+
+  @IsOptional()
+  @Type(() => Number)
+  @IsInt()
+  @Min(1)
+  @Max(5)
+  qualification?: number;
+
+  @IsOptional()
+  @IsString()
+  proposedService?: string;
 }

@@ -67,6 +67,7 @@ export const ModelName = {
   PlaybookType: 'PlaybookType',
   PlaybookCategory: 'PlaybookCategory',
   Lead: 'Lead',
+  LeadActivity: 'LeadActivity',
   Expense: 'Expense',
   Department: 'Department',
   Milestone: 'Milestone',
@@ -363,12 +364,33 @@ export const LeadScalarFieldEnum = {
   contactPerson: 'contactPerson',
   notes: 'notes',
   isPotential: 'isPotential',
+  recommendedOpportunity: 'recommendedOpportunity',
+  strength: 'strength',
+  qualification: 'qualification',
+  proposedService: 'proposedService',
+  convertedAt: 'convertedAt',
+  lastActivityAt: 'lastActivityAt',
   addedById: 'addedById',
+  assignedToId: 'assignedToId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
 
 export type LeadScalarFieldEnum = (typeof LeadScalarFieldEnum)[keyof typeof LeadScalarFieldEnum]
+
+
+export const LeadActivityScalarFieldEnum = {
+  id: 'id',
+  type: 'type',
+  description: 'description',
+  notes: 'notes',
+  metadata: 'metadata',
+  leadId: 'leadId',
+  userId: 'userId',
+  createdAt: 'createdAt'
+} as const
+
+export type LeadActivityScalarFieldEnum = (typeof LeadActivityScalarFieldEnum)[keyof typeof LeadActivityScalarFieldEnum]
 
 
 export const ExpenseScalarFieldEnum = {

@@ -190,8 +190,8 @@ export class DashboardService {
     );
 
     const newCount = statusMap[LeadStatus.NEW] ?? 0;
-    const responded = statusMap[LeadStatus.RESPOND] ?? 0;
-    const converted = statusMap[LeadStatus.CONVERT] ?? 0;
+    const responded = statusMap[LeadStatus.RESPONDED] ?? 0;
+    const converted = statusMap[LeadStatus.CONVERTED] ?? 0;
 
     return {
       total,
@@ -271,13 +271,13 @@ export class DashboardService {
           where: {
             ...baseWhere,
             source: { not: null },
-            status: LeadStatus.CONVERT,
+            status: LeadStatus.CONVERTED,
           },
           _count: { _all: true },
         }),
         this.prisma.lead.count({ where: { ...baseWhere, source: null } }),
         this.prisma.lead.count({
-          where: { ...baseWhere, source: null, status: LeadStatus.CONVERT },
+          where: { ...baseWhere, source: null, status: LeadStatus.CONVERTED },
         }),
       ]);
 

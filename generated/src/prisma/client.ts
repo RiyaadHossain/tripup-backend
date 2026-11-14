@@ -123,6 +123,11 @@ export type PlaybookCategory = Prisma.PlaybookCategoryModel
  */
 export type Lead = Prisma.LeadModel
 /**
+ * Model LeadActivity
+ * 
+ */
+export type LeadActivity = Prisma.LeadActivityModel
+/**
  * Model Expense
  * 
  */

@@ -72,6 +72,8 @@ model User {
   addedPlaybookTypes           PlaybookType[]          @relation("AddedPlaybookType")
   addedPlaybookCategories      PlaybookCategory[]      @relation("AddedPlaybookCategory")
   addedLeads                   Lead[]                  @relation("AddedLead")
+  assignedLeads                Lead[]                  @relation("AssignedLead")
+  leadActivities               LeadActivity[]          @relation("LeadActivityUser")
   createdExpenses              Expense[]               @relation("CreatedExpense")
   activities                   UserActivity[]
 
@@ -413,11 +415,30 @@ enum LeadStatus {
   NEW
   OLD
   EMAIL_SENT
-  DM
+  DM_SENT
   COLD_CALL
-  RESPOND
+  FOLLOWED_UP
+  RESPONDED
   IGNORED
-  CONVERT
+  CONVERTED
+}
+
+enum LeadActivityType {
+  LEAD_CREATED
+  LEAD_ASSIGNED
+  STATUS_CHANGED
+  EMAIL_SENT
+  DM_SENT
+  COLD_CALL
+  FOLLOW_UP
+  MEETING_SCHEDULED
+  MEETING_COMPLETED
+  LEAD_RESPONDED
+  LEAD_IGNORED
+  LEAD_CONVERTED
+  LEAD_UPDATED
+  NOTE_ADDED
+  OTHER
 }
 
 enum LeadSource {
@@ -437,33 +458,76 @@ enum LeadSource {
 }
 
 model Lead {
-  id            String        @id @default(uuid())
-  businessName  String
-  email         String?
-  phone         String?
-  location      String?
-  status        LeadStatus    @default(NEW)
-  priority      LeadPriority  @default(MEDIUM)
-  source        LeadSource?
-  niche         String?
-  facebookLink  String?
-  linkedInLink  String?
-  instagramLink String?
-  twitterLink   String?
-  website       String?
-  contactPerson String?
-  notes         String?
-  isPotential   Boolean       @default(false)
+  id                     String        @id @default(uuid())
+  businessName           String
+  email                  String?
+  phone                  String?
+  location               String?
+  status                 LeadStatus    @default(NEW)
+  priority               LeadPriority  @default(MEDIUM)
+  source                 LeadSource?
+  niche                  String?
+  facebookLink           String?
+  linkedInLink           String?
+  instagramLink          String?
+  twitterLink            String?
+  website                String?
+  contactPerson          String?
+  notes                  String?
+  isPotential            Boolean       @default(false)
 
-  addedById String?
-  addedBy   User?   @relation("AddedLead", fields: [addedById], references: [id])
+  // Additional Lead Fields
+  recommendedOpportunity String?
+  strength               Int?
+  qualification          Int?
+  proposedService        String?
+  convertedAt            DateTime?
+  lastActivityAt         DateTime?     @default(now())
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  // Creator & Assignment
+  addedById              String?
+  addedBy                User?         @relation("AddedLead", fields: [addedById], references: [id])
+
+  assignedToId           String?
+  assignedTo             User?         @relation("AssignedLead", fields: [assignedToId], references: [id])
+
+  // Lead Activity Timeline
+  activities             LeadActivity[]
+
+  createdAt              DateTime      @default(now())
+  updatedAt              DateTime      @updatedAt
 
   @@index([businessName])
   @@index([status])
   @@index([source])
+  @@index([priority])
+  @@index([location])
+  @@index([niche])
+  @@index([addedById])
+  @@index([assignedToId])
+  @@index([lastActivityAt])
+  @@index([createdAt])
+}
+
+model LeadActivity {
+  id          String           @id @default(uuid())
+  type        LeadActivityType
+  description String?
+  notes       String?
+  metadata    Json?
+
+  leadId      String
+  lead        Lead             @relation(fields: [leadId], references: [id], onDelete: Cascade)
+
+  userId      String?
+  user        User?            @relation("LeadActivityUser", fields: [userId], references: [id])
+
+  createdAt   DateTime         @default(now())
+
+  @@index([leadId])
+  @@index([userId])
+  @@index([type])
+  @@index([createdAt])
 }
 
 enum ExpenseStatus {

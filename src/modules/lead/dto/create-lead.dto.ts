@@ -1,21 +1,25 @@
 import {
   IsBoolean,
   IsEnum,
+  IsInt,
   IsOptional,
   IsString,
   IsUrl,
+  Max,
   MaxLength,
+  Min,
 } from 'class-validator';
+import { Type } from 'class-transformer';
 import { LeadStatus, LeadPriority, LeadSource } from 'generated/src/prisma/client';
 
 export class CreateLeadDto {
-  @IsOptional()
-  @IsBoolean()
-  isPotential?: boolean;
-
   @IsString()
   @MaxLength(255)
   businessName: string;
+
+  @IsOptional()
+  @IsBoolean()
+  isPotential?: boolean;
 
   @IsOptional()
   @IsString()
@@ -76,4 +80,52 @@ export class CreateLeadDto {
   @IsOptional()
   @IsString()
   notes?: string;
+
+  /**
+   * Selected opportunity from predefined list, or custom value if "Other"
+   */
+  @IsOptional()
+  @IsString()
+  recommendedOpportunity?: string;
+
+  /**
+   * Alias / legacy name for recommendedOpportunity to safely support migration
+   */
+  @IsOptional()
+  @IsString()
+  clientGap?: string;
+
+  /**
+   * Numeric rating from 1 to 5
+   */
+  @IsOptional()
+  @Type(() => Number)
+  @IsInt()
+  @Min(1)
+  @Max(5)
+  strength?: number;
+
+  /**
+   * Numeric score from 1 to 5
+   */
+  @IsOptional()
+  @Type(() => Number)
+  @IsInt()
+  @Min(1)
+  @Max(5)
+  qualification?: number;
+
+  /**
+   * Description of service or solution proposed to prospect
+   */
+  @IsOptional()
+  @IsString()
+  proposedService?: string;
+
+  /**
+   * ID of user assigned to this lead
+   */
+  @IsOptional()
+  @IsString()
+  assignedToId?: string;
 }

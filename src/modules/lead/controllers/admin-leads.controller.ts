@@ -24,6 +24,8 @@ import { UpdateLeadDto } from '../dto/update-lead.dto';
 import { QueryLeadsDto } from '../dto/query-leads.dto';
 import { BulkDeleteLeadsDto } from '../dto/bulk-delete-leads.dto';
 import { UploadLeadsDto } from '../dto/upload-leads.dto';
+import { CreateLeadActivityDto } from '../dto/create-lead-activity.dto';
+import { AssignLeadDto } from '../dto/assign-lead.dto';
 
 @UseGuards(JwtAuthGuard, PermissionGuard)
 @Controller('admin/leads')
@@ -70,6 +72,37 @@ export class AdminLeadsController {
     @CurrentUser('sub') userId: string,
   ) {
     return this.service.update(id, dto, userId);
+  }
+
+  @Patch(':id/assign')
+  @Permission(perm('leads', 'UPDATE'))
+  async assign(
+    @Param('id') id: string,
+    @Body() dto: AssignLeadDto,
+    @CurrentUser('sub') userId: string,
+  ) {
+    return this.service.assign(id, dto, userId);
+  }
+
+  @Post(':id/activities')
+  @Permission(perm('leads', 'UPDATE'))
+  async addActivity(
+    @Param('id') id: string,
+    @Body() dto: CreateLeadActivityDto,
+    @CurrentUser('sub') userId: string,
+  ) {
+    return this.service.addActivity(id, dto, userId);
+  }
+
+  @Get(':id/activities')
+  @Permission(perm('leads', 'READ'))
+  async getActivities(
+    @Param('id') id: string,
+    @Query('order') order?: 'asc' | 'desc',
+    @Query('page') page?: number,
+    @Query('limit') limit?: number,
+  ) {
+    return this.service.getActivities(id, { order, page, limit });
   }
 
   @Delete(':id')

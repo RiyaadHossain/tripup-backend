@@ -63,14 +63,36 @@ export const LeadStatus = {
   NEW: 'NEW',
   OLD: 'OLD',
   EMAIL_SENT: 'EMAIL_SENT',
-  DM: 'DM',
+  DM_SENT: 'DM_SENT',
   COLD_CALL: 'COLD_CALL',
-  RESPOND: 'RESPOND',
+  FOLLOWED_UP: 'FOLLOWED_UP',
+  RESPONDED: 'RESPONDED',
   IGNORED: 'IGNORED',
-  CONVERT: 'CONVERT'
+  CONVERTED: 'CONVERTED'
 } as const
 
 export type LeadStatus = (typeof LeadStatus)[keyof typeof LeadStatus]
+
+
+export const LeadActivityType = {
+  LEAD_CREATED: 'LEAD_CREATED',
+  LEAD_ASSIGNED: 'LEAD_ASSIGNED',
+  STATUS_CHANGED: 'STATUS_CHANGED',
+  EMAIL_SENT: 'EMAIL_SENT',
+  DM_SENT: 'DM_SENT',
+  COLD_CALL: 'COLD_CALL',
+  FOLLOW_UP: 'FOLLOW_UP',
+  MEETING_SCHEDULED: 'MEETING_SCHEDULED',
+  MEETING_COMPLETED: 'MEETING_COMPLETED',
+  LEAD_RESPONDED: 'LEAD_RESPONDED',
+  LEAD_IGNORED: 'LEAD_IGNORED',
+  LEAD_CONVERTED: 'LEAD_CONVERTED',
+  LEAD_UPDATED: 'LEAD_UPDATED',
+  NOTE_ADDED: 'NOTE_ADDED',
+  OTHER: 'OTHER'
+} as const
+
+export type LeadActivityType = (typeof LeadActivityType)[keyof typeof LeadActivityType]
 
 
 export const LeadSource = {
