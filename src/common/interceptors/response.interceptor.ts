@@ -24,7 +24,7 @@ export class ResponseInterceptor implements NestInterceptor {
         ) {
           const res: Record<string, any> = {
             success: true,
-            data: data.data !== null && data.data !== undefined ? data.data : [],
+            data: data.data !== undefined ? data.data : null,
           };
           if ('message' in data && data.message !== undefined) {
             res.message = data.message;

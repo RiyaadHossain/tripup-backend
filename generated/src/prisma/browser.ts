@@ -142,3 +142,48 @@ export type UserActivity = Prisma.UserActivityModel
  * 
  */
 export type Design = Prisma.DesignModel
+/**
+ * Model CompetitionCategory
+ * 
+ */
+export type CompetitionCategory = Prisma.CompetitionCategoryModel
+/**
+ * Model CompetitionTeam
+ * 
+ */
+export type CompetitionTeam = Prisma.CompetitionTeamModel
+/**
+ * Model CompetitionScoringRules
+ * 
+ */
+export type CompetitionScoringRules = Prisma.CompetitionScoringRulesModel
+/**
+ * Model CompetitionChallenge
+ * 
+ */
+export type CompetitionChallenge = Prisma.CompetitionChallengeModel
+/**
+ * Model CompetitionPerformance
+ * 
+ */
+export type CompetitionPerformance = Prisma.CompetitionPerformanceModel
+/**
+ * Model CompetitionBadge
+ * 
+ */
+export type CompetitionBadge = Prisma.CompetitionBadgeModel
+/**
+ * Model CompetitionAchievement
+ * 
+ */
+export type CompetitionAchievement = Prisma.CompetitionAchievementModel
+/**
+ * Model CompetitionMilestone
+ * 
+ */
+export type CompetitionMilestone = Prisma.CompetitionMilestoneModel
+/**
+ * Model CompetitionMonthlyWinners
+ * 
+ */
+export type CompetitionMonthlyWinners = Prisma.CompetitionMonthlyWinnersModel

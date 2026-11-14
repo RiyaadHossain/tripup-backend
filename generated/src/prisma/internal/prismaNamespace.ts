@@ -407,7 +407,16 @@ export const ModelName = {
   Task: 'Task',
   TaskAssignee: 'TaskAssignee',
   UserActivity: 'UserActivity',
-  Design: 'Design'
+  Design: 'Design',
+  CompetitionCategory: 'CompetitionCategory',
+  CompetitionTeam: 'CompetitionTeam',
+  CompetitionScoringRules: 'CompetitionScoringRules',
+  CompetitionChallenge: 'CompetitionChallenge',
+  CompetitionPerformance: 'CompetitionPerformance',
+  CompetitionBadge: 'CompetitionBadge',
+  CompetitionAchievement: 'CompetitionAchievement',
+  CompetitionMilestone: 'CompetitionMilestone',
+  CompetitionMonthlyWinners: 'CompetitionMonthlyWinners'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -423,7 +432,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "role" | "permission" | "rolePermission" | "teamMember" | "testimonial" | "travelInsight" | "travelInsightCategory" | "travelService" | "serviceCategory" | "caseStudy" | "caseStudyCategory" | "playbook" | "playbookType" | "playbookCategory" | "lead" | "leadActivity" | "expense" | "department" | "milestone" | "task" | "taskAssignee" | "userActivity" | "design"
+    modelProps: "user" | "role" | "permission" | "rolePermission" | "teamMember" | "testimonial" | "travelInsight" | "travelInsightCategory" | "travelService" | "serviceCategory" | "caseStudy" | "caseStudyCategory" | "playbook" | "playbookType" | "playbookCategory" | "lead" | "leadActivity" | "expense" | "department" | "milestone" | "task" | "taskAssignee" | "userActivity" | "design" | "competitionCategory" | "competitionTeam" | "competitionScoringRules" | "competitionChallenge" | "competitionPerformance" | "competitionBadge" | "competitionAchievement" | "competitionMilestone" | "competitionMonthlyWinners"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -2203,6 +2212,672 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    CompetitionCategory: {
+      payload: Prisma.$CompetitionCategoryPayload<ExtArgs>
+      fields: Prisma.CompetitionCategoryFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.CompetitionCategoryFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionCategoryPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.CompetitionCategoryFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionCategoryPayload>
+        }
+        findFirst: {
+          args: Prisma.CompetitionCategoryFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionCategoryPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.CompetitionCategoryFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionCategoryPayload>
+        }
+        findMany: {
+          args: Prisma.CompetitionCategoryFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionCategoryPayload>[]
+        }
+        create: {
+          args: Prisma.CompetitionCategoryCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionCategoryPayload>
+        }
+        createMany: {
+          args: Prisma.CompetitionCategoryCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.CompetitionCategoryCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionCategoryPayload>[]
+        }
+        delete: {
+          args: Prisma.CompetitionCategoryDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionCategoryPayload>
+        }
+        update: {
+          args: Prisma.CompetitionCategoryUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionCategoryPayload>
+        }
+        deleteMany: {
+          args: Prisma.CompetitionCategoryDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.CompetitionCategoryUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.CompetitionCategoryUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionCategoryPayload>[]
+        }
+        upsert: {
+          args: Prisma.CompetitionCategoryUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionCategoryPayload>
+        }
+        aggregate: {
+          args: Prisma.CompetitionCategoryAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCompetitionCategory>
+        }
+        groupBy: {
+          args: Prisma.CompetitionCategoryGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CompetitionCategoryGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.CompetitionCategoryCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CompetitionCategoryCountAggregateOutputType> | number
+        }
+      }
+    }
+    CompetitionTeam: {
+      payload: Prisma.$CompetitionTeamPayload<ExtArgs>
+      fields: Prisma.CompetitionTeamFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.CompetitionTeamFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionTeamPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.CompetitionTeamFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionTeamPayload>
+        }
+        findFirst: {
+          args: Prisma.CompetitionTeamFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionTeamPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.CompetitionTeamFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionTeamPayload>
+        }
+        findMany: {
+          args: Prisma.CompetitionTeamFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionTeamPayload>[]
+        }
+        create: {
+          args: Prisma.CompetitionTeamCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionTeamPayload>
+        }
+        createMany: {
+          args: Prisma.CompetitionTeamCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.CompetitionTeamCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionTeamPayload>[]
+        }
+        delete: {
+          args: Prisma.CompetitionTeamDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionTeamPayload>
+        }
+        update: {
+          args: Prisma.CompetitionTeamUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionTeamPayload>
+        }
+        deleteMany: {
+          args: Prisma.CompetitionTeamDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.CompetitionTeamUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.CompetitionTeamUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionTeamPayload>[]
+        }
+        upsert: {
+          args: Prisma.CompetitionTeamUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionTeamPayload>
+        }
+        aggregate: {
+          args: Prisma.CompetitionTeamAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCompetitionTeam>
+        }
+        groupBy: {
+          args: Prisma.CompetitionTeamGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CompetitionTeamGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.CompetitionTeamCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CompetitionTeamCountAggregateOutputType> | number
+        }
+      }
+    }
+    CompetitionScoringRules: {
+      payload: Prisma.$CompetitionScoringRulesPayload<ExtArgs>
+      fields: Prisma.CompetitionScoringRulesFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.CompetitionScoringRulesFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionScoringRulesPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.CompetitionScoringRulesFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionScoringRulesPayload>
+        }
+        findFirst: {
+          args: Prisma.CompetitionScoringRulesFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionScoringRulesPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.CompetitionScoringRulesFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionScoringRulesPayload>
+        }
+        findMany: {
+          args: Prisma.CompetitionScoringRulesFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionScoringRulesPayload>[]
+        }
+        create: {
+          args: Prisma.CompetitionScoringRulesCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionScoringRulesPayload>
+        }
+        createMany: {
+          args: Prisma.CompetitionScoringRulesCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.CompetitionScoringRulesCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionScoringRulesPayload>[]
+        }
+        delete: {
+          args: Prisma.CompetitionScoringRulesDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionScoringRulesPayload>
+        }
+        update: {
+          args: Prisma.CompetitionScoringRulesUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionScoringRulesPayload>
+        }
+        deleteMany: {
+          args: Prisma.CompetitionScoringRulesDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.CompetitionScoringRulesUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.CompetitionScoringRulesUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionScoringRulesPayload>[]
+        }
+        upsert: {
+          args: Prisma.CompetitionScoringRulesUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionScoringRulesPayload>
+        }
+        aggregate: {
+          args: Prisma.CompetitionScoringRulesAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCompetitionScoringRules>
+        }
+        groupBy: {
+          args: Prisma.CompetitionScoringRulesGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CompetitionScoringRulesGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.CompetitionScoringRulesCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CompetitionScoringRulesCountAggregateOutputType> | number
+        }
+      }
+    }
+    CompetitionChallenge: {
+      payload: Prisma.$CompetitionChallengePayload<ExtArgs>
+      fields: Prisma.CompetitionChallengeFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.CompetitionChallengeFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionChallengePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.CompetitionChallengeFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionChallengePayload>
+        }
+        findFirst: {
+          args: Prisma.CompetitionChallengeFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionChallengePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.CompetitionChallengeFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionChallengePayload>
+        }
+        findMany: {
+          args: Prisma.CompetitionChallengeFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionChallengePayload>[]
+        }
+        create: {
+          args: Prisma.CompetitionChallengeCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionChallengePayload>
+        }
+        createMany: {
+          args: Prisma.CompetitionChallengeCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.CompetitionChallengeCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionChallengePayload>[]
+        }
+        delete: {
+          args: Prisma.CompetitionChallengeDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionChallengePayload>
+        }
+        update: {
+          args: Prisma.CompetitionChallengeUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionChallengePayload>
+        }
+        deleteMany: {
+          args: Prisma.CompetitionChallengeDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.CompetitionChallengeUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.CompetitionChallengeUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionChallengePayload>[]
+        }
+        upsert: {
+          args: Prisma.CompetitionChallengeUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionChallengePayload>
+        }
+        aggregate: {
+          args: Prisma.CompetitionChallengeAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCompetitionChallenge>
+        }
+        groupBy: {
+          args: Prisma.CompetitionChallengeGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CompetitionChallengeGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.CompetitionChallengeCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CompetitionChallengeCountAggregateOutputType> | number
+        }
+      }
+    }
+    CompetitionPerformance: {
+      payload: Prisma.$CompetitionPerformancePayload<ExtArgs>
+      fields: Prisma.CompetitionPerformanceFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.CompetitionPerformanceFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionPerformancePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.CompetitionPerformanceFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionPerformancePayload>
+        }
+        findFirst: {
+          args: Prisma.CompetitionPerformanceFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionPerformancePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.CompetitionPerformanceFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionPerformancePayload>
+        }
+        findMany: {
+          args: Prisma.CompetitionPerformanceFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionPerformancePayload>[]
+        }
+        create: {
+          args: Prisma.CompetitionPerformanceCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionPerformancePayload>
+        }
+        createMany: {
+          args: Prisma.CompetitionPerformanceCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.CompetitionPerformanceCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionPerformancePayload>[]
+        }
+        delete: {
+          args: Prisma.CompetitionPerformanceDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionPerformancePayload>
+        }
+        update: {
+          args: Prisma.CompetitionPerformanceUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionPerformancePayload>
+        }
+        deleteMany: {
+          args: Prisma.CompetitionPerformanceDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.CompetitionPerformanceUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.CompetitionPerformanceUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionPerformancePayload>[]
+        }
+        upsert: {
+          args: Prisma.CompetitionPerformanceUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionPerformancePayload>
+        }
+        aggregate: {
+          args: Prisma.CompetitionPerformanceAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCompetitionPerformance>
+        }
+        groupBy: {
+          args: Prisma.CompetitionPerformanceGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CompetitionPerformanceGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.CompetitionPerformanceCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CompetitionPerformanceCountAggregateOutputType> | number
+        }
+      }
+    }
+    CompetitionBadge: {
+      payload: Prisma.$CompetitionBadgePayload<ExtArgs>
+      fields: Prisma.CompetitionBadgeFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.CompetitionBadgeFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionBadgePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.CompetitionBadgeFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionBadgePayload>
+        }
+        findFirst: {
+          args: Prisma.CompetitionBadgeFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionBadgePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.CompetitionBadgeFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionBadgePayload>
+        }
+        findMany: {
+          args: Prisma.CompetitionBadgeFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionBadgePayload>[]
+        }
+        create: {
+          args: Prisma.CompetitionBadgeCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionBadgePayload>
+        }
+        createMany: {
+          args: Prisma.CompetitionBadgeCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.CompetitionBadgeCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionBadgePayload>[]
+        }
+        delete: {
+          args: Prisma.CompetitionBadgeDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionBadgePayload>
+        }
+        update: {
+          args: Prisma.CompetitionBadgeUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionBadgePayload>
+        }
+        deleteMany: {
+          args: Prisma.CompetitionBadgeDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.CompetitionBadgeUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.CompetitionBadgeUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionBadgePayload>[]
+        }
+        upsert: {
+          args: Prisma.CompetitionBadgeUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionBadgePayload>
+        }
+        aggregate: {
+          args: Prisma.CompetitionBadgeAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCompetitionBadge>
+        }
+        groupBy: {
+          args: Prisma.CompetitionBadgeGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CompetitionBadgeGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.CompetitionBadgeCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CompetitionBadgeCountAggregateOutputType> | number
+        }
+      }
+    }
+    CompetitionAchievement: {
+      payload: Prisma.$CompetitionAchievementPayload<ExtArgs>
+      fields: Prisma.CompetitionAchievementFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.CompetitionAchievementFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionAchievementPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.CompetitionAchievementFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionAchievementPayload>
+        }
+        findFirst: {
+          args: Prisma.CompetitionAchievementFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionAchievementPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.CompetitionAchievementFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionAchievementPayload>
+        }
+        findMany: {
+          args: Prisma.CompetitionAchievementFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionAchievementPayload>[]
+        }
+        create: {
+          args: Prisma.CompetitionAchievementCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionAchievementPayload>
+        }
+        createMany: {
+          args: Prisma.CompetitionAchievementCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.CompetitionAchievementCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionAchievementPayload>[]
+        }
+        delete: {
+          args: Prisma.CompetitionAchievementDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionAchievementPayload>
+        }
+        update: {
+          args: Prisma.CompetitionAchievementUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionAchievementPayload>
+        }
+        deleteMany: {
+          args: Prisma.CompetitionAchievementDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.CompetitionAchievementUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.CompetitionAchievementUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionAchievementPayload>[]
+        }
+        upsert: {
+          args: Prisma.CompetitionAchievementUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionAchievementPayload>
+        }
+        aggregate: {
+          args: Prisma.CompetitionAchievementAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCompetitionAchievement>
+        }
+        groupBy: {
+          args: Prisma.CompetitionAchievementGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CompetitionAchievementGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.CompetitionAchievementCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CompetitionAchievementCountAggregateOutputType> | number
+        }
+      }
+    }
+    CompetitionMilestone: {
+      payload: Prisma.$CompetitionMilestonePayload<ExtArgs>
+      fields: Prisma.CompetitionMilestoneFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.CompetitionMilestoneFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionMilestonePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.CompetitionMilestoneFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionMilestonePayload>
+        }
+        findFirst: {
+          args: Prisma.CompetitionMilestoneFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionMilestonePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.CompetitionMilestoneFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionMilestonePayload>
+        }
+        findMany: {
+          args: Prisma.CompetitionMilestoneFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionMilestonePayload>[]
+        }
+        create: {
+          args: Prisma.CompetitionMilestoneCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionMilestonePayload>
+        }
+        createMany: {
+          args: Prisma.CompetitionMilestoneCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.CompetitionMilestoneCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionMilestonePayload>[]
+        }
+        delete: {
+          args: Prisma.CompetitionMilestoneDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionMilestonePayload>
+        }
+        update: {
+          args: Prisma.CompetitionMilestoneUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionMilestonePayload>
+        }
+        deleteMany: {
+          args: Prisma.CompetitionMilestoneDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.CompetitionMilestoneUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.CompetitionMilestoneUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionMilestonePayload>[]
+        }
+        upsert: {
+          args: Prisma.CompetitionMilestoneUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionMilestonePayload>
+        }
+        aggregate: {
+          args: Prisma.CompetitionMilestoneAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCompetitionMilestone>
+        }
+        groupBy: {
+          args: Prisma.CompetitionMilestoneGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CompetitionMilestoneGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.CompetitionMilestoneCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CompetitionMilestoneCountAggregateOutputType> | number
+        }
+      }
+    }
+    CompetitionMonthlyWinners: {
+      payload: Prisma.$CompetitionMonthlyWinnersPayload<ExtArgs>
+      fields: Prisma.CompetitionMonthlyWinnersFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.CompetitionMonthlyWinnersFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionMonthlyWinnersPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.CompetitionMonthlyWinnersFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionMonthlyWinnersPayload>
+        }
+        findFirst: {
+          args: Prisma.CompetitionMonthlyWinnersFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionMonthlyWinnersPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.CompetitionMonthlyWinnersFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionMonthlyWinnersPayload>
+        }
+        findMany: {
+          args: Prisma.CompetitionMonthlyWinnersFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionMonthlyWinnersPayload>[]
+        }
+        create: {
+          args: Prisma.CompetitionMonthlyWinnersCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionMonthlyWinnersPayload>
+        }
+        createMany: {
+          args: Prisma.CompetitionMonthlyWinnersCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.CompetitionMonthlyWinnersCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionMonthlyWinnersPayload>[]
+        }
+        delete: {
+          args: Prisma.CompetitionMonthlyWinnersDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionMonthlyWinnersPayload>
+        }
+        update: {
+          args: Prisma.CompetitionMonthlyWinnersUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionMonthlyWinnersPayload>
+        }
+        deleteMany: {
+          args: Prisma.CompetitionMonthlyWinnersDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.CompetitionMonthlyWinnersUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.CompetitionMonthlyWinnersUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionMonthlyWinnersPayload>[]
+        }
+        upsert: {
+          args: Prisma.CompetitionMonthlyWinnersUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompetitionMonthlyWinnersPayload>
+        }
+        aggregate: {
+          args: Prisma.CompetitionMonthlyWinnersAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCompetitionMonthlyWinners>
+        }
+        groupBy: {
+          args: Prisma.CompetitionMonthlyWinnersGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CompetitionMonthlyWinnersGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.CompetitionMonthlyWinnersCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CompetitionMonthlyWinnersCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -2646,6 +3321,140 @@ export const DesignScalarFieldEnum = {
 export type DesignScalarFieldEnum = (typeof DesignScalarFieldEnum)[keyof typeof DesignScalarFieldEnum]
 
 
+export const CompetitionCategoryScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  createdAt: 'createdAt'
+} as const
+
+export type CompetitionCategoryScalarFieldEnum = (typeof CompetitionCategoryScalarFieldEnum)[keyof typeof CompetitionCategoryScalarFieldEnum]
+
+
+export const CompetitionTeamScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  category: 'category',
+  description: 'description',
+  leaderId: 'leaderId',
+  memberIds: 'memberIds',
+  icon: 'icon',
+  active: 'active',
+  annualGoal: 'annualGoal',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CompetitionTeamScalarFieldEnum = (typeof CompetitionTeamScalarFieldEnum)[keyof typeof CompetitionTeamScalarFieldEnum]
+
+
+export const CompetitionScoringRulesScalarFieldEnum = {
+  id: 'id',
+  lead: 'lead',
+  conversion: 'conversion',
+  consistency: 'consistency',
+  contribution: 'contribution',
+  target: 'target',
+  win: 'win',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CompetitionScoringRulesScalarFieldEnum = (typeof CompetitionScoringRulesScalarFieldEnum)[keyof typeof CompetitionScoringRulesScalarFieldEnum]
+
+
+export const CompetitionChallengeScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description',
+  type: 'type',
+  cadence: 'cadence',
+  start: 'start',
+  end: 'end',
+  teamIds: 'teamIds',
+  targets: 'targets',
+  rules: 'rules',
+  archived: 'archived',
+  active: 'active',
+  reward: 'reward',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CompetitionChallengeScalarFieldEnum = (typeof CompetitionChallengeScalarFieldEnum)[keyof typeof CompetitionChallengeScalarFieldEnum]
+
+
+export const CompetitionPerformanceScalarFieldEnum = {
+  id: 'id',
+  employeeId: 'employeeId',
+  month: 'month',
+  leads: 'leads',
+  converted: 'converted',
+  consistency: 'consistency',
+  contribution: 'contribution',
+  streak: 'streak',
+  revenue: 'revenue',
+  tasks: 'tasks',
+  isManual: 'isManual',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CompetitionPerformanceScalarFieldEnum = (typeof CompetitionPerformanceScalarFieldEnum)[keyof typeof CompetitionPerformanceScalarFieldEnum]
+
+
+export const CompetitionBadgeScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  icon: 'icon',
+  metric: 'metric',
+  target: 'target',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CompetitionBadgeScalarFieldEnum = (typeof CompetitionBadgeScalarFieldEnum)[keyof typeof CompetitionBadgeScalarFieldEnum]
+
+
+export const CompetitionAchievementScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  recipientId: 'recipientId',
+  date: 'date',
+  description: 'description',
+  badgeId: 'badgeId',
+  createdAt: 'createdAt'
+} as const
+
+export type CompetitionAchievementScalarFieldEnum = (typeof CompetitionAchievementScalarFieldEnum)[keyof typeof CompetitionAchievementScalarFieldEnum]
+
+
+export const CompetitionMilestoneScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  metric: 'metric',
+  target: 'target',
+  start: 'start',
+  end: 'end',
+  active: 'active',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CompetitionMilestoneScalarFieldEnum = (typeof CompetitionMilestoneScalarFieldEnum)[keyof typeof CompetitionMilestoneScalarFieldEnum]
+
+
+export const CompetitionMonthlyWinnersScalarFieldEnum = {
+  id: 'id',
+  month: 'month',
+  team: 'team',
+  individual: 'individual',
+  finalizedAt: 'finalizedAt'
+} as const
+
+export type CompetitionMonthlyWinnersScalarFieldEnum = (typeof CompetitionMonthlyWinnersScalarFieldEnum)[keyof typeof CompetitionMonthlyWinnersScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -3064,6 +3873,15 @@ export type GlobalOmitConfig = {
   taskAssignee?: Prisma.TaskAssigneeOmit
   userActivity?: Prisma.UserActivityOmit
   design?: Prisma.DesignOmit
+  competitionCategory?: Prisma.CompetitionCategoryOmit
+  competitionTeam?: Prisma.CompetitionTeamOmit
+  competitionScoringRules?: Prisma.CompetitionScoringRulesOmit
+  competitionChallenge?: Prisma.CompetitionChallengeOmit
+  competitionPerformance?: Prisma.CompetitionPerformanceOmit
+  competitionBadge?: Prisma.CompetitionBadgeOmit
+  competitionAchievement?: Prisma.CompetitionAchievementOmit
+  competitionMilestone?: Prisma.CompetitionMilestoneOmit
+  competitionMonthlyWinners?: Prisma.CompetitionMonthlyWinnersOmit
 }
 
 /* Types for Logging */

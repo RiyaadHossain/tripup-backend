@@ -74,7 +74,16 @@ export const ModelName = {
   Task: 'Task',
   TaskAssignee: 'TaskAssignee',
   UserActivity: 'UserActivity',
-  Design: 'Design'
+  Design: 'Design',
+  CompetitionCategory: 'CompetitionCategory',
+  CompetitionTeam: 'CompetitionTeam',
+  CompetitionScoringRules: 'CompetitionScoringRules',
+  CompetitionChallenge: 'CompetitionChallenge',
+  CompetitionPerformance: 'CompetitionPerformance',
+  CompetitionBadge: 'CompetitionBadge',
+  CompetitionAchievement: 'CompetitionAchievement',
+  CompetitionMilestone: 'CompetitionMilestone',
+  CompetitionMonthlyWinners: 'CompetitionMonthlyWinners'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -495,6 +504,140 @@ export const DesignScalarFieldEnum = {
 } as const
 
 export type DesignScalarFieldEnum = (typeof DesignScalarFieldEnum)[keyof typeof DesignScalarFieldEnum]
+
+
+export const CompetitionCategoryScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  createdAt: 'createdAt'
+} as const
+
+export type CompetitionCategoryScalarFieldEnum = (typeof CompetitionCategoryScalarFieldEnum)[keyof typeof CompetitionCategoryScalarFieldEnum]
+
+
+export const CompetitionTeamScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  category: 'category',
+  description: 'description',
+  leaderId: 'leaderId',
+  memberIds: 'memberIds',
+  icon: 'icon',
+  active: 'active',
+  annualGoal: 'annualGoal',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CompetitionTeamScalarFieldEnum = (typeof CompetitionTeamScalarFieldEnum)[keyof typeof CompetitionTeamScalarFieldEnum]
+
+
+export const CompetitionScoringRulesScalarFieldEnum = {
+  id: 'id',
+  lead: 'lead',
+  conversion: 'conversion',
+  consistency: 'consistency',
+  contribution: 'contribution',
+  target: 'target',
+  win: 'win',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CompetitionScoringRulesScalarFieldEnum = (typeof CompetitionScoringRulesScalarFieldEnum)[keyof typeof CompetitionScoringRulesScalarFieldEnum]
+
+
+export const CompetitionChallengeScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description',
+  type: 'type',
+  cadence: 'cadence',
+  start: 'start',
+  end: 'end',
+  teamIds: 'teamIds',
+  targets: 'targets',
+  rules: 'rules',
+  archived: 'archived',
+  active: 'active',
+  reward: 'reward',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CompetitionChallengeScalarFieldEnum = (typeof CompetitionChallengeScalarFieldEnum)[keyof typeof CompetitionChallengeScalarFieldEnum]
+
+
+export const CompetitionPerformanceScalarFieldEnum = {
+  id: 'id',
+  employeeId: 'employeeId',
+  month: 'month',
+  leads: 'leads',
+  converted: 'converted',
+  consistency: 'consistency',
+  contribution: 'contribution',
+  streak: 'streak',
+  revenue: 'revenue',
+  tasks: 'tasks',
+  isManual: 'isManual',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CompetitionPerformanceScalarFieldEnum = (typeof CompetitionPerformanceScalarFieldEnum)[keyof typeof CompetitionPerformanceScalarFieldEnum]
+
+
+export const CompetitionBadgeScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  icon: 'icon',
+  metric: 'metric',
+  target: 'target',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CompetitionBadgeScalarFieldEnum = (typeof CompetitionBadgeScalarFieldEnum)[keyof typeof CompetitionBadgeScalarFieldEnum]
+
+
+export const CompetitionAchievementScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  recipientId: 'recipientId',
+  date: 'date',
+  description: 'description',
+  badgeId: 'badgeId',
+  createdAt: 'createdAt'
+} as const
+
+export type CompetitionAchievementScalarFieldEnum = (typeof CompetitionAchievementScalarFieldEnum)[keyof typeof CompetitionAchievementScalarFieldEnum]
+
+
+export const CompetitionMilestoneScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  metric: 'metric',
+  target: 'target',
+  start: 'start',
+  end: 'end',
+  active: 'active',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CompetitionMilestoneScalarFieldEnum = (typeof CompetitionMilestoneScalarFieldEnum)[keyof typeof CompetitionMilestoneScalarFieldEnum]
+
+
+export const CompetitionMonthlyWinnersScalarFieldEnum = {
+  id: 'id',
+  month: 'month',
+  team: 'team',
+  individual: 'individual',
+  finalizedAt: 'finalizedAt'
+} as const
+
+export type CompetitionMonthlyWinnersScalarFieldEnum = (typeof CompetitionMonthlyWinnersScalarFieldEnum)[keyof typeof CompetitionMonthlyWinnersScalarFieldEnum]
 
 
 export const SortOrder = {

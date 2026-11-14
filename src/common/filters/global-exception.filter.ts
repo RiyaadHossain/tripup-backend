@@ -14,12 +14,16 @@ export class GlobalExceptionFilter implements ExceptionFilter {
 
     let status = HttpStatus.INTERNAL_SERVER_ERROR;
     let message: string | string[] = 'Internal Server Error';
+    let errors: any = undefined;
 
     if (exception instanceof HttpException) {
       status = exception.getStatus();
       const res = exception.getResponse();
       if (typeof res === 'object' && res !== null) {
         const resObj = res as Record<string, any>;
+        if (resObj.errors !== undefined) {
+          errors = resObj.errors;
+        }
         if (resObj.message !== undefined) {
           message = resObj.message;
         } else if (resObj.error !== undefined) {
@@ -39,10 +43,23 @@ export class GlobalExceptionFilter implements ExceptionFilter {
       }
     }
 
-    response.status(status).json({
+    if (!errors && status === 400 && Array.isArray(message)) {
+      errors = message.map((m) => {
+        const field = typeof m === 'string' ? m.split(' ')[0] : 'field';
+        return { field, message: m };
+      });
+      message = 'Validation failed';
+    }
+
+    const body: Record<string, any> = {
       success: false,
       message,
-    });
+    };
+    if (errors !== undefined) {
+      body.errors = errors;
+    }
+
+    response.status(status).json(body);
   }
 }
 

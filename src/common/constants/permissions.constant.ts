@@ -28,6 +28,7 @@ export const APP_MODULES = [
   'milestones',
   'departments',
   'designs',
+  'competition',
 ] as const;
 
 export type AppModule = (typeof APP_MODULES)[number];

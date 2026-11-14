@@ -702,3 +702,142 @@ model Design {
   @@index([isPublished, createdAt(sort: Desc)])
 }
 
+// ---------------------------------------------------------------------------
+// Competition Module Models
+// ---------------------------------------------------------------------------
+
+model CompetitionCategory {
+  id        String   @id @default(uuid())
+  name      String   @unique
+  createdAt DateTime @default(now())
+
+  @@map("competition_categories")
+}
+
+model CompetitionTeam {
+  id          String   @id @default(uuid())
+  name        String   @unique
+  category    String
+  description String?
+  leaderId    String
+  memberIds   String[]
+  icon        String
+  active      Boolean  @default(true)
+  annualGoal  Float?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([active])
+  @@index([category])
+  @@map("competition_teams")
+}
+
+model CompetitionScoringRules {
+  id           String   @id @default("global")
+  lead         Float    @default(10)
+  conversion   Float    @default(50)
+  consistency  Float    @default(20)
+  contribution Float    @default(20)
+  target       Float    @default(100)
+  win          Float    @default(200)
+  updatedAt    DateTime @updatedAt
+
+  @@map("competition_scoring_rules")
+}
+
+model CompetitionChallenge {
+  id          String   @id @default(uuid())
+  name        String
+  description String?
+  type        String
+  cadence     String
+  start       String
+  end         String
+  teamIds     String[]
+  targets     Json
+  rules       Json
+  archived    Boolean  @default(false)
+  active      Boolean  @default(true)
+  reward      String   @default("")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([archived])
+  @@index([active])
+  @@map("competition_challenges")
+}
+
+model CompetitionPerformance {
+  id           String   @id @default(uuid())
+  employeeId   String
+  month        String
+  leads        Int      @default(0)
+  converted    Int      @default(0)
+  consistency  Float    @default(0)
+  contribution Float    @default(0)
+  streak       Int      @default(0)
+  revenue      Float    @default(0)
+  tasks        Int      @default(0)
+  isManual     Boolean  @default(false)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@unique([employeeId, month])
+  @@index([month])
+  @@index([employeeId])
+  @@map("competition_performances")
+}
+
+model CompetitionBadge {
+  id          String   @id @default(uuid())
+  title       String
+  description String?
+  icon        String
+  metric      String
+  target      Float
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("competition_badges")
+}
+
+model CompetitionAchievement {
+  id          String   @id @default(uuid())
+  name        String
+  recipientId String
+  date        String
+  description String?
+  badgeId     String?
+  createdAt   DateTime @default(now())
+
+  @@index([recipientId])
+  @@index([date])
+  @@map("competition_achievements")
+}
+
+model CompetitionMilestone {
+  id          String   @id @default(uuid())
+  title       String
+  description String?
+  metric      String
+  target      Float
+  start       String
+  end         String
+  active      Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([active])
+  @@map("competition_milestones")
+}
+
+model CompetitionMonthlyWinners {
+  id          String   @id @default(uuid())
+  month       String   @unique
+  team        Json?
+  individual  Json?
+  finalizedAt DateTime @default(now())
+
+  @@map("competition_monthly_winners")
+}
+
