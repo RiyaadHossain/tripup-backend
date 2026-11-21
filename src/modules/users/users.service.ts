@@ -84,6 +84,41 @@ export class UsersService {
     });
   }
 
+  /**
+   * Lightweight user summary listing for all authenticated users.
+   * Useful for dropdowns, member lists, mentions, assignees, and profile cards.
+   */
+  async findSummary(currentUserId?: string) {
+    const users = await this.prisma.user.findMany({
+      orderBy: { name: 'asc' },
+      select: {
+        id: true,
+        name: true,
+        email: true,
+        profileImgUrl: true,
+        lastLoginAt: true,
+        createdAt: true,
+        role: {
+          select: { id: true, name: true },
+        },
+      },
+    });
+
+    return users.map((u) => ({
+      userId: u.id,
+      id: u.id,
+      name: u.name,
+      email: u.email,
+      avatarUrl: u.profileImgUrl ?? null,
+      profileImgUrl: u.profileImgUrl ?? null,
+      role: u.role ? { id: u.role.id, name: u.role.name } : null,
+      roleName: u.role?.name ?? 'Member',
+      lastLoginAt: u.lastLoginAt,
+      createdAt: u.createdAt,
+      isCurrentUser: currentUserId ? u.id === currentUserId : false,
+    }));
+  }
+
   /** Find a single user by ID, including their role and permissions. */
   async findById(id: string) {
     const user = await this.prisma.user.findUnique({

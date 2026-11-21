@@ -35,6 +35,21 @@ export class UsersController {
   }
 
   /**
+   * GET /users/summary or GET /users/listing
+   * Accessible by ANY authenticated user (no role restriction).
+   * Returns a lightweight summary of all users (name, avatar, email, role, etc.).
+   */
+  @Get('summary')
+  findSummary(@Request() req: { user?: JwtPayload }) {
+    return this.usersService.findSummary(req?.user?.sub);
+  }
+
+  @Get('listing')
+  findListing(@Request() req: { user?: JwtPayload }) {
+    return this.usersService.findSummary(req?.user?.sub);
+  }
+
+  /**
    * PATCH /users/:id/role
    * Update a user's role. Super Admin only.
    */
