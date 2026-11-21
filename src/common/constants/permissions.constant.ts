@@ -29,6 +29,7 @@ export const APP_MODULES = [
   'departments',
   'designs',
   'competition',
+  'notifications',
 ] as const;
 
 export type AppModule = (typeof APP_MODULES)[number];

@@ -209,3 +209,8 @@ export type CompetitionMilestone = Prisma.CompetitionMilestoneModel
  * 
  */
 export type CompetitionMonthlyWinners = Prisma.CompetitionMonthlyWinnersModel
+/**
+ * Model Notification
+ * 
+ */
+export type Notification = Prisma.NotificationModel

@@ -132,3 +132,20 @@ export const PaymentMethod = {
 } as const
 
 export type PaymentMethod = (typeof PaymentMethod)[keyof typeof PaymentMethod]
+
+
+export const NotificationType = {
+  TASK_ASSIGNED: 'TASK_ASSIGNED',
+  TASK_UPDATED: 'TASK_UPDATED',
+  TASK_STATUS_CHANGED: 'TASK_STATUS_CHANGED',
+  TASK_DELETED: 'TASK_DELETED',
+  LEAD_ASSIGNED: 'LEAD_ASSIGNED',
+  LEAD_CREATED: 'LEAD_CREATED',
+  LEAD_UPDATED: 'LEAD_UPDATED',
+  LEAD_STATUS_CHANGED: 'LEAD_STATUS_CHANGED',
+  LEAD_DELETED: 'LEAD_DELETED',
+  MONTHLY_REPORT: 'MONTHLY_REPORT',
+  GENERAL: 'GENERAL'
+} as const
+
+export type NotificationType = (typeof NotificationType)[keyof typeof NotificationType]

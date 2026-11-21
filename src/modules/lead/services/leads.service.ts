@@ -16,6 +16,7 @@ import {
   Prisma,
 } from 'generated/src/prisma/client';
 import { UserActivityService } from 'src/modules/user-activity/user-activity.service';
+import { NotificationsService } from 'src/modules/notifications/notifications.service';
 import {
   ACTION_BASED_STATUSES,
   RESULT_BASED_STATUSES,
@@ -29,6 +30,7 @@ export class LeadsService {
   constructor(
     private readonly repository: LeadsRepository,
     private readonly activityService: UserActivityService,
+    private readonly notificationsService: NotificationsService,
   ) {}
 
   /**
@@ -130,6 +132,15 @@ export class LeadsService {
       id: lead.id,
       name: lead.businessName,
     });
+
+    if (assignedToId) {
+      this.notificationsService.notifyLeadCreated({
+        leadId: lead.id,
+        businessName: lead.businessName,
+        creatorId: userId,
+        assigneeId: assignedToId,
+      }).catch((err) => console.error('[LeadsService] Notification error:', err));
+    }
 
     return this.enrichLead(lead);
   }
@@ -475,6 +486,26 @@ export class LeadsService {
       name: updatedLead.businessName,
     });
 
+    if (assignedToId !== undefined && assignedToId && assignedToId !== existing.assignedToId) {
+      this.notificationsService.notifyLeadAssigned({
+        leadId: updatedLead.id,
+        businessName: updatedLead.businessName,
+        assignerId: userId,
+        assigneeId: assignedToId,
+      }).catch((err) => console.error('[LeadsService] Notification error:', err));
+    }
+
+    this.notificationsService.notifyLeadUpdated({
+      leadId: updatedLead.id,
+      businessName: updatedLead.businessName,
+      updaterId: userId,
+      assigneeId: updatedLead.assignedToId,
+      creatorId: existing.addedById,
+      statusChanged: isStatusChanged,
+      previousStatus: existing.status,
+      newStatus: status,
+    }).catch((err) => console.error('[LeadsService] Notification error:', err));
+
     return this.enrichLead(updatedLead);
   }
 
@@ -516,6 +547,15 @@ export class LeadsService {
       id: updated.id,
       name: updated.businessName,
     });
+
+    if (assignedToId) {
+      this.notificationsService.notifyLeadAssigned({
+        leadId: updated.id,
+        businessName: updated.businessName,
+        assignerId: userId,
+        assigneeId: assignedToId,
+      }).catch((err) => console.error('[LeadsService] Notification error:', err));
+    }
 
     return this.enrichLead(updated);
   }
@@ -601,6 +641,14 @@ export class LeadsService {
       id: existing.id,
       name: existing.businessName,
     });
+
+    this.notificationsService.notifyLeadDeleted({
+      leadId: existing.id,
+      businessName: existing.businessName,
+      deleterId: userId,
+      assigneeId: existing.assignedToId,
+      creatorId: existing.addedById,
+    }).catch((err) => console.error('[LeadsService] Notification error:', err));
 
     return this.repository.delete(id);
   }

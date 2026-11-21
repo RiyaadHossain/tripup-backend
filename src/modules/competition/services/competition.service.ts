@@ -38,6 +38,7 @@ import { PatchBadgeDto } from '../dto/patch-badge.dto';
 import { CreateAchievementDto } from '../dto/create-achievement.dto';
 import { CreateMilestoneDto } from '../dto/create-milestone.dto';
 import { PatchMilestoneDto } from '../dto/patch-milestone.dto';
+import { NotificationsService } from 'src/modules/notifications/notifications.service';
 
 const DEFAULT_SCORING_RULES: ScoringRules = {
   lead: 10,
@@ -50,7 +51,10 @@ const DEFAULT_SCORING_RULES: ScoringRules = {
 
 @Injectable()
 export class CompetitionService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly notificationsService: NotificationsService,
+  ) {}
 
   // ---------------------------------------------------------------------------
   // Helper: Get Current Month String (YYYY-MM)
@@ -1706,6 +1710,11 @@ export class CompetitionService {
         individual: individualSnapshot as any,
       },
     });
+
+    this.notificationsService.notifyMonthlyReport({
+      month,
+      reportTitle: `Monthly Competition Winners Finalized (${month})`,
+    }).catch((err) => console.error('[CompetitionService] Notification error:', err));
 
     return {
       month: created.month,

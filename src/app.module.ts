@@ -28,6 +28,7 @@ import { TaskManagementModule } from './modules/task-management/task-management.
 import { DashboardModule } from './modules/dashboard/dashboard.module';
 import { DesignsModule } from './modules/designs/designs.module';
 import { CompetitionModule } from './modules/competition/competition.module';
+import { NotificationsModule } from './modules/notifications/notifications.module';
 
 @Module({
   imports: [
@@ -56,6 +57,7 @@ import { CompetitionModule } from './modules/competition/competition.module';
     DashboardModule,
     DesignsModule,
     CompetitionModule,
+    NotificationsModule,
   ],
   controllers: [],
   providers: [],

@@ -76,6 +76,8 @@ model User {
   leadActivities               LeadActivity[]          @relation("LeadActivityUser")
   createdExpenses              Expense[]               @relation("CreatedExpense")
   activities                   UserActivity[]
+  notifications                Notification[]          @relation("UserNotifications")
+  triggeredNotifications       Notification[]          @relation("NotificationTriggeredBy")
 
   // Task Management
   addedDepartments Department[] @relation("AddedDepartment")
@@ -839,5 +841,51 @@ model CompetitionMonthlyWinners {
   finalizedAt DateTime @default(now())
 
   @@map("competition_monthly_winners")
+}
+
+// ---------------------------------------------------------------------------
+// Notification Module Models
+// ---------------------------------------------------------------------------
+
+enum NotificationType {
+  TASK_ASSIGNED
+  TASK_UPDATED
+  TASK_STATUS_CHANGED
+  TASK_DELETED
+  LEAD_ASSIGNED
+  LEAD_CREATED
+  LEAD_UPDATED
+  LEAD_STATUS_CHANGED
+  LEAD_DELETED
+  MONTHLY_REPORT
+  GENERAL
+}
+
+model Notification {
+  id          String           @id @default(uuid())
+  title       String
+  message     String
+  type        NotificationType @default(GENERAL)
+  module      String
+  resourceId  String?
+  metadata    Json?
+
+  isRead      Boolean          @default(false)
+  readAt      DateTime?
+
+  userId      String
+  user        User             @relation("UserNotifications", fields: [userId], references: [id], onDelete: Cascade)
+
+  triggeredById String?
+  triggeredBy   User?          @relation("NotificationTriggeredBy", fields: [triggeredById], references: [id], onDelete: SetNull)
+
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+
+  @@index([userId])
+  @@index([userId, isRead])
+  @@index([module])
+  @@index([createdAt])
+  @@map("notifications")
 }
 

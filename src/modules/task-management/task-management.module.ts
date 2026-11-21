@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { UserActivityModule } from 'src/modules/user-activity/user-activity.module';
+import { NotificationsModule } from 'src/modules/notifications/notifications.module';
 
 // Controllers
 import { AdminTasksController } from './controllers/admin-tasks.controller';
@@ -17,7 +18,7 @@ import { MilestoneRepository } from './repositories/milestone.repository';
 import { DepartmentRepository } from './repositories/department.repository';
 
 @Module({
-  imports: [UserActivityModule],
+  imports: [UserActivityModule, NotificationsModule],
   controllers: [
     AdminTasksController,
     AdminMilestonesController,

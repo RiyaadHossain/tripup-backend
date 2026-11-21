@@ -1,6 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { Prisma } from 'generated/src/prisma/client';
 import { UserActivityService } from 'src/modules/user-activity/user-activity.service';
+import { NotificationsService } from 'src/modules/notifications/notifications.service';
 import { TaskRepository } from '../repositories/task.repository';
 import { CreateTaskDto } from '../dto/create-task.dto';
 import { UpdateTaskDto } from '../dto/update-task.dto';
@@ -12,6 +13,7 @@ export class TasksService {
   constructor(
     private readonly repository: TaskRepository,
     private readonly activityService: UserActivityService,
+    private readonly notificationsService: NotificationsService,
   ) {}
 
   // ---------------------------------------------------------------------------
@@ -42,6 +44,15 @@ export class TasksService {
       id: task.id,
       name: task.title,
     });
+
+    if (assigneeIds?.length) {
+      this.notificationsService.notifyTaskAssigned({
+        taskId: task.id,
+        taskTitle: task.title,
+        assignerId: userId,
+        assigneeIds,
+      }).catch((err) => console.error('[TasksService] Notification error:', err));
+    }
 
     return task;
   }
@@ -127,12 +138,34 @@ export class TasksService {
         name: updated.title,
         assigneeIds,
       });
+
+      // Notify new assignees
+      const existingAssigneeIds = new Set(existing.assignees.map((a) => a.user.id));
+      const newlyAssignedIds = assigneeIds.filter((uid) => !existingAssigneeIds.has(uid));
+      if (newlyAssignedIds.length > 0) {
+        this.notificationsService.notifyTaskAssigned({
+          taskId: updated.id,
+          taskTitle: updated.title,
+          assignerId: userId,
+          assigneeIds: newlyAssignedIds,
+        }).catch((err) => console.error('[TasksService] Notification error:', err));
+      }
     } else {
       this.activityService.log('UPDATE', 'tasks', userId, {
         id: updated.id,
         name: updated.title,
       });
     }
+
+    // Notify all active assignees & creator of the update
+    const currentAssigneeIds = updated.assignees.map((a) => a.user.id);
+    this.notificationsService.notifyTaskUpdated({
+      taskId: updated.id,
+      taskTitle: updated.title,
+      updaterId: userId,
+      assigneeIds: currentAssigneeIds,
+      creatorId: existing.addedBy?.id,
+    }).catch((err) => console.error('[TasksService] Notification error:', err));
 
     return updated;
   }
@@ -155,6 +188,18 @@ export class TasksService {
       statusTo: dto.status,
     });
 
+    const currentAssigneeIds = existing.assignees.map((a) => a.user.id);
+    this.notificationsService.notifyTaskUpdated({
+      taskId: updated.id,
+      taskTitle: updated.title,
+      updaterId: userId,
+      assigneeIds: currentAssigneeIds,
+      creatorId: existing.addedBy?.id,
+      eventType: 'STATUS_CHANGE',
+      statusFrom: existing.status,
+      statusTo: dto.status,
+    }).catch((err) => console.error('[TasksService] Notification error:', err));
+
     return updated;
   }
 
@@ -170,6 +215,15 @@ export class TasksService {
       id: existing.id,
       name: existing.title,
     });
+
+    const currentAssigneeIds = existing.assignees.map((a) => a.user.id);
+    this.notificationsService.notifyTaskDeleted({
+      taskId: existing.id,
+      taskTitle: existing.title,
+      deleterId: userId,
+      assigneeIds: currentAssigneeIds,
+      creatorId: existing.addedBy?.id,
+    }).catch((err) => console.error('[TasksService] Notification error:', err));
 
     return this.repository.delete(id);
   }

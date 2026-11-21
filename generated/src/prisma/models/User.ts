@@ -265,6 +265,8 @@ export type UserWhereInput = {
   leadActivities?: Prisma.LeadActivityListRelationFilter
   createdExpenses?: Prisma.ExpenseListRelationFilter
   activities?: Prisma.UserActivityListRelationFilter
+  notifications?: Prisma.NotificationListRelationFilter
+  triggeredNotifications?: Prisma.NotificationListRelationFilter
   addedDepartments?: Prisma.DepartmentListRelationFilter
   addedMilestones?: Prisma.MilestoneListRelationFilter
   addedTasks?: Prisma.TaskListRelationFilter
@@ -305,6 +307,8 @@ export type UserOrderByWithRelationInput = {
   leadActivities?: Prisma.LeadActivityOrderByRelationAggregateInput
   createdExpenses?: Prisma.ExpenseOrderByRelationAggregateInput
   activities?: Prisma.UserActivityOrderByRelationAggregateInput
+  notifications?: Prisma.NotificationOrderByRelationAggregateInput
+  triggeredNotifications?: Prisma.NotificationOrderByRelationAggregateInput
   addedDepartments?: Prisma.DepartmentOrderByRelationAggregateInput
   addedMilestones?: Prisma.MilestoneOrderByRelationAggregateInput
   addedTasks?: Prisma.TaskOrderByRelationAggregateInput
@@ -348,6 +352,8 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   leadActivities?: Prisma.LeadActivityListRelationFilter
   createdExpenses?: Prisma.ExpenseListRelationFilter
   activities?: Prisma.UserActivityListRelationFilter
+  notifications?: Prisma.NotificationListRelationFilter
+  triggeredNotifications?: Prisma.NotificationListRelationFilter
   addedDepartments?: Prisma.DepartmentListRelationFilter
   addedMilestones?: Prisma.MilestoneListRelationFilter
   addedTasks?: Prisma.TaskListRelationFilter
@@ -424,6 +430,8 @@ export type UserCreateInput = {
   leadActivities?: Prisma.LeadActivityCreateNestedManyWithoutUserInput
   createdExpenses?: Prisma.ExpenseCreateNestedManyWithoutCreatedByInput
   activities?: Prisma.UserActivityCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  triggeredNotifications?: Prisma.NotificationCreateNestedManyWithoutTriggeredByInput
   addedDepartments?: Prisma.DepartmentCreateNestedManyWithoutAddedByInput
   addedMilestones?: Prisma.MilestoneCreateNestedManyWithoutAddedByInput
   addedTasks?: Prisma.TaskCreateNestedManyWithoutAddedByInput
@@ -463,6 +471,8 @@ export type UserUncheckedCreateInput = {
   leadActivities?: Prisma.LeadActivityUncheckedCreateNestedManyWithoutUserInput
   createdExpenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutCreatedByInput
   activities?: Prisma.UserActivityUncheckedCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  triggeredNotifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutTriggeredByInput
   addedDepartments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutAddedByInput
   addedMilestones?: Prisma.MilestoneUncheckedCreateNestedManyWithoutAddedByInput
   addedTasks?: Prisma.TaskUncheckedCreateNestedManyWithoutAddedByInput
@@ -500,6 +510,8 @@ export type UserUpdateInput = {
   leadActivities?: Prisma.LeadActivityUpdateManyWithoutUserNestedInput
   createdExpenses?: Prisma.ExpenseUpdateManyWithoutCreatedByNestedInput
   activities?: Prisma.UserActivityUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  triggeredNotifications?: Prisma.NotificationUpdateManyWithoutTriggeredByNestedInput
   addedDepartments?: Prisma.DepartmentUpdateManyWithoutAddedByNestedInput
   addedMilestones?: Prisma.MilestoneUpdateManyWithoutAddedByNestedInput
   addedTasks?: Prisma.TaskUpdateManyWithoutAddedByNestedInput
@@ -539,6 +551,8 @@ export type UserUncheckedUpdateInput = {
   leadActivities?: Prisma.LeadActivityUncheckedUpdateManyWithoutUserNestedInput
   createdExpenses?: Prisma.ExpenseUncheckedUpdateManyWithoutCreatedByNestedInput
   activities?: Prisma.UserActivityUncheckedUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  triggeredNotifications?: Prisma.NotificationUncheckedUpdateManyWithoutTriggeredByNestedInput
   addedDepartments?: Prisma.DepartmentUncheckedUpdateManyWithoutAddedByNestedInput
   addedMilestones?: Prisma.MilestoneUncheckedUpdateManyWithoutAddedByNestedInput
   addedTasks?: Prisma.TaskUncheckedUpdateManyWithoutAddedByNestedInput
@@ -1113,6 +1127,36 @@ export type UserUpdateOneWithoutActivitiesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutActivitiesInput, Prisma.UserUpdateWithoutActivitiesInput>, Prisma.UserUncheckedUpdateWithoutActivitiesInput>
 }
 
+export type UserCreateNestedOneWithoutNotificationsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutNotificationsInput, Prisma.UserUncheckedCreateWithoutNotificationsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutNotificationsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserCreateNestedOneWithoutTriggeredNotificationsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutTriggeredNotificationsInput, Prisma.UserUncheckedCreateWithoutTriggeredNotificationsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutTriggeredNotificationsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutNotificationsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutNotificationsInput, Prisma.UserUncheckedCreateWithoutNotificationsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutNotificationsInput
+  upsert?: Prisma.UserUpsertWithoutNotificationsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutNotificationsInput, Prisma.UserUpdateWithoutNotificationsInput>, Prisma.UserUncheckedUpdateWithoutNotificationsInput>
+}
+
+export type UserUpdateOneWithoutTriggeredNotificationsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutTriggeredNotificationsInput, Prisma.UserUncheckedCreateWithoutTriggeredNotificationsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutTriggeredNotificationsInput
+  upsert?: Prisma.UserUpsertWithoutTriggeredNotificationsInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutTriggeredNotificationsInput, Prisma.UserUpdateWithoutTriggeredNotificationsInput>, Prisma.UserUncheckedUpdateWithoutTriggeredNotificationsInput>
+}
+
 export type UserCreateWithoutCreatedUsersInput = {
   id?: string
   name: string
@@ -1143,6 +1187,8 @@ export type UserCreateWithoutCreatedUsersInput = {
   leadActivities?: Prisma.LeadActivityCreateNestedManyWithoutUserInput
   createdExpenses?: Prisma.ExpenseCreateNestedManyWithoutCreatedByInput
   activities?: Prisma.UserActivityCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  triggeredNotifications?: Prisma.NotificationCreateNestedManyWithoutTriggeredByInput
   addedDepartments?: Prisma.DepartmentCreateNestedManyWithoutAddedByInput
   addedMilestones?: Prisma.MilestoneCreateNestedManyWithoutAddedByInput
   addedTasks?: Prisma.TaskCreateNestedManyWithoutAddedByInput
@@ -1181,6 +1227,8 @@ export type UserUncheckedCreateWithoutCreatedUsersInput = {
   leadActivities?: Prisma.LeadActivityUncheckedCreateNestedManyWithoutUserInput
   createdExpenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutCreatedByInput
   activities?: Prisma.UserActivityUncheckedCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  triggeredNotifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutTriggeredByInput
   addedDepartments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutAddedByInput
   addedMilestones?: Prisma.MilestoneUncheckedCreateNestedManyWithoutAddedByInput
   addedTasks?: Prisma.TaskUncheckedCreateNestedManyWithoutAddedByInput
@@ -1222,6 +1270,8 @@ export type UserCreateWithoutAddedByInput = {
   leadActivities?: Prisma.LeadActivityCreateNestedManyWithoutUserInput
   createdExpenses?: Prisma.ExpenseCreateNestedManyWithoutCreatedByInput
   activities?: Prisma.UserActivityCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  triggeredNotifications?: Prisma.NotificationCreateNestedManyWithoutTriggeredByInput
   addedDepartments?: Prisma.DepartmentCreateNestedManyWithoutAddedByInput
   addedMilestones?: Prisma.MilestoneCreateNestedManyWithoutAddedByInput
   addedTasks?: Prisma.TaskCreateNestedManyWithoutAddedByInput
@@ -1260,6 +1310,8 @@ export type UserUncheckedCreateWithoutAddedByInput = {
   leadActivities?: Prisma.LeadActivityUncheckedCreateNestedManyWithoutUserInput
   createdExpenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutCreatedByInput
   activities?: Prisma.UserActivityUncheckedCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  triggeredNotifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutTriggeredByInput
   addedDepartments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutAddedByInput
   addedMilestones?: Prisma.MilestoneUncheckedCreateNestedManyWithoutAddedByInput
   addedTasks?: Prisma.TaskUncheckedCreateNestedManyWithoutAddedByInput
@@ -1317,6 +1369,8 @@ export type UserUpdateWithoutCreatedUsersInput = {
   leadActivities?: Prisma.LeadActivityUpdateManyWithoutUserNestedInput
   createdExpenses?: Prisma.ExpenseUpdateManyWithoutCreatedByNestedInput
   activities?: Prisma.UserActivityUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  triggeredNotifications?: Prisma.NotificationUpdateManyWithoutTriggeredByNestedInput
   addedDepartments?: Prisma.DepartmentUpdateManyWithoutAddedByNestedInput
   addedMilestones?: Prisma.MilestoneUpdateManyWithoutAddedByNestedInput
   addedTasks?: Prisma.TaskUpdateManyWithoutAddedByNestedInput
@@ -1355,6 +1409,8 @@ export type UserUncheckedUpdateWithoutCreatedUsersInput = {
   leadActivities?: Prisma.LeadActivityUncheckedUpdateManyWithoutUserNestedInput
   createdExpenses?: Prisma.ExpenseUncheckedUpdateManyWithoutCreatedByNestedInput
   activities?: Prisma.UserActivityUncheckedUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  triggeredNotifications?: Prisma.NotificationUncheckedUpdateManyWithoutTriggeredByNestedInput
   addedDepartments?: Prisma.DepartmentUncheckedUpdateManyWithoutAddedByNestedInput
   addedMilestones?: Prisma.MilestoneUncheckedUpdateManyWithoutAddedByNestedInput
   addedTasks?: Prisma.TaskUncheckedUpdateManyWithoutAddedByNestedInput
@@ -1427,6 +1483,8 @@ export type UserCreateWithoutRoleInput = {
   leadActivities?: Prisma.LeadActivityCreateNestedManyWithoutUserInput
   createdExpenses?: Prisma.ExpenseCreateNestedManyWithoutCreatedByInput
   activities?: Prisma.UserActivityCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  triggeredNotifications?: Prisma.NotificationCreateNestedManyWithoutTriggeredByInput
   addedDepartments?: Prisma.DepartmentCreateNestedManyWithoutAddedByInput
   addedMilestones?: Prisma.MilestoneCreateNestedManyWithoutAddedByInput
   addedTasks?: Prisma.TaskCreateNestedManyWithoutAddedByInput
@@ -1464,6 +1522,8 @@ export type UserUncheckedCreateWithoutRoleInput = {
   leadActivities?: Prisma.LeadActivityUncheckedCreateNestedManyWithoutUserInput
   createdExpenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutCreatedByInput
   activities?: Prisma.UserActivityUncheckedCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  triggeredNotifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutTriggeredByInput
   addedDepartments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutAddedByInput
   addedMilestones?: Prisma.MilestoneUncheckedCreateNestedManyWithoutAddedByInput
   addedTasks?: Prisma.TaskUncheckedCreateNestedManyWithoutAddedByInput
@@ -1510,6 +1570,8 @@ export type UserCreateWithoutAddedRolesInput = {
   leadActivities?: Prisma.LeadActivityCreateNestedManyWithoutUserInput
   createdExpenses?: Prisma.ExpenseCreateNestedManyWithoutCreatedByInput
   activities?: Prisma.UserActivityCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  triggeredNotifications?: Prisma.NotificationCreateNestedManyWithoutTriggeredByInput
   addedDepartments?: Prisma.DepartmentCreateNestedManyWithoutAddedByInput
   addedMilestones?: Prisma.MilestoneCreateNestedManyWithoutAddedByInput
   addedTasks?: Prisma.TaskCreateNestedManyWithoutAddedByInput
@@ -1548,6 +1610,8 @@ export type UserUncheckedCreateWithoutAddedRolesInput = {
   leadActivities?: Prisma.LeadActivityUncheckedCreateNestedManyWithoutUserInput
   createdExpenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutCreatedByInput
   activities?: Prisma.UserActivityUncheckedCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  triggeredNotifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutTriggeredByInput
   addedDepartments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutAddedByInput
   addedMilestones?: Prisma.MilestoneUncheckedCreateNestedManyWithoutAddedByInput
   addedTasks?: Prisma.TaskUncheckedCreateNestedManyWithoutAddedByInput
@@ -1616,6 +1680,8 @@ export type UserUpdateWithoutAddedRolesInput = {
   leadActivities?: Prisma.LeadActivityUpdateManyWithoutUserNestedInput
   createdExpenses?: Prisma.ExpenseUpdateManyWithoutCreatedByNestedInput
   activities?: Prisma.UserActivityUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  triggeredNotifications?: Prisma.NotificationUpdateManyWithoutTriggeredByNestedInput
   addedDepartments?: Prisma.DepartmentUpdateManyWithoutAddedByNestedInput
   addedMilestones?: Prisma.MilestoneUpdateManyWithoutAddedByNestedInput
   addedTasks?: Prisma.TaskUpdateManyWithoutAddedByNestedInput
@@ -1654,6 +1720,8 @@ export type UserUncheckedUpdateWithoutAddedRolesInput = {
   leadActivities?: Prisma.LeadActivityUncheckedUpdateManyWithoutUserNestedInput
   createdExpenses?: Prisma.ExpenseUncheckedUpdateManyWithoutCreatedByNestedInput
   activities?: Prisma.UserActivityUncheckedUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  triggeredNotifications?: Prisma.NotificationUncheckedUpdateManyWithoutTriggeredByNestedInput
   addedDepartments?: Prisma.DepartmentUncheckedUpdateManyWithoutAddedByNestedInput
   addedMilestones?: Prisma.MilestoneUncheckedUpdateManyWithoutAddedByNestedInput
   addedTasks?: Prisma.TaskUncheckedUpdateManyWithoutAddedByNestedInput
@@ -1690,6 +1758,8 @@ export type UserCreateWithoutAddedTeamMembersInput = {
   leadActivities?: Prisma.LeadActivityCreateNestedManyWithoutUserInput
   createdExpenses?: Prisma.ExpenseCreateNestedManyWithoutCreatedByInput
   activities?: Prisma.UserActivityCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  triggeredNotifications?: Prisma.NotificationCreateNestedManyWithoutTriggeredByInput
   addedDepartments?: Prisma.DepartmentCreateNestedManyWithoutAddedByInput
   addedMilestones?: Prisma.MilestoneCreateNestedManyWithoutAddedByInput
   addedTasks?: Prisma.TaskCreateNestedManyWithoutAddedByInput
@@ -1728,6 +1798,8 @@ export type UserUncheckedCreateWithoutAddedTeamMembersInput = {
   leadActivities?: Prisma.LeadActivityUncheckedCreateNestedManyWithoutUserInput
   createdExpenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutCreatedByInput
   activities?: Prisma.UserActivityUncheckedCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  triggeredNotifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutTriggeredByInput
   addedDepartments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutAddedByInput
   addedMilestones?: Prisma.MilestoneUncheckedCreateNestedManyWithoutAddedByInput
   addedTasks?: Prisma.TaskUncheckedCreateNestedManyWithoutAddedByInput
@@ -1780,6 +1852,8 @@ export type UserUpdateWithoutAddedTeamMembersInput = {
   leadActivities?: Prisma.LeadActivityUpdateManyWithoutUserNestedInput
   createdExpenses?: Prisma.ExpenseUpdateManyWithoutCreatedByNestedInput
   activities?: Prisma.UserActivityUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  triggeredNotifications?: Prisma.NotificationUpdateManyWithoutTriggeredByNestedInput
   addedDepartments?: Prisma.DepartmentUpdateManyWithoutAddedByNestedInput
   addedMilestones?: Prisma.MilestoneUpdateManyWithoutAddedByNestedInput
   addedTasks?: Prisma.TaskUpdateManyWithoutAddedByNestedInput
@@ -1818,6 +1892,8 @@ export type UserUncheckedUpdateWithoutAddedTeamMembersInput = {
   leadActivities?: Prisma.LeadActivityUncheckedUpdateManyWithoutUserNestedInput
   createdExpenses?: Prisma.ExpenseUncheckedUpdateManyWithoutCreatedByNestedInput
   activities?: Prisma.UserActivityUncheckedUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  triggeredNotifications?: Prisma.NotificationUncheckedUpdateManyWithoutTriggeredByNestedInput
   addedDepartments?: Prisma.DepartmentUncheckedUpdateManyWithoutAddedByNestedInput
   addedMilestones?: Prisma.MilestoneUncheckedUpdateManyWithoutAddedByNestedInput
   addedTasks?: Prisma.TaskUncheckedUpdateManyWithoutAddedByNestedInput
@@ -1854,6 +1930,8 @@ export type UserCreateWithoutAddedTestimonialsInput = {
   leadActivities?: Prisma.LeadActivityCreateNestedManyWithoutUserInput
   createdExpenses?: Prisma.ExpenseCreateNestedManyWithoutCreatedByInput
   activities?: Prisma.UserActivityCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  triggeredNotifications?: Prisma.NotificationCreateNestedManyWithoutTriggeredByInput
   addedDepartments?: Prisma.DepartmentCreateNestedManyWithoutAddedByInput
   addedMilestones?: Prisma.MilestoneCreateNestedManyWithoutAddedByInput
   addedTasks?: Prisma.TaskCreateNestedManyWithoutAddedByInput
@@ -1892,6 +1970,8 @@ export type UserUncheckedCreateWithoutAddedTestimonialsInput = {
   leadActivities?: Prisma.LeadActivityUncheckedCreateNestedManyWithoutUserInput
   createdExpenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutCreatedByInput
   activities?: Prisma.UserActivityUncheckedCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  triggeredNotifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutTriggeredByInput
   addedDepartments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutAddedByInput
   addedMilestones?: Prisma.MilestoneUncheckedCreateNestedManyWithoutAddedByInput
   addedTasks?: Prisma.TaskUncheckedCreateNestedManyWithoutAddedByInput
@@ -1944,6 +2024,8 @@ export type UserUpdateWithoutAddedTestimonialsInput = {
   leadActivities?: Prisma.LeadActivityUpdateManyWithoutUserNestedInput
   createdExpenses?: Prisma.ExpenseUpdateManyWithoutCreatedByNestedInput
   activities?: Prisma.UserActivityUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  triggeredNotifications?: Prisma.NotificationUpdateManyWithoutTriggeredByNestedInput
   addedDepartments?: Prisma.DepartmentUpdateManyWithoutAddedByNestedInput
   addedMilestones?: Prisma.MilestoneUpdateManyWithoutAddedByNestedInput
   addedTasks?: Prisma.TaskUpdateManyWithoutAddedByNestedInput
@@ -1982,6 +2064,8 @@ export type UserUncheckedUpdateWithoutAddedTestimonialsInput = {
   leadActivities?: Prisma.LeadActivityUncheckedUpdateManyWithoutUserNestedInput
   createdExpenses?: Prisma.ExpenseUncheckedUpdateManyWithoutCreatedByNestedInput
   activities?: Prisma.UserActivityUncheckedUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  triggeredNotifications?: Prisma.NotificationUncheckedUpdateManyWithoutTriggeredByNestedInput
   addedDepartments?: Prisma.DepartmentUncheckedUpdateManyWithoutAddedByNestedInput
   addedMilestones?: Prisma.MilestoneUncheckedUpdateManyWithoutAddedByNestedInput
   addedTasks?: Prisma.TaskUncheckedUpdateManyWithoutAddedByNestedInput
@@ -2018,6 +2102,8 @@ export type UserCreateWithoutAddedTravelInsightsInput = {
   leadActivities?: Prisma.LeadActivityCreateNestedManyWithoutUserInput
   createdExpenses?: Prisma.ExpenseCreateNestedManyWithoutCreatedByInput
   activities?: Prisma.UserActivityCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  triggeredNotifications?: Prisma.NotificationCreateNestedManyWithoutTriggeredByInput
   addedDepartments?: Prisma.DepartmentCreateNestedManyWithoutAddedByInput
   addedMilestones?: Prisma.MilestoneCreateNestedManyWithoutAddedByInput
   addedTasks?: Prisma.TaskCreateNestedManyWithoutAddedByInput
@@ -2056,6 +2142,8 @@ export type UserUncheckedCreateWithoutAddedTravelInsightsInput = {
   leadActivities?: Prisma.LeadActivityUncheckedCreateNestedManyWithoutUserInput
   createdExpenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutCreatedByInput
   activities?: Prisma.UserActivityUncheckedCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  triggeredNotifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutTriggeredByInput
   addedDepartments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutAddedByInput
   addedMilestones?: Prisma.MilestoneUncheckedCreateNestedManyWithoutAddedByInput
   addedTasks?: Prisma.TaskUncheckedCreateNestedManyWithoutAddedByInput
@@ -2108,6 +2196,8 @@ export type UserUpdateWithoutAddedTravelInsightsInput = {
   leadActivities?: Prisma.LeadActivityUpdateManyWithoutUserNestedInput
   createdExpenses?: Prisma.ExpenseUpdateManyWithoutCreatedByNestedInput
   activities?: Prisma.UserActivityUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  triggeredNotifications?: Prisma.NotificationUpdateManyWithoutTriggeredByNestedInput
   addedDepartments?: Prisma.DepartmentUpdateManyWithoutAddedByNestedInput
   addedMilestones?: Prisma.MilestoneUpdateManyWithoutAddedByNestedInput
   addedTasks?: Prisma.TaskUpdateManyWithoutAddedByNestedInput
@@ -2146,6 +2236,8 @@ export type UserUncheckedUpdateWithoutAddedTravelInsightsInput = {
   leadActivities?: Prisma.LeadActivityUncheckedUpdateManyWithoutUserNestedInput
   createdExpenses?: Prisma.ExpenseUncheckedUpdateManyWithoutCreatedByNestedInput
   activities?: Prisma.UserActivityUncheckedUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  triggeredNotifications?: Prisma.NotificationUncheckedUpdateManyWithoutTriggeredByNestedInput
   addedDepartments?: Prisma.DepartmentUncheckedUpdateManyWithoutAddedByNestedInput
   addedMilestones?: Prisma.MilestoneUncheckedUpdateManyWithoutAddedByNestedInput
   addedTasks?: Prisma.TaskUncheckedUpdateManyWithoutAddedByNestedInput
@@ -2182,6 +2274,8 @@ export type UserCreateWithoutAddedTravelInsightCategoriesInput = {
   leadActivities?: Prisma.LeadActivityCreateNestedManyWithoutUserInput
   createdExpenses?: Prisma.ExpenseCreateNestedManyWithoutCreatedByInput
   activities?: Prisma.UserActivityCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  triggeredNotifications?: Prisma.NotificationCreateNestedManyWithoutTriggeredByInput
   addedDepartments?: Prisma.DepartmentCreateNestedManyWithoutAddedByInput
   addedMilestones?: Prisma.MilestoneCreateNestedManyWithoutAddedByInput
   addedTasks?: Prisma.TaskCreateNestedManyWithoutAddedByInput
@@ -2220,6 +2314,8 @@ export type UserUncheckedCreateWithoutAddedTravelInsightCategoriesInput = {
   leadActivities?: Prisma.LeadActivityUncheckedCreateNestedManyWithoutUserInput
   createdExpenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutCreatedByInput
   activities?: Prisma.UserActivityUncheckedCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  triggeredNotifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutTriggeredByInput
   addedDepartments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutAddedByInput
   addedMilestones?: Prisma.MilestoneUncheckedCreateNestedManyWithoutAddedByInput
   addedTasks?: Prisma.TaskUncheckedCreateNestedManyWithoutAddedByInput
@@ -2272,6 +2368,8 @@ export type UserUpdateWithoutAddedTravelInsightCategoriesInput = {
   leadActivities?: Prisma.LeadActivityUpdateManyWithoutUserNestedInput
   createdExpenses?: Prisma.ExpenseUpdateManyWithoutCreatedByNestedInput
   activities?: Prisma.UserActivityUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  triggeredNotifications?: Prisma.NotificationUpdateManyWithoutTriggeredByNestedInput
   addedDepartments?: Prisma.DepartmentUpdateManyWithoutAddedByNestedInput
   addedMilestones?: Prisma.MilestoneUpdateManyWithoutAddedByNestedInput
   addedTasks?: Prisma.TaskUpdateManyWithoutAddedByNestedInput
@@ -2310,6 +2408,8 @@ export type UserUncheckedUpdateWithoutAddedTravelInsightCategoriesInput = {
   leadActivities?: Prisma.LeadActivityUncheckedUpdateManyWithoutUserNestedInput
   createdExpenses?: Prisma.ExpenseUncheckedUpdateManyWithoutCreatedByNestedInput
   activities?: Prisma.UserActivityUncheckedUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  triggeredNotifications?: Prisma.NotificationUncheckedUpdateManyWithoutTriggeredByNestedInput
   addedDepartments?: Prisma.DepartmentUncheckedUpdateManyWithoutAddedByNestedInput
   addedMilestones?: Prisma.MilestoneUncheckedUpdateManyWithoutAddedByNestedInput
   addedTasks?: Prisma.TaskUncheckedUpdateManyWithoutAddedByNestedInput
@@ -2346,6 +2446,8 @@ export type UserCreateWithoutAddedTravelServicesInput = {
   leadActivities?: Prisma.LeadActivityCreateNestedManyWithoutUserInput
   createdExpenses?: Prisma.ExpenseCreateNestedManyWithoutCreatedByInput
   activities?: Prisma.UserActivityCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  triggeredNotifications?: Prisma.NotificationCreateNestedManyWithoutTriggeredByInput
   addedDepartments?: Prisma.DepartmentCreateNestedManyWithoutAddedByInput
   addedMilestones?: Prisma.MilestoneCreateNestedManyWithoutAddedByInput
   addedTasks?: Prisma.TaskCreateNestedManyWithoutAddedByInput
@@ -2384,6 +2486,8 @@ export type UserUncheckedCreateWithoutAddedTravelServicesInput = {
   leadActivities?: Prisma.LeadActivityUncheckedCreateNestedManyWithoutUserInput
   createdExpenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutCreatedByInput
   activities?: Prisma.UserActivityUncheckedCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  triggeredNotifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutTriggeredByInput
   addedDepartments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutAddedByInput
   addedMilestones?: Prisma.MilestoneUncheckedCreateNestedManyWithoutAddedByInput
   addedTasks?: Prisma.TaskUncheckedCreateNestedManyWithoutAddedByInput
@@ -2436,6 +2540,8 @@ export type UserUpdateWithoutAddedTravelServicesInput = {
   leadActivities?: Prisma.LeadActivityUpdateManyWithoutUserNestedInput
   createdExpenses?: Prisma.ExpenseUpdateManyWithoutCreatedByNestedInput
   activities?: Prisma.UserActivityUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  triggeredNotifications?: Prisma.NotificationUpdateManyWithoutTriggeredByNestedInput
   addedDepartments?: Prisma.DepartmentUpdateManyWithoutAddedByNestedInput
   addedMilestones?: Prisma.MilestoneUpdateManyWithoutAddedByNestedInput
   addedTasks?: Prisma.TaskUpdateManyWithoutAddedByNestedInput
@@ -2474,6 +2580,8 @@ export type UserUncheckedUpdateWithoutAddedTravelServicesInput = {
   leadActivities?: Prisma.LeadActivityUncheckedUpdateManyWithoutUserNestedInput
   createdExpenses?: Prisma.ExpenseUncheckedUpdateManyWithoutCreatedByNestedInput
   activities?: Prisma.UserActivityUncheckedUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  triggeredNotifications?: Prisma.NotificationUncheckedUpdateManyWithoutTriggeredByNestedInput
   addedDepartments?: Prisma.DepartmentUncheckedUpdateManyWithoutAddedByNestedInput
   addedMilestones?: Prisma.MilestoneUncheckedUpdateManyWithoutAddedByNestedInput
   addedTasks?: Prisma.TaskUncheckedUpdateManyWithoutAddedByNestedInput
@@ -2510,6 +2618,8 @@ export type UserCreateWithoutAddedServiceCategoriesInput = {
   leadActivities?: Prisma.LeadActivityCreateNestedManyWithoutUserInput
   createdExpenses?: Prisma.ExpenseCreateNestedManyWithoutCreatedByInput
   activities?: Prisma.UserActivityCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  triggeredNotifications?: Prisma.NotificationCreateNestedManyWithoutTriggeredByInput
   addedDepartments?: Prisma.DepartmentCreateNestedManyWithoutAddedByInput
   addedMilestones?: Prisma.MilestoneCreateNestedManyWithoutAddedByInput
   addedTasks?: Prisma.TaskCreateNestedManyWithoutAddedByInput
@@ -2548,6 +2658,8 @@ export type UserUncheckedCreateWithoutAddedServiceCategoriesInput = {
   leadActivities?: Prisma.LeadActivityUncheckedCreateNestedManyWithoutUserInput
   createdExpenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutCreatedByInput
   activities?: Prisma.UserActivityUncheckedCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  triggeredNotifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutTriggeredByInput
   addedDepartments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutAddedByInput
   addedMilestones?: Prisma.MilestoneUncheckedCreateNestedManyWithoutAddedByInput
   addedTasks?: Prisma.TaskUncheckedCreateNestedManyWithoutAddedByInput
@@ -2600,6 +2712,8 @@ export type UserUpdateWithoutAddedServiceCategoriesInput = {
   leadActivities?: Prisma.LeadActivityUpdateManyWithoutUserNestedInput
   createdExpenses?: Prisma.ExpenseUpdateManyWithoutCreatedByNestedInput
   activities?: Prisma.UserActivityUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  triggeredNotifications?: Prisma.NotificationUpdateManyWithoutTriggeredByNestedInput
   addedDepartments?: Prisma.DepartmentUpdateManyWithoutAddedByNestedInput
   addedMilestones?: Prisma.MilestoneUpdateManyWithoutAddedByNestedInput
   addedTasks?: Prisma.TaskUpdateManyWithoutAddedByNestedInput
@@ -2638,6 +2752,8 @@ export type UserUncheckedUpdateWithoutAddedServiceCategoriesInput = {
   leadActivities?: Prisma.LeadActivityUncheckedUpdateManyWithoutUserNestedInput
   createdExpenses?: Prisma.ExpenseUncheckedUpdateManyWithoutCreatedByNestedInput
   activities?: Prisma.UserActivityUncheckedUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  triggeredNotifications?: Prisma.NotificationUncheckedUpdateManyWithoutTriggeredByNestedInput
   addedDepartments?: Prisma.DepartmentUncheckedUpdateManyWithoutAddedByNestedInput
   addedMilestones?: Prisma.MilestoneUncheckedUpdateManyWithoutAddedByNestedInput
   addedTasks?: Prisma.TaskUncheckedUpdateManyWithoutAddedByNestedInput
@@ -2674,6 +2790,8 @@ export type UserCreateWithoutAddedCaseStudiesInput = {
   leadActivities?: Prisma.LeadActivityCreateNestedManyWithoutUserInput
   createdExpenses?: Prisma.ExpenseCreateNestedManyWithoutCreatedByInput
   activities?: Prisma.UserActivityCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  triggeredNotifications?: Prisma.NotificationCreateNestedManyWithoutTriggeredByInput
   addedDepartments?: Prisma.DepartmentCreateNestedManyWithoutAddedByInput
   addedMilestones?: Prisma.MilestoneCreateNestedManyWithoutAddedByInput
   addedTasks?: Prisma.TaskCreateNestedManyWithoutAddedByInput
@@ -2712,6 +2830,8 @@ export type UserUncheckedCreateWithoutAddedCaseStudiesInput = {
   leadActivities?: Prisma.LeadActivityUncheckedCreateNestedManyWithoutUserInput
   createdExpenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutCreatedByInput
   activities?: Prisma.UserActivityUncheckedCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  triggeredNotifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutTriggeredByInput
   addedDepartments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutAddedByInput
   addedMilestones?: Prisma.MilestoneUncheckedCreateNestedManyWithoutAddedByInput
   addedTasks?: Prisma.TaskUncheckedCreateNestedManyWithoutAddedByInput
@@ -2764,6 +2884,8 @@ export type UserUpdateWithoutAddedCaseStudiesInput = {
   leadActivities?: Prisma.LeadActivityUpdateManyWithoutUserNestedInput
   createdExpenses?: Prisma.ExpenseUpdateManyWithoutCreatedByNestedInput
   activities?: Prisma.UserActivityUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  triggeredNotifications?: Prisma.NotificationUpdateManyWithoutTriggeredByNestedInput
   addedDepartments?: Prisma.DepartmentUpdateManyWithoutAddedByNestedInput
   addedMilestones?: Prisma.MilestoneUpdateManyWithoutAddedByNestedInput
   addedTasks?: Prisma.TaskUpdateManyWithoutAddedByNestedInput
@@ -2802,6 +2924,8 @@ export type UserUncheckedUpdateWithoutAddedCaseStudiesInput = {
   leadActivities?: Prisma.LeadActivityUncheckedUpdateManyWithoutUserNestedInput
   createdExpenses?: Prisma.ExpenseUncheckedUpdateManyWithoutCreatedByNestedInput
   activities?: Prisma.UserActivityUncheckedUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  triggeredNotifications?: Prisma.NotificationUncheckedUpdateManyWithoutTriggeredByNestedInput
   addedDepartments?: Prisma.DepartmentUncheckedUpdateManyWithoutAddedByNestedInput
   addedMilestones?: Prisma.MilestoneUncheckedUpdateManyWithoutAddedByNestedInput
   addedTasks?: Prisma.TaskUncheckedUpdateManyWithoutAddedByNestedInput
@@ -2838,6 +2962,8 @@ export type UserCreateWithoutAddedCaseStudyCategoriesInput = {
   leadActivities?: Prisma.LeadActivityCreateNestedManyWithoutUserInput
   createdExpenses?: Prisma.ExpenseCreateNestedManyWithoutCreatedByInput
   activities?: Prisma.UserActivityCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  triggeredNotifications?: Prisma.NotificationCreateNestedManyWithoutTriggeredByInput
   addedDepartments?: Prisma.DepartmentCreateNestedManyWithoutAddedByInput
   addedMilestones?: Prisma.MilestoneCreateNestedManyWithoutAddedByInput
   addedTasks?: Prisma.TaskCreateNestedManyWithoutAddedByInput
@@ -2876,6 +3002,8 @@ export type UserUncheckedCreateWithoutAddedCaseStudyCategoriesInput = {
   leadActivities?: Prisma.LeadActivityUncheckedCreateNestedManyWithoutUserInput
   createdExpenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutCreatedByInput
   activities?: Prisma.UserActivityUncheckedCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  triggeredNotifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutTriggeredByInput
   addedDepartments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutAddedByInput
   addedMilestones?: Prisma.MilestoneUncheckedCreateNestedManyWithoutAddedByInput
   addedTasks?: Prisma.TaskUncheckedCreateNestedManyWithoutAddedByInput
@@ -2928,6 +3056,8 @@ export type UserUpdateWithoutAddedCaseStudyCategoriesInput = {
   leadActivities?: Prisma.LeadActivityUpdateManyWithoutUserNestedInput
   createdExpenses?: Prisma.ExpenseUpdateManyWithoutCreatedByNestedInput
   activities?: Prisma.UserActivityUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  triggeredNotifications?: Prisma.NotificationUpdateManyWithoutTriggeredByNestedInput
   addedDepartments?: Prisma.DepartmentUpdateManyWithoutAddedByNestedInput
   addedMilestones?: Prisma.MilestoneUpdateManyWithoutAddedByNestedInput
   addedTasks?: Prisma.TaskUpdateManyWithoutAddedByNestedInput
@@ -2966,6 +3096,8 @@ export type UserUncheckedUpdateWithoutAddedCaseStudyCategoriesInput = {
   leadActivities?: Prisma.LeadActivityUncheckedUpdateManyWithoutUserNestedInput
   createdExpenses?: Prisma.ExpenseUncheckedUpdateManyWithoutCreatedByNestedInput
   activities?: Prisma.UserActivityUncheckedUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  triggeredNotifications?: Prisma.NotificationUncheckedUpdateManyWithoutTriggeredByNestedInput
   addedDepartments?: Prisma.DepartmentUncheckedUpdateManyWithoutAddedByNestedInput
   addedMilestones?: Prisma.MilestoneUncheckedUpdateManyWithoutAddedByNestedInput
   addedTasks?: Prisma.TaskUncheckedUpdateManyWithoutAddedByNestedInput
@@ -3002,6 +3134,8 @@ export type UserCreateWithoutAddedPlaybooksInput = {
   leadActivities?: Prisma.LeadActivityCreateNestedManyWithoutUserInput
   createdExpenses?: Prisma.ExpenseCreateNestedManyWithoutCreatedByInput
   activities?: Prisma.UserActivityCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  triggeredNotifications?: Prisma.NotificationCreateNestedManyWithoutTriggeredByInput
   addedDepartments?: Prisma.DepartmentCreateNestedManyWithoutAddedByInput
   addedMilestones?: Prisma.MilestoneCreateNestedManyWithoutAddedByInput
   addedTasks?: Prisma.TaskCreateNestedManyWithoutAddedByInput
@@ -3040,6 +3174,8 @@ export type UserUncheckedCreateWithoutAddedPlaybooksInput = {
   leadActivities?: Prisma.LeadActivityUncheckedCreateNestedManyWithoutUserInput
   createdExpenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutCreatedByInput
   activities?: Prisma.UserActivityUncheckedCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  triggeredNotifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutTriggeredByInput
   addedDepartments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutAddedByInput
   addedMilestones?: Prisma.MilestoneUncheckedCreateNestedManyWithoutAddedByInput
   addedTasks?: Prisma.TaskUncheckedCreateNestedManyWithoutAddedByInput
@@ -3092,6 +3228,8 @@ export type UserUpdateWithoutAddedPlaybooksInput = {
   leadActivities?: Prisma.LeadActivityUpdateManyWithoutUserNestedInput
   createdExpenses?: Prisma.ExpenseUpdateManyWithoutCreatedByNestedInput
   activities?: Prisma.UserActivityUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  triggeredNotifications?: Prisma.NotificationUpdateManyWithoutTriggeredByNestedInput
   addedDepartments?: Prisma.DepartmentUpdateManyWithoutAddedByNestedInput
   addedMilestones?: Prisma.MilestoneUpdateManyWithoutAddedByNestedInput
   addedTasks?: Prisma.TaskUpdateManyWithoutAddedByNestedInput
@@ -3130,6 +3268,8 @@ export type UserUncheckedUpdateWithoutAddedPlaybooksInput = {
   leadActivities?: Prisma.LeadActivityUncheckedUpdateManyWithoutUserNestedInput
   createdExpenses?: Prisma.ExpenseUncheckedUpdateManyWithoutCreatedByNestedInput
   activities?: Prisma.UserActivityUncheckedUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  triggeredNotifications?: Prisma.NotificationUncheckedUpdateManyWithoutTriggeredByNestedInput
   addedDepartments?: Prisma.DepartmentUncheckedUpdateManyWithoutAddedByNestedInput
   addedMilestones?: Prisma.MilestoneUncheckedUpdateManyWithoutAddedByNestedInput
   addedTasks?: Prisma.TaskUncheckedUpdateManyWithoutAddedByNestedInput
@@ -3166,6 +3306,8 @@ export type UserCreateWithoutAddedPlaybookTypesInput = {
   leadActivities?: Prisma.LeadActivityCreateNestedManyWithoutUserInput
   createdExpenses?: Prisma.ExpenseCreateNestedManyWithoutCreatedByInput
   activities?: Prisma.UserActivityCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  triggeredNotifications?: Prisma.NotificationCreateNestedManyWithoutTriggeredByInput
   addedDepartments?: Prisma.DepartmentCreateNestedManyWithoutAddedByInput
   addedMilestones?: Prisma.MilestoneCreateNestedManyWithoutAddedByInput
   addedTasks?: Prisma.TaskCreateNestedManyWithoutAddedByInput
@@ -3204,6 +3346,8 @@ export type UserUncheckedCreateWithoutAddedPlaybookTypesInput = {
   leadActivities?: Prisma.LeadActivityUncheckedCreateNestedManyWithoutUserInput
   createdExpenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutCreatedByInput
   activities?: Prisma.UserActivityUncheckedCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  triggeredNotifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutTriggeredByInput
   addedDepartments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutAddedByInput
   addedMilestones?: Prisma.MilestoneUncheckedCreateNestedManyWithoutAddedByInput
   addedTasks?: Prisma.TaskUncheckedCreateNestedManyWithoutAddedByInput
@@ -3256,6 +3400,8 @@ export type UserUpdateWithoutAddedPlaybookTypesInput = {
   leadActivities?: Prisma.LeadActivityUpdateManyWithoutUserNestedInput
   createdExpenses?: Prisma.ExpenseUpdateManyWithoutCreatedByNestedInput
   activities?: Prisma.UserActivityUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  triggeredNotifications?: Prisma.NotificationUpdateManyWithoutTriggeredByNestedInput
   addedDepartments?: Prisma.DepartmentUpdateManyWithoutAddedByNestedInput
   addedMilestones?: Prisma.MilestoneUpdateManyWithoutAddedByNestedInput
   addedTasks?: Prisma.TaskUpdateManyWithoutAddedByNestedInput
@@ -3294,6 +3440,8 @@ export type UserUncheckedUpdateWithoutAddedPlaybookTypesInput = {
   leadActivities?: Prisma.LeadActivityUncheckedUpdateManyWithoutUserNestedInput
   createdExpenses?: Prisma.ExpenseUncheckedUpdateManyWithoutCreatedByNestedInput
   activities?: Prisma.UserActivityUncheckedUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  triggeredNotifications?: Prisma.NotificationUncheckedUpdateManyWithoutTriggeredByNestedInput
   addedDepartments?: Prisma.DepartmentUncheckedUpdateManyWithoutAddedByNestedInput
   addedMilestones?: Prisma.MilestoneUncheckedUpdateManyWithoutAddedByNestedInput
   addedTasks?: Prisma.TaskUncheckedUpdateManyWithoutAddedByNestedInput
@@ -3330,6 +3478,8 @@ export type UserCreateWithoutAddedPlaybookCategoriesInput = {
   leadActivities?: Prisma.LeadActivityCreateNestedManyWithoutUserInput
   createdExpenses?: Prisma.ExpenseCreateNestedManyWithoutCreatedByInput
   activities?: Prisma.UserActivityCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  triggeredNotifications?: Prisma.NotificationCreateNestedManyWithoutTriggeredByInput
   addedDepartments?: Prisma.DepartmentCreateNestedManyWithoutAddedByInput
   addedMilestones?: Prisma.MilestoneCreateNestedManyWithoutAddedByInput
   addedTasks?: Prisma.TaskCreateNestedManyWithoutAddedByInput
@@ -3368,6 +3518,8 @@ export type UserUncheckedCreateWithoutAddedPlaybookCategoriesInput = {
   leadActivities?: Prisma.LeadActivityUncheckedCreateNestedManyWithoutUserInput
   createdExpenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutCreatedByInput
   activities?: Prisma.UserActivityUncheckedCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  triggeredNotifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutTriggeredByInput
   addedDepartments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutAddedByInput
   addedMilestones?: Prisma.MilestoneUncheckedCreateNestedManyWithoutAddedByInput
   addedTasks?: Prisma.TaskUncheckedCreateNestedManyWithoutAddedByInput
@@ -3420,6 +3572,8 @@ export type UserUpdateWithoutAddedPlaybookCategoriesInput = {
   leadActivities?: Prisma.LeadActivityUpdateManyWithoutUserNestedInput
   createdExpenses?: Prisma.ExpenseUpdateManyWithoutCreatedByNestedInput
   activities?: Prisma.UserActivityUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  triggeredNotifications?: Prisma.NotificationUpdateManyWithoutTriggeredByNestedInput
   addedDepartments?: Prisma.DepartmentUpdateManyWithoutAddedByNestedInput
   addedMilestones?: Prisma.MilestoneUpdateManyWithoutAddedByNestedInput
   addedTasks?: Prisma.TaskUpdateManyWithoutAddedByNestedInput
@@ -3458,6 +3612,8 @@ export type UserUncheckedUpdateWithoutAddedPlaybookCategoriesInput = {
   leadActivities?: Prisma.LeadActivityUncheckedUpdateManyWithoutUserNestedInput
   createdExpenses?: Prisma.ExpenseUncheckedUpdateManyWithoutCreatedByNestedInput
   activities?: Prisma.UserActivityUncheckedUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  triggeredNotifications?: Prisma.NotificationUncheckedUpdateManyWithoutTriggeredByNestedInput
   addedDepartments?: Prisma.DepartmentUncheckedUpdateManyWithoutAddedByNestedInput
   addedMilestones?: Prisma.MilestoneUncheckedUpdateManyWithoutAddedByNestedInput
   addedTasks?: Prisma.TaskUncheckedUpdateManyWithoutAddedByNestedInput
@@ -3494,6 +3650,8 @@ export type UserCreateWithoutAddedLeadsInput = {
   leadActivities?: Prisma.LeadActivityCreateNestedManyWithoutUserInput
   createdExpenses?: Prisma.ExpenseCreateNestedManyWithoutCreatedByInput
   activities?: Prisma.UserActivityCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  triggeredNotifications?: Prisma.NotificationCreateNestedManyWithoutTriggeredByInput
   addedDepartments?: Prisma.DepartmentCreateNestedManyWithoutAddedByInput
   addedMilestones?: Prisma.MilestoneCreateNestedManyWithoutAddedByInput
   addedTasks?: Prisma.TaskCreateNestedManyWithoutAddedByInput
@@ -3532,6 +3690,8 @@ export type UserUncheckedCreateWithoutAddedLeadsInput = {
   leadActivities?: Prisma.LeadActivityUncheckedCreateNestedManyWithoutUserInput
   createdExpenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutCreatedByInput
   activities?: Prisma.UserActivityUncheckedCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  triggeredNotifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutTriggeredByInput
   addedDepartments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutAddedByInput
   addedMilestones?: Prisma.MilestoneUncheckedCreateNestedManyWithoutAddedByInput
   addedTasks?: Prisma.TaskUncheckedCreateNestedManyWithoutAddedByInput
@@ -3573,6 +3733,8 @@ export type UserCreateWithoutAssignedLeadsInput = {
   leadActivities?: Prisma.LeadActivityCreateNestedManyWithoutUserInput
   createdExpenses?: Prisma.ExpenseCreateNestedManyWithoutCreatedByInput
   activities?: Prisma.UserActivityCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  triggeredNotifications?: Prisma.NotificationCreateNestedManyWithoutTriggeredByInput
   addedDepartments?: Prisma.DepartmentCreateNestedManyWithoutAddedByInput
   addedMilestones?: Prisma.MilestoneCreateNestedManyWithoutAddedByInput
   addedTasks?: Prisma.TaskCreateNestedManyWithoutAddedByInput
@@ -3611,6 +3773,8 @@ export type UserUncheckedCreateWithoutAssignedLeadsInput = {
   leadActivities?: Prisma.LeadActivityUncheckedCreateNestedManyWithoutUserInput
   createdExpenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutCreatedByInput
   activities?: Prisma.UserActivityUncheckedCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  triggeredNotifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutTriggeredByInput
   addedDepartments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutAddedByInput
   addedMilestones?: Prisma.MilestoneUncheckedCreateNestedManyWithoutAddedByInput
   addedTasks?: Prisma.TaskUncheckedCreateNestedManyWithoutAddedByInput
@@ -3663,6 +3827,8 @@ export type UserUpdateWithoutAddedLeadsInput = {
   leadActivities?: Prisma.LeadActivityUpdateManyWithoutUserNestedInput
   createdExpenses?: Prisma.ExpenseUpdateManyWithoutCreatedByNestedInput
   activities?: Prisma.UserActivityUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  triggeredNotifications?: Prisma.NotificationUpdateManyWithoutTriggeredByNestedInput
   addedDepartments?: Prisma.DepartmentUpdateManyWithoutAddedByNestedInput
   addedMilestones?: Prisma.MilestoneUpdateManyWithoutAddedByNestedInput
   addedTasks?: Prisma.TaskUpdateManyWithoutAddedByNestedInput
@@ -3701,6 +3867,8 @@ export type UserUncheckedUpdateWithoutAddedLeadsInput = {
   leadActivities?: Prisma.LeadActivityUncheckedUpdateManyWithoutUserNestedInput
   createdExpenses?: Prisma.ExpenseUncheckedUpdateManyWithoutCreatedByNestedInput
   activities?: Prisma.UserActivityUncheckedUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  triggeredNotifications?: Prisma.NotificationUncheckedUpdateManyWithoutTriggeredByNestedInput
   addedDepartments?: Prisma.DepartmentUncheckedUpdateManyWithoutAddedByNestedInput
   addedMilestones?: Prisma.MilestoneUncheckedUpdateManyWithoutAddedByNestedInput
   addedTasks?: Prisma.TaskUncheckedUpdateManyWithoutAddedByNestedInput
@@ -3748,6 +3916,8 @@ export type UserUpdateWithoutAssignedLeadsInput = {
   leadActivities?: Prisma.LeadActivityUpdateManyWithoutUserNestedInput
   createdExpenses?: Prisma.ExpenseUpdateManyWithoutCreatedByNestedInput
   activities?: Prisma.UserActivityUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  triggeredNotifications?: Prisma.NotificationUpdateManyWithoutTriggeredByNestedInput
   addedDepartments?: Prisma.DepartmentUpdateManyWithoutAddedByNestedInput
   addedMilestones?: Prisma.MilestoneUpdateManyWithoutAddedByNestedInput
   addedTasks?: Prisma.TaskUpdateManyWithoutAddedByNestedInput
@@ -3786,6 +3956,8 @@ export type UserUncheckedUpdateWithoutAssignedLeadsInput = {
   leadActivities?: Prisma.LeadActivityUncheckedUpdateManyWithoutUserNestedInput
   createdExpenses?: Prisma.ExpenseUncheckedUpdateManyWithoutCreatedByNestedInput
   activities?: Prisma.UserActivityUncheckedUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  triggeredNotifications?: Prisma.NotificationUncheckedUpdateManyWithoutTriggeredByNestedInput
   addedDepartments?: Prisma.DepartmentUncheckedUpdateManyWithoutAddedByNestedInput
   addedMilestones?: Prisma.MilestoneUncheckedUpdateManyWithoutAddedByNestedInput
   addedTasks?: Prisma.TaskUncheckedUpdateManyWithoutAddedByNestedInput
@@ -3822,6 +3994,8 @@ export type UserCreateWithoutLeadActivitiesInput = {
   assignedLeads?: Prisma.LeadCreateNestedManyWithoutAssignedToInput
   createdExpenses?: Prisma.ExpenseCreateNestedManyWithoutCreatedByInput
   activities?: Prisma.UserActivityCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  triggeredNotifications?: Prisma.NotificationCreateNestedManyWithoutTriggeredByInput
   addedDepartments?: Prisma.DepartmentCreateNestedManyWithoutAddedByInput
   addedMilestones?: Prisma.MilestoneCreateNestedManyWithoutAddedByInput
   addedTasks?: Prisma.TaskCreateNestedManyWithoutAddedByInput
@@ -3860,6 +4034,8 @@ export type UserUncheckedCreateWithoutLeadActivitiesInput = {
   assignedLeads?: Prisma.LeadUncheckedCreateNestedManyWithoutAssignedToInput
   createdExpenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutCreatedByInput
   activities?: Prisma.UserActivityUncheckedCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  triggeredNotifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutTriggeredByInput
   addedDepartments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutAddedByInput
   addedMilestones?: Prisma.MilestoneUncheckedCreateNestedManyWithoutAddedByInput
   addedTasks?: Prisma.TaskUncheckedCreateNestedManyWithoutAddedByInput
@@ -3912,6 +4088,8 @@ export type UserUpdateWithoutLeadActivitiesInput = {
   assignedLeads?: Prisma.LeadUpdateManyWithoutAssignedToNestedInput
   createdExpenses?: Prisma.ExpenseUpdateManyWithoutCreatedByNestedInput
   activities?: Prisma.UserActivityUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  triggeredNotifications?: Prisma.NotificationUpdateManyWithoutTriggeredByNestedInput
   addedDepartments?: Prisma.DepartmentUpdateManyWithoutAddedByNestedInput
   addedMilestones?: Prisma.MilestoneUpdateManyWithoutAddedByNestedInput
   addedTasks?: Prisma.TaskUpdateManyWithoutAddedByNestedInput
@@ -3950,6 +4128,8 @@ export type UserUncheckedUpdateWithoutLeadActivitiesInput = {
   assignedLeads?: Prisma.LeadUncheckedUpdateManyWithoutAssignedToNestedInput
   createdExpenses?: Prisma.ExpenseUncheckedUpdateManyWithoutCreatedByNestedInput
   activities?: Prisma.UserActivityUncheckedUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  triggeredNotifications?: Prisma.NotificationUncheckedUpdateManyWithoutTriggeredByNestedInput
   addedDepartments?: Prisma.DepartmentUncheckedUpdateManyWithoutAddedByNestedInput
   addedMilestones?: Prisma.MilestoneUncheckedUpdateManyWithoutAddedByNestedInput
   addedTasks?: Prisma.TaskUncheckedUpdateManyWithoutAddedByNestedInput
@@ -3986,6 +4166,8 @@ export type UserCreateWithoutCreatedExpensesInput = {
   assignedLeads?: Prisma.LeadCreateNestedManyWithoutAssignedToInput
   leadActivities?: Prisma.LeadActivityCreateNestedManyWithoutUserInput
   activities?: Prisma.UserActivityCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  triggeredNotifications?: Prisma.NotificationCreateNestedManyWithoutTriggeredByInput
   addedDepartments?: Prisma.DepartmentCreateNestedManyWithoutAddedByInput
   addedMilestones?: Prisma.MilestoneCreateNestedManyWithoutAddedByInput
   addedTasks?: Prisma.TaskCreateNestedManyWithoutAddedByInput
@@ -4024,6 +4206,8 @@ export type UserUncheckedCreateWithoutCreatedExpensesInput = {
   assignedLeads?: Prisma.LeadUncheckedCreateNestedManyWithoutAssignedToInput
   leadActivities?: Prisma.LeadActivityUncheckedCreateNestedManyWithoutUserInput
   activities?: Prisma.UserActivityUncheckedCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  triggeredNotifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutTriggeredByInput
   addedDepartments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutAddedByInput
   addedMilestones?: Prisma.MilestoneUncheckedCreateNestedManyWithoutAddedByInput
   addedTasks?: Prisma.TaskUncheckedCreateNestedManyWithoutAddedByInput
@@ -4076,6 +4260,8 @@ export type UserUpdateWithoutCreatedExpensesInput = {
   assignedLeads?: Prisma.LeadUpdateManyWithoutAssignedToNestedInput
   leadActivities?: Prisma.LeadActivityUpdateManyWithoutUserNestedInput
   activities?: Prisma.UserActivityUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  triggeredNotifications?: Prisma.NotificationUpdateManyWithoutTriggeredByNestedInput
   addedDepartments?: Prisma.DepartmentUpdateManyWithoutAddedByNestedInput
   addedMilestones?: Prisma.MilestoneUpdateManyWithoutAddedByNestedInput
   addedTasks?: Prisma.TaskUpdateManyWithoutAddedByNestedInput
@@ -4114,6 +4300,8 @@ export type UserUncheckedUpdateWithoutCreatedExpensesInput = {
   assignedLeads?: Prisma.LeadUncheckedUpdateManyWithoutAssignedToNestedInput
   leadActivities?: Prisma.LeadActivityUncheckedUpdateManyWithoutUserNestedInput
   activities?: Prisma.UserActivityUncheckedUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  triggeredNotifications?: Prisma.NotificationUncheckedUpdateManyWithoutTriggeredByNestedInput
   addedDepartments?: Prisma.DepartmentUncheckedUpdateManyWithoutAddedByNestedInput
   addedMilestones?: Prisma.MilestoneUncheckedUpdateManyWithoutAddedByNestedInput
   addedTasks?: Prisma.TaskUncheckedUpdateManyWithoutAddedByNestedInput
@@ -4151,6 +4339,8 @@ export type UserCreateWithoutAddedDepartmentsInput = {
   leadActivities?: Prisma.LeadActivityCreateNestedManyWithoutUserInput
   createdExpenses?: Prisma.ExpenseCreateNestedManyWithoutCreatedByInput
   activities?: Prisma.UserActivityCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  triggeredNotifications?: Prisma.NotificationCreateNestedManyWithoutTriggeredByInput
   addedMilestones?: Prisma.MilestoneCreateNestedManyWithoutAddedByInput
   addedTasks?: Prisma.TaskCreateNestedManyWithoutAddedByInput
   taskAssignments?: Prisma.TaskAssigneeCreateNestedManyWithoutUserInput
@@ -4189,6 +4379,8 @@ export type UserUncheckedCreateWithoutAddedDepartmentsInput = {
   leadActivities?: Prisma.LeadActivityUncheckedCreateNestedManyWithoutUserInput
   createdExpenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutCreatedByInput
   activities?: Prisma.UserActivityUncheckedCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  triggeredNotifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutTriggeredByInput
   addedMilestones?: Prisma.MilestoneUncheckedCreateNestedManyWithoutAddedByInput
   addedTasks?: Prisma.TaskUncheckedCreateNestedManyWithoutAddedByInput
   taskAssignments?: Prisma.TaskAssigneeUncheckedCreateNestedManyWithoutUserInput
@@ -4241,6 +4433,8 @@ export type UserUpdateWithoutAddedDepartmentsInput = {
   leadActivities?: Prisma.LeadActivityUpdateManyWithoutUserNestedInput
   createdExpenses?: Prisma.ExpenseUpdateManyWithoutCreatedByNestedInput
   activities?: Prisma.UserActivityUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  triggeredNotifications?: Prisma.NotificationUpdateManyWithoutTriggeredByNestedInput
   addedMilestones?: Prisma.MilestoneUpdateManyWithoutAddedByNestedInput
   addedTasks?: Prisma.TaskUpdateManyWithoutAddedByNestedInput
   taskAssignments?: Prisma.TaskAssigneeUpdateManyWithoutUserNestedInput
@@ -4279,6 +4473,8 @@ export type UserUncheckedUpdateWithoutAddedDepartmentsInput = {
   leadActivities?: Prisma.LeadActivityUncheckedUpdateManyWithoutUserNestedInput
   createdExpenses?: Prisma.ExpenseUncheckedUpdateManyWithoutCreatedByNestedInput
   activities?: Prisma.UserActivityUncheckedUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  triggeredNotifications?: Prisma.NotificationUncheckedUpdateManyWithoutTriggeredByNestedInput
   addedMilestones?: Prisma.MilestoneUncheckedUpdateManyWithoutAddedByNestedInput
   addedTasks?: Prisma.TaskUncheckedUpdateManyWithoutAddedByNestedInput
   taskAssignments?: Prisma.TaskAssigneeUncheckedUpdateManyWithoutUserNestedInput
@@ -4315,6 +4511,8 @@ export type UserCreateWithoutAddedMilestonesInput = {
   leadActivities?: Prisma.LeadActivityCreateNestedManyWithoutUserInput
   createdExpenses?: Prisma.ExpenseCreateNestedManyWithoutCreatedByInput
   activities?: Prisma.UserActivityCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  triggeredNotifications?: Prisma.NotificationCreateNestedManyWithoutTriggeredByInput
   addedDepartments?: Prisma.DepartmentCreateNestedManyWithoutAddedByInput
   addedTasks?: Prisma.TaskCreateNestedManyWithoutAddedByInput
   taskAssignments?: Prisma.TaskAssigneeCreateNestedManyWithoutUserInput
@@ -4353,6 +4551,8 @@ export type UserUncheckedCreateWithoutAddedMilestonesInput = {
   leadActivities?: Prisma.LeadActivityUncheckedCreateNestedManyWithoutUserInput
   createdExpenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutCreatedByInput
   activities?: Prisma.UserActivityUncheckedCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  triggeredNotifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutTriggeredByInput
   addedDepartments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutAddedByInput
   addedTasks?: Prisma.TaskUncheckedCreateNestedManyWithoutAddedByInput
   taskAssignments?: Prisma.TaskAssigneeUncheckedCreateNestedManyWithoutUserInput
@@ -4405,6 +4605,8 @@ export type UserUpdateWithoutAddedMilestonesInput = {
   leadActivities?: Prisma.LeadActivityUpdateManyWithoutUserNestedInput
   createdExpenses?: Prisma.ExpenseUpdateManyWithoutCreatedByNestedInput
   activities?: Prisma.UserActivityUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  triggeredNotifications?: Prisma.NotificationUpdateManyWithoutTriggeredByNestedInput
   addedDepartments?: Prisma.DepartmentUpdateManyWithoutAddedByNestedInput
   addedTasks?: Prisma.TaskUpdateManyWithoutAddedByNestedInput
   taskAssignments?: Prisma.TaskAssigneeUpdateManyWithoutUserNestedInput
@@ -4443,6 +4645,8 @@ export type UserUncheckedUpdateWithoutAddedMilestonesInput = {
   leadActivities?: Prisma.LeadActivityUncheckedUpdateManyWithoutUserNestedInput
   createdExpenses?: Prisma.ExpenseUncheckedUpdateManyWithoutCreatedByNestedInput
   activities?: Prisma.UserActivityUncheckedUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  triggeredNotifications?: Prisma.NotificationUncheckedUpdateManyWithoutTriggeredByNestedInput
   addedDepartments?: Prisma.DepartmentUncheckedUpdateManyWithoutAddedByNestedInput
   addedTasks?: Prisma.TaskUncheckedUpdateManyWithoutAddedByNestedInput
   taskAssignments?: Prisma.TaskAssigneeUncheckedUpdateManyWithoutUserNestedInput
@@ -4479,6 +4683,8 @@ export type UserCreateWithoutAddedTasksInput = {
   leadActivities?: Prisma.LeadActivityCreateNestedManyWithoutUserInput
   createdExpenses?: Prisma.ExpenseCreateNestedManyWithoutCreatedByInput
   activities?: Prisma.UserActivityCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  triggeredNotifications?: Prisma.NotificationCreateNestedManyWithoutTriggeredByInput
   addedDepartments?: Prisma.DepartmentCreateNestedManyWithoutAddedByInput
   addedMilestones?: Prisma.MilestoneCreateNestedManyWithoutAddedByInput
   taskAssignments?: Prisma.TaskAssigneeCreateNestedManyWithoutUserInput
@@ -4517,6 +4723,8 @@ export type UserUncheckedCreateWithoutAddedTasksInput = {
   leadActivities?: Prisma.LeadActivityUncheckedCreateNestedManyWithoutUserInput
   createdExpenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutCreatedByInput
   activities?: Prisma.UserActivityUncheckedCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  triggeredNotifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutTriggeredByInput
   addedDepartments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutAddedByInput
   addedMilestones?: Prisma.MilestoneUncheckedCreateNestedManyWithoutAddedByInput
   taskAssignments?: Prisma.TaskAssigneeUncheckedCreateNestedManyWithoutUserInput
@@ -4569,6 +4777,8 @@ export type UserUpdateWithoutAddedTasksInput = {
   leadActivities?: Prisma.LeadActivityUpdateManyWithoutUserNestedInput
   createdExpenses?: Prisma.ExpenseUpdateManyWithoutCreatedByNestedInput
   activities?: Prisma.UserActivityUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  triggeredNotifications?: Prisma.NotificationUpdateManyWithoutTriggeredByNestedInput
   addedDepartments?: Prisma.DepartmentUpdateManyWithoutAddedByNestedInput
   addedMilestones?: Prisma.MilestoneUpdateManyWithoutAddedByNestedInput
   taskAssignments?: Prisma.TaskAssigneeUpdateManyWithoutUserNestedInput
@@ -4607,6 +4817,8 @@ export type UserUncheckedUpdateWithoutAddedTasksInput = {
   leadActivities?: Prisma.LeadActivityUncheckedUpdateManyWithoutUserNestedInput
   createdExpenses?: Prisma.ExpenseUncheckedUpdateManyWithoutCreatedByNestedInput
   activities?: Prisma.UserActivityUncheckedUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  triggeredNotifications?: Prisma.NotificationUncheckedUpdateManyWithoutTriggeredByNestedInput
   addedDepartments?: Prisma.DepartmentUncheckedUpdateManyWithoutAddedByNestedInput
   addedMilestones?: Prisma.MilestoneUncheckedUpdateManyWithoutAddedByNestedInput
   taskAssignments?: Prisma.TaskAssigneeUncheckedUpdateManyWithoutUserNestedInput
@@ -4643,6 +4855,8 @@ export type UserCreateWithoutTaskAssignmentsInput = {
   leadActivities?: Prisma.LeadActivityCreateNestedManyWithoutUserInput
   createdExpenses?: Prisma.ExpenseCreateNestedManyWithoutCreatedByInput
   activities?: Prisma.UserActivityCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  triggeredNotifications?: Prisma.NotificationCreateNestedManyWithoutTriggeredByInput
   addedDepartments?: Prisma.DepartmentCreateNestedManyWithoutAddedByInput
   addedMilestones?: Prisma.MilestoneCreateNestedManyWithoutAddedByInput
   addedTasks?: Prisma.TaskCreateNestedManyWithoutAddedByInput
@@ -4681,6 +4895,8 @@ export type UserUncheckedCreateWithoutTaskAssignmentsInput = {
   leadActivities?: Prisma.LeadActivityUncheckedCreateNestedManyWithoutUserInput
   createdExpenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutCreatedByInput
   activities?: Prisma.UserActivityUncheckedCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  triggeredNotifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutTriggeredByInput
   addedDepartments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutAddedByInput
   addedMilestones?: Prisma.MilestoneUncheckedCreateNestedManyWithoutAddedByInput
   addedTasks?: Prisma.TaskUncheckedCreateNestedManyWithoutAddedByInput
@@ -4733,6 +4949,8 @@ export type UserUpdateWithoutTaskAssignmentsInput = {
   leadActivities?: Prisma.LeadActivityUpdateManyWithoutUserNestedInput
   createdExpenses?: Prisma.ExpenseUpdateManyWithoutCreatedByNestedInput
   activities?: Prisma.UserActivityUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  triggeredNotifications?: Prisma.NotificationUpdateManyWithoutTriggeredByNestedInput
   addedDepartments?: Prisma.DepartmentUpdateManyWithoutAddedByNestedInput
   addedMilestones?: Prisma.MilestoneUpdateManyWithoutAddedByNestedInput
   addedTasks?: Prisma.TaskUpdateManyWithoutAddedByNestedInput
@@ -4771,6 +4989,8 @@ export type UserUncheckedUpdateWithoutTaskAssignmentsInput = {
   leadActivities?: Prisma.LeadActivityUncheckedUpdateManyWithoutUserNestedInput
   createdExpenses?: Prisma.ExpenseUncheckedUpdateManyWithoutCreatedByNestedInput
   activities?: Prisma.UserActivityUncheckedUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  triggeredNotifications?: Prisma.NotificationUncheckedUpdateManyWithoutTriggeredByNestedInput
   addedDepartments?: Prisma.DepartmentUncheckedUpdateManyWithoutAddedByNestedInput
   addedMilestones?: Prisma.MilestoneUncheckedUpdateManyWithoutAddedByNestedInput
   addedTasks?: Prisma.TaskUncheckedUpdateManyWithoutAddedByNestedInput
@@ -4806,6 +5026,8 @@ export type UserCreateWithoutActivitiesInput = {
   assignedLeads?: Prisma.LeadCreateNestedManyWithoutAssignedToInput
   leadActivities?: Prisma.LeadActivityCreateNestedManyWithoutUserInput
   createdExpenses?: Prisma.ExpenseCreateNestedManyWithoutCreatedByInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  triggeredNotifications?: Prisma.NotificationCreateNestedManyWithoutTriggeredByInput
   addedDepartments?: Prisma.DepartmentCreateNestedManyWithoutAddedByInput
   addedMilestones?: Prisma.MilestoneCreateNestedManyWithoutAddedByInput
   addedTasks?: Prisma.TaskCreateNestedManyWithoutAddedByInput
@@ -4844,6 +5066,8 @@ export type UserUncheckedCreateWithoutActivitiesInput = {
   assignedLeads?: Prisma.LeadUncheckedCreateNestedManyWithoutAssignedToInput
   leadActivities?: Prisma.LeadActivityUncheckedCreateNestedManyWithoutUserInput
   createdExpenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutCreatedByInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  triggeredNotifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutTriggeredByInput
   addedDepartments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutAddedByInput
   addedMilestones?: Prisma.MilestoneUncheckedCreateNestedManyWithoutAddedByInput
   addedTasks?: Prisma.TaskUncheckedCreateNestedManyWithoutAddedByInput
@@ -4896,6 +5120,8 @@ export type UserUpdateWithoutActivitiesInput = {
   assignedLeads?: Prisma.LeadUpdateManyWithoutAssignedToNestedInput
   leadActivities?: Prisma.LeadActivityUpdateManyWithoutUserNestedInput
   createdExpenses?: Prisma.ExpenseUpdateManyWithoutCreatedByNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  triggeredNotifications?: Prisma.NotificationUpdateManyWithoutTriggeredByNestedInput
   addedDepartments?: Prisma.DepartmentUpdateManyWithoutAddedByNestedInput
   addedMilestones?: Prisma.MilestoneUpdateManyWithoutAddedByNestedInput
   addedTasks?: Prisma.TaskUpdateManyWithoutAddedByNestedInput
@@ -4934,6 +5160,352 @@ export type UserUncheckedUpdateWithoutActivitiesInput = {
   assignedLeads?: Prisma.LeadUncheckedUpdateManyWithoutAssignedToNestedInput
   leadActivities?: Prisma.LeadActivityUncheckedUpdateManyWithoutUserNestedInput
   createdExpenses?: Prisma.ExpenseUncheckedUpdateManyWithoutCreatedByNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  triggeredNotifications?: Prisma.NotificationUncheckedUpdateManyWithoutTriggeredByNestedInput
+  addedDepartments?: Prisma.DepartmentUncheckedUpdateManyWithoutAddedByNestedInput
+  addedMilestones?: Prisma.MilestoneUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTasks?: Prisma.TaskUncheckedUpdateManyWithoutAddedByNestedInput
+  taskAssignments?: Prisma.TaskAssigneeUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutNotificationsInput = {
+  id?: string
+  name: string
+  email: string
+  passwordHash: string
+  profileImgUrl?: string | null
+  needPasswordChange?: boolean
+  lastLoginAt?: Date | string | null
+  resetPasswordToken?: string | null
+  resetPasswordExpires?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  addedBy?: Prisma.UserCreateNestedOneWithoutCreatedUsersInput
+  createdUsers?: Prisma.UserCreateNestedManyWithoutAddedByInput
+  addedRoles?: Prisma.RoleCreateNestedManyWithoutAddedByInput
+  addedTeamMembers?: Prisma.TeamMemberCreateNestedManyWithoutAddedByInput
+  addedTestimonials?: Prisma.TestimonialCreateNestedManyWithoutAddedByInput
+  addedTravelInsights?: Prisma.TravelInsightCreateNestedManyWithoutAddedByInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryCreateNestedManyWithoutAddedByInput
+  addedTravelServices?: Prisma.TravelServiceCreateNestedManyWithoutAddedByInput
+  addedServiceCategories?: Prisma.ServiceCategoryCreateNestedManyWithoutAddedByInput
+  addedCaseStudies?: Prisma.CaseStudyCreateNestedManyWithoutAddedByInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryCreateNestedManyWithoutAddedByInput
+  addedPlaybooks?: Prisma.PlaybookCreateNestedManyWithoutAddedByInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeCreateNestedManyWithoutAddedByInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryCreateNestedManyWithoutAddedByInput
+  addedLeads?: Prisma.LeadCreateNestedManyWithoutAddedByInput
+  assignedLeads?: Prisma.LeadCreateNestedManyWithoutAssignedToInput
+  leadActivities?: Prisma.LeadActivityCreateNestedManyWithoutUserInput
+  createdExpenses?: Prisma.ExpenseCreateNestedManyWithoutCreatedByInput
+  activities?: Prisma.UserActivityCreateNestedManyWithoutUserInput
+  triggeredNotifications?: Prisma.NotificationCreateNestedManyWithoutTriggeredByInput
+  addedDepartments?: Prisma.DepartmentCreateNestedManyWithoutAddedByInput
+  addedMilestones?: Prisma.MilestoneCreateNestedManyWithoutAddedByInput
+  addedTasks?: Prisma.TaskCreateNestedManyWithoutAddedByInput
+  taskAssignments?: Prisma.TaskAssigneeCreateNestedManyWithoutUserInput
+  role?: Prisma.RoleCreateNestedOneWithoutUsersInput
+}
+
+export type UserUncheckedCreateWithoutNotificationsInput = {
+  id?: string
+  name: string
+  email: string
+  passwordHash: string
+  profileImgUrl?: string | null
+  needPasswordChange?: boolean
+  lastLoginAt?: Date | string | null
+  addedById?: string | null
+  resetPasswordToken?: string | null
+  resetPasswordExpires?: Date | string | null
+  roleId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutAddedByInput
+  addedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutAddedByInput
+  addedTeamMembers?: Prisma.TeamMemberUncheckedCreateNestedManyWithoutAddedByInput
+  addedTestimonials?: Prisma.TestimonialUncheckedCreateNestedManyWithoutAddedByInput
+  addedTravelInsights?: Prisma.TravelInsightUncheckedCreateNestedManyWithoutAddedByInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryUncheckedCreateNestedManyWithoutAddedByInput
+  addedTravelServices?: Prisma.TravelServiceUncheckedCreateNestedManyWithoutAddedByInput
+  addedServiceCategories?: Prisma.ServiceCategoryUncheckedCreateNestedManyWithoutAddedByInput
+  addedCaseStudies?: Prisma.CaseStudyUncheckedCreateNestedManyWithoutAddedByInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryUncheckedCreateNestedManyWithoutAddedByInput
+  addedPlaybooks?: Prisma.PlaybookUncheckedCreateNestedManyWithoutAddedByInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeUncheckedCreateNestedManyWithoutAddedByInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedCreateNestedManyWithoutAddedByInput
+  addedLeads?: Prisma.LeadUncheckedCreateNestedManyWithoutAddedByInput
+  assignedLeads?: Prisma.LeadUncheckedCreateNestedManyWithoutAssignedToInput
+  leadActivities?: Prisma.LeadActivityUncheckedCreateNestedManyWithoutUserInput
+  createdExpenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutCreatedByInput
+  activities?: Prisma.UserActivityUncheckedCreateNestedManyWithoutUserInput
+  triggeredNotifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutTriggeredByInput
+  addedDepartments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutAddedByInput
+  addedMilestones?: Prisma.MilestoneUncheckedCreateNestedManyWithoutAddedByInput
+  addedTasks?: Prisma.TaskUncheckedCreateNestedManyWithoutAddedByInput
+  taskAssignments?: Prisma.TaskAssigneeUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutNotificationsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutNotificationsInput, Prisma.UserUncheckedCreateWithoutNotificationsInput>
+}
+
+export type UserCreateWithoutTriggeredNotificationsInput = {
+  id?: string
+  name: string
+  email: string
+  passwordHash: string
+  profileImgUrl?: string | null
+  needPasswordChange?: boolean
+  lastLoginAt?: Date | string | null
+  resetPasswordToken?: string | null
+  resetPasswordExpires?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  addedBy?: Prisma.UserCreateNestedOneWithoutCreatedUsersInput
+  createdUsers?: Prisma.UserCreateNestedManyWithoutAddedByInput
+  addedRoles?: Prisma.RoleCreateNestedManyWithoutAddedByInput
+  addedTeamMembers?: Prisma.TeamMemberCreateNestedManyWithoutAddedByInput
+  addedTestimonials?: Prisma.TestimonialCreateNestedManyWithoutAddedByInput
+  addedTravelInsights?: Prisma.TravelInsightCreateNestedManyWithoutAddedByInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryCreateNestedManyWithoutAddedByInput
+  addedTravelServices?: Prisma.TravelServiceCreateNestedManyWithoutAddedByInput
+  addedServiceCategories?: Prisma.ServiceCategoryCreateNestedManyWithoutAddedByInput
+  addedCaseStudies?: Prisma.CaseStudyCreateNestedManyWithoutAddedByInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryCreateNestedManyWithoutAddedByInput
+  addedPlaybooks?: Prisma.PlaybookCreateNestedManyWithoutAddedByInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeCreateNestedManyWithoutAddedByInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryCreateNestedManyWithoutAddedByInput
+  addedLeads?: Prisma.LeadCreateNestedManyWithoutAddedByInput
+  assignedLeads?: Prisma.LeadCreateNestedManyWithoutAssignedToInput
+  leadActivities?: Prisma.LeadActivityCreateNestedManyWithoutUserInput
+  createdExpenses?: Prisma.ExpenseCreateNestedManyWithoutCreatedByInput
+  activities?: Prisma.UserActivityCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  addedDepartments?: Prisma.DepartmentCreateNestedManyWithoutAddedByInput
+  addedMilestones?: Prisma.MilestoneCreateNestedManyWithoutAddedByInput
+  addedTasks?: Prisma.TaskCreateNestedManyWithoutAddedByInput
+  taskAssignments?: Prisma.TaskAssigneeCreateNestedManyWithoutUserInput
+  role?: Prisma.RoleCreateNestedOneWithoutUsersInput
+}
+
+export type UserUncheckedCreateWithoutTriggeredNotificationsInput = {
+  id?: string
+  name: string
+  email: string
+  passwordHash: string
+  profileImgUrl?: string | null
+  needPasswordChange?: boolean
+  lastLoginAt?: Date | string | null
+  addedById?: string | null
+  resetPasswordToken?: string | null
+  resetPasswordExpires?: Date | string | null
+  roleId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutAddedByInput
+  addedRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutAddedByInput
+  addedTeamMembers?: Prisma.TeamMemberUncheckedCreateNestedManyWithoutAddedByInput
+  addedTestimonials?: Prisma.TestimonialUncheckedCreateNestedManyWithoutAddedByInput
+  addedTravelInsights?: Prisma.TravelInsightUncheckedCreateNestedManyWithoutAddedByInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryUncheckedCreateNestedManyWithoutAddedByInput
+  addedTravelServices?: Prisma.TravelServiceUncheckedCreateNestedManyWithoutAddedByInput
+  addedServiceCategories?: Prisma.ServiceCategoryUncheckedCreateNestedManyWithoutAddedByInput
+  addedCaseStudies?: Prisma.CaseStudyUncheckedCreateNestedManyWithoutAddedByInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryUncheckedCreateNestedManyWithoutAddedByInput
+  addedPlaybooks?: Prisma.PlaybookUncheckedCreateNestedManyWithoutAddedByInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeUncheckedCreateNestedManyWithoutAddedByInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedCreateNestedManyWithoutAddedByInput
+  addedLeads?: Prisma.LeadUncheckedCreateNestedManyWithoutAddedByInput
+  assignedLeads?: Prisma.LeadUncheckedCreateNestedManyWithoutAssignedToInput
+  leadActivities?: Prisma.LeadActivityUncheckedCreateNestedManyWithoutUserInput
+  createdExpenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutCreatedByInput
+  activities?: Prisma.UserActivityUncheckedCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  addedDepartments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutAddedByInput
+  addedMilestones?: Prisma.MilestoneUncheckedCreateNestedManyWithoutAddedByInput
+  addedTasks?: Prisma.TaskUncheckedCreateNestedManyWithoutAddedByInput
+  taskAssignments?: Prisma.TaskAssigneeUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutTriggeredNotificationsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutTriggeredNotificationsInput, Prisma.UserUncheckedCreateWithoutTriggeredNotificationsInput>
+}
+
+export type UserUpsertWithoutNotificationsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutNotificationsInput, Prisma.UserUncheckedUpdateWithoutNotificationsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutNotificationsInput, Prisma.UserUncheckedCreateWithoutNotificationsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutNotificationsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutNotificationsInput, Prisma.UserUncheckedUpdateWithoutNotificationsInput>
+}
+
+export type UserUpdateWithoutNotificationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  profileImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  needPasswordChange?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetPasswordToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  addedBy?: Prisma.UserUpdateOneWithoutCreatedUsersNestedInput
+  createdUsers?: Prisma.UserUpdateManyWithoutAddedByNestedInput
+  addedRoles?: Prisma.RoleUpdateManyWithoutAddedByNestedInput
+  addedTeamMembers?: Prisma.TeamMemberUpdateManyWithoutAddedByNestedInput
+  addedTestimonials?: Prisma.TestimonialUpdateManyWithoutAddedByNestedInput
+  addedTravelInsights?: Prisma.TravelInsightUpdateManyWithoutAddedByNestedInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryUpdateManyWithoutAddedByNestedInput
+  addedTravelServices?: Prisma.TravelServiceUpdateManyWithoutAddedByNestedInput
+  addedServiceCategories?: Prisma.ServiceCategoryUpdateManyWithoutAddedByNestedInput
+  addedCaseStudies?: Prisma.CaseStudyUpdateManyWithoutAddedByNestedInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryUpdateManyWithoutAddedByNestedInput
+  addedPlaybooks?: Prisma.PlaybookUpdateManyWithoutAddedByNestedInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeUpdateManyWithoutAddedByNestedInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryUpdateManyWithoutAddedByNestedInput
+  addedLeads?: Prisma.LeadUpdateManyWithoutAddedByNestedInput
+  assignedLeads?: Prisma.LeadUpdateManyWithoutAssignedToNestedInput
+  leadActivities?: Prisma.LeadActivityUpdateManyWithoutUserNestedInput
+  createdExpenses?: Prisma.ExpenseUpdateManyWithoutCreatedByNestedInput
+  activities?: Prisma.UserActivityUpdateManyWithoutUserNestedInput
+  triggeredNotifications?: Prisma.NotificationUpdateManyWithoutTriggeredByNestedInput
+  addedDepartments?: Prisma.DepartmentUpdateManyWithoutAddedByNestedInput
+  addedMilestones?: Prisma.MilestoneUpdateManyWithoutAddedByNestedInput
+  addedTasks?: Prisma.TaskUpdateManyWithoutAddedByNestedInput
+  taskAssignments?: Prisma.TaskAssigneeUpdateManyWithoutUserNestedInput
+  role?: Prisma.RoleUpdateOneWithoutUsersNestedInput
+}
+
+export type UserUncheckedUpdateWithoutNotificationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  profileImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  needPasswordChange?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  addedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  roleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdUsers?: Prisma.UserUncheckedUpdateManyWithoutAddedByNestedInput
+  addedRoles?: Prisma.RoleUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTeamMembers?: Prisma.TeamMemberUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTestimonials?: Prisma.TestimonialUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTravelInsights?: Prisma.TravelInsightUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTravelServices?: Prisma.TravelServiceUncheckedUpdateManyWithoutAddedByNestedInput
+  addedServiceCategories?: Prisma.ServiceCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+  addedCaseStudies?: Prisma.CaseStudyUncheckedUpdateManyWithoutAddedByNestedInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+  addedPlaybooks?: Prisma.PlaybookUncheckedUpdateManyWithoutAddedByNestedInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeUncheckedUpdateManyWithoutAddedByNestedInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+  addedLeads?: Prisma.LeadUncheckedUpdateManyWithoutAddedByNestedInput
+  assignedLeads?: Prisma.LeadUncheckedUpdateManyWithoutAssignedToNestedInput
+  leadActivities?: Prisma.LeadActivityUncheckedUpdateManyWithoutUserNestedInput
+  createdExpenses?: Prisma.ExpenseUncheckedUpdateManyWithoutCreatedByNestedInput
+  activities?: Prisma.UserActivityUncheckedUpdateManyWithoutUserNestedInput
+  triggeredNotifications?: Prisma.NotificationUncheckedUpdateManyWithoutTriggeredByNestedInput
+  addedDepartments?: Prisma.DepartmentUncheckedUpdateManyWithoutAddedByNestedInput
+  addedMilestones?: Prisma.MilestoneUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTasks?: Prisma.TaskUncheckedUpdateManyWithoutAddedByNestedInput
+  taskAssignments?: Prisma.TaskAssigneeUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserUpsertWithoutTriggeredNotificationsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutTriggeredNotificationsInput, Prisma.UserUncheckedUpdateWithoutTriggeredNotificationsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutTriggeredNotificationsInput, Prisma.UserUncheckedCreateWithoutTriggeredNotificationsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutTriggeredNotificationsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutTriggeredNotificationsInput, Prisma.UserUncheckedUpdateWithoutTriggeredNotificationsInput>
+}
+
+export type UserUpdateWithoutTriggeredNotificationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  profileImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  needPasswordChange?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetPasswordToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  addedBy?: Prisma.UserUpdateOneWithoutCreatedUsersNestedInput
+  createdUsers?: Prisma.UserUpdateManyWithoutAddedByNestedInput
+  addedRoles?: Prisma.RoleUpdateManyWithoutAddedByNestedInput
+  addedTeamMembers?: Prisma.TeamMemberUpdateManyWithoutAddedByNestedInput
+  addedTestimonials?: Prisma.TestimonialUpdateManyWithoutAddedByNestedInput
+  addedTravelInsights?: Prisma.TravelInsightUpdateManyWithoutAddedByNestedInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryUpdateManyWithoutAddedByNestedInput
+  addedTravelServices?: Prisma.TravelServiceUpdateManyWithoutAddedByNestedInput
+  addedServiceCategories?: Prisma.ServiceCategoryUpdateManyWithoutAddedByNestedInput
+  addedCaseStudies?: Prisma.CaseStudyUpdateManyWithoutAddedByNestedInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryUpdateManyWithoutAddedByNestedInput
+  addedPlaybooks?: Prisma.PlaybookUpdateManyWithoutAddedByNestedInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeUpdateManyWithoutAddedByNestedInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryUpdateManyWithoutAddedByNestedInput
+  addedLeads?: Prisma.LeadUpdateManyWithoutAddedByNestedInput
+  assignedLeads?: Prisma.LeadUpdateManyWithoutAssignedToNestedInput
+  leadActivities?: Prisma.LeadActivityUpdateManyWithoutUserNestedInput
+  createdExpenses?: Prisma.ExpenseUpdateManyWithoutCreatedByNestedInput
+  activities?: Prisma.UserActivityUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  addedDepartments?: Prisma.DepartmentUpdateManyWithoutAddedByNestedInput
+  addedMilestones?: Prisma.MilestoneUpdateManyWithoutAddedByNestedInput
+  addedTasks?: Prisma.TaskUpdateManyWithoutAddedByNestedInput
+  taskAssignments?: Prisma.TaskAssigneeUpdateManyWithoutUserNestedInput
+  role?: Prisma.RoleUpdateOneWithoutUsersNestedInput
+}
+
+export type UserUncheckedUpdateWithoutTriggeredNotificationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  profileImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  needPasswordChange?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  addedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  roleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdUsers?: Prisma.UserUncheckedUpdateManyWithoutAddedByNestedInput
+  addedRoles?: Prisma.RoleUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTeamMembers?: Prisma.TeamMemberUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTestimonials?: Prisma.TestimonialUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTravelInsights?: Prisma.TravelInsightUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTravelInsightCategories?: Prisma.TravelInsightCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+  addedTravelServices?: Prisma.TravelServiceUncheckedUpdateManyWithoutAddedByNestedInput
+  addedServiceCategories?: Prisma.ServiceCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+  addedCaseStudies?: Prisma.CaseStudyUncheckedUpdateManyWithoutAddedByNestedInput
+  addedCaseStudyCategories?: Prisma.CaseStudyCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+  addedPlaybooks?: Prisma.PlaybookUncheckedUpdateManyWithoutAddedByNestedInput
+  addedPlaybookTypes?: Prisma.PlaybookTypeUncheckedUpdateManyWithoutAddedByNestedInput
+  addedPlaybookCategories?: Prisma.PlaybookCategoryUncheckedUpdateManyWithoutAddedByNestedInput
+  addedLeads?: Prisma.LeadUncheckedUpdateManyWithoutAddedByNestedInput
+  assignedLeads?: Prisma.LeadUncheckedUpdateManyWithoutAssignedToNestedInput
+  leadActivities?: Prisma.LeadActivityUncheckedUpdateManyWithoutUserNestedInput
+  createdExpenses?: Prisma.ExpenseUncheckedUpdateManyWithoutCreatedByNestedInput
+  activities?: Prisma.UserActivityUncheckedUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   addedDepartments?: Prisma.DepartmentUncheckedUpdateManyWithoutAddedByNestedInput
   addedMilestones?: Prisma.MilestoneUncheckedUpdateManyWithoutAddedByNestedInput
   addedTasks?: Prisma.TaskUncheckedUpdateManyWithoutAddedByNestedInput
@@ -4985,6 +5557,8 @@ export type UserUpdateWithoutAddedByInput = {
   leadActivities?: Prisma.LeadActivityUpdateManyWithoutUserNestedInput
   createdExpenses?: Prisma.ExpenseUpdateManyWithoutCreatedByNestedInput
   activities?: Prisma.UserActivityUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  triggeredNotifications?: Prisma.NotificationUpdateManyWithoutTriggeredByNestedInput
   addedDepartments?: Prisma.DepartmentUpdateManyWithoutAddedByNestedInput
   addedMilestones?: Prisma.MilestoneUpdateManyWithoutAddedByNestedInput
   addedTasks?: Prisma.TaskUpdateManyWithoutAddedByNestedInput
@@ -5023,6 +5597,8 @@ export type UserUncheckedUpdateWithoutAddedByInput = {
   leadActivities?: Prisma.LeadActivityUncheckedUpdateManyWithoutUserNestedInput
   createdExpenses?: Prisma.ExpenseUncheckedUpdateManyWithoutCreatedByNestedInput
   activities?: Prisma.UserActivityUncheckedUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  triggeredNotifications?: Prisma.NotificationUncheckedUpdateManyWithoutTriggeredByNestedInput
   addedDepartments?: Prisma.DepartmentUncheckedUpdateManyWithoutAddedByNestedInput
   addedMilestones?: Prisma.MilestoneUncheckedUpdateManyWithoutAddedByNestedInput
   addedTasks?: Prisma.TaskUncheckedUpdateManyWithoutAddedByNestedInput
@@ -5090,6 +5666,8 @@ export type UserUpdateWithoutRoleInput = {
   leadActivities?: Prisma.LeadActivityUpdateManyWithoutUserNestedInput
   createdExpenses?: Prisma.ExpenseUpdateManyWithoutCreatedByNestedInput
   activities?: Prisma.UserActivityUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  triggeredNotifications?: Prisma.NotificationUpdateManyWithoutTriggeredByNestedInput
   addedDepartments?: Prisma.DepartmentUpdateManyWithoutAddedByNestedInput
   addedMilestones?: Prisma.MilestoneUpdateManyWithoutAddedByNestedInput
   addedTasks?: Prisma.TaskUpdateManyWithoutAddedByNestedInput
@@ -5127,6 +5705,8 @@ export type UserUncheckedUpdateWithoutRoleInput = {
   leadActivities?: Prisma.LeadActivityUncheckedUpdateManyWithoutUserNestedInput
   createdExpenses?: Prisma.ExpenseUncheckedUpdateManyWithoutCreatedByNestedInput
   activities?: Prisma.UserActivityUncheckedUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  triggeredNotifications?: Prisma.NotificationUncheckedUpdateManyWithoutTriggeredByNestedInput
   addedDepartments?: Prisma.DepartmentUncheckedUpdateManyWithoutAddedByNestedInput
   addedMilestones?: Prisma.MilestoneUncheckedUpdateManyWithoutAddedByNestedInput
   addedTasks?: Prisma.TaskUncheckedUpdateManyWithoutAddedByNestedInput
@@ -5172,6 +5752,8 @@ export type UserCountOutputType = {
   leadActivities: number
   createdExpenses: number
   activities: number
+  notifications: number
+  triggeredNotifications: number
   addedDepartments: number
   addedMilestones: number
   addedTasks: number
@@ -5197,6 +5779,8 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   leadActivities?: boolean | UserCountOutputTypeCountLeadActivitiesArgs
   createdExpenses?: boolean | UserCountOutputTypeCountCreatedExpensesArgs
   activities?: boolean | UserCountOutputTypeCountActivitiesArgs
+  notifications?: boolean | UserCountOutputTypeCountNotificationsArgs
+  triggeredNotifications?: boolean | UserCountOutputTypeCountTriggeredNotificationsArgs
   addedDepartments?: boolean | UserCountOutputTypeCountAddedDepartmentsArgs
   addedMilestones?: boolean | UserCountOutputTypeCountAddedMilestonesArgs
   addedTasks?: boolean | UserCountOutputTypeCountAddedTasksArgs
@@ -5342,6 +5926,20 @@ export type UserCountOutputTypeCountActivitiesArgs<ExtArgs extends runtime.Types
 /**
  * UserCountOutputType without action
  */
+export type UserCountOutputTypeCountNotificationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.NotificationWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountTriggeredNotificationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.NotificationWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
 export type UserCountOutputTypeCountAddedDepartmentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.DepartmentWhereInput
 }
@@ -5401,6 +5999,8 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   leadActivities?: boolean | Prisma.User$leadActivitiesArgs<ExtArgs>
   createdExpenses?: boolean | Prisma.User$createdExpensesArgs<ExtArgs>
   activities?: boolean | Prisma.User$activitiesArgs<ExtArgs>
+  notifications?: boolean | Prisma.User$notificationsArgs<ExtArgs>
+  triggeredNotifications?: boolean | Prisma.User$triggeredNotificationsArgs<ExtArgs>
   addedDepartments?: boolean | Prisma.User$addedDepartmentsArgs<ExtArgs>
   addedMilestones?: boolean | Prisma.User$addedMilestonesArgs<ExtArgs>
   addedTasks?: boolean | Prisma.User$addedTasksArgs<ExtArgs>
@@ -5482,6 +6082,8 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   leadActivities?: boolean | Prisma.User$leadActivitiesArgs<ExtArgs>
   createdExpenses?: boolean | Prisma.User$createdExpensesArgs<ExtArgs>
   activities?: boolean | Prisma.User$activitiesArgs<ExtArgs>
+  notifications?: boolean | Prisma.User$notificationsArgs<ExtArgs>
+  triggeredNotifications?: boolean | Prisma.User$triggeredNotificationsArgs<ExtArgs>
   addedDepartments?: boolean | Prisma.User$addedDepartmentsArgs<ExtArgs>
   addedMilestones?: boolean | Prisma.User$addedMilestonesArgs<ExtArgs>
   addedTasks?: boolean | Prisma.User$addedTasksArgs<ExtArgs>
@@ -5520,6 +6122,8 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     leadActivities: Prisma.$LeadActivityPayload<ExtArgs>[]
     createdExpenses: Prisma.$ExpensePayload<ExtArgs>[]
     activities: Prisma.$UserActivityPayload<ExtArgs>[]
+    notifications: Prisma.$NotificationPayload<ExtArgs>[]
+    triggeredNotifications: Prisma.$NotificationPayload<ExtArgs>[]
     addedDepartments: Prisma.$DepartmentPayload<ExtArgs>[]
     addedMilestones: Prisma.$MilestonePayload<ExtArgs>[]
     addedTasks: Prisma.$TaskPayload<ExtArgs>[]
@@ -5953,6 +6557,8 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   leadActivities<T extends Prisma.User$leadActivitiesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$leadActivitiesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LeadActivityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   createdExpenses<T extends Prisma.User$createdExpensesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$createdExpensesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ExpensePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   activities<T extends Prisma.User$activitiesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$activitiesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserActivityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  notifications<T extends Prisma.User$notificationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$notificationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  triggeredNotifications<T extends Prisma.User$triggeredNotificationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$triggeredNotificationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   addedDepartments<T extends Prisma.User$addedDepartmentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$addedDepartmentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   addedMilestones<T extends Prisma.User$addedMilestonesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$addedMilestonesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MilestonePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   addedTasks<T extends Prisma.User$addedTasksArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$addedTasksArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TaskPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -6849,6 +7455,54 @@ export type User$activitiesArgs<ExtArgs extends runtime.Types.Extensions.Interna
   take?: number
   skip?: number
   distinct?: Prisma.UserActivityScalarFieldEnum | Prisma.UserActivityScalarFieldEnum[]
+}
+
+/**
+ * User.notifications
+ */
+export type User$notificationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Notification
+   */
+  select?: Prisma.NotificationSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Notification
+   */
+  omit?: Prisma.NotificationOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.NotificationInclude<ExtArgs> | null
+  where?: Prisma.NotificationWhereInput
+  orderBy?: Prisma.NotificationOrderByWithRelationInput | Prisma.NotificationOrderByWithRelationInput[]
+  cursor?: Prisma.NotificationWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.NotificationScalarFieldEnum | Prisma.NotificationScalarFieldEnum[]
+}
+
+/**
+ * User.triggeredNotifications
+ */
+export type User$triggeredNotificationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Notification
+   */
+  select?: Prisma.NotificationSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Notification
+   */
+  omit?: Prisma.NotificationOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.NotificationInclude<ExtArgs> | null
+  where?: Prisma.NotificationWhereInput
+  orderBy?: Prisma.NotificationOrderByWithRelationInput | Prisma.NotificationOrderByWithRelationInput[]
+  cursor?: Prisma.NotificationWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.NotificationScalarFieldEnum | Prisma.NotificationScalarFieldEnum[]
 }
 
 /**

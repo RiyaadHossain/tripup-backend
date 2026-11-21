@@ -83,7 +83,8 @@ export const ModelName = {
   CompetitionBadge: 'CompetitionBadge',
   CompetitionAchievement: 'CompetitionAchievement',
   CompetitionMilestone: 'CompetitionMilestone',
-  CompetitionMonthlyWinners: 'CompetitionMonthlyWinners'
+  CompetitionMonthlyWinners: 'CompetitionMonthlyWinners',
+  Notification: 'Notification'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -638,6 +639,25 @@ export const CompetitionMonthlyWinnersScalarFieldEnum = {
 } as const
 
 export type CompetitionMonthlyWinnersScalarFieldEnum = (typeof CompetitionMonthlyWinnersScalarFieldEnum)[keyof typeof CompetitionMonthlyWinnersScalarFieldEnum]
+
+
+export const NotificationScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  message: 'message',
+  type: 'type',
+  module: 'module',
+  resourceId: 'resourceId',
+  metadata: 'metadata',
+  isRead: 'isRead',
+  readAt: 'readAt',
+  userId: 'userId',
+  triggeredById: 'triggeredById',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type NotificationScalarFieldEnum = (typeof NotificationScalarFieldEnum)[keyof typeof NotificationScalarFieldEnum]
 
 
 export const SortOrder = {
