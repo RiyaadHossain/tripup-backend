@@ -84,6 +84,7 @@ model User {
   addedMilestones  Milestone[]  @relation("AddedMilestone")
   addedTasks       Task[]       @relation("AddedTask")
   taskAssignments  TaskAssignee[]
+  taskComments     TaskComment[] @relation("TaskCommentAuthor")
 
   resetPasswordToken   String?
   resetPasswordExpires DateTime?
@@ -612,13 +613,15 @@ model Milestone {
 }
 
 model Task {
-  id          String      @id @default(uuid())
-  title       String
-  description String?
-  deadline    DateTime?
-  priority    TaskPriority @default(MEDIUM)
-  status      TaskStatus   @default(TO_DO)
-  attachment  Json?        // { url, name, size, mimeType }
+  id                String       @id @default(uuid())
+  title             String
+  description       String?
+  descriptionFormat String       @default("plain")
+  mentionedUserIds  String[]     @default([])
+  deadline          DateTime?
+  priority          TaskPriority @default(MEDIUM)
+  status            TaskStatus   @default(TO_DO)
+  attachment        Json?        // { url, name, size, mimeType }
 
   // Self-referencing for child/sub-tasks
   parentId String?
@@ -632,6 +635,7 @@ model Task {
   department   Department? @relation(fields: [departmentId], references: [id])
 
   assignees TaskAssignee[]
+  comments  TaskComment[]
 
   addedById String?
   addedBy   User?   @relation("AddedTask", fields: [addedById], references: [id])
@@ -659,6 +663,28 @@ model TaskAssignee {
 
   @@id([taskId, userId])
   @@index([userId])
+}
+
+model TaskComment {
+  id               String   @id @default(uuid())
+  content          String
+  contentFormat    String   @default("html")
+  mentions         Json?    @default("[]")
+  mentionedUserIds String[] @default([])
+
+  taskId           String
+  task             Task     @relation(fields: [taskId], references: [id], onDelete: Cascade)
+
+  authorId         String
+  author           User     @relation("TaskCommentAuthor", fields: [authorId], references: [id], onDelete: Cascade)
+
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@index([taskId])
+  @@index([taskId, createdAt])
+  @@index([authorId])
+  @@map("task_comments")
 }
 
 // ---------------------------------------------------------------------------

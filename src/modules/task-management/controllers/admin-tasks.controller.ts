@@ -3,6 +3,8 @@ import {
   Controller,
   Delete,
   Get,
+  HttpCode,
+  HttpStatus,
   Param,
   Patch,
   Post,
@@ -20,6 +22,8 @@ import { CreateTaskDto } from '../dto/create-task.dto';
 import { UpdateTaskDto } from '../dto/update-task.dto';
 import { QueryTasksDto } from '../dto/query-tasks.dto';
 import { UpdateTaskStatusDto } from '../dto/update-task-status.dto';
+import { CreateTaskCommentDto } from '../dto/create-task-comment.dto';
+import { QueryTaskCommentsDto } from '../dto/query-task-comments.dto';
 
 @UseGuards(JwtAuthGuard, PermissionGuard)
 @Controller('admin/tasks')
@@ -52,6 +56,32 @@ export class AdminTasksController {
   @Permission(perm('tasks', 'READ'))
   async findOne(@Param('id') id: string) {
     return this.service.findOne(id);
+  }
+
+  /**
+   * POST /admin/tasks/:taskId/comments
+   * Any authenticated user authorized to view the task can post a comment.
+   */
+  @Post(':taskId/comments')
+  @HttpCode(HttpStatus.CREATED)
+  async createComment(
+    @Param('taskId') taskId: string,
+    @Body() dto: CreateTaskCommentDto,
+    @CurrentUser('sub') userId: string,
+  ) {
+    return this.service.createComment(taskId, dto, userId);
+  }
+
+  /**
+   * GET /admin/tasks/:taskId/comments
+   * Any authenticated user authorized to view the task can list comments.
+   */
+  @Get(':taskId/comments')
+  async findComments(
+    @Param('taskId') taskId: string,
+    @Query() query: QueryTaskCommentsDto,
+  ) {
+    return this.service.findComments(taskId, query);
   }
 
   @Patch(':id')

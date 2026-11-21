@@ -21,6 +21,15 @@ export class CreateTaskDto {
   description?: string;
 
   @IsOptional()
+  @IsString()
+  descriptionFormat?: string;
+
+  @IsOptional()
+  @IsArray()
+  @IsUUID('all', { each: true })
+  mentionedUserIds?: string[];
+
+  @IsOptional()
   @IsArray()
   @IsUUID('all', { each: true })
   assigneeIds?: string[];

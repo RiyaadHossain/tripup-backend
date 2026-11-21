@@ -21,7 +21,7 @@ const TASK_INCLUDE = {
       deadline: true,
     },
   },
-  addedBy: { select: { id: true, name: true } },
+  addedBy: { select: { id: true, name: true, email: true } },
 } satisfies Prisma.TaskInclude;
 
 export interface TaskQueryFilter {
@@ -80,6 +80,37 @@ export class TaskRepository {
 
   async delete(id: string) {
     return this.prisma.task.delete({ where: { id } });
+  }
+
+  // ---------------------------------------------------------------------------
+  // Comments
+  // ---------------------------------------------------------------------------
+
+  async createComment(data: Prisma.TaskCommentCreateInput) {
+    return this.prisma.taskComment.create({
+      data,
+      include: {
+        author: { select: { id: true, name: true, email: true } },
+      },
+    });
+  }
+
+  async findComments(taskId: string, skip: number, take: number) {
+    const where: Prisma.TaskCommentWhereInput = { taskId };
+    const [items, total] = await Promise.all([
+      this.prisma.taskComment.findMany({
+        where,
+        skip,
+        take,
+        orderBy: [{ createdAt: 'desc' }, { id: 'desc' }],
+        include: {
+          author: { select: { id: true, name: true, email: true } },
+        },
+      }),
+      this.prisma.taskComment.count({ where }),
+    ]);
+
+    return { items, total };
   }
 
   // ---------------------------------------------------------------------------

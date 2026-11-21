@@ -406,6 +406,7 @@ export const ModelName = {
   Milestone: 'Milestone',
   Task: 'Task',
   TaskAssignee: 'TaskAssignee',
+  TaskComment: 'TaskComment',
   UserActivity: 'UserActivity',
   Design: 'Design',
   CompetitionCategory: 'CompetitionCategory',
@@ -433,7 +434,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "role" | "permission" | "rolePermission" | "teamMember" | "testimonial" | "travelInsight" | "travelInsightCategory" | "travelService" | "serviceCategory" | "caseStudy" | "caseStudyCategory" | "playbook" | "playbookType" | "playbookCategory" | "lead" | "leadActivity" | "expense" | "department" | "milestone" | "task" | "taskAssignee" | "userActivity" | "design" | "competitionCategory" | "competitionTeam" | "competitionScoringRules" | "competitionChallenge" | "competitionPerformance" | "competitionBadge" | "competitionAchievement" | "competitionMilestone" | "competitionMonthlyWinners" | "notification"
+    modelProps: "user" | "role" | "permission" | "rolePermission" | "teamMember" | "testimonial" | "travelInsight" | "travelInsightCategory" | "travelService" | "serviceCategory" | "caseStudy" | "caseStudyCategory" | "playbook" | "playbookType" | "playbookCategory" | "lead" | "leadActivity" | "expense" | "department" | "milestone" | "task" | "taskAssignee" | "taskComment" | "userActivity" | "design" | "competitionCategory" | "competitionTeam" | "competitionScoringRules" | "competitionChallenge" | "competitionPerformance" | "competitionBadge" | "competitionAchievement" | "competitionMilestone" | "competitionMonthlyWinners" | "notification"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -2065,6 +2066,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    TaskComment: {
+      payload: Prisma.$TaskCommentPayload<ExtArgs>
+      fields: Prisma.TaskCommentFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.TaskCommentFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaskCommentPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.TaskCommentFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaskCommentPayload>
+        }
+        findFirst: {
+          args: Prisma.TaskCommentFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaskCommentPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.TaskCommentFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaskCommentPayload>
+        }
+        findMany: {
+          args: Prisma.TaskCommentFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaskCommentPayload>[]
+        }
+        create: {
+          args: Prisma.TaskCommentCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaskCommentPayload>
+        }
+        createMany: {
+          args: Prisma.TaskCommentCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.TaskCommentCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaskCommentPayload>[]
+        }
+        delete: {
+          args: Prisma.TaskCommentDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaskCommentPayload>
+        }
+        update: {
+          args: Prisma.TaskCommentUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaskCommentPayload>
+        }
+        deleteMany: {
+          args: Prisma.TaskCommentDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.TaskCommentUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.TaskCommentUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaskCommentPayload>[]
+        }
+        upsert: {
+          args: Prisma.TaskCommentUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaskCommentPayload>
+        }
+        aggregate: {
+          args: Prisma.TaskCommentAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateTaskComment>
+        }
+        groupBy: {
+          args: Prisma.TaskCommentGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.TaskCommentGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.TaskCommentCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.TaskCommentCountAggregateOutputType> | number
+        }
+      }
+    }
     UserActivity: {
       payload: Prisma.$UserActivityPayload<ExtArgs>
       fields: Prisma.UserActivityFieldRefs
@@ -3344,6 +3419,8 @@ export const TaskScalarFieldEnum = {
   id: 'id',
   title: 'title',
   description: 'description',
+  descriptionFormat: 'descriptionFormat',
+  mentionedUserIds: 'mentionedUserIds',
   deadline: 'deadline',
   priority: 'priority',
   status: 'status',
@@ -3366,6 +3443,21 @@ export const TaskAssigneeScalarFieldEnum = {
 } as const
 
 export type TaskAssigneeScalarFieldEnum = (typeof TaskAssigneeScalarFieldEnum)[keyof typeof TaskAssigneeScalarFieldEnum]
+
+
+export const TaskCommentScalarFieldEnum = {
+  id: 'id',
+  content: 'content',
+  contentFormat: 'contentFormat',
+  mentions: 'mentions',
+  mentionedUserIds: 'mentionedUserIds',
+  taskId: 'taskId',
+  authorId: 'authorId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type TaskCommentScalarFieldEnum = (typeof TaskCommentScalarFieldEnum)[keyof typeof TaskCommentScalarFieldEnum]
 
 
 export const UserActivityScalarFieldEnum = {
@@ -3979,6 +4071,7 @@ export type GlobalOmitConfig = {
   milestone?: Prisma.MilestoneOmit
   task?: Prisma.TaskOmit
   taskAssignee?: Prisma.TaskAssigneeOmit
+  taskComment?: Prisma.TaskCommentOmit
   userActivity?: Prisma.UserActivityOmit
   design?: Prisma.DesignOmit
   competitionCategory?: Prisma.CompetitionCategoryOmit

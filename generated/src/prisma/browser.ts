@@ -131,6 +131,11 @@ export type Task = Prisma.TaskModel
  */
 export type TaskAssignee = Prisma.TaskAssigneeModel
 /**
+ * Model TaskComment
+ * 
+ */
+export type TaskComment = Prisma.TaskCommentModel
+/**
  * Model UserActivity
  * Audit log of every significant action performed by a user.
  * objectMeta stores a lightweight snapshot (e.g. { id, name }) so the

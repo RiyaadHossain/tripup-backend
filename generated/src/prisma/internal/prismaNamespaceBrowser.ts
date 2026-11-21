@@ -73,6 +73,7 @@ export const ModelName = {
   Milestone: 'Milestone',
   Task: 'Task',
   TaskAssignee: 'TaskAssignee',
+  TaskComment: 'TaskComment',
   UserActivity: 'UserActivity',
   Design: 'Design',
   CompetitionCategory: 'CompetitionCategory',
@@ -455,6 +456,8 @@ export const TaskScalarFieldEnum = {
   id: 'id',
   title: 'title',
   description: 'description',
+  descriptionFormat: 'descriptionFormat',
+  mentionedUserIds: 'mentionedUserIds',
   deadline: 'deadline',
   priority: 'priority',
   status: 'status',
@@ -477,6 +480,21 @@ export const TaskAssigneeScalarFieldEnum = {
 } as const
 
 export type TaskAssigneeScalarFieldEnum = (typeof TaskAssigneeScalarFieldEnum)[keyof typeof TaskAssigneeScalarFieldEnum]
+
+
+export const TaskCommentScalarFieldEnum = {
+  id: 'id',
+  content: 'content',
+  contentFormat: 'contentFormat',
+  mentions: 'mentions',
+  mentionedUserIds: 'mentionedUserIds',
+  taskId: 'taskId',
+  authorId: 'authorId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type TaskCommentScalarFieldEnum = (typeof TaskCommentScalarFieldEnum)[keyof typeof TaskCommentScalarFieldEnum]
 
 
 export const UserActivityScalarFieldEnum = {

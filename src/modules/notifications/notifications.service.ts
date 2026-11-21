@@ -351,6 +351,81 @@ export class NotificationsService {
   }
 
   /**
+   * Action Trigger: Task or Comment Mention
+   */
+  async notifyTaskMention(params: {
+    taskId: string;
+    taskTitle: string;
+    actorId: string;
+    commentId?: string | null;
+    mentionedUserIds: string[];
+    creatorId?: string | null;
+    assigneeIds?: string[];
+  }): Promise<void> {
+    const { taskId, taskTitle, actorId, commentId, mentionedUserIds, creatorId, assigneeIds = [] } = params;
+
+    // Filter out actor from mentioned users
+    const validMentioned = mentionedUserIds.filter((uid) => uid && uid !== actorId);
+    if (validMentioned.length === 0) return;
+
+    const actorName = await this.getActorName(actorId);
+
+    const mentionedSet = new Set<string>(validMentioned);
+    const associatedSet = new Set<string>();
+
+    if (creatorId && creatorId !== actorId && !mentionedSet.has(creatorId)) {
+      associatedSet.add(creatorId);
+    }
+    for (const aid of assigneeIds) {
+      if (aid && aid !== actorId && !mentionedSet.has(aid)) {
+        associatedSet.add(aid);
+      }
+    }
+
+    const notifications: CreateNotificationDto[] = [];
+
+    // 1. Direct mention notifications
+    for (const uid of mentionedSet) {
+      notifications.push({
+        userId: uid,
+        title: 'You were mentioned in a task',
+        message: `${actorName} mentioned you in ${taskTitle}`,
+        type: NotificationType.TASK_UPDATED,
+        module: 'tasks',
+        resourceId: taskId,
+        metadata: {
+          event: 'TASK_MENTION',
+          taskId,
+          commentId: commentId ?? null,
+          mentionedUserIds,
+        },
+        triggeredById: actorId,
+      });
+    }
+
+    // 2. Associated users (creator + assignees) notification
+    for (const uid of associatedSet) {
+      notifications.push({
+        userId: uid,
+        title: 'New mention in your task',
+        message: `${actorName} mentioned team members in ${taskTitle}`,
+        type: NotificationType.TASK_UPDATED,
+        module: 'tasks',
+        resourceId: taskId,
+        metadata: {
+          event: 'TASK_MENTION',
+          taskId,
+          commentId: commentId ?? null,
+          mentionedUserIds,
+        },
+        triggeredById: actorId,
+      });
+    }
+
+    await this.create(notifications);
+  }
+
+  /**
    * Broadcast or custom admin notification
    */
   async broadcast(dto: SendBroadcastNotificationDto, actorId?: string): Promise<{ count: number }> {
